@@ -37,7 +37,7 @@ const LocalizedPaymentSuccessPage = async ({ params, searchParams }: Props) => {
   const { messages } = await getMessages(locale);
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center bg-primary-1000">
+    <div className="w-full min-h-screen p-4 flex justify-center items-center bg-primary-1000">
       <Card className="max-w-4xl flex flex-col items-center">
         <div className="w-18 h-18 rounded-full bg-primary-950 flex items-center justify-center mb-2">
           <CheckCircle className="text-green-500" size={40} strokeWidth={1.5} />
