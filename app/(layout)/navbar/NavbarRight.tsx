@@ -87,7 +87,10 @@ const NavbarRight = () => {
       </div>
 
       <Select value={locale} onValueChange={(value) => setLocale(value as "az" | "en" | "ru")}>
-        <SelectTrigger className="w-auto md:w-[85px] mr-1.5 md:mr-0 bg-transparent md:bg-[#123B554D] text-white rounded-full md:rounded-4xl py-0 md:py-3 px-0 md:px-4 h-auto md:h-12! border-0 md:border md:border-[#4D6880] shadow-none md:shadow-xs gap-0 [&>svg]:hidden md:[&>svg]:inline-flex md:[&>svg]:text-white md:[&>svg]:opacity-90">
+        <SelectTrigger
+          aria-label={`Select language. Current language: ${currentLocale.label}`}
+          className="w-auto md:w-[85px] mr-1.5 md:mr-0 bg-transparent md:bg-[#123B554D] text-white rounded-full md:rounded-4xl py-0 md:py-3 px-0 md:px-4 h-auto md:h-12! border-0 md:border md:border-[#4D6880] shadow-none md:shadow-xs gap-0 [&>svg]:hidden md:[&>svg]:inline-flex md:[&>svg]:text-white md:[&>svg]:opacity-90"
+        >
           <div className="flex items-center gap-2 md:w-full md:justify-between">
             <span className="relative size-5 rounded-full overflow-hidden ring-1 ring-[#E7EEF433] md:hidden">
               <Image src={currentLocale.flag} alt={currentLocale.label} fill sizes="20px" className="object-cover" />

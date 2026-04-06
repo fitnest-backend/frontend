@@ -55,7 +55,8 @@ const HowItWorks = () => {
                   <Image
                     src={phoneWindow}
                     alt="phone window"
-                    className="aspect-9/16 h-[450px] md:h-[900px] w-auto relative z-10"
+                    sizes="(max-width: 768px) 220px, 506px"
+                    className="aspect-[1350/2760] h-[450px] md:h-[900px] w-auto relative z-10"
                   />
 
                   {/* Screen area */}
@@ -65,6 +66,7 @@ const HowItWorks = () => {
                         src={item.image}
                         alt={item.alt}
                         fill
+                        sizes="(max-width: 768px) 220px, 460px"
                         className="object-cover object-top"
                       />
                     </div>

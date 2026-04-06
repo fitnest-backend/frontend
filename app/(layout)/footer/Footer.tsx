@@ -65,7 +65,8 @@ const Footer = () => {
                     width={24}
                     height={24}
                     className="w-6 h-6"
-                    alt="instagram"
+                    alt=""
+                    aria-hidden="true"
                   />
                   Instagram
                 </Link>
@@ -82,7 +83,8 @@ const Footer = () => {
                     width={24}
                     height={24}
                     className="w-6 h-6"
-                    alt="facebook"
+                    alt=""
+                    aria-hidden="true"
                   />
                   Facebook
                 </Link>
@@ -100,7 +102,8 @@ const Footer = () => {
                     width={24}
                     height={24}
                     className="w-6 h-6"
-                    alt="linkedin"
+                    alt=""
+                    aria-hidden="true"
                   />
                   Linkedin
                 </Link>
@@ -118,7 +121,8 @@ const Footer = () => {
                     width={24}
                     height={24}
                     className="w-6 h-6"
-                    alt="tiktok"
+                    alt=""
+                    aria-hidden="true"
                   />
                   Tiktok
                 </Link>
@@ -136,7 +140,8 @@ const Footer = () => {
                     width={24}
                     height={24}
                     className="w-6 h-6"
-                    alt="youtube"
+                    alt=""
+                    aria-hidden="true"
                   />
                   Youtube
                 </Link>
