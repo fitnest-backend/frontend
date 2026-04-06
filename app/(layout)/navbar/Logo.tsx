@@ -12,7 +12,7 @@ const Logo = () => {
     return (
         <div className="min-w-11 h-10 md:w-20 md:h-18 relative">
             <Link href={addLocaleToPathname("/", locale)}>
-                <Image src={LogoImg} alt="Logo" fill loading='eager' sizes='w-20 h-18' className='object-contain' />
+                <Image src={LogoImg} alt="Logo" fill priority sizes="(max-width: 768px) 44px, 80px" className='object-contain' />
             </Link>
         </div>
     )

@@ -30,12 +30,18 @@ const MobileAppSection = async () => {
             <Image
               src={phoneScreen}
               alt="phone window"
+              sizes="(max-width: 768px) 220px, 394px"
               className="aspect-9/16 h-[450px] md:h-[700px] w-auto relative z-10"
             />
 
             {/* Screen area */}
             <div className="absolute top-0 translate-y-1 md:translate-y-5 left-1 overflow-hidden aspect-9/16 h-[430px] md:h-[650px] z-0 rounded-[45px] md:rounded-[40px]">
-              <Image src={splash} alt={"splash"} className="h-full w-full " />
+              <Image
+                src={splash}
+                alt="splash"
+                sizes="(max-width: 768px) 220px, 366px"
+                className="h-full w-full"
+              />
             </div>
           </div>
         </div>
