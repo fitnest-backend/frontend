@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Card } from "@/components/ui/card";
-import { CheckCircle, CreditCard, Clock, CheckSquare } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import { getMessages } from "@/lib/i18n/server";
 import { parseRouteLocale } from "@/lib/i18n/route-locale";
 import { createPageMetadata } from "@/lib/seo";
@@ -8,7 +8,7 @@ import { getSeoContent } from "@/lib/seo-content";
 
 interface Props {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ last4?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 export async function generateMetadata({
@@ -33,7 +33,6 @@ export async function generateMetadata({
 const LocalizedPaymentSuccessPage = async ({ params, searchParams }: Props) => {
   const { locale: localeParam } = await params;
   const locale = parseRouteLocale(localeParam);
-  const { last4 } = await searchParams;
   const { messages } = await getMessages(locale);
 
   return (
@@ -47,31 +46,6 @@ const LocalizedPaymentSuccessPage = async ({ params, searchParams }: Props) => {
           Fitnest
         </h1>
         <p className="text-t2 leading-t2">{messages.payment.success}</p>
-
-        <div className="w-full border-t border-border mt-4 pt-4 flex flex-col gap-2.5">
-          <div className="flex justify-between items-center">
-            <span className="text-sm text-muted-foreground flex items-center gap-1.5">
-              <CreditCard size={14} /> {messages.payment.paymentMethod}
-            </span>
-            <span className="text-sm font-medium">
-              {last4 ? `•••• ${last4}` : "––"}
-            </span>
-          </div>
-          <div className="flex justify-between items-center">
-            <span className="text-sm text-muted-foreground flex items-center gap-1.5">
-              <Clock size={14} /> {messages.payment.date}
-            </span>
-            <span className="text-sm font-medium">13 Mart 2026</span>
-          </div>
-          <div className="flex justify-between items-center">
-            <span className="text-sm text-muted-foreground flex items-center gap-1.5">
-              <CheckSquare size={14} /> {messages.payment.status}
-            </span>
-            <span className="text-xs  px-3 py-0.5 rounded-full font-semibold">
-              {messages.payment.successStatus}
-            </span>
-          </div>
-        </div>
       </Card>
     </div>
   );
