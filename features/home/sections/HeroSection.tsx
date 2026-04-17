@@ -22,7 +22,7 @@ const HeroSection = async () => {
         muted
         playsInline
         preload="metadata"
-        poster="/images/main-page.webp"
+        // poster="/images/main-page.webp"
         className=" aspect-video lg:block absolute inset-0 w-full h-full object-cover brightness-80"
       >
         <source src="/videos/FitNest.mp4" type="video/mp4" />
