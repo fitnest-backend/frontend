@@ -1,6 +1,7 @@
 import { apiClient, serverApiClient } from "@/lib/api";
 import type { StoresParams, StoresResponse } from "./types";
 import { unstable_cache } from "next/cache";
+import { MOCK_STORES_RESPONSE } from "./mockData";
 
 const ENDPOINT = "/stores";
 
@@ -14,19 +15,29 @@ const defaultParams: StoresParams = {
 export async function getStores(
   params: StoresParams = {},
 ): Promise<StoresResponse> {
-  const { data } = await apiClient.get<StoresResponse>(ENDPOINT, {
-    params: { ...defaultParams, ...params },
-  });
-  return data;
+  try {
+    const { data } = await apiClient.get<StoresResponse>(ENDPOINT, {
+      params: { ...defaultParams, ...params },
+    });
+    return data;
+  } catch (error) {
+    console.warn("Failed to fetch stores, returning mock data", error);
+    return MOCK_STORES_RESPONSE;
+  }
 }
 
 export async function getStoresServer(
   params: StoresParams = {},
 ): Promise<StoresResponse> {
-  const { data } = await serverApiClient.get<StoresResponse>(ENDPOINT, {
-    params: { ...defaultParams, ...params },
-  });
-  return data;
+  try {
+    const { data } = await serverApiClient.get<StoresResponse>(ENDPOINT, {
+      params: { ...defaultParams, ...params },
+    });
+    return data;
+  } catch (error) {
+    console.warn("Failed to fetch stores on server, returning mock data", error);
+    return MOCK_STORES_RESPONSE;
+  }
 }
 
 const getStoresServerCachedInternal = unstable_cache(
