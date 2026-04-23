@@ -176,7 +176,7 @@ const Footer = () => {
                     height={32}
                     alt="mail"
                   />
-                  <p>fitnestazerbaijan@gmail.com</p>
+                  <p>support@fitnest.az</p>
                 </div>
               </div>
             </div>

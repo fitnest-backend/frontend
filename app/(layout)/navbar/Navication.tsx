@@ -11,14 +11,14 @@ const Navication = () => {
   const navLinks = [
     { name: t.nav.halls, href: "/fitness-centers" },
     { name: t.nav.plans, href: "/offers" },
-    { name: t.nav.market, href: "/fit-market" },
-    { name: t.nav.faq, href: "/faq" },
+    // { name: t.nav.market, href: "/fit-market" },
+    // { name: t.nav.faq, href: "/faq" },
     { name: t.nav.bmi, href: "/bmi" },
   ];
 
   return (
     <div className="hidden md:flex md:justify-center xl:justify-normal w-full">
-      <nav className="flex justify-between text-white! w-full gradient-border py-4 px-7 rounded-4xl bg-[#0E293D4D] backdrop-blur-md lg:max-w-[528px]">
+      <nav className="flex justify-evenly text-white! w-full gradient-border py-4 px-7 rounded-4xl bg-[#0E293D4D] backdrop-blur-md lg:max-w-[528px]">
         {navLinks.map((item) => (
           <div key={item.name}>
             <Link
