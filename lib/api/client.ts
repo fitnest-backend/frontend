@@ -26,5 +26,5 @@ export const apiClient = createClient(
 
 /** Server-side — direct backend URL, no CORS issue */
 export const serverApiClient = createClient(
-  process.env.API_BASE_URL ?? "https://dev-api.fitnest.az/api/v1",
+  process.env.API_BASE_URL ?? "https://api.fitnest.az/api/v1",
 );

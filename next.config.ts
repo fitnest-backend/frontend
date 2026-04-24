@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/api/proxy/:path*",
-        destination: "https://dev-api.fitnest.az/api/v1/:path*",
+        destination: "https://api.fitnest.az/api/v1/:path*",
       },
     ];
   },
