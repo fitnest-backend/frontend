@@ -100,7 +100,7 @@ const FitnessCenterCard = ({
           <Button
             asChild
             size="icon"
-            className="size-12 shrink-0 rounded-full bg-[rgba(14,41,61,0.3)] text-white hover:bg-[rgba(14,41,61,0.45)]"
+            className="size-12 shrink-0 rounded-full bg-[#00b4cc] text-white hover:bg-[#009db5]"
           >
             <Link href={href} aria-label={`${name} ${t.centers.detailsAria}`}>
               <ArrowUpRight className="h-5 w-5" />
