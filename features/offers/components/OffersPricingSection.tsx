@@ -18,10 +18,20 @@ type OffersPricingSectionProps = {
 };
 
 const OffersPricingSection = ({
-  selectedType,
-  selectedMonth,
+  selectedType = "bronze",
+  selectedMonth = "1",
 }: OffersPricingSectionProps) => {
   const { t } = useI18n();
+
+  const priceMap: Record<string, Record<string, number>> = {
+    bronze: { "1": 55, "3": 165, "6": 330, "12": 660 },
+    silver: { "1": 85, "3": 255, "6": 510, "12": 1020 },
+    gold: { "1": 155, "3": 465, "6": 930, "12": 1860 },
+    platinum: { "1": 255, "3": 675, "6": 1350, "12": 2700 },
+  };
+
+  const currentPrice = priceMap[selectedType]?.[selectedMonth] || 0;
+
   const premiumBadges = [
     { label: "Bronze", type: "bronze", variant: "bronze" as const },
     { label: "Silver", type: "silver", variant: "silver" as const },
@@ -101,7 +111,7 @@ const OffersPricingSection = ({
 
       <div className="w-full md:w-4/5 mx-auto max-w-[765px] space-y-8">
         <h2 className="text-neutral-50 text-h2 leading-h2 font-bold text-center">
-          75 &#8380; - 65 &#8380;
+          {currentPrice} &#8380;
         </h2>
         <p className="font-bold text-t1 leading-t1 text-neutral-50 text-center">
           <span className="text-primary-700">FitNest</span>{" "}
@@ -141,7 +151,7 @@ const OffersPricingSection = ({
           <p className="font-medium text-t2 leading-t2">
             <span className="text-primary-700">FitNest</span>{" "}
             {t.offers.appDescription}
-          </p> 
+          </p>
           <QrCode size={300} />
         </div>
         <div className="mx-auto max-h-[700px] overflow-clip">
