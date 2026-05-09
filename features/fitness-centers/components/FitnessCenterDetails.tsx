@@ -1,8 +1,5 @@
 import Container from "@/components/common/Container";
-import { Button } from "@/components/ui/button";
 import {
-  ChevronLeft,
-  ChevronRight,
   Clock3,
   Mail,
   MapPin,
@@ -11,6 +8,7 @@ import {
 import Image from "next/image";
 import { coaches, gallery, socialIcons } from "../lib/fitness-centers-data";
 import { getMessages } from "@/lib/i18n/server";
+import FitnessGallery from "./FitnessGallery";
 
 const mapImageUrl =
   "https://www.figma.com/api/mcp/asset/9997ce09-7d77-45e0-8957-e9667a01cf1b";
@@ -55,51 +53,7 @@ const FitnessCenterDetails = async ({ slug }: FitnessCenterDetailsProps) => {
           </p>
         </div>
 
-        <div className="space-y-5">
-          <div className="relative h-[260px] overflow-hidden rounded-3xl md:h-[520px]">
-            <Image
-              src={gallery[0]}
-              alt={`${name} main`}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 1280px"
-            />
-
-            <Button
-              size="icon"
-              className="absolute left-3 top-1/2 size-10 -translate-y-1/2 rounded-full bg-[rgba(14,41,61,0.3)] text-white hover:bg-[rgba(14,41,61,0.45)] md:left-5 md:size-14"
-              aria-label={messages.centers.previousImage}
-            >
-              <ChevronLeft className="size-6" />
-            </Button>
-            <Button
-              size="icon"
-              className="absolute right-3 top-1/2 size-10 -translate-y-1/2 rounded-full bg-[rgba(14,41,61,0.3)] text-white hover:bg-[rgba(14,41,61,0.45)] md:right-5 md:size-14"
-              aria-label={messages.centers.nextImage}
-            >
-              <ChevronRight className="size-6" />
-            </Button>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-6">
-            {gallery.slice(1).map((image, index) => (
-              <div
-                key={image}
-                className={`relative h-[120px] overflow-hidden rounded-xl md:h-[180px] ${
-                  index === 0 ? "ring-2 ring-[#C6A7F5]" : ""
-                }`}
-              >
-                <Image
-                  src={image}
-                  alt={`${name} gallery ${index + 1}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 50vw, 302px"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+        <FitnessGallery images={gallery} name={name} />
 
         <div className="space-y-6 rounded-4xl border border-[#373A41] bg-[#111729] p-5 md:p-6">
           <h2 className="text-3xl font-semibold leading-tight text-white md:text-h4 md:leading-h4">
@@ -202,11 +156,18 @@ const FitnessCenterDetails = async ({ slug }: FitnessCenterDetailsProps) => {
           </div>
         </div>
 
-        <div
-          className="h-[300px] rounded-2xl bg-cover bg-center md:h-[553px]"
-          style={{ backgroundImage: `url(${mapImageUrl})` }}
-          aria-label={messages.centers.map}
-        />
+        <div className="h-[300px] overflow-hidden rounded-2xl md:h-[553px]">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.428490195663!2d49.841315876543!3d40.3771908581023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d079efb5163%3A0xc20aa51a5f0b5e43!2sNizami%20St%2C%20Baku!5e0!3m2!1sen!2saz!4v1715270000000!5m2!1sen!2saz"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen={true}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title={messages.centers.map}
+          ></iframe>
+        </div>
       </section>
     </Container>
   );

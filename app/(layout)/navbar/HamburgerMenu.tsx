@@ -15,8 +15,6 @@ const HamburgerMenu = () => {
     const navLinks = [
       { name: t.nav.halls, href: "/" },
       { name: t.nav.plans, href: "/offers" },
-      { name: t.nav.market, href: "/fit-market" },
-      { name: t.nav.faq, href: "/faq" },
       { name: t.nav.bmi, href: "/bmi" },
     ];
 
