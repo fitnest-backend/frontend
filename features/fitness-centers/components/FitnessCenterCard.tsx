@@ -45,9 +45,10 @@ const FitnessCenterCard = ({
   href,
 }: FitnessCenterCardProps) => {
   const { t } = useI18n();
+
   return (
     <article className="flex h-full flex-col gap-6 rounded-4xl border border-[#111729] bg-[#111729] p-7">
-      <div className="relative h-[250px] w-full overflow-hidden rounded-3xl">
+      <div className="relative h-[250px] w-full shrink-0 overflow-hidden rounded-3xl">
         <Image
           src={image}
           alt={name}
@@ -58,37 +59,39 @@ const FitnessCenterCard = ({
         <div className="absolute inset-0 bg-linear-to-b from-transparent to-black/65" />
       </div>
 
-      <div className="space-y-4">
-        <div className="flex items-start justify-between gap-3">
-          <h3 className="text-xl font-semibold leading-s1 text-white">
-            {name}
-          </h3>
-          <Badge
-            variant={membershipVariantMap[membership]}
-            className={cn(
-              "h-9 min-w-[114px] px-4 py-1 text-sm! font-bold leading-5",
-              membership === "platinum" && "text-white",
-            )}
-          >
-            {membershipLabelMap[membership]}
-          </Badge>
-        </div>
+      <div className="flex flex-1 flex-col justify-between space-y-4">
 
-        <p className="text-sm font-bold leading-5 text-[#00B4CC]">{category}</p>
+        <div className="space-y-4">
+          <div className="flex items-start justify-between gap-3">
+            <h3 className="text-xl font-semibold leading-s1 text-white">
+              {name}
+            </h3>
+            <Badge
+              variant={membershipVariantMap[membership]}
+              className={cn(
+                "h-9 min-w-[114px] px-4 py-1 text-sm! font-bold leading-5",
+                membership === "platinum" && "text-white",
+              )}
+            >
+              {membershipLabelMap[membership]}
+            </Badge>
+          </div>
+          <p className="text-sm font-bold leading-5 text-[#00B4CC]">{category}</p>
+        </div>
 
         <div className="flex items-end justify-between gap-4">
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-sm text-[#C1C1CC]">
-              <MapPin className="h-5 w-5 text-[#C1C1CC]" />
-              <span>{location}</span>
+              <MapPin className="h-5 w-5 shrink-0 text-[#C1C1CC]" />
+              <span className="line-clamp-1">{location}</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-[#C1C1CC]">
-              <Phone className="h-5 w-5 text-[#C1C1CC]" />
+              <Phone className="h-5 w-5 shrink-0 text-[#C1C1CC]" />
               <span>{phone}</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-[#C1C1CC]">
-              <Clock3 className="h-5 w-5 text-[#C1C1CC]" />
-              <span>
+              <Clock3 className="h-5 w-5 shrink-0 text-[#C1C1CC]" />
+              <span className="line-clamp-1">
                 {t.centers.workHours}: {workHours}
               </span>
             </div>
@@ -97,7 +100,7 @@ const FitnessCenterCard = ({
           <Button
             asChild
             size="icon"
-            className="size-12 rounded-full bg-[rgba(14,41,61,0.3)] text-white hover:bg-[rgba(14,41,61,0.45)]"
+            className="size-12 shrink-0 rounded-full bg-[#00b4cc] text-white hover:bg-[#009db5]"
           >
             <Link href={href} aria-label={`${name} ${t.centers.detailsAria}`}>
               <ArrowUpRight className="h-5 w-5" />

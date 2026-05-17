@@ -1,90 +1,50 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { RefreshCw } from "lucide-react";
 import { useI18n } from "@/lib/i18n/provider";
 
 const FiltersSection = () => {
   const { t } = useI18n();
-  const controlClass =
-    "w-full rounded-full border border-[#373A41] bg-[#123B554D] text-neutral-50 py-0 h-12 data-[size=default]:h-12 data-[placeholder]:text-[#797980] data-[placeholder]:font-bold text-base";
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  const filterCategories = [
+    { id: "all", label: "HAMISI" },
+    { id: "fitness", label: "FİTNES ZALI" },
+    { id: "cardio", label: "CARDİO & AĞIRLIQ" },
+    { id: "combat", label: "DÖYÜŞ SƏNƏTLƏRİ" },
+    { id: "functional", label: "FUNCTIONAL/CROSSFİT" },
+    { id: "comfort", label: "CONFORT ZAL" },
+    { id: "vip", label: "VİP ZAL" },
+    { id: "standard", label: "STANDART ZAL" },
+  ];
 
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-12 xl:gap-5">
-      <div className="md:col-span-2 xl:col-span-4">
+    <div className="flex flex-col gap-6 w-full">
+      <div className="w-full">
         <Input
           placeholder={t.centers.searchPlace}
           leftIcon="/icons/search.svg"
-          className="h-full px-3 text-base text-neutral-50 placeholder:text-neutral-800 placeholder:font-bold"
-          wrapperClassName="h-12 border-[#373A41] bg-[#123B554D] px-4"
+          className="h-full px-3 text-base text-neutral-50 placeholder:text-neutral-600"
+          wrapperClassName="h-12 border-[#373A41] bg-[#0B1218] px-4 rounded-full"
         />
       </div>
-      <div className="xl:col-span-2">
-        <Select defaultValue="rayon">
-          <SelectTrigger className={controlClass}>
-            <SelectValue placeholder={t.centers.cityDistrict} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>{t.centers.cityDistrict}</SelectLabel>
-              <SelectItem value="rayon">{t.centers.cityDistrict}</SelectItem>
-              <SelectItem value="nizami">Nizami</SelectItem>
-              <SelectItem value="nesimi">Nəsimi</SelectItem>
-              <SelectItem value="yasamal">Yasamal</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+
+      <div className="flex flex-wrap gap-3">
+        {filterCategories.map((cat) => (
+          <Button
+            key={cat.id}
+            onClick={() => setActiveFilter(cat.id)}
+            className={`h-8 sm:h-10 md:h-12 px-4 sm:px-5 md:px-6.5 rounded-4xl border text-xs sm:text-sm text-[#FAFAFA] border-[#00B4CC] font-medium transition-all ${activeFilter === cat.id
+                ? "bg-[#00B4CC] hover:bg-[#00B4CC]/90"
+                : "bg-transparent hover:bg-[#1A2128]"
+              }`}
+          >
+            {cat.label}
+          </Button>
+        ))}
       </div>
-      <div className="xl:col-span-2">
-        <Select defaultValue="mesq">
-          <SelectTrigger className={controlClass}>
-            <SelectValue placeholder={t.centers.trainingTypes} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>{t.centers.trainingTypes}</SelectLabel>
-              <SelectItem value="mesq">{t.centers.trainingTypes}</SelectItem>
-              <SelectItem value="cardio">Cardio</SelectItem>
-              <SelectItem value="weights">Ağırlıq</SelectItem>
-              <SelectItem value="crossfit">Crossfit</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      </div>
-      <div className="xl:col-span-2">
-        <Select defaultValue="abunelik">
-          <SelectTrigger className={controlClass}>
-            <SelectValue placeholder={t.centers.membership} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>{t.centers.membership}</SelectLabel>
-              <SelectItem value="abunelik">{t.centers.membership}</SelectItem>
-              <SelectItem value="bronze">Bronze</SelectItem>
-              <SelectItem value="silver">Silver</SelectItem>
-              <SelectItem value="gold">Gold</SelectItem>
-              <SelectItem value="platinum">Platinum</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      </div>
-      <Button
-        variant="outline"
-        className="h-12 w-full rounded-full border-[#373A41] bg-[#123B554D] text-base font-bold text-neutral-800 hover:bg-[#123B554D] hover:text-neutral-800 xl:col-span-2"
-      >
-        <RefreshCw className="h-5 w-5" />
-        {t.centers.reset}
-      </Button>
     </div>
   );
 };
