@@ -166,7 +166,7 @@ const Footer = () => {
                     height={32}
                     alt="phone"
                   />
-                  <p>+994 70 852 24 25</p>
+                  <p>+994 77 272 15 85</p>
                 </div>
                 <div className="flex gap-2 items-center">
                   <Image
