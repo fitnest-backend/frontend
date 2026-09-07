@@ -11,18 +11,32 @@ import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
 import ToTopBtn from "./ToTopBtn";
 import { useI18n } from "@/lib/i18n/provider";
-import { addLocaleToPathname } from "@/lib/i18n/config";
+import { addLocaleToPathname, stripLocaleFromPathname } from "@/lib/i18n/config";
+import { usePathname } from "next/navigation";
 import StoreBadges from "@/features/home/components/StoreBadges";
 import {
   CONTACT_EMAIL,
-  CONTACT_EMAIL_HREF,
   CONTACT_PHONE,
-  CONTACT_PHONE_HREF,
+  toMailtoHref,
+  toTelHref,
 } from "@/lib/constants/app-links";
 
-const Footer = () => {
+type FooterProps = {
+  email?: string | null;
+  phone?: string | null;
+};
+
+const Footer = ({ email, phone }: FooterProps) => {
   const { t, locale } = useI18n();
+  const pathname = usePathname();
+  const currentPath = stripLocaleFromPathname(pathname);
   const homePath = addLocaleToPathname("/", locale);
+  const contactEmail = email?.trim() || CONTACT_EMAIL;
+  const contactPhone = phone?.trim() || CONTACT_PHONE;
+  const footerLinkClass = (href: string) =>
+    stripLocaleFromPathname(href) === currentPath
+      ? "text-cyan"
+      : "hover:text-cyan";
 
   const platformLinks = [
     { label: t.footer.howItWorks, href: `${homePath}#how-it-works` },
@@ -33,7 +47,7 @@ const Footer = () => {
   ];
 
   const companyLinks = [
-    { label: t.footer.about, href: addLocaleToPathname("/contact", locale) },
+    { label: t.footer.about, href: addLocaleToPathname("/about", locale) },
     { label: t.footer.privacy, href: addLocaleToPathname("/privacy", locale) },
     { label: t.footer.terms, href: addLocaleToPathname("/terms", locale) },
     { label: t.footer.news, href: addLocaleToPathname("/faq", locale) },
@@ -100,7 +114,7 @@ const Footer = () => {
               <ul className="flex flex-col gap-3 text-sm font-medium leading-5">
                 {platformLinks.map((item) => (
                   <li key={item.label}>
-                    <Link href={item.href} className="hover:text-cyan">
+                    <Link href={item.href} className={footerLinkClass(item.href)}>
                       {item.label}
                     </Link>
                   </li>
@@ -114,7 +128,7 @@ const Footer = () => {
               <ul className="flex flex-col gap-3 text-sm font-medium leading-5">
                 {companyLinks.map((item) => (
                   <li key={item.label}>
-                    <Link href={item.href} className="hover:text-cyan">
+                    <Link href={item.href} className={footerLinkClass(item.href)}>
                       {item.label}
                     </Link>
                   </li>
@@ -128,7 +142,7 @@ const Footer = () => {
               <ul className="flex flex-col gap-3 text-sm font-medium leading-5">
                 {partnershipLinks.map((item) => (
                   <li key={item.label}>
-                    <Link href={item.href} className="hover:text-cyan">
+                    <Link href={item.href} className={footerLinkClass(item.href)}>
                       {item.label}
                     </Link>
                   </li>
@@ -143,18 +157,18 @@ const Footer = () => {
             </p>
             <div className="flex flex-col gap-3">
               <a
-                href={CONTACT_PHONE_HREF}
+                href={toTelHref(contactPhone)}
                 className="inline-flex items-center gap-2 text-sm font-medium leading-5"
               >
                 <Phone className="size-4 text-cyan" />
-                {CONTACT_PHONE}
+                {contactPhone}
               </a>
               <a
-                href={CONTACT_EMAIL_HREF}
+                href={toMailtoHref(contactEmail)}
                 className="inline-flex items-center gap-2 text-sm font-medium leading-5"
               >
                 <Mail className="size-4 text-cyan" />
-                {CONTACT_EMAIL}
+                {contactEmail}
               </a>
               <div className="flex items-center gap-2 pt-2">
                 {socials.map((social) => (

@@ -1,50 +1,28 @@
-"use client";
+import { getLandingLegalDocumentServer } from "@/lib/api/landing";
+import type { Locale } from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/server";
+import LegalDocumentView from "@/features/legal/LegalDocumentView";
 
-import BannerContainer from "@/components/common/BannerContainer";
-import {
-    Card,
-    CardContent,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
-import ShieldIcon from '@/public/icons/shield.svg'
-import { useI18n } from "@/lib/i18n/provider";
+type PrivacyPolicyPageProps = {
+  locale: Locale;
+};
 
-interface PolicyItem {
-    id: number;
-    title: string;
-    text: string;
-}
-const PrivacyPolicyPage = () => {
-    const { t } = useI18n();
-    const context: PolicyItem[] = t.privacy.items.map((item, index) => ({
-        id: index + 1,
-        title: item.title,
-        text: item.text,
-    }));
+const PrivacyPolicyPage = async ({ locale }: PrivacyPolicyPageProps) => {
+  const { messages } = await getMessages(locale);
+  const t = messages.privacy;
+  const document = await getLandingLegalDocumentServer(locale, "privacy-policy");
 
-    return (
-        <BannerContainer
-            title={t.privacy.title}
-            subtitle={t.privacy.subtitle}
-            iconUrl={ShieldIcon.src}
-        >
-            <div className="w-full flex flex-col gap-5 items-center">
-                {
-                    context.map(item => (
-                        <Card key={item.id}>
-                            <CardHeader className="text-s2 sm:text-h6 font-medium">
-                                <CardTitle>{item.id}. {item.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent className="whitespace-pre-line text-gray-50! text-b2 sm:leading-s1 font-[510px] leading-b2 sm:text-s1">
-                                {item.text}
-                            </CardContent>
-                        </Card>
-                    ))
-                }
-            </div>
-        </BannerContainer>
-    )
-}
+  return (
+    <LegalDocumentView
+      locale={locale}
+      eyebrow={t.eyebrow}
+      title={t.title}
+      subtitle={t.subtitle}
+      updatedLabel={t.updatedLabel}
+      empty={t.empty}
+      document={document}
+    />
+  );
+};
 
-export default PrivacyPolicyPage
+export default PrivacyPolicyPage;

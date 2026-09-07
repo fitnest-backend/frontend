@@ -11,6 +11,7 @@ type SeoPageKey =
   | "offers"
   | "bmi"
   | "contact"
+  | "about"
   | "faq"
   | "feedback"
   | "fitMarket"
@@ -100,6 +101,26 @@ const seoContent: Record<SeoPageKey, Record<Locale, LocalizedSeoContent>> = {
       title: "Контакты",
       description: "Свяжитесь с командой FitNest, отправьте вопрос и получите поддержку.",
       keywords: ["контакты", "поддержка FitNest", "помощь"],
+    },
+  },
+  about: {
+    az: {
+      title: "Haqqımızda",
+      description:
+        "FitNest — bir abunə ilə yüzlərlə fitness mərkəzinə çıxış. Azərbaycanın fitness və sağlam həyat ekosistemini qururuq.",
+      keywords: ["Haqqımızda", "FitNest", "fitness ekosistemi", "missiya"],
+    },
+    en: {
+      title: "About us",
+      description:
+        "FitNest gives access to hundreds of fitness centers with one subscription. We are building Azerbaijan's fitness and healthy living ecosystem.",
+      keywords: ["About us", "FitNest", "fitness ecosystem", "mission"],
+    },
+    ru: {
+      title: "О нас",
+      description:
+        "FitNest даёт доступ к сотням фитнес-центров по одной подписке. Мы строим фитнес-экосистему и здоровый образ жизни Азербайджана.",
+      keywords: ["О нас", "FitNest", "фитнес-экосистема", "миссия"],
     },
   },
   faq: {
@@ -193,8 +214,9 @@ const seoContent: Record<SeoPageKey, Record<Locale, LocalizedSeoContent>> = {
   },
   terms: {
     az: {
-      title: "İstifadə Şərtləri",
-      description: "FitNest xidmətlərindən istifadə zamanı qüvvədə olan şərtlər və hüquqi müddəalar.",
+      title: "İstifadə şərtləri",
+      description:
+        "FitNest xidmətlərindən istifadə zamanı qüvvədə olan şərtlər və hüquqi müddəalar. Vebsaytdan və FitNest mobil tətbiqindən istifadə etməklə siz bu şərtləri qəbul etmiş sayılırsınız.",
       keywords: ["istifadə şərtləri", "terms", "FitNest qaydaları"],
     },
     en: {

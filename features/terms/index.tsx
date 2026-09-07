@@ -1,51 +1,28 @@
-"use client";
+import { getLandingLegalDocumentServer } from "@/lib/api/landing";
+import type { Locale } from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/server";
+import LegalDocumentView from "@/features/legal/LegalDocumentView";
 
-import BannerContainer from "@/components/common/BannerContainer"
-import AlertIcon from '@/public/icons/alert-circle.svg'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useI18n } from "@/lib/i18n/provider";
+type TermsPageProps = {
+  locale: Locale;
+};
 
-interface TermItem {
-    id: string;
-    title: string;
-    content: string;
-}
+const TermsPage = async ({ locale }: TermsPageProps) => {
+  const { messages } = await getMessages(locale);
+  const t = messages.terms;
+  const document = await getLandingLegalDocumentServer(locale, "terms-of-use");
 
-const TermsPage = () => {
-    const { t } = useI18n();
-    const termsData: TermItem[] = t.terms.items.map((item, index) => ({
-        id: String(index + 1),
-        title: item.title,
-        content: item.content,
-    }));
+  return (
+    <LegalDocumentView
+      locale={locale}
+      eyebrow={t.eyebrow}
+      title={t.title}
+      subtitle={t.subtitle}
+      updatedLabel={t.updatedLabel}
+      empty={t.empty}
+      document={document}
+    />
+  );
+};
 
-    return (
-        <BannerContainer
-            title={t.terms.title}
-            subtitle={
-                <>
-                    <span className="text-primary-700">FitNest</span>
-                    <span> {t.terms.subtitle}</span>
-                </>
-            }
-            iconUrl={AlertIcon.src}
-        >
-            <div className="space-y-4 sm:space-y-8">
-                {
-                    termsData.map((item, index) => (
-                        <Card key={item.id}>
-                            <CardHeader className="text-s2 sm:text-h6 font-medium">
-                                <CardTitle>{index + 1}. {item.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent className="text-gray-50! text-b2 sm:leading-s1 font-[510px] leading-b2 sm:text-s1">
-                                {item.content}
-                            </CardContent>
-                        </Card>
-                    ))
-                }
-            </div>
-        </BannerContainer>
-    )
-}
-
-export default TermsPage
+export default TermsPage;

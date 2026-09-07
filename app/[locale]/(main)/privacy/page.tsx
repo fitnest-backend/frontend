@@ -4,6 +4,8 @@ import { parseRouteLocale } from "@/lib/i18n/route-locale";
 import { createPageMetadata } from "@/lib/seo";
 import { getSeoContent } from "@/lib/seo-content";
 
+export const revalidate = 120;
+
 type PageProps = {
   params: Promise<{ locale: string }>;
 };
@@ -22,6 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   });
 }
 
-export default function LocalePrivacyPage() {
-  return <PrivacyPolicyPage />;
+export default async function LocalePrivacyPage({ params }: PageProps) {
+  const { locale: localeParam } = await params;
+  return <PrivacyPolicyPage locale={parseRouteLocale(localeParam)} />;
 }

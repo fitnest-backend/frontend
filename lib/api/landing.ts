@@ -44,6 +44,28 @@ export type LandingStore = {
   email?: string | null;
 };
 
+export type LandingContact = {
+  email: string | null;
+  phone: string | null;
+};
+
+export type LandingFaqCategory = {
+  id: number;
+  name: string;
+};
+
+export type LandingFaq = {
+  id: number;
+  question: string;
+  answer: string;
+  category: LandingFaqCategory | null;
+};
+
+export type LandingFaqs = {
+  items: LandingFaq[];
+  categories: LandingFaqCategory[];
+};
+
 export type LandingPage<T> = {
   items: T[];
   total: number;
@@ -286,6 +308,153 @@ export async function getLandingStoreServer(
   } catch {
     return null;
   }
+}
+
+type ContactDetailsPayload = {
+  email?: string | null;
+  mobile_number?: string | null;
+  mobileNumber?: string | null;
+};
+
+export async function getLandingContactServer(): Promise<LandingContact> {
+  try {
+    const { data } = await serverApiClient.get<ContactDetailsPayload>(
+      `${LANDING}/contact`,
+    );
+    return {
+      email: data.email?.trim() || null,
+      phone: (data.mobile_number ?? data.mobileNumber)?.trim() || null,
+    };
+  } catch {
+    return { email: null, phone: null };
+  }
+}
+
+type FaqCategoryPayload = {
+  id?: number | string | null;
+  name?: string | null;
+};
+
+type FaqItemPayload = {
+  id?: number | string | null;
+  question?: string | null;
+  answer?: string | null;
+  category?: FaqCategoryPayload | null;
+};
+
+type FaqsPayload = {
+  items?: FaqItemPayload[] | null;
+  categories?: FaqCategoryPayload[] | null;
+};
+
+const emptyFaqs = (): LandingFaqs => ({ items: [], categories: [] });
+
+function mapFaqCategory(raw: FaqCategoryPayload | null | undefined): LandingFaqCategory | null {
+  const id = Number(raw?.id);
+  const name = raw?.name?.trim() ?? "";
+  if (!Number.isFinite(id) || id <= 0 || !name) return null;
+  return { id, name };
+}
+
+function mapFaqItem(raw: FaqItemPayload): LandingFaq | null {
+  const id = Number(raw.id);
+  const question = raw.question?.trim() ?? "";
+  const answer = raw.answer?.trim() ?? "";
+  if (!Number.isFinite(id) || id <= 0 || !question) return null;
+  return {
+    id,
+    question,
+    answer,
+    category: mapFaqCategory(raw.category),
+  };
+}
+
+export async function getLandingFaqsServer(locale: string): Promise<LandingFaqs> {
+  try {
+    const { data } = await serverApiClient.get<FaqsPayload>(
+      `${LANDING}/faqs`,
+      withLocale(locale),
+    );
+    return {
+      items: (data.items ?? []).map(mapFaqItem).filter((item): item is LandingFaq => item !== null),
+      categories: (data.categories ?? [])
+        .map(mapFaqCategory)
+        .filter((category): category is LandingFaqCategory => category !== null),
+    };
+  } catch {
+    // Fall through to the authenticated FAQ list used before the public landing route exists.
+  }
+
+  try {
+    const [{ data: faqPage }, { data: categoryList }] = await Promise.all([
+      serverApiClient.get<FaqsPayload>(`/faqs`, {
+        ...withLocale(locale),
+        params: { page: 1, size: 200 },
+      }),
+      serverApiClient.get<FaqCategoryPayload[]>(`/faq-categories`, withLocale(locale)),
+    ]);
+    return {
+      items: (faqPage.items ?? []).map(mapFaqItem).filter((item): item is LandingFaq => item !== null),
+      categories: (Array.isArray(categoryList) ? categoryList : [])
+        .map(mapFaqCategory)
+        .filter((category): category is LandingFaqCategory => category !== null),
+    };
+  } catch {
+    return emptyFaqs();
+  }
+}
+
+export type LandingLegalDocument = {
+  version: string | null;
+  content: string | null;
+  updatedAt: string | null;
+};
+
+type LegalDocumentPayload = {
+  version?: string | null;
+  content?: string | null;
+  updated_at?: string | null;
+  updatedAt?: string | null;
+};
+
+export async function getLandingLegalDocumentServer(
+  locale: string,
+  kind: "privacy-policy" | "terms-of-use",
+): Promise<LandingLegalDocument | null> {
+  const options = {
+    ...withLocale(locale),
+    params: { lang: locale.toUpperCase(), format: "html" },
+  };
+
+  try {
+    const { data } = await serverApiClient.get<LegalDocumentPayload>(
+      `${LANDING}/${kind}`,
+      options,
+    );
+    return mapLegalDocument(data);
+  } catch {
+    try {
+      const { data } = await serverApiClient.get<LegalDocumentPayload>(
+        `/legal/${kind}`,
+        options,
+      );
+      return mapLegalDocument(data);
+    } catch {
+      return null;
+    }
+  }
+}
+
+function mapLegalDocument(
+  data: LegalDocumentPayload,
+): LandingLegalDocument | null {
+  const content = data.content?.trim() || null;
+  if (!content) return null;
+  return {
+    version: data.version?.trim() || null,
+    content,
+    updatedAt: (data.updated_at ?? data.updatedAt)?.trim() || null,
+  };
 }
 
 function uniqueUrls(urls: Array<string | null | undefined>): string[] {
