@@ -6,8 +6,6 @@ import { getSeoContent } from "@/lib/seo-content";
 
 export const revalidate = 300;
 
-export const revalidate = 300;
-
 type PageProps = {
   params: Promise<{ locale: string }>;
 };
