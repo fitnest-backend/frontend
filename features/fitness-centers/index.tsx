@@ -1,19 +1,26 @@
 import Container from "@/components/common/Container";
+import { getMessages } from "@/lib/i18n/server";
+import {
+  getLandingGymsPageServer,
+  getLandingStatsServer,
+} from "@/lib/api/landing";
 import FitnessCentersHeroSection from "./sections/FitnessCentersHeroSection";
-import FiltersSection from "./sections/FiltersSection";
 import FitnessCentersListSection from "./sections/FitnessCentersListSection";
 
-const FitnessCentersPage = () => {
-  return (
-    <div className="relative overflow-hidden bg-[#0D0F1C] mt-10 md:mt-0">
-      <div className="pointer-events-none absolute left-1/2 top-[90px] h-[420px] w-[640px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(0,139,255,0.24),rgba(0,139,255,0.08)_35%,rgba(13,15,28,0)_75%)]" />
+const FitnessCentersPage = async () => {
+  const { locale } = await getMessages();
+  const [stats, gymsPage] = await Promise.all([
+    getLandingStatsServer(locale),
+    getLandingGymsPageServer(locale, 1, 200),
+  ]);
 
-      <Container className="pb-16 pt-8 md:pb-24 md:pt-12">
-        <section className="space-y-10 md:space-y-12">
-          <FitnessCentersHeroSection />
-          <FiltersSection />
-          <FitnessCentersListSection />
-        </section>
+  return (
+    <div className="bg-page text-ink">
+      <FitnessCentersHeroSection
+        gymCount={stats?.gymCount ?? (gymsPage.items.length || null)}
+      />
+      <Container className="flex flex-col gap-10 pb-16 pt-6 md:pb-24 md:pt-8">
+        <FitnessCentersListSection gyms={gymsPage.items} />
       </Container>
     </div>
   );

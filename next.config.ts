@@ -1,5 +1,9 @@
 import type { NextConfig } from "next";
 
+const apiBase = (
+  process.env.API_BASE_URL ?? "https://api-dev.fitnest.az/api/v1"
+).replace(/\/$/, "");
+
 const nextConfig: NextConfig = {
   output: 'standalone',
   images: {
@@ -14,7 +18,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/api/proxy/:path*",
-        destination: "https://api.fitnest.az/api/v1/:path*",
+        destination: `${apiBase}/:path*`,
       },
     ];
   },

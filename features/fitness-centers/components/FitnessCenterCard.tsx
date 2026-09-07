@@ -1,114 +1,81 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ArrowUpRight, Clock3, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import type { Membership } from "../lib/fitness-centers-data";
-import { useI18n } from "@/lib/i18n/provider";
+import MembershipBadge, {
+  type MembershipTier,
+} from "@/features/home/components/MembershipBadge";
+import { gymImageSrc } from "@/lib/api/landing";
 
 export type FitnessCenterCardProps = {
   name: string;
   location: string;
   phone: string;
-  workHours: string;
   image: string;
   category: string;
-  membership: Membership;
+  membership: MembershipTier;
   href: string;
-};
-
-const membershipLabelMap: Record<Membership, string> = {
-  bronze: "Bronze",
-  silver: "Silver",
-  gold: "Gold",
-  platinum: "Platinum",
-};
-
-const membershipVariantMap: Record<Membership, Membership> = {
-  bronze: "bronze",
-  silver: "silver",
-  gold: "gold",
-  platinum: "platinum",
 };
 
 const FitnessCenterCard = ({
   name,
   location,
   phone,
-  workHours,
   image,
   category,
   membership,
   href,
 }: FitnessCenterCardProps) => {
-  const { t } = useI18n();
-
   return (
-    <article className="flex h-full flex-col gap-6 rounded-4xl border border-[#111729] bg-[#111729] p-7">
-      <div className="relative h-[250px] w-full shrink-0 overflow-hidden rounded-3xl">
+    <Link
+      href={href}
+      className="group flex flex-col gap-6 rounded-[32px] border border-border-muted bg-surface p-5 transition-all hover:border-cyan hover:bg-page hover:shadow-[0px_2px_2px_rgba(0,0,0,0.25)]"
+    >
+      <div className="relative h-[250px] overflow-hidden rounded-2xl">
         <Image
-          src={image}
+          src={gymImageSrc(image)}
           alt={name}
           fill
           className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 411px"
         />
-        <div className="absolute inset-0 bg-linear-to-b from-transparent to-black/65" />
       </div>
-
-      <div className="flex flex-1 flex-col justify-between space-y-4">
-
-        <div className="space-y-4">
-          <div className="flex items-start justify-between gap-3">
-            <h3 className="text-xl font-semibold leading-s1 text-white">
-              {name}
-            </h3>
-            <Badge
-              variant={membershipVariantMap[membership]}
-              className={cn(
-                "h-9 min-w-[114px] px-4 py-1 text-sm! font-bold leading-5",
-                membership === "platinum" && "text-white",
-              )}
-            >
-              {membershipLabelMap[membership]}
-            </Badge>
-          </div>
-          <p className="text-sm font-bold leading-5 text-[#00B4CC]">{category}</p>
+      <div>
+        <div className="flex items-center justify-between gap-3">
+          <h3 className="text-xl font-semibold leading-[30px] text-turquoise group-hover:text-ink">
+            {name}
+          </h3>
+          <MembershipBadge tier={membership} />
         </div>
-
-        <div className="flex items-end justify-between gap-4">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 text-sm text-[#C1C1CC]">
-              <MapPin className="h-5 w-5 shrink-0 text-[#C1C1CC]" />
-              <span className="line-clamp-1">{location}</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-[#C1C1CC]">
-              <Phone className="h-5 w-5 shrink-0 text-[#C1C1CC]" />
-              <span>{phone}</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-[#C1C1CC]">
-              <Clock3 className="h-5 w-5 shrink-0 text-[#C1C1CC]" />
-              <span className="line-clamp-1">
-                {t.centers.workHours}: {workHours}
-              </span>
-            </div>
-          </div>
-
-          <Button
-            asChild
-            size="icon"
-            className="size-12 shrink-0 rounded-full bg-[#00b4cc] text-white hover:bg-[#009db5]"
-          >
-            <Link href={href} aria-label={`${name} ${t.centers.detailsAria}`}>
-              <ArrowUpRight className="h-5 w-5" />
-            </Link>
-          </Button>
-        </div>
+        {category ? (
+          <p className="text-sm font-bold leading-5 text-turquoise">{category}</p>
+        ) : null}
       </div>
-    </article>
+      <div className="flex flex-col gap-2 text-sm font-medium leading-5 text-desc-2 sm:flex-row sm:items-start sm:justify-between">
+        <span className="inline-flex min-w-0 items-center gap-2">
+          <img
+            src="/icons/gyms/map-pin.svg"
+            alt=""
+            width={20}
+            height={20}
+            className="size-5 shrink-0"
+          />
+          <span className="line-clamp-1">{location}</span>
+        </span>
+        {phone ? (
+          <span className="inline-flex shrink-0 items-center gap-2">
+            <img
+              src="/icons/gyms/call.svg"
+              alt=""
+              width={20}
+              height={20}
+              className="size-5 shrink-0"
+            />
+            {phone}
+          </span>
+        ) : null}
+      </div>
+    </Link>
   );
 };
 

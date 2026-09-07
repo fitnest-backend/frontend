@@ -149,12 +149,16 @@ export type Messages = {
     visit: string;
   };
   centers: {
+    eyebrow: string;
     heroTitle: string;
     heroDescription: string;
     searchPlace: string;
     cityDistrict: string;
     trainingTypes: string;
     membership: string;
+    forWhom: string;
+    loadMore: string;
+    allOption: string;
     reset: string;
     workHours: string;
     detailsAria: string;
@@ -622,12 +626,17 @@ const az: Messages = {
     visit: "Keçid et",
   },
   centers: {
-    heroTitle: "Özünə Uyğun Məşq Məkani Seç",
-    heroDescription: "İdman üçün rahat, motivasiya verən zalları bir yerdə topladıq.",
+    eyebrow: "Fitness mərkəzləri",
+    heroTitle: "{n} mərkəz bir abunədə",
+    heroDescription:
+      "Zallar, hovuzlar, yoqa, pilates studiyaları, boks klubları. Paket səviyyəsinə görə filtrlə, sənə yaxınını tap.",
     searchPlace: "Məkan axtar",
-    cityDistrict: "Şəhər / Rayon",
+    cityDistrict: "Şəhər",
     trainingTypes: "Məşq növləri",
     membership: "Abunəlik",
+    forWhom: "Kimlər üçün",
+    loadMore: "Daha çox",
+    allOption: "Hamısı",
     reset: "Sıfırla",
     workHours: "İş saatları",
     detailsAria: "detalları",
@@ -1021,13 +1030,17 @@ const en: Messages = {
   },
   centers: {
     ...az.centers,
-    heroTitle: "Choose the Gym That Fits You",
+    eyebrow: "Fitness centers",
+    heroTitle: "{n} centers in one subscription",
     heroDescription:
-      "We brought together comfortable, motivating gyms in one place.",
+      "Gyms, pools, yoga and pilates studios, boxing clubs. Filter by package and find one near you.",
     searchPlace: "Search location",
-    cityDistrict: "City / District",
+    cityDistrict: "City",
     trainingTypes: "Training types",
     membership: "Membership",
+    forWhom: "For whom",
+    loadMore: "Load more",
+    allOption: "All",
     reset: "Reset",
     workHours: "Working hours",
     detailsAria: "details",
@@ -1435,12 +1448,17 @@ const ru: Messages = {
   },
   centers: {
     ...en.centers,
-    heroTitle: "Выберите зал под себя",
-    heroDescription: "Мы собрали комфортные и мотивирующие залы в одном месте.",
+    eyebrow: "Фитнес-центры",
+    heroTitle: "{n} центров в одной подписке",
+    heroDescription:
+      "Залы, бассейны, студии йоги и пилатеса, бокс-клубы. Фильтруйте по пакету и найдите ближайший.",
     searchPlace: "Поиск места",
-    cityDistrict: "Город / Район",
+    cityDistrict: "Город",
     trainingTypes: "Виды тренировок",
     membership: "Подписка",
+    forWhom: "Для кого",
+    loadMore: "Ещё",
+    allOption: "Все",
     reset: "Сброс",
     workHours: "Часы работы",
     detailsAria: "подробности",

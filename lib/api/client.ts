@@ -24,9 +24,9 @@ export const apiClient = createClient(
   process.env.NEXT_PUBLIC_API_BASE_URL ?? "/api/proxy",
 );
 
-/** Server-side — direct backend URL, no CORS issue */
+/** Server-side — development cluster by default (dev → api-dev) */
 export const serverApiClient = createClient(
-  process.env.API_BASE_URL ?? "https://api.fitnest.az/api/v1",
+  process.env.API_BASE_URL ?? "https://api-dev.fitnest.az/api/v1",
 );
 
 export function localeHeaders(locale?: string): Record<string, string> {

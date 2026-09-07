@@ -44,17 +44,55 @@ export type LandingPage<T> = {
 const LANDING = "/public/landing";
 const FALLBACK_GYM_IMAGE = "/images/main-page.webp";
 const FALLBACK_STORE_IMAGE = "/images/first.png";
+const API_ORIGIN = (
+  process.env.API_BASE_URL ??
+  process.env.NEXT_PUBLIC_API_BASE_URL ??
+  "https://api-dev.fitnest.az/api/v1"
+).replace(/\/api\/v1\/?$/, "");
 
 function withLocale(locale: string) {
   return { headers: localeHeaders(locale) };
 }
 
+function rewriteLandingMediaPath(pathname: string): string {
+  const match = pathname.match(/\/api\/v1\/media\/stream\/(\d{1,32})(?:\?.*)?$/);
+  if (match) {
+    return `/api/v1/public/landing/media/${match[1]}`;
+  }
+  return pathname;
+}
+
+function resolveMediaUrl(
+  url: string | null | undefined,
+  fallback: string,
+): string {
+  const trimmed = url?.trim();
+  if (!trimmed) return fallback;
+  if (/^https?:\/\//i.test(trimmed)) {
+    try {
+      const parsed = new URL(trimmed);
+      const publicPath = rewriteLandingMediaPath(parsed.pathname);
+      if (publicPath !== parsed.pathname) {
+        return `${parsed.origin}${publicPath}`;
+      }
+    } catch {
+      return trimmed;
+    }
+    return trimmed;
+  }
+  if (trimmed.startsWith("/")) {
+    const publicPath = rewriteLandingMediaPath(trimmed);
+    return `${API_ORIGIN}${publicPath}`;
+  }
+  return trimmed;
+}
+
 export function gymImageSrc(url?: string | null): string {
-  return url && url.trim() ? url : FALLBACK_GYM_IMAGE;
+  return resolveMediaUrl(url, FALLBACK_GYM_IMAGE);
 }
 
 export function storeImageSrc(url?: string | null): string {
-  return url && url.trim() ? url : FALLBACK_STORE_IMAGE;
+  return resolveMediaUrl(url, FALLBACK_STORE_IMAGE);
 }
 
 export async function getLandingStatsServer(
@@ -71,20 +109,46 @@ export async function getLandingStatsServer(
   }
 }
 
-export async function getLandingGymsServer(
+const emptyGymsPage = (
+  page: number,
+  pageSize: number,
+): LandingPage<LandingGym> => ({
+  items: [],
+  total: 0,
+  page,
+  pageSize,
+});
+
+export async function getLandingGymsPageServer(
   locale: string,
   page = 1,
   pageSize = 12,
-): Promise<LandingGym[]> {
+): Promise<LandingPage<LandingGym>> {
   try {
     const { data } = await serverApiClient.get<LandingPage<LandingGym>>(
       `${LANDING}/gyms`,
       { ...withLocale(locale), params: { page, page_size: pageSize } },
     );
-    return data.items ?? [];
+    return {
+      items: (data.items ?? []).map((gym) => ({
+        ...gym,
+        coverImageUrl: gymImageSrc(gym.coverImageUrl),
+      })),
+      total: data.total ?? data.items?.length ?? 0,
+      page: data.page ?? page,
+      pageSize: data.pageSize ?? pageSize,
+    };
   } catch {
-    return [];
+    return emptyGymsPage(page, pageSize);
   }
+}
+
+export async function getLandingGymsServer(
+  locale: string,
+  page = 1,
+  pageSize = 12,
+): Promise<LandingGym[]> {
+  return (await getLandingGymsPageServer(locale, page, pageSize)).items;
 }
 
 export async function getLandingGymServer(
@@ -97,7 +161,10 @@ export async function getLandingGymServer(
       `${LANDING}/gyms/${gymId}`,
       withLocale(locale),
     );
-    return data;
+    return {
+      ...data,
+      coverImageUrl: gymImageSrc(data.coverImageUrl),
+    };
   } catch {
     return null;
   }

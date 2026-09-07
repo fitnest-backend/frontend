@@ -4,6 +4,7 @@ type SectionHeadingProps = {
   description?: string;
   light?: boolean;
   action?: React.ReactNode;
+  titleAs?: "h1" | "h2";
 };
 
 const SectionHeading = ({
@@ -12,6 +13,7 @@ const SectionHeading = ({
   description,
   light = false,
   action,
+  titleAs: TitleTag = "h2",
 }: SectionHeadingProps) => {
   return (
     <div className="flex w-full flex-col gap-4">
@@ -23,13 +25,13 @@ const SectionHeading = ({
         {eyebrow}
       </p>
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-        <h2
+        <TitleTag
           className={`max-w-3xl font-sora text-[32px] font-extrabold leading-[1.3] md:text-[40px] md:leading-[60px] ${
             light ? "text-white" : "text-heading"
           }`}
         >
           {title}
-        </h2>
+        </TitleTag>
         {action}
       </div>
       {description ? (

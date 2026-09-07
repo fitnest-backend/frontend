@@ -1,19 +1,33 @@
-"use client";
+import Container from "@/components/common/Container";
+import SectionHeading from "@/features/home/components/SectionHeading";
+import { getMessages } from "@/lib/i18n/server";
 
-import { useI18n } from "@/lib/i18n/provider";
+type FitnessCentersHeroSectionProps = {
+  gymCount: number | null;
+};
 
-const FitnessCentersHeroSection = () => {
-  const { t } = useI18n();
+const FitnessCentersHeroSection = async ({
+  gymCount,
+}: FitnessCentersHeroSectionProps) => {
+  const { messages } = await getMessages();
+  const countLabel = gymCount == null ? "—" : String(gymCount);
+  const title = messages.centers.heroTitle.replace("{n}", countLabel);
 
   return (
-    <div className="space-y-4 md:space-y-6">
-      <h1 className="mx-auto max-w-3xl text-balance text-center text-h6 font-bold leading-tight text-white sm:text-h3">
-        {t.centers.heroTitle}
-      </h1>
-      <p className="mx-auto max-w-3xl text-center text-base text-neutral-50 md:text-xl">
-        {t.centers.heroDescription}
-      </p>
-    </div>
+    <section className="relative overflow-hidden bg-surface">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-14 -top-80 h-[523px] w-[668px] rounded-full bg-[linear-gradient(180deg,rgba(4,34,86,0.61)_0%,rgba(0,106,133,0.38)_55%,rgba(0,163,179,0.01)_100%)] blur-[150px]"
+      />
+      <Container className="relative py-16 md:py-20">
+        <SectionHeading
+          eyebrow={messages.centers.eyebrow}
+          title={title}
+          description={messages.centers.heroDescription}
+          titleAs="h1"
+        />
+      </Container>
+    </section>
   );
 };
 

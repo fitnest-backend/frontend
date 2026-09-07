@@ -1,49 +1,194 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { useEffect, useId, useRef, useState } from "react";
 import { useI18n } from "@/lib/i18n/provider";
 
-const FiltersSection = () => {
-  const { t } = useI18n();
-  const [activeFilter, setActiveFilter] = useState("all");
+type FilterSelectProps = {
+  label: string;
+  value: string;
+  options: { value: string; label: string }[];
+  onChange: (value: string) => void;
+};
 
-  const filterCategories = [
-    { id: "all", label: "HAMISI" },
-    { id: "fitness", label: "FİTNES ZALI" },
-    { id: "cardio", label: "CARDİO & AĞIRLIQ" },
-    { id: "combat", label: "DÖYÜŞ SƏNƏTLƏRİ" },
-    { id: "functional", label: "FUNCTIONAL/CROSSFİT" },
-    { id: "comfort", label: "CONFORT ZAL" },
-    { id: "vip", label: "VİP ZAL" },
-    { id: "standard", label: "STANDART ZAL" },
-  ];
+const FilterSelect = ({
+  label,
+  value,
+  options,
+  onChange,
+}: FilterSelectProps) => {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const menuId = useId();
+
+  useEffect(() => {
+    if (!open) return;
+    const onPointerDown = (event: MouseEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
+    };
+    window.addEventListener("mousedown", onPointerDown);
+    return () => window.removeEventListener("mousedown", onPointerDown);
+  }, [open]);
+
+  const selected = options.find((option) => option.value === value);
 
   return (
-    <div className="flex flex-col gap-6 w-full">
-      <div className="w-full">
-        <Input
-          placeholder={t.centers.searchPlace}
-          leftIcon="/icons/search.svg"
-          className="h-full px-3 text-base text-neutral-50 placeholder:text-neutral-600"
-          wrapperClassName="h-12 border-[#373A41] bg-[#0B1218] px-4 rounded-full"
+    <div ref={rootRef} className="relative">
+      <button
+        type="button"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-controls={menuId}
+        onClick={() => setOpen((current) => !current)}
+        className="inline-flex h-12 items-center gap-3 rounded-[32px] border border-[#90A1B9] bg-surface px-4 text-base font-semibold leading-6 text-ink"
+      >
+        <span>{selected?.label ?? label}</span>
+        <img
+          src="/icons/gyms/arrow-down.svg"
+          alt=""
+          width={24}
+          height={24}
+          className={`size-6 shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
         />
-      </div>
+      </button>
+      {open ? (
+        <ul
+          id={menuId}
+          role="listbox"
+          className="absolute z-20 mt-2 max-h-64 min-w-full overflow-auto rounded-2xl border border-border-muted bg-surface py-1 shadow-[0px_8px_24px_rgba(1,23,41,0.12)]"
+        >
+          {options.map((option) => (
+            <li key={option.value}>
+              <button
+                type="button"
+                role="option"
+                aria-selected={option.value === value}
+                className={`flex w-full px-4 py-2.5 text-left text-sm font-medium text-ink hover:bg-page ${
+                  option.value === value ? "text-turquoise" : ""
+                }`}
+                onClick={() => {
+                  onChange(option.value);
+                  setOpen(false);
+                }}
+              >
+                {option.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  );
+};
 
-      <div className="flex flex-wrap gap-3">
-        {filterCategories.map((cat) => (
-          <Button
-            key={cat.id}
-            onClick={() => setActiveFilter(cat.id)}
-            className={`h-8 sm:h-10 md:h-12 px-4 sm:px-5 md:px-6.5 rounded-4xl border text-xs sm:text-sm text-[#FAFAFA] border-[#00B4CC] font-medium transition-all ${activeFilter === cat.id
-                ? "bg-[#00B4CC] hover:bg-[#00B4CC]/90"
-                : "bg-transparent hover:bg-[#1A2128]"
-              }`}
-          >
-            {cat.label}
-          </Button>
-        ))}
+export type GymsFiltersValue = {
+  query: string;
+  city: string;
+  category: string;
+  membership: string;
+  audience: string;
+};
+
+type FiltersSectionProps = {
+  value: GymsFiltersValue;
+  cities: string[];
+  categories: string[];
+  audiences: string[];
+  onChange: (value: GymsFiltersValue) => void;
+  onReset: () => void;
+};
+
+const FiltersSection = ({
+  value,
+  cities,
+  categories,
+  audiences,
+  onChange,
+  onReset,
+}: FiltersSectionProps) => {
+  const { t } = useI18n();
+  const all = t.centers.allOption;
+
+  return (
+    <div className="flex flex-col gap-3 border-b border-border-muted pb-3 lg:flex-row lg:items-center lg:justify-between">
+      <label className="flex h-12 w-full items-center gap-3 rounded-[32px] border border-[#90A1B9] bg-surface px-4 lg:max-w-[302px]">
+        <img
+          src="/icons/gyms/search.svg"
+          alt=""
+          width={24}
+          height={24}
+          className="size-6 shrink-0"
+        />
+        <input
+          type="search"
+          value={value.query}
+          onChange={(event) => onChange({ ...value, query: event.target.value })}
+          placeholder={t.centers.searchPlace}
+          className="h-full w-full bg-transparent text-base font-semibold leading-6 text-ink outline-none placeholder:text-[#A6A9A8]"
+        />
+      </label>
+
+      <div className="flex flex-wrap items-center gap-3">
+        <FilterSelect
+          label={t.centers.cityDistrict}
+          value={value.city}
+          onChange={(city) => onChange({ ...value, city })}
+          options={[
+            { value: "", label: t.centers.cityDistrict },
+            ...cities.map((city) => ({ value: city, label: city })),
+          ]}
+        />
+        <FilterSelect
+          label={t.centers.trainingTypes}
+          value={value.category}
+          onChange={(category) => onChange({ ...value, category })}
+          options={[
+            { value: "", label: t.centers.trainingTypes },
+            ...categories.map((category) => ({
+              value: category,
+              label: category,
+            })),
+          ]}
+        />
+        <FilterSelect
+          label={t.centers.membership}
+          value={value.membership}
+          onChange={(membership) => onChange({ ...value, membership })}
+          options={[
+            { value: "", label: t.centers.membership },
+            { value: "bronze", label: "Bronze" },
+            { value: "silver", label: "Silver" },
+            { value: "gold", label: "Gold" },
+            { value: "platinum", label: "Platinum" },
+          ]}
+        />
+        <FilterSelect
+          label={t.centers.forWhom}
+          value={value.audience}
+          onChange={(audience) => onChange({ ...value, audience })}
+          options={[
+            { value: "", label: t.centers.forWhom },
+            ...(audiences.length
+              ? audiences.map((audience) => ({
+                  value: audience,
+                  label: audience,
+                }))
+              : [{ value: all, label: all }]),
+          ]}
+        />
+        <button
+          type="button"
+          onClick={onReset}
+          className="inline-flex h-12 items-center gap-3 rounded-[32px] border border-[#90A1B9] bg-surface px-4 text-base font-semibold leading-6 text-desc"
+        >
+          <img
+            src="/icons/gyms/reset.svg"
+            alt=""
+            width={24}
+            height={24}
+            className="size-6 shrink-0"
+          />
+          {t.centers.reset}
+        </button>
       </div>
     </div>
   );
