@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import FitMarketPage from "@/features/fit-market";
-import { getStoresServerCached } from "@/features/fit-market/api/stores";
 import { parseRouteLocale } from "@/lib/i18n/route-locale";
 import { createPageMetadata } from "@/lib/seo";
 import { getSeoContent } from "@/lib/seo-content";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -25,13 +24,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   });
 }
 
-export default async function LocaleFitMarketPage({ params }: PageProps) {
-  const { locale: localeParam } = await params;
-  const locale = parseRouteLocale(localeParam);
-  try {
-    const data = await getStoresServerCached({ page_size: 24 }, locale);
-    return <FitMarketPage stores={data.items} />;
-  } catch {
-    return <FitMarketPage stores={[]} />;
-  }
+export default function LocaleFitMarketPage() {
+  return <FitMarketPage />;
 }

@@ -1,4 +1,3 @@
-import { Ban, Check } from "lucide-react";
 import { getMessages } from "@/lib/i18n/server";
 import Container from "@/components/common/Container";
 import SectionHeading from "../components/SectionHeading";
@@ -19,7 +18,13 @@ const WhySubscribe = async () => {
             <ul className="flex flex-col gap-4">
               {t.whyLeftItems.map((item) => (
                 <li key={item} className="flex items-center gap-3">
-                  <Ban className="size-6 shrink-0 text-energy" />
+                  <img
+                    src="/icons/home/close-circle.svg"
+                    alt=""
+                    width={29}
+                    height={29}
+                    className="size-7 shrink-0"
+                  />
                   <span className="text-base font-semibold leading-6 text-ink">
                     {item}
                   </span>
@@ -35,8 +40,13 @@ const WhySubscribe = async () => {
             <ul className="flex flex-col gap-4">
               {t.whyRightItems.map((item) => (
                 <li key={item} className="flex items-center gap-3">
-                  <span className="flex size-7 shrink-0 items-center justify-center rounded-full border border-white bg-[rgba(13,24,52,0.2)]">
-                    <Check className="size-3.5 text-white" strokeWidth={3} />
+                  <span className="flex size-[27px] shrink-0 items-center justify-center rounded-full border border-white bg-[rgba(13,24,52,0.2)]">
+                    <img
+                      src="/icons/home/check-white.svg"
+                      alt=""
+                      width={18}
+                      height={18}
+                    />
                   </span>
                   <span className="text-base font-semibold leading-6 text-white">
                     {item}

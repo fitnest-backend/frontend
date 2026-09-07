@@ -10,10 +10,10 @@ type StoreBadgesProps = {
 
 const StoreBadges = ({ className = "", dark = false }: StoreBadgesProps) => {
   const playSrc = dark
-    ? "/images/home/google-play.png"
+    ? "/icons/home/google-play.svg"
     : "/images/home/google-play.png";
   const appleSrc = dark
-    ? "/images/home/app-store.png"
+    ? "/icons/home/app-store.svg"
     : "/images/home/app-store.png";
 
   return (
@@ -24,13 +24,23 @@ const StoreBadges = ({ className = "", dark = false }: StoreBadgesProps) => {
         rel="noopener noreferrer"
         aria-label="Google Play"
       >
-        <Image
-          src={playSrc}
-          alt="Get it on Google Play"
-          width={135}
-          height={40}
-          className="h-10 w-[135px] object-contain"
-        />
+        {dark ? (
+          <img
+            src={playSrc}
+            alt="Get it on Google Play"
+            width={135}
+            height={40}
+            className="h-10 w-[135px] object-contain"
+          />
+        ) : (
+          <Image
+            src={playSrc}
+            alt="Get it on Google Play"
+            width={135}
+            height={40}
+            className="h-10 w-[135px] object-contain"
+          />
+        )}
       </a>
       <a
         href={APP_STORE_URL}
@@ -38,13 +48,23 @@ const StoreBadges = ({ className = "", dark = false }: StoreBadgesProps) => {
         rel="noopener noreferrer"
         aria-label="App Store"
       >
-        <Image
-          src={appleSrc}
-          alt="Download on the App Store"
-          width={120}
-          height={40}
-          className="h-10 w-[120px] object-contain"
-        />
+        {dark ? (
+          <img
+            src={appleSrc}
+            alt="Download on the App Store"
+            width={120}
+            height={40}
+            className="h-10 w-[120px] object-contain"
+          />
+        ) : (
+          <Image
+            src={appleSrc}
+            alt="Download on the App Store"
+            width={120}
+            height={40}
+            className="h-10 w-[120px] object-contain"
+          />
+        )}
       </a>
     </div>
   );

@@ -1,32 +1,23 @@
-"use client";
-
 import Container from "@/components/common/Container";
-import Image from "next/image";
-import { useI18n } from "@/lib/i18n/provider";
+import SectionHeading from "@/features/home/components/SectionHeading";
+import { getMessages } from "@/lib/i18n/server";
 
-const FitMarketHeroSection = () => {
-  const { t } = useI18n();
+const FitMarketHeroSection = async () => {
+  const { messages } = await getMessages();
 
   return (
-    <section className="relative h-[520px] md:h-[680px]">
-      <Image
-        src="/images/wellness.png"
-        alt="fit market hero"
-        fill
-        className="object-cover"
-        priority
-        sizes="100vw"
+    <section className="relative overflow-hidden bg-surface">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-14 -top-80 h-[523px] w-[668px] rounded-full bg-[linear-gradient(180deg,rgba(4,34,86,0.61)_0%,rgba(0,106,133,0.38)_55%,rgba(0,163,179,0.01)_100%)] blur-[150px]"
       />
-      <div className="absolute inset-0 bg-linear-to-b from-[rgba(33,50,52,0.26)] to-black" />
-      <Container className="relative z-10 h-full">
-        <div className="absolute bottom-12 max-w-3xl space-y-4 md:bottom-16 md:space-y-5">
-          <h1 className="text-3xl font-bold leading-tight text-white md:text-h3 md:leading-h3">
-            {t.fitMarket.heroTitle}
-          </h1>
-          <p className="max-w-[848px] text-sm font-normal leading-6 text-[#FAFAFA] md:text-2xl md:leading-9">
-            {t.fitMarket.heroDescription}
-          </p>
-        </div>
+      <Container className="relative py-16 md:py-20">
+        <SectionHeading
+          eyebrow={messages.fitMarket.eyebrow}
+          title={messages.fitMarket.heroTitle}
+          description={messages.fitMarket.heroDescription}
+          titleAs="h1"
+        />
       </Container>
     </section>
   );

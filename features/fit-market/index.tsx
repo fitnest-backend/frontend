@@ -1,16 +1,19 @@
-import type { Store } from "./api/types";
+import Container from "@/components/common/Container";
+import { getMessages } from "@/lib/i18n/server";
+import { getLandingStoresPageServer } from "@/lib/api/landing";
 import FitMarketHeroSection from "./sections/FitMarketHeroSection";
 import FitMarketListSection from "./sections/FitMarketListSection";
 
-interface FitMarketPageProps {
-  stores: Store[];
-}
+const FitMarketPage = async () => {
+  const { locale } = await getMessages();
+  const storesPage = await getLandingStoresPageServer(locale, 1, 200);
 
-const FitMarketPage = ({ stores }: FitMarketPageProps) => {
   return (
-    <div className="pb-12 md:pb-20">
+    <div className="bg-page text-ink">
       <FitMarketHeroSection />
-      <FitMarketListSection stores={stores} />
+      <Container className="flex flex-col gap-10 pb-16 pt-6 md:pb-24 md:pt-8">
+        <FitMarketListSection stores={storesPage.items} />
+      </Container>
     </div>
   );
 };

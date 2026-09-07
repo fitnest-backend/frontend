@@ -128,17 +128,76 @@ export type Messages = {
     planAria: string;
   };
   offers: {
+    eyebrow: string;
     heroTitle: string;
+    heroDescription: string;
     months: string;
     whatAwaits: string;
     includedGyms: string;
     appHeading: string;
     appDescription: string;
     benefits: { label: string; value?: string; checked?: boolean }[];
+    durationsEyebrow: string;
+    durationsHeading: string;
+    durationCards: { months: number; label: string; description: string }[];
+    ctaTitle: string;
+    ctaDescription: string;
+  };
+  paymentOptions: {
+    eyebrow: string;
+    abbTitle: string;
+    abbDescription: string;
+    coinEyebrow: string;
+    coinTitle: string;
+    coinDescription: string;
+    bobTitle: string;
+    bobDescription: string;
+    zeroPercent: string;
+    commission: string;
+    upTo12Months: string;
+    installment: string;
+    fast: string;
+    easyPayment: string;
+    learnMore: string;
+    abbDetail: {
+      back: string;
+      heroTitle: string;
+      cardsValue: string;
+      cardsLabel: string;
+      howTitle: string;
+      howDescription: string;
+      steps: { title: string; description: string }[];
+      termsTitle: string;
+      termsDescription: string;
+      periodColumn: string;
+      commissionColumn: string;
+      rows: { period: string; fee: string }[];
+    };
+    bobDetail: {
+      back: string;
+      heroTitle: string;
+      cardsValue: string;
+      cardsLabel: string;
+      howTitle: string;
+      howDescription: string;
+      steps: { title: string; description: string }[];
+      termsTitle: string;
+      termsDescription: string;
+      periodColumn: string;
+      commissionColumn: string;
+      rows: { period: string; fee: string }[];
+    };
+    coinDetail: {
+      back: string;
+      heroTitle: string;
+      sections: { title: string; body: string }[];
+    };
   };
   fitMarket: {
+    eyebrow: string;
     heroTitle: string;
     heroDescription: string;
+    searchPlace: string;
     newBadge: string;
     cardDetailsAria: string;
     detailsDescription: string;
@@ -167,6 +226,7 @@ export type Messages = {
     nextImage: string;
     aboutGym: string;
     aboutText: string;
+    amenities: string;
     equipment: string;
     equipmentText: string;
     coaches: string;
@@ -174,6 +234,10 @@ export type Messages = {
     address: string;
     workHoursTitle: string;
     map: string;
+    gymAccess: string;
+    gymAccessHint: string;
+    gymAccessHintSingle: string;
+    viewSubscriptions: string;
   };
   faq: {
     title: string;
@@ -418,7 +482,7 @@ const az: Messages = {
   home: {
     heroTitle: "Bir abunə — aktiv həyatın bütün imkanları",
     heroDescription:
-      "FitNest tətbiqini endir, sənə uyğun paketi seç və 139 fitness mərkəzinə QR kodla daxil ol. Zallar, hovuzlar, yoqa studiyaları — hamısı bir tətbiqdə.",
+      "FitNest tətbiqini endir, sənə uyğun paketi seç və 139 fitness\nmərkəzinə QR kodla daxil ol. Zallar, hovuzlar, yoqa studiyaları\n— hamısı bir tətbiqdə.",
     heroLine1Before: "Bir",
     heroLine1Accent: "abunə",
     heroLine2: "Aktiv həyatın",
@@ -442,27 +506,27 @@ const az: Messages = {
     ],
     howTitle: "Dörd sadə addım — məşqə hazırsan.",
     howEyebrow: "NECƏ İŞLƏYİR?",
-    howHeading: "Dörd sadə addım — məşqə hazırsan.",
+    howHeading: "Dörd sadə addım —\nmeşqə hazırsan.",
     howItems: [
       {
         title: "Tətbiqi endir",
-        desc: "App Store və ya Google Play-dən FitNest-i endir və qeydiyyatdan keç.",
+        desc: "App Store və ya Google Play-dən\nFitNest-i endir və qeydiyyatdan\nkeç.",
       },
       {
         title: "Abunəliyini seç",
-        desc: "Bronze, Silver, Gold və ya Platinum — büdcənə və hədəfinə uyğun olanı seç.",
+        desc: "Bronze, Silver, Gold və ya Platinum\n— büdcənə və hədəfinə uyğun\nolanı seç.",
       },
       {
         title: "Uyğun məkanı tap",
-        desc: "Olduğun yerə ən yaxın mərkəzləri, xidmət və üstünlükləri araşdır.",
+        desc: "Olduğun yerə ən yaxın mərkəzləri, xidmət və üstünlükləri araşdır",
       },
       {
         title: "QR ilə daxil ol",
-        desc: "Girişdə QR kodu oxut və məşqə başla. Kart, müqavilə, növbə — heç biri lazım deyil.",
+        desc: "Girişdə QR kodu oxut və məşqə\nbaşla. Kart, müqavilə, növbə — heç\nbiri lazım deyil.",
       },
     ],
     whyEyebrow: "Niyə  bir abunə?",
-    whyHeading: "Bir zala bağlı qalma. Öz ritmini seç.",
+    whyHeading: "Bir zala bağlı qalma.\nÖz ritmini seç.",
     whyLeftTitle: "1 zala üzvlük",
     whyLeftItems: [
       "Yalnız bir məkan",
@@ -487,7 +551,7 @@ const az: Messages = {
     subscriptionDescription: "ilə daha balanslı, sağlam və aktiv həyata addım at.",
     viewPlans: "Planlara bax",
     plansEyebrow: "Abunəlik",
-    plansHeading: "Hər abunəlikdə 12 giriş. Fərq - zallarda.",
+    plansHeading: "Hər abunəlikdə 12 giriş.\nFərq - zallarda.",
     plansDescription:
       "Bronze, Silver, Gold və Platinum abunəlikləri daxil olan məkanların sayı və xidmət çeşidinin genişliyinə görə fərqlənir. Hər növbəti abunəlik əvvəlki abunəliklərə daxil olan bütün məkan və xidmətləri də əhatə edir.",
     monthShort: "ay",
@@ -528,9 +592,9 @@ const az: Messages = {
     mobileHeading: "Sağlam həyat tərzinə bir addım da yaxınlaş",
     mobileDescription: "ilə bədənini, zehnini və motivasiyanı balansda saxla.",
     appEyebrow: "FitNest tətbiqi",
-    appHeading: "Bütün fitness həyatın - cibində",
+    appHeading: "Bütün fitness\nhəyatın - cibində",
     appDescription:
-      "Mərkəz kəşfiyyatından QR girişə, paket idarəçiliyindən FitMarket alış-verişinə qədər hər şey bir tətbiqdə.",
+      "Mərkəz kəşfiyyatından QR girişə, paket idarəçiliyindən\nFitMarket alış-verişinə qədər hər şey bir tətbiqdə.",
     appFeatures: [
       {
         title: "Kəşf et",
@@ -560,7 +624,7 @@ const az: Messages = {
       "Mərkəzinizi FitNest şəbəkəsinə qoşun — yeni üzvlər qazanın, doluluq artırın, gəlirinizi böyüdün.",
     partnerCta: "Tərəfdaş ol",
     storeEyebrow: "FitStore",
-    storeHeading: "Məşqdən sonrasıda bizdə.",
+    storeHeading: "Məşqdən\nsonrasıda bizdə.",
     storeDescription:
       "FitStore— FitNest tətbiqinin daxilində idman və sağlamlıq məhsulları bölməsi. Tərəfdaş mağazaların təkliflərini kəşf et, endirimlə sifariş ver.",
     storeCta: "FitStore tanı",
@@ -570,7 +634,7 @@ const az: Messages = {
       { title: "Aksesuar və avadanlıq", subtitle: "Seçilmiş təkliflər" },
     ],
     bmiEyebrow: "BMİ",
-    bmiHeading: "Bədən kütlə indeksini öyrən.",
+    bmiHeading: "Bədən kütlə\nindeksini öyrən.",
     bmiDescription:
       "Boy və çəki məlumatlarını daxil et, BMI-ni hesabla və nəticən haqqında məlumat al.",
     bmiCta: "BMİ-ni hesabla",
@@ -592,7 +656,10 @@ const az: Messages = {
     planAria: "abunəlik planı",
   },
   offers: {
-    heroTitle: "Öz bədənini və həyat balansını qorumaq üçün uyğun planı seç",
+    eyebrow: "Abunəlik",
+    heroTitle: "Hər abunəlikdə 12 giriş.\nFərq - zallarda.",
+    heroDescription:
+      "Bronze, Silver, Gold və Platinum abunəlikləri daxil olan məkanların sayı və xidmət çeşidinin genişliyinə görə fərqlənir. Hər növbəti abunəlik əvvəlki abunəliklərə daxil olan bütün məkan və xidmətləri də əhatə edir.",
     months: "ay",
     whatAwaits: "planlarında səni nələr gözləyir?",
     includedGyms: "Paketə daxil olan zallar",
@@ -611,11 +678,173 @@ const az: Messages = {
       { label: "Nutrisioloq qəbulu", value: "ayda 1 dəfə" },
       { label: "Məşqçi ilə konsultasiya", value: "ayda 3 dəfə" },
     ],
+    durationsEyebrow: "Müddətlər",
+    durationsHeading: "Öz ritminə uyğun müddət seç",
+    durationCards: [
+      {
+        months: 1,
+        label: "çevik",
+        description: "Öhdəliksiz sına — istənilən vaxt dayandır.",
+      },
+      {
+        months: 3,
+        label: "populyar",
+        description: "Vərdiş yaratmaq üçün optimal başlanğıc.",
+      },
+      {
+        months: 6,
+        label: "sərfəli",
+        description: "Ciddi hədəflər üçün daha yaxşı şərtlər.",
+      },
+      {
+        months: 12,
+        label: "maksimum",
+        description: "İl boyu məşq — ən sərfəli tarif.",
+      },
+    ],
+    ctaTitle: "Abunəliyini seçdin? Tətbiqdə aktivləşdir.",
+    ctaDescription:
+      "Abunəlik yalnız FitNest tətbiqi üzərindən alınır. Endir, paketini seç və ilk məşqinə bu gün başla.",
+  },
+  paymentOptions: {
+    eyebrow: "Xüsusi ödəniş imkanları",
+    abbTitle: "Abb kartı ilə ödə",
+    abbDescription:
+      "Debet və taksit kartlarından istifadə et, FitNest abunəliyini daha rahat əldə et.",
+    coinEyebrow: "FitNest Coin",
+    coinTitle: "Coin qazan və daha\nçox faydalan",
+    coinDescription:
+      "FitNest-də aktiv olduqca Coin qazan, topladığın Coin-lərlə xüsusi imkanlardan, endirimlərdən və tərəfdaş təkliflərindən yararlan.",
+    bobTitle: "Bank of Baku kartı ilə ödə",
+    bobDescription:
+      "FitNest abunəliyini Bank of Baku kartları ilə taksitlə əldə et və sağlam həyatına fasilə vermə.",
+    zeroPercent: "0%",
+    commission: "komissiya",
+    upTo12Months: "12 ayadək",
+    installment: "taksit imkanı",
+    fast: "Sürətli",
+    easyPayment: "və daha rahat ödəniş",
+    learnMore: "Ətraflı bax",
+    abbDetail: {
+      back: "Xüsusi təkliflər",
+      heroTitle: "ABB kartı ilə FitNest abunəliyini taksitlə əldə et",
+      cardsValue: "ABB kartları",
+      cardsLabel: "Debet və taksit kartları",
+      howTitle: "Necə istifadə etməli?",
+      howDescription:
+        "ABB kart sahibləri FitNest abunəliyini taksit imkanından istifadə edərək əldə edə bilərlər. Abunəlik ödənişini daha rahat şəkildə hissələrə böl və məşqlərinə davam et.",
+      steps: [
+        {
+          title: "Abunəliyi seç",
+          description: "Sənə uyğun FitNest abunəliyini seç.",
+        },
+        {
+          title: "Abb kartını seç",
+          description: "Ödəniş zamanı ABB kartından\nistifadə et.",
+        },
+        {
+          title: "Taksitlə ödə",
+          description: "Seçdiyin taksit müddətinə böl və məşqlərinə başla.",
+        },
+      ],
+      termsTitle: "Taksit şərtləri",
+      termsDescription:
+        "FitNest abunəliyini aşağıdakı taksit müddətləri ilə komissiyasız əldə edə bilərsiz.",
+      periodColumn: "Taksit müddəti",
+      commissionColumn: "Komissiya",
+      rows: [
+        { period: "3 ay", fee: "0 %" },
+        { period: "6 ay", fee: "0 %" },
+        { period: "12 ay", fee: "0 %" },
+      ],
+    },
+    bobDetail: {
+      back: "Xüsusi təkliflər",
+      heroTitle: "Bank of Baku kartı ilə FitNest abunəliyini taksitlə əldə et",
+      cardsValue: "BOB kartları",
+      cardsLabel: "Debet və taksit kartları",
+      howTitle: "Necə istifadə etməli?",
+      howDescription:
+        "Bank of Baku kart sahibləri FitNest abunəliyini taksit imkanından istifadə edərək əldə edə bilərlər. Abunəlik ödənişini daha rahat şəkildə hissələrə böl və məşqlərinə davam et.",
+      steps: [
+        {
+          title: "Abunəliyi seç",
+          description: "Sənə uyğun FitNest abunəliyini seç.",
+        },
+        {
+          title: "Bank of Baku kartını seç",
+          description: "Ödəniş zamanı Bank of Baku kartından\nistifadə et.",
+        },
+        {
+          title: "Taksitlə ödə",
+          description: "Seçdiyin taksit müddətinə böl və məşqlərinə başla.",
+        },
+      ],
+      termsTitle: "Taksit şərtləri",
+      termsDescription:
+        "FitNest abunəliyini aşağıdakı taksit müddətləri ilə komissiyasız əldə edə bilərsiz.",
+      periodColumn: "Taksit müddəti",
+      commissionColumn: "Komissiya",
+      rows: [
+        { period: "1 ay", fee: "0 %" },
+        { period: "3 ay", fee: "0 %" },
+        { period: "6 ay", fee: "0 %" },
+        { period: "12 ay", fee: "0 %" },
+      ],
+    },
+    coinDetail: {
+      back: "Xüsusi təkliflər",
+      heroTitle: "Coin qazan və daha çox\nfaydalan",
+      sections: [
+        {
+          title: "1. Ümumi müddəalar",
+          body: "FitNest Coin istifadəçilərə platformada aktivliklərinə görə Coin qazanmaq və əldə etdikləri Coin-lərdən abunəlik alışında istifadə etmək imkanı yaradır. Coin sistemi istifadəçilərin FitNest-də daha aktiv olmasını və platformanın imkanlarından faydalanmasını dəstəkləyir.",
+        },
+        {
+          title: "2. Coin hesablanması",
+          body: "Yeni qeydiyyatdan keçən istifadəçiyə 50 Coin hədiyyə edilir. Endirimlər tətbiq edildikdən sonra faktiki ödənilən hər 1 AZN üçün 1 Coin qazanılır.",
+        },
+        {
+          title: "3. Coin-lərin dəyəri",
+          body: "20 Coin = 1 AZN. Topladığınız Coin-lərdən FitNest abunəliyi zamanı istifadə edə bilərsiniz.",
+        },
+        {
+          title: "4. Coin-lərin istifadəsi",
+          body: "Coin-lər yalnız FitNest abunəliyinin alınması zamanı istifadə olunur. Coin-lər nağdlaşdırılmır və başqa istifadəçi hesabına köçürülmür.",
+        },
+        {
+          title: "5. Coin-lərin etibarlılıq müddəti",
+          body: "Coin-lərin etibarlılıq müddəti ilk Coin-in qazanıldığı tarixdən etibarən 12 ay hesablanır. Müddəti bitmiş Coin-lər istifadə edilə bilməz.",
+        },
+        {
+          title: "Endirimlər və Coin hesablanması",
+          body: "Endirim tətbiq olunan alışlarda Coin hesablanarkən endirimdən sonrakı faktiki ödənilən məbləğ əsas götürülür. Hər faktiki ödənilən 1 AZN üçün 1 Coin hesablanır.",
+        },
+        {
+          title: "Geri qaytarma zamanı Coin-lər",
+          body: "Abunəlik geri qaytarıldıqda həmin alış zamanı istifadə edilmiş Coin-lər istifadəçinin balansına geri qaytarılır. Alış üzrə qazanılmış Coin isə balansdan çıxılır.",
+        },
+        {
+          title: "Coin balansı",
+          body: "İstifadəçi topladığı Coin-lərin cari balansını FitNest tətbiqində görə bilər. Coin balansı qazanılan və istifadə edilən Coin-lərə uyğun olaraq yenilənir.",
+        },
+        {
+          title: "Coin-lərin köçürülməsi və nağdlaşdırılması",
+          body: "Coin-lər yalnız istifadəçinin öz hesabında istifadə edilə bilər. Coin-lərin nağd pula çevrilməsi və başqa hesaba köçürülməsi mümkün deyil.",
+        },
+        {
+          title: "Coin tarixçəsi",
+          body: "İstifadəçi tətbiq daxilində Coin tarixçəsinə baxaraq qazandığı və istifadə etdiyi Coin-lər haqqında məlumat əldə edə bilər.",
+        },
+      ],
+    },
   },
   fitMarket: {
-    heroTitle: "İdman qidaları və geyimləri",
+    eyebrow: "FitStore",
+    heroTitle: "İdman üçün lazım olan hər şey",
     heroDescription:
-      "Burada ən çox istifadə olunan qida əlavələri haqqında qısa və aydın məlumat əldə edə bilər, həmçinin etibarlı protein mağazalarına birbaşa keçid edə bilərsiniz.",
+      "İdman üçün geyim, qida, avadanlıq və müxtəlif çeşiddə məhsullar təklif edən mağaza",
+    searchPlace: "Axtar.....",
     newBadge: "Yeni",
     cardDetailsAria: "detalına keç",
     detailsDescription: "Multivitamin, D vitamini, Omega 3 və ümumi sağlamlıq əlavələri.",
@@ -646,6 +875,7 @@ const az: Messages = {
     aboutGym: "Zal haqqında",
     aboutText:
       "ProFit Club geniş məşq zonaları, yenilənmiş avadanlıqlar və rahat mühit ilə həm yeni başlayanlar, həm də peşəkar idmançılar üçün ideal fitness məkanıdır.",
+    amenities: "İmkanlar",
     equipment: "Avadanlıqlar",
     equipmentText:
       "Kardio trenajorları • Funksional zona • Squat rack • Dumbbell/barbell • Kabel trenajorları • Stretching sahəsi",
@@ -654,6 +884,12 @@ const az: Messages = {
     address: "Ünvan",
     workHoursTitle: "İş saatları",
     map: "Xəritə",
+    gymAccess: "Bu zala giriş",
+    gymAccessHint:
+      "{tier} və daha yuxarı paketlərlə giriş. Tətbiqdə QR oxut, məşqə başla.",
+    gymAccessHintSingle:
+      "{tier} paketi ilə giriş. Tətbiqdə QR oxut, məşqə başla.",
+    viewSubscriptions: "Abunəliklərə bax",
   },
   faq: {
     title: "FAQs",
@@ -816,7 +1052,7 @@ const en: Messages = {
     ...az.home,
     heroTitle: "One subscription — every way to live active",
     heroDescription:
-      "Download FitNest, pick a plan, and enter 139 fitness centers with a QR code. Gyms, pools, yoga studios — all in one app.",
+      "Download FitNest, pick a plan, and enter 139 fitness\ncenters with a QR code. Gyms, pools, yoga studios\n— all in one app.",
     heroLine1Before: "One",
     heroLine1Accent: "plan",
     heroLine2: "Every way to live",
@@ -840,15 +1076,15 @@ const en: Messages = {
     ],
     howTitle: "Four simple steps — you're ready to train.",
     howEyebrow: "HOW IT WORKS",
-    howHeading: "Four simple steps — you're ready to train.",
+    howHeading: "Four simple steps —\nyou're ready to train.",
     howItems: [
       {
         title: "Download the app",
-        desc: "Get FitNest from the App Store or Google Play and create an account.",
+        desc: "Get FitNest from the App Store or Google Play\nand create an account.",
       },
       {
         title: "Choose a plan",
-        desc: "Bronze, Silver, Gold or Platinum — pick the one that fits your budget and goals.",
+        desc: "Bronze, Silver, Gold or Platinum —\npick the one that fits your budget and goals.",
       },
       {
         title: "Find a venue",
@@ -856,11 +1092,11 @@ const en: Messages = {
       },
       {
         title: "Check in with QR",
-        desc: "Scan at the door and start training. No card, contract or queue.",
+        desc: "Scan at the door and start training.\nNo card, contract or queue.",
       },
     ],
     whyEyebrow: "Why one subscription?",
-    whyHeading: "Don't stay tied to one gym. Choose your own rhythm.",
+    whyHeading: "Don't stay tied to one gym.\nChoose your own rhythm.",
     whyLeftTitle: "Single-gym membership",
     whyLeftItems: [
       "Only one venue",
@@ -886,7 +1122,7 @@ const en: Messages = {
       "for a healthier, balanced and more active lifestyle.",
     viewPlans: "View plans",
     plansEyebrow: "Plans",
-    plansHeading: "12 visits on every plan. The difference is the gyms.",
+    plansHeading: "12 visits on every plan.\nThe difference is the gyms.",
     plansDescription:
       "Bronze, Silver, Gold and Platinum differ by the number of venues and the range of services. Each higher plan also includes everything from the levels below.",
     monthShort: "mo",
@@ -928,9 +1164,9 @@ const en: Messages = {
     mobileDescription:
       "to keep your body, mindset and motivation in balance.",
     appEyebrow: "FitNest app",
-    appHeading: "Your whole fitness life — in your pocket",
+    appHeading: "Your whole fitness life —\nin your pocket",
     appDescription:
-      "From discovering centers to QR check-in, plan management and FitMarket shopping — all in one app.",
+      "From discovering centers to QR check-in, plan management\nand FitMarket shopping — all in one app.",
     appFeatures: [
       {
         title: "Discover",
@@ -960,7 +1196,7 @@ const en: Messages = {
       "Join the FitNest network — gain new members, fill more slots, grow revenue.",
     partnerCta: "Become a partner",
     storeEyebrow: "FitStore",
-    storeHeading: "We're here after the workout too.",
+    storeHeading: "We're here after\nthe workout too.",
     storeDescription:
       "FitStore is the sports and wellness shop inside the FitNest app. Browse partner offers and order at a discount.",
     storeCta: "Explore FitStore",
@@ -970,7 +1206,7 @@ const en: Messages = {
       { title: "Accessories and gear", subtitle: "Selected offers" },
     ],
     bmiEyebrow: "BMI",
-    bmiHeading: "Learn your body mass index.",
+    bmiHeading: "Learn your\nbody mass index.",
     bmiDescription:
       "Enter your height and weight, calculate BMI, and get context on your result.",
     bmiCta: "Calculate BMI",
@@ -993,7 +1229,10 @@ const en: Messages = {
   },
   offers: {
     ...az.offers,
-    heroTitle: "Choose the plan that protects your body and life balance",
+    eyebrow: "Plans",
+    heroTitle: "12 visits on every plan.\nThe difference is the gyms.",
+    heroDescription:
+      "Bronze, Silver, Gold and Platinum differ by the number of venues and the range of services. Each higher plan also includes everything from the levels below.",
     months: "mo",
     whatAwaits: "plans: what is included?",
     includedGyms: "Gyms included in package",
@@ -1012,12 +1251,179 @@ const en: Messages = {
       { label: "Nutritionist session", value: "once per month" },
       { label: "Coach consultation", value: "3 times per month" },
     ],
+    durationsEyebrow: "Durations",
+    durationsHeading: "Pick the term that matches your rhythm",
+    durationCards: [
+      {
+        months: 1,
+        label: "flexible",
+        description: "Try with no commitment — stop anytime.",
+      },
+      {
+        months: 3,
+        label: "popular",
+        description: "The best start for building a habit.",
+      },
+      {
+        months: 6,
+        label: "value",
+        description: "Better terms for serious goals.",
+      },
+      {
+        months: 12,
+        label: "maximum",
+        description: "Train all year — the best rate.",
+      },
+    ],
+    ctaTitle: "Chose a plan? Activate it in the app.",
+    ctaDescription:
+      "Subscriptions are purchased only in the FitNest app. Download it, pick your plan, and start your first workout today.",
+  },
+  paymentOptions: {
+    ...az.paymentOptions,
+    eyebrow: "Special payment options",
+    abbTitle: "Pay with an ABB card",
+    abbDescription:
+      "Use debit and installment cards to get your FitNest subscription more easily.",
+    coinEyebrow: "FitNest Coin",
+    coinTitle: "Earn Coin and get\nmore out of it",
+    coinDescription:
+      "Stay active on FitNest, earn Coin, and use it for special perks, discounts, and partner offers.",
+    bobTitle: "Pay with a Bank of Baku card",
+    bobDescription:
+      "Get your FitNest subscription in installments with Bank of Baku cards and keep your healthy routine going.",
+    zeroPercent: "0%",
+    commission: "commission",
+    upTo12Months: "Up to 12 months",
+    installment: "installment option",
+    fast: "Fast",
+    easyPayment: "and easier payment",
+    learnMore: "Learn more",
+    abbDetail: {
+      ...az.paymentOptions.abbDetail,
+      back: "Special offers",
+      heroTitle: "Get a FitNest subscription in installments with an ABB card",
+      cardsValue: "ABB cards",
+      cardsLabel: "Debit and installment cards",
+      howTitle: "How to use it?",
+      howDescription:
+        "ABB cardholders can get a FitNest subscription with installment payments. Split the payment more easily and keep training.",
+      steps: [
+        {
+          title: "Choose a plan",
+          description: "Pick the FitNest subscription that fits you.",
+        },
+        {
+          title: "Choose an ABB card",
+          description: "Use your ABB card\nat checkout.",
+        },
+        {
+          title: "Pay in installments",
+          description: "Split it over your chosen term and start training.",
+        },
+      ],
+      termsTitle: "Installment terms",
+      termsDescription:
+        "You can get a FitNest subscription with the installment terms below, commission-free.",
+      periodColumn: "Installment term",
+      commissionColumn: "Commission",
+      rows: [
+        { period: "3 months", fee: "0 %" },
+        { period: "6 months", fee: "0 %" },
+        { period: "12 months", fee: "0 %" },
+      ],
+    },
+    bobDetail: {
+      ...az.paymentOptions.bobDetail,
+      back: "Special offers",
+      heroTitle:
+        "Get a FitNest subscription in installments with a Bank of Baku card",
+      cardsValue: "BOB cards",
+      cardsLabel: "Debit and installment cards",
+      howTitle: "How to use it?",
+      howDescription:
+        "Bank of Baku cardholders can get a FitNest subscription with installment payments. Split the payment more easily and keep training.",
+      steps: [
+        {
+          title: "Choose a plan",
+          description: "Pick the FitNest subscription that fits you.",
+        },
+        {
+          title: "Choose a Bank of Baku card",
+          description: "Use your Bank of Baku card\nat checkout.",
+        },
+        {
+          title: "Pay in installments",
+          description: "Split it over your chosen term and start training.",
+        },
+      ],
+      termsTitle: "Installment terms",
+      termsDescription:
+        "You can get a FitNest subscription with the installment terms below, commission-free.",
+      periodColumn: "Installment term",
+      commissionColumn: "Commission",
+      rows: [
+        { period: "1 month", fee: "0 %" },
+        { period: "3 months", fee: "0 %" },
+        { period: "6 months", fee: "0 %" },
+        { period: "12 months", fee: "0 %" },
+      ],
+    },
+    coinDetail: {
+      ...az.paymentOptions.coinDetail,
+      back: "Special offers",
+      heroTitle: "Earn Coin and get\nmore out of it",
+      sections: [
+        {
+          title: "1. General terms",
+          body: "FitNest Coin lets users earn Coin for activity on the platform and use it when buying a subscription. The Coin system supports staying more active on FitNest and getting more from the platform.",
+        },
+        {
+          title: "2. How Coin is calculated",
+          body: "New users receive 50 Coin as a gift. After discounts are applied, 1 Coin is earned for every 1 AZN actually paid.",
+        },
+        {
+          title: "3. Coin value",
+          body: "20 Coin = 1 AZN. You can use the Coin you collect when paying for a FitNest subscription.",
+        },
+        {
+          title: "4. Using Coin",
+          body: "Coin can only be used when buying a FitNest subscription. Coin cannot be cashed out or transferred to another user account.",
+        },
+        {
+          title: "5. Coin validity period",
+          body: "Coin is valid for 12 months from the date the first Coin is earned. Expired Coin cannot be used.",
+        },
+        {
+          title: "Discounts and Coin calculation",
+          body: "When a purchase has a discount, Coin is calculated from the amount actually paid after the discount. 1 Coin is granted for every 1 AZN actually paid.",
+        },
+        {
+          title: "Coin on refunds",
+          body: "If a subscription is refunded, Coin spent on that purchase is returned to the user's balance. Coin earned from that purchase is deducted from the balance.",
+        },
+        {
+          title: "Coin balance",
+          body: "Users can see their current Coin balance in the FitNest app. The balance updates based on Coin earned and spent.",
+        },
+        {
+          title: "Transferring and cashing out Coin",
+          body: "Coin can only be used on the user's own account. Coin cannot be converted to cash or transferred to another account.",
+        },
+        {
+          title: "Coin history",
+          body: "In the app, users can open Coin history to see Coin they have earned and used.",
+        },
+      ],
+    },
   },
   fitMarket: {
     ...az.fitMarket,
-    heroTitle: "Sports nutrition and apparel",
+    eyebrow: "FitStore",
+    heroTitle: "Everything you need for sport",
     heroDescription:
-      "Discover clear and practical info about popular supplements and jump directly to trusted stores.",
+      "A store with sportswear, nutrition, equipment, and a wide range of products",
+    searchPlace: "Search.....",
     newBadge: "New",
     cardDetailsAria: "open details",
     detailsDescription:
@@ -1051,6 +1457,7 @@ const en: Messages = {
     aboutGym: "About gym",
     aboutText:
       "ProFit Club offers wide workout zones, modern equipment, and a comfortable environment for all levels.",
+    amenities: "Amenities",
     equipment: "Equipment",
     equipmentText:
       "Cardio machines • Functional zone • Squat rack • Dumbbells/barbells • Cable machines • Stretching area",
@@ -1059,6 +1466,12 @@ const en: Messages = {
     address: "Address",
     workHoursTitle: "Working hours",
     map: "Map",
+    gymAccess: "Access to this gym",
+    gymAccessHint:
+      "Access with {tier} and above. Scan the QR in the app and start training.",
+    gymAccessHintSingle:
+      "Access with the {tier} plan. Scan the QR in the app and start training.",
+    viewSubscriptions: "View subscriptions",
   },
   faq: {
     title: "FAQs",
@@ -1248,7 +1661,7 @@ const ru: Messages = {
     ...en.home,
     heroTitle: "Одна подписка — все возможности активной жизни",
     heroDescription:
-      "Скачайте FitNest, выберите пакет и входите в 139 фитнес-центров по QR-коду. Залы, бассейны, студии йоги — всё в одном приложении.",
+      "Скачайте FitNest, выберите пакет и входите в 139 фитнес-центров\nпо QR-коду. Залы, бассейны, студии йоги — всё в одном приложении.",
     heroLine1Before: "Одна",
     heroLine1Accent: "подписка",
     heroLine2: "Все возможности",
@@ -1272,15 +1685,15 @@ const ru: Messages = {
     ],
     howTitle: "Четыре простых шага — и вы готовы к тренировке.",
     howEyebrow: "КАК ЭТО РАБОТАЕТ?",
-    howHeading: "Четыре простых шага — и вы готовы к тренировке.",
+    howHeading: "Четыре простых шага —\nи вы готовы к тренировке.",
     howItems: [
       {
         title: "Скачайте приложение",
-        desc: "Установите FitNest из App Store или Google Play и зарегистрируйтесь.",
+        desc: "Установите FitNest из App Store или Google Play\nи зарегистрируйтесь.",
       },
       {
         title: "Выберите подписку",
-        desc: "Bronze, Silver, Gold или Platinum — подберите вариант под бюджет и цели.",
+        desc: "Bronze, Silver, Gold или Platinum —\nподберите вариант под бюджет и цели.",
       },
       {
         title: "Найдите площадку",
@@ -1288,11 +1701,11 @@ const ru: Messages = {
       },
       {
         title: "Входите по QR",
-        desc: "Отсканируйте код на входе и начинайте. Без карты, договора и очереди.",
+        desc: "Отсканируйте код на входе и начинайте.\nБез карты, договора и очереди.",
       },
     ],
     whyEyebrow: "Зачем одна подписка?",
-    whyHeading: "Не привязывайтесь к одному залу. Выбирайте свой ритм.",
+    whyHeading: "Не привязывайтесь к одному залу.\nВыбирайте свой ритм.",
     whyLeftTitle: "Членство в одном зале",
     whyLeftItems: [
       "Только одна площадка",
@@ -1318,7 +1731,7 @@ const ru: Messages = {
       "для более сбалансированной и активной жизни.",
     viewPlans: "Смотреть планы",
     plansEyebrow: "Подписка",
-    plansHeading: "12 визитов в каждом тарифе. Разница — в залах.",
+    plansHeading: "12 визитов в каждом тарифе.\nРазница — в залах.",
     plansDescription:
       "Bronze, Silver, Gold и Platinum отличаются числом площадок и набором услуг. Каждый следующий тариф включает всё из предыдущих.",
     monthShort: "мес",
@@ -1359,9 +1772,9 @@ const ru: Messages = {
     mobileHeading: "Станьте ближе к здоровому образу жизни",
     mobileDescription: "чтобы держать в балансе тело, мысли и мотивацию.",
     appEyebrow: "Приложение FitNest",
-    appHeading: "Вся фитнес-жизнь — в кармане",
+    appHeading: "Вся фитнес-жизнь —\nв кармане",
     appDescription:
-      "От поиска центров до QR-входа, управления пакетом и покупок в FitMarket — всё в одном приложении.",
+      "От поиска центров до QR-входа, управления пакетом\nи покупок в FitMarket — всё в одном приложении.",
     appFeatures: [
       {
         title: "Открывайте",
@@ -1391,7 +1804,7 @@ const ru: Messages = {
       "Подключите центр к сети FitNest — новые гости, выше загрузка, больше доход.",
     partnerCta: "Стать партнёром",
     storeEyebrow: "FitStore",
-    storeHeading: "Мы рядом и после тренировки.",
+    storeHeading: "Мы рядом и после\nтренировки.",
     storeDescription:
       "FitStore — раздел спорта и здоровья внутри приложения FitNest. Смотрите предложения партнёров и заказывайте со скидкой.",
     storeCta: "Узнать FitStore",
@@ -1401,7 +1814,7 @@ const ru: Messages = {
       { title: "Аксессуары и инвентарь", subtitle: "Избранные предложения" },
     ],
     bmiEyebrow: "ИМТ",
-    bmiHeading: "Узнайте индекс массы тела.",
+    bmiHeading: "Узнайте индекс\nмассы тела.",
     bmiDescription:
       "Введите рост и вес, рассчитайте ИМТ и получите пояснение к результату.",
     bmiCta: "Рассчитать ИМТ",
@@ -1424,18 +1837,187 @@ const ru: Messages = {
   },
   offers: {
     ...en.offers,
-    heroTitle: "Выберите план для баланса тела и жизни",
+    eyebrow: "Подписка",
+    heroTitle: "12 визитов в каждом тарифе.\nРазница — в залах.",
+    heroDescription:
+      "Bronze, Silver, Gold и Platinum отличаются числом площадок и набором услуг. Каждый следующий тариф включает всё из предыдущих.",
     months: "мес",
     whatAwaits: "планах: что включено?",
     includedGyms: "Залы в составе пакета",
     appHeading: "Сделайте шаг к здоровому образу жизни",
     appDescription: "чтобы держать тело, разум и мотивацию в балансе.",
+    durationsEyebrow: "Сроки",
+    durationsHeading: "Выберите срок под свой ритм",
+    durationCards: [
+      {
+        months: 1,
+        label: "гибкий",
+        description: "Без обязательств — остановите в любой момент.",
+      },
+      {
+        months: 3,
+        label: "популярный",
+        description: "Оптимальный старт, чтобы закрепить привычку.",
+      },
+      {
+        months: 6,
+        label: "выгодный",
+        description: "Лучшие условия для серьёзных целей.",
+      },
+      {
+        months: 12,
+        label: "максимум",
+        description: "Тренировки весь год — самый выгодный тариф.",
+      },
+    ],
+    ctaTitle: "Выбрали тариф? Активируйте в приложении.",
+    ctaDescription:
+      "Подписка оформляется только в приложении FitNest. Скачайте, выберите пакет и начните первую тренировку сегодня.",
+  },
+  paymentOptions: {
+    ...en.paymentOptions,
+    eyebrow: "Особые способы оплаты",
+    abbTitle: "Оплачивайте картой ABB",
+    abbDescription:
+      "Используйте дебетовые и рассрочные карты, чтобы оформить подписку FitNest удобнее.",
+    coinEyebrow: "FitNest Coin",
+    coinTitle: "Копите Coin и\nполучайте больше",
+    coinDescription:
+      "Будьте активны в FitNest, копите Coin и используйте их для спецвозможностей, скидок и предложений партнёров.",
+    bobTitle: "Оплачивайте картой Bank of Baku",
+    bobDescription:
+      "Оформите подписку FitNest в рассрочку картами Bank of Baku и не прерывайте здоровый ритм.",
+    zeroPercent: "0%",
+    commission: "комиссия",
+    upTo12Months: "До 12 месяцев",
+    installment: "рассрочка",
+    fast: "Быстро",
+    easyPayment: "и удобнее оплата",
+    learnMore: "Подробнее",
+    abbDetail: {
+      ...en.paymentOptions.abbDetail,
+      back: "Спецпредложения",
+      heroTitle: "Оформите подписку FitNest в рассрочку картой ABB",
+      cardsValue: "Карты ABB",
+      cardsLabel: "Дебетовые и рассрочные карты",
+      howTitle: "Как пользоваться?",
+      howDescription:
+        "Держатели карт ABB могут оформить подписку FitNest в рассрочку. Разделите платёж удобнее и продолжайте тренировки.",
+      steps: [
+        {
+          title: "Выберите тариф",
+          description: "Выберите подходящую подписку FitNest.",
+        },
+        {
+          title: "Выберите карту ABB",
+          description: "При оплате используйте\nкарту ABB.",
+        },
+        {
+          title: "Оплатите в рассрочку",
+          description: "Разделите на выбранный срок и начните тренировки.",
+        },
+      ],
+      termsTitle: "Условия рассрочки",
+      termsDescription:
+        "Подписку FitNest можно оформить на указанные сроки без комиссии.",
+      periodColumn: "Срок рассрочки",
+      commissionColumn: "Комиссия",
+      rows: [
+        { period: "3 месяца", fee: "0 %" },
+        { period: "6 месяцев", fee: "0 %" },
+        { period: "12 месяцев", fee: "0 %" },
+      ],
+    },
+    bobDetail: {
+      ...en.paymentOptions.bobDetail,
+      back: "Спецпредложения",
+      heroTitle: "Оформите подписку FitNest в рассрочку картой Bank of Baku",
+      cardsValue: "Карты BOB",
+      cardsLabel: "Дебетовые и рассрочные карты",
+      howTitle: "Как пользоваться?",
+      howDescription:
+        "Держатели карт Bank of Baku могут оформить подписку FitNest в рассрочку. Разделите платёж удобнее и продолжайте тренировки.",
+      steps: [
+        {
+          title: "Выберите тариф",
+          description: "Выберите подходящую подписку FitNest.",
+        },
+        {
+          title: "Выберите карту Bank of Baku",
+          description: "При оплате используйте\nкарту Bank of Baku.",
+        },
+        {
+          title: "Оплатите в рассрочку",
+          description: "Разделите на выбранный срок и начните тренировки.",
+        },
+      ],
+      termsTitle: "Условия рассрочки",
+      termsDescription:
+        "Подписку FitNest можно оформить на указанные сроки без комиссии.",
+      periodColumn: "Срок рассрочки",
+      commissionColumn: "Комиссия",
+      rows: [
+        { period: "1 месяц", fee: "0 %" },
+        { period: "3 месяца", fee: "0 %" },
+        { period: "6 месяцев", fee: "0 %" },
+        { period: "12 месяцев", fee: "0 %" },
+      ],
+    },
+    coinDetail: {
+      ...en.paymentOptions.coinDetail,
+      back: "Спецпредложения",
+      heroTitle: "Копите Coin и\nполучайте больше",
+      sections: [
+        {
+          title: "1. Общие положения",
+          body: "FitNest Coin позволяет пользователям получать Coin за активность на платформе и использовать их при покупке подписки. Система Coin поддерживает активность в FitNest и помогает пользоваться возможностями платформы.",
+        },
+        {
+          title: "2. Начисление Coin",
+          body: "Новым пользователям начисляется 50 Coin в подарок. После применения скидок за каждый фактически оплаченный 1 AZN начисляется 1 Coin.",
+        },
+        {
+          title: "3. Стоимость Coin",
+          body: "20 Coin = 1 AZN. Накопленные Coin можно использовать при оформлении подписки FitNest.",
+        },
+        {
+          title: "4. Использование Coin",
+          body: "Coin используются только при покупке подписки FitNest. Coin нельзя обналичить или перевести на другой аккаунт.",
+        },
+        {
+          title: "5. Срок действия Coin",
+          body: "Срок действия Coin составляет 12 месяцев с даты получения первого Coin. Просроченные Coin использовать нельзя.",
+        },
+        {
+          title: "Скидки и начисление Coin",
+          body: "Если к покупке применена скидка, Coin начисляются исходя из фактически оплаченной суммы после скидки. За каждый фактически оплаченный 1 AZN начисляется 1 Coin.",
+        },
+        {
+          title: "Coin при возврате",
+          body: "При возврате подписки Coin, использованные при этой покупке, возвращаются на баланс. Coin, начисленные за эту покупку, списываются с баланса.",
+        },
+        {
+          title: "Баланс Coin",
+          body: "Текущий баланс Coin можно увидеть в приложении FitNest. Баланс обновляется по начисленным и использованным Coin.",
+        },
+        {
+          title: "Перевод и обналичивание Coin",
+          body: "Coin можно использовать только на своём аккаунте. Обменять Coin на деньги или перевести на другой счёт нельзя.",
+        },
+        {
+          title: "История Coin",
+          body: "В приложении можно открыть историю Coin и посмотреть начисленные и использованные Coin.",
+        },
+      ],
+    },
   },
   fitMarket: {
     ...en.fitMarket,
-    heroTitle: "Спортивное питание и экипировка",
+    eyebrow: "FitStore",
+    heroTitle: "Всё необходимое для спорта",
     heroDescription:
-      "Здесь вы найдете краткую информацию о популярных добавках и переходы в надежные магазины.",
+      "Магазин спортивной одежды, питания, оборудования и широкого ассортимента товаров",
+    searchPlace: "Поиск.....",
     newBadge: "Новое",
     cardDetailsAria: "к деталям",
     detailsDescription:
@@ -1468,6 +2050,7 @@ const ru: Messages = {
     aboutGym: "О зале",
     aboutText:
       "ProFit Club предлагает просторные зоны, современное оборудование и комфортную атмосферу для любого уровня.",
+    amenities: "Возможности",
     equipment: "Оборудование",
     equipmentText:
       "Кардио-тренажеры • Функциональная зона • Стойка для приседа • Гантели/штанги • Кабельные тренажеры • Зона растяжки",
@@ -1476,6 +2059,12 @@ const ru: Messages = {
     address: "Адрес",
     workHoursTitle: "Часы работы",
     map: "Карта",
+    gymAccess: "Вход в этот зал",
+    gymAccessHint:
+      "Вход с пакетом {tier} и выше. Отсканируйте QR в приложении и начинайте.",
+    gymAccessHintSingle:
+      "Вход с пакетом {tier}. Отсканируйте QR в приложении и начинайте.",
+    viewSubscriptions: "Смотреть подписки",
   },
   faq: {
     title: "FAQ",

@@ -4,6 +4,8 @@ import { parseRouteLocale } from "@/lib/i18n/route-locale";
 import { createPageMetadata } from "@/lib/seo";
 import { getSeoContent } from "@/lib/seo-content";
 
+export const revalidate = 300;
+
 type PageProps = {
   params: Promise<{ locale: string }>;
   searchParams: Promise<{

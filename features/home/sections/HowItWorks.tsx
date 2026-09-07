@@ -1,10 +1,14 @@
-import { Download, Layers, MapPin, QrCode } from "lucide-react";
 import { getMessages } from "@/lib/i18n/server";
 import Container from "@/components/common/Container";
 import SectionHeading from "../components/SectionHeading";
 import IconBox from "../components/IconBox";
 
-const icons = [Download, Layers, MapPin, QrCode];
+const STEP_ICONS = [
+  "/icons/home/user.svg",
+  "/icons/home/layers.svg",
+  "/icons/home/map-pin-how.svg",
+  "/icons/home/qr.svg",
+];
 
 const HowItWorks = async () => {
   const { messages } = await getMessages();
@@ -16,7 +20,6 @@ const HowItWorks = async () => {
         <SectionHeading eyebrow={t.howEyebrow} title={t.howHeading} />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {t.howItems.map((item, index) => {
-            const Icon = icons[index];
             const isLast = index === t.howItems.length - 1;
 
             return (
@@ -25,12 +28,12 @@ const HowItWorks = async () => {
                 className={`flex min-h-[216px] flex-col gap-1 rounded-[20px] px-[26px] py-7 ${
                   isLast
                     ? "bg-energy text-white"
-                    : "border border-border-muted bg-surface shadow-[0px_4px_4px_rgba(0,0,0,0.08)]"
+                    : "border border-border-muted bg-surface transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <IconBox tone={isLast ? "light" : "cyan"}>
-                    <Icon className="size-[22px]" />
+                    <img src={STEP_ICONS[index]} alt="" width={22} height={22} />
                   </IconBox>
                   <span
                     className={`text-[15px] font-extrabold ${
@@ -48,7 +51,7 @@ const HowItWorks = async () => {
                   {item.title}
                 </h3>
                 <p
-                  className={`text-sm leading-5 ${
+                  className={`whitespace-pre-line text-sm leading-5 ${
                     isLast ? "text-white" : "text-title"
                   }`}
                 >

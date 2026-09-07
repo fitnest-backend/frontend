@@ -1,6 +1,5 @@
 import { getMessages } from "@/lib/i18n/server";
 import Container from "@/components/common/Container";
-import { ArrowRight } from "lucide-react";
 import { getLandingStatsServer } from "@/lib/api/landing";
 
 const formatStat = (value: number | null | undefined) => {
@@ -39,7 +38,13 @@ const StatsBar = async () => {
               {stat.label}
             </p>
             {index === items.length - 1 ? (
-              <ArrowRight className="hidden size-3 text-title lg:block" />
+              <img
+                src="/icons/home/arrow-right.svg"
+                alt=""
+                width={12}
+                height={12}
+                className="hidden size-3 lg:block [filter:brightness(0)_saturate(100%)_invert(47%)_sepia(18%)_saturate(746%)_hue-rotate(169deg)_brightness(94%)_contrast(88%)]"
+              />
             ) : null}
           </div>
         ))}

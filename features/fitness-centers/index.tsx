@@ -11,7 +11,7 @@ const FitnessCentersPage = async () => {
   const { locale } = await getMessages();
   const [stats, gymsPage] = await Promise.all([
     getLandingStatsServer(locale),
-    getLandingGymsPageServer(locale, 1, 200),
+    getLandingGymsPageServer(locale, 1, 50),
   ]);
 
   return (

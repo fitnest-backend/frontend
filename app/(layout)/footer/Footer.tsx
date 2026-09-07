@@ -27,7 +27,7 @@ const Footer = () => {
   const platformLinks = [
     { label: t.footer.howItWorks, href: `${homePath}#how-it-works` },
     { label: t.footer.halls, href: addLocaleToPathname("/fitness-centers", locale) },
-    { label: t.footer.plans, href: `${homePath}#plans` },
+    { label: t.footer.plans, href: addLocaleToPathname("/offers", locale) },
     { label: t.footer.fitStore, href: addLocaleToPathname("/fit-market", locale) },
     { label: t.footer.bmi, href: addLocaleToPathname("/bmi", locale) },
   ];
@@ -43,7 +43,7 @@ const Footer = () => {
   const partnershipLinks = [
     { label: t.footer.corporate, href: `${homePath}#business` },
     { label: t.footer.becomePartner, href: `${homePath}#business` },
-    { label: t.footer.specialOffers, href: addLocaleToPathname("/offers", locale) },
+    { label: t.footer.specialOffers, href: addLocaleToPathname("/payment-options", locale) },
     { label: t.footer.faq, href: addLocaleToPathname("/faq", locale) },
   ];
 

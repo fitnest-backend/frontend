@@ -6,6 +6,10 @@ import { createAbsoluteUrl } from "@/lib/seo";
 const staticRoutes = [
   "/",
   "/offers",
+  "/payment-options",
+  "/payment-options/abb",
+  "/payment-options/coin",
+  "/payment-options/bob",
   "/bmi",
   "/fit-market",
   "/fitness-centers",
@@ -24,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routeSet = new Set<string>(staticRoutes);
 
   try {
-    const gyms = await getLandingGymsServer("az", 1, 100);
+    const gyms = await getLandingGymsServer("az", 1, 50);
     for (const gym of gyms) {
       routeSet.add(`/fitness-centers/${gym.gymId}`);
     }
@@ -33,7 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   try {
-    const stores = await getLandingStoresServer("az", 1, 100);
+    const stores = await getLandingStoresServer("az", 1, 50);
     for (const store of stores) {
       routeSet.add(`/fit-market/${store.storeId}`);
     }

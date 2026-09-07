@@ -1,34 +1,60 @@
 import Container from "@/components/common/Container";
-import { OffersHero } from "@/features/offers/components/OffersHero";
-import OffersPricingSection from "@/features/offers/components/OffersPricingSection";
+import { getMessages } from "@/lib/i18n/server";
+import { getSubscriptionPackagesServerCached } from "@/features/offers/api/subscription-packages";
+import OffersHero from "@/features/offers/components/OffersHero";
+import OffersDurationsSection from "@/features/offers/components/OffersDurationsSection";
+import OffersActivateBanner from "@/features/offers/components/OffersActivateBanner";
+import PlanPicker, {
+  type PlanDuration,
+} from "@/features/offers/components/PlanPicker";
 
 type OffersPageProps = {
-    searchParams: Promise<{
-        type?: string | string[];
-        month?: string | string[];
-    }>;
+  searchParams: Promise<{
+    type?: string | string[];
+    month?: string | string[];
+  }>;
+};
+
+const toDuration = (value?: string): PlanDuration => {
+  const month = Number(value);
+  if (month === 3 || month === 6 || month === 12) return month;
+  return 1;
 };
 
 const OffersPage = async ({ searchParams }: OffersPageProps) => {
-    const search = await searchParams;
-    const selectedType = Array.isArray(search.type) ? search.type[0] : search.type;
-    const selectedMonth = Array.isArray(search.month)
-        ? search.month[0]
-        : search.month;
+  const search = await searchParams;
+  const selectedMonth = Array.isArray(search.month)
+    ? search.month[0]
+    : search.month;
+  const { locale } = await getMessages();
 
-    return (
-        <div className="relative overflow-hidden bg-[#0D0F1C] mt-5 md:mt-0">
-            <div className="pointer-events-none absolute left-1/2 top-[90px] h-[420px] w-[640px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(0,139,255,0.24),rgba(0,139,255,0.08)_35%,rgba(13,15,28,0)_75%)]" />
+  let packages: Awaited<
+    ReturnType<typeof getSubscriptionPackagesServerCached>
+  >["items"] = [];
+  try {
+    packages = (await getSubscriptionPackagesServerCached(locale)).items;
+  } catch {
+    packages = [];
+  }
 
-            <Container className="space-y-10 pt-8 md:space-y-20 md:pt-12">
-                <OffersHero />
-                <OffersPricingSection
-                    selectedType={selectedType}
-                    selectedMonth={selectedMonth}
-                />
-            </Container>
-        </div>
-    );
+  return (
+    <div className="bg-page text-ink">
+      <OffersHero />
+      <section className="bg-surface pb-16 pt-10 md:pb-20">
+        <Container>
+          <PlanPicker
+            packages={packages}
+            initialDuration={toDuration(selectedMonth)}
+            selectTarget="activate"
+          />
+        </Container>
+      </section>
+      <Container className="flex flex-col gap-[68px] py-16 md:py-20">
+        <OffersDurationsSection />
+        <OffersActivateBanner />
+      </Container>
+    </div>
+  );
 };
 
 export default OffersPage;

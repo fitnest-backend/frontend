@@ -1,5 +1,7 @@
 import { localeHeaders, serverApiClient } from "@/lib/api";
 
+export type MembershipTier = "bronze" | "silver" | "gold" | "platinum";
+
 export type LandingStats = {
   gymCount: number;
   platinumGymCount: number;
@@ -14,11 +16,18 @@ export type LandingGym = {
   location: string | null;
   city: string | null;
   phone: string | null;
-  email: string | null;
-  workHoursText: string | null;
   category: string | null;
-  membership: "bronze" | "silver" | "gold" | "platinum";
+  membership: MembershipTier;
+};
+
+export type LandingGymDetail = LandingGym & {
+  galleryImageUrls: string[];
+  latitude: number | null;
+  longitude: number | null;
+  workHours: string[];
+  accessMemberships: MembershipTier[];
   description: string | null;
+  amenities: string[];
 };
 
 export type LandingStore = {
@@ -31,7 +40,8 @@ export type LandingStore = {
   discounts: string[];
   isNew: boolean;
   phone: string | null;
-  email: string | null;
+  workHoursText: string | null;
+  email?: string | null;
 };
 
 export type LandingPage<T> = {
@@ -55,7 +65,9 @@ function withLocale(locale: string) {
 }
 
 function rewriteLandingMediaPath(pathname: string): string {
-  const match = pathname.match(/\/api\/v1\/media\/stream\/(\d{1,32})(?:\?.*)?$/);
+  const match = pathname.match(
+    /\/api\/v1\/(?:media\/stream|public\/landing\/media)\/([1-9][0-9]{0,31})(?:\?.*)?$/,
+  );
   if (match) {
     return `/api/v1/public/landing/media/${match[1]}`;
   }
@@ -76,15 +88,23 @@ function resolveMediaUrl(
         return `${parsed.origin}${publicPath}`;
       }
     } catch {
-      return trimmed;
+      return fallback;
     }
-    return trimmed;
+    return fallback;
+  }
+  if (trimmed.startsWith("/api/v1/public/landing/media/")) {
+    return `${API_ORIGIN}${trimmed}`;
   }
   if (trimmed.startsWith("/")) {
     const publicPath = rewriteLandingMediaPath(trimmed);
-    return `${API_ORIGIN}${publicPath}`;
+    if (publicPath.startsWith("/api/v1/public/landing/media/")) {
+      return `${API_ORIGIN}${publicPath}`;
+    }
+    return trimmed.startsWith("/images/") || trimmed.startsWith("/icons/")
+      ? trimmed
+      : fallback;
   }
-  return trimmed;
+  return fallback;
 }
 
 export function gymImageSrc(url?: string | null): string {
@@ -119,6 +139,27 @@ const emptyGymsPage = (
   pageSize,
 });
 
+function mapGymCard(gym: LandingGym): LandingGym {
+  return {
+    ...gym,
+    coverImageUrl: gymImageSrc(gym.coverImageUrl),
+  };
+}
+
+export async function getHomeGymsServer(
+  locale: string,
+): Promise<LandingGym[]> {
+  try {
+    const { data } = await serverApiClient.get<LandingPage<LandingGym>>(
+      `${LANDING}/home/gyms`,
+      withLocale(locale),
+    );
+    return (data.items ?? []).map(mapGymCard);
+  } catch {
+    return getLandingGymsServer(locale, 1, 3);
+  }
+}
+
 export async function getLandingGymsPageServer(
   locale: string,
   page = 1,
@@ -130,10 +171,7 @@ export async function getLandingGymsPageServer(
       { ...withLocale(locale), params: { page, page_size: pageSize } },
     );
     return {
-      items: (data.items ?? []).map((gym) => ({
-        ...gym,
-        coverImageUrl: gymImageSrc(gym.coverImageUrl),
-      })),
+      items: (data.items ?? []).map(mapGymCard),
       total: data.total ?? data.items?.length ?? 0,
       page: data.page ?? page,
       pageSize: data.pageSize ?? pageSize,
@@ -154,19 +192,82 @@ export async function getLandingGymsServer(
 export async function getLandingGymServer(
   locale: string,
   gymId: string,
-): Promise<LandingGym | null> {
-  if (!/^\d+$/.test(gymId)) return null;
+): Promise<LandingGymDetail | null> {
+  if (!/^[1-9][0-9]{0,17}$/.test(gymId)) return null;
   try {
-    const { data } = await serverApiClient.get<LandingGym>(
+    const { data } = await serverApiClient.get<LandingGymDetail>(
       `${LANDING}/gyms/${gymId}`,
       withLocale(locale),
     );
+    const gallery = uniqueUrls([
+      data.coverImageUrl,
+      ...(data.galleryImageUrls ?? []),
+    ]).map((url) => gymImageSrc(url));
     return {
       ...data,
       coverImageUrl: gymImageSrc(data.coverImageUrl),
+      galleryImageUrls: gallery,
+      workHours: data.workHours ?? [],
+      accessMemberships: data.accessMemberships ?? [],
+      amenities: data.amenities ?? [],
+      latitude: data.latitude ?? null,
+      longitude: data.longitude ?? null,
     };
   } catch {
     return null;
+  }
+}
+
+const emptyStoresPage = (
+  page: number,
+  pageSize: number,
+): LandingPage<LandingStore> => ({
+  items: [],
+  total: 0,
+  page,
+  pageSize,
+});
+
+function mapLandingStore(store: LandingStore): LandingStore {
+  return {
+    ...store,
+    coverImageUrl: storeImageSrc(store.coverImageUrl),
+    discounts: store.discounts ?? [],
+  };
+}
+
+export async function getHomeStoresServer(
+  locale: string,
+): Promise<LandingStore[]> {
+  try {
+    const { data } = await serverApiClient.get<LandingPage<LandingStore>>(
+      `${LANDING}/home/stores`,
+      withLocale(locale),
+    );
+    return (data.items ?? []).map(mapLandingStore);
+  } catch {
+    return getLandingStoresServer(locale, 1, 3);
+  }
+}
+
+export async function getLandingStoresPageServer(
+  locale: string,
+  page = 1,
+  pageSize = 12,
+): Promise<LandingPage<LandingStore>> {
+  try {
+    const { data } = await serverApiClient.get<LandingPage<LandingStore>>(
+      `${LANDING}/stores`,
+      { ...withLocale(locale), params: { page, page_size: pageSize } },
+    );
+    return {
+      items: (data.items ?? []).map(mapLandingStore),
+      total: data.total ?? data.items?.length ?? 0,
+      page: data.page ?? page,
+      pageSize: data.pageSize ?? pageSize,
+    };
+  } catch {
+    return emptyStoresPage(page, pageSize);
   }
 }
 
@@ -175,29 +276,33 @@ export async function getLandingStoresServer(
   page = 1,
   pageSize = 12,
 ): Promise<LandingStore[]> {
-  try {
-    const { data } = await serverApiClient.get<LandingPage<LandingStore>>(
-      `${LANDING}/stores`,
-      { ...withLocale(locale), params: { page, page_size: pageSize } },
-    );
-    return data.items ?? [];
-  } catch {
-    return [];
-  }
+  return (await getLandingStoresPageServer(locale, page, pageSize)).items;
 }
 
 export async function getLandingStoreServer(
   locale: string,
   storeId: string,
 ): Promise<LandingStore | null> {
-  if (!/^\d+$/.test(storeId)) return null;
+  if (!/^[1-9][0-9]{0,17}$/.test(storeId)) return null;
   try {
     const { data } = await serverApiClient.get<LandingStore>(
       `${LANDING}/stores/${storeId}`,
       withLocale(locale),
     );
-    return data;
+    return mapLandingStore(data);
   } catch {
     return null;
   }
+}
+
+function uniqueUrls(urls: Array<string | null | undefined>): string[] {
+  const seen = new Set<string>();
+  const result: string[] = [];
+  for (const url of urls) {
+    const trimmed = url?.trim();
+    if (!trimmed || seen.has(trimmed)) continue;
+    seen.add(trimmed);
+    result.push(trimmed);
+  }
+  return result;
 }

@@ -1,27 +1,26 @@
-"use client";
+import Container from "@/components/common/Container";
+import SectionHeading from "@/features/home/components/SectionHeading";
+import { getMessages } from "@/lib/i18n/server";
 
-import { cn } from "@/lib/utils";
-import { useI18n } from "@/lib/i18n/provider";
-
-interface OffersHeroProps {
-  className?: string;
-}
-
-const OffersHero = ({ className }: OffersHeroProps) => {
-  const { t } = useI18n();
+const OffersHero = async () => {
+  const { messages } = await getMessages();
 
   return (
-    <div
-      className={cn(
-        "w-full mt-12 md:mt-0",
-        className,
-      )}
-    >
-      <h1 className="max-w-3xl mx-auto text-center text-balance text-h6 font-bold leading-tight sm:text-h3 text-white">
-        {t.offers.heroTitle}
-      </h1>
-    </div>
+    <section className="relative overflow-hidden bg-surface">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-14 -top-80 h-[523px] w-[668px] rounded-full bg-[linear-gradient(180deg,rgba(4,34,86,0.61)_0%,rgba(0,106,133,0.38)_55%,rgba(0,163,179,0.01)_100%)] blur-[150px]"
+      />
+      <Container className="relative py-16 md:py-20">
+        <SectionHeading
+          eyebrow={messages.offers.eyebrow}
+          title={messages.offers.heroTitle}
+          description={messages.offers.heroDescription}
+          titleAs="h1"
+        />
+      </Container>
+    </section>
   );
 };
 
-export { OffersHero };
+export default OffersHero;

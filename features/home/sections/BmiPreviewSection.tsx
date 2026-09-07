@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Ruler, Weight } from "lucide-react";
 import { getMessages } from "@/lib/i18n/server";
 import { addLocaleToPathname } from "@/lib/i18n/config";
 import Container from "@/components/common/Container";
@@ -34,7 +33,7 @@ const BmiPreviewSection = async () => {
               <p className="text-lg font-bold leading-7 text-turquoise">
                 {t.bmiEyebrow}
               </p>
-              <h2 className="font-sora text-[32px] font-extrabold leading-[1.3] text-heading md:text-[40px] md:leading-[60px]">
+              <h2 className="whitespace-pre-line font-sora text-[32px] font-extrabold leading-[1.3] text-heading md:text-[40px] md:leading-[60px]">
                 {t.bmiHeading}
               </h2>
               <p className="text-base leading-6 text-title">{t.bmiDescription}</p>
@@ -44,13 +43,25 @@ const BmiPreviewSection = async () => {
               className="inline-flex h-12 w-fit items-center gap-2 rounded-lg bg-brand px-4 text-base font-semibold text-white"
             >
               {t.bmiCta}
-              <ArrowRight className="size-5" />
+              <img
+                src="/icons/home/arrow-right.svg"
+                alt=""
+                width={24}
+                height={24}
+                className="brightness-0 invert"
+              />
             </Link>
           </div>
 
-          <div className="flex flex-col items-start gap-6 lg:items-center">
-            <div className="flex w-full max-w-[194px] items-center gap-3 rounded-2xl border border-border-muted bg-cyan/15 px-4 py-4">
-              <Ruler className="size-10 shrink-0 text-cyan" />
+          <div className="flex flex-col items-start gap-[35px] lg:items-center">
+            <div className="flex h-[116px] w-full max-w-[194px] items-center justify-center gap-3 rounded-2xl border border-border-muted bg-cyan/15 px-4">
+              <img
+                src="/icons/home/person.svg"
+                alt=""
+                width={56}
+                height={56}
+                className="size-14 shrink-0"
+              />
               <div>
                 <p className="text-xl font-medium leading-[30px] text-title">
                   {t.heightLabel}
@@ -63,8 +74,14 @@ const BmiPreviewSection = async () => {
                 </p>
               </div>
             </div>
-            <div className="flex w-full max-w-[194px] items-center gap-3 rounded-2xl border border-border-muted bg-cyan/15 px-4 py-4">
-              <Weight className="size-10 shrink-0 text-cyan" />
+            <div className="flex h-[116px] w-full max-w-[194px] items-center justify-center gap-3 rounded-2xl border border-border-muted bg-cyan/15 px-4">
+              <img
+                src="/icons/home/scale.svg"
+                alt=""
+                width={40}
+                height={40}
+                className="size-10 shrink-0"
+              />
               <div>
                 <p className="text-xl font-medium leading-[30px] text-title">
                   {t.weightLabel}

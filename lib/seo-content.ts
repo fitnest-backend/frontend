@@ -18,7 +18,11 @@ type SeoPageKey =
   | "privacy"
   | "terms"
   | "paymentSuccess"
-  | "paymentError";
+  | "paymentError"
+  | "paymentOptions"
+  | "paymentOptionsAbb"
+  | "paymentOptionsCoin"
+  | "paymentOptionsBob";
 
 const seoContent: Record<SeoPageKey, Record<Locale, LocalizedSeoContent>> = {
   home: {
@@ -134,22 +138,22 @@ const seoContent: Record<SeoPageKey, Record<Locale, LocalizedSeoContent>> = {
   },
   fitMarket: {
     az: {
-      title: "Fit Market",
+      title: "FitStore",
       description:
-        "İdman qidaları və sağlamlıq məhsulları üzrə etibarlı tərəfdaş mağazaları və endirimləri kəşf et.",
-      keywords: ["fit market", "idman qidası", "supplement", "endirim"],
+        "İdman üçün geyim, qida, avadanlıq və müxtəlif çeşiddə məhsullar təklif edən mağazalar.",
+      keywords: ["FitStore", "idman mağazası", "idman qidası", "endirim"],
     },
     en: {
-      title: "Fit Market",
+      title: "FitStore",
       description:
-        "Discover trusted partner stores and discounts for sports nutrition and wellness products.",
-      keywords: ["fit market", "sports nutrition", "supplements", "discount"],
+        "Partner stores for sportswear, nutrition, equipment, and wellness products.",
+      keywords: ["FitStore", "sports store", "sports nutrition", "discount"],
     },
     ru: {
-      title: "Fit Market",
+      title: "FitStore",
       description:
-        "Откройте надежные партнерские магазины и скидки на спортивное питание и товары для здоровья.",
-      keywords: ["fit market", "спортпит", "добавки", "скидки"],
+        "Партнерские магазины спортивной одежды, питания, оборудования и товаров для здоровья.",
+      keywords: ["FitStore", "спортмагазин", "спортпит", "скидки"],
     },
   },
   fitnessCenters: {
@@ -236,6 +240,113 @@ const seoContent: Record<SeoPageKey, Record<Locale, LocalizedSeoContent>> = {
       title: "Ошибка оплаты",
       description: "Платежная операция не была завершена.",
       keywords: ["оплата", "ошибка оплаты", "fitnest"],
+    },
+  },
+  paymentOptions: {
+    az: {
+      title: "Xüsusi ödəniş imkanları",
+      description:
+        "ABB və Bank of Baku kartları ilə 0% komissiya və 12 ayadək taksit, FitNest Coin ilə endirim və tərəfdaş təklifləri.",
+      keywords: [
+        "ABB",
+        "Bank of Baku",
+        "taksit",
+        "FitNest Coin",
+        "ödəniş",
+        "abunəlik",
+      ],
+    },
+    en: {
+      title: "Special payment options",
+      description:
+        "Pay with ABB and Bank of Baku cards at 0% commission and up to 12 months installment, plus FitNest Coin perks.",
+      keywords: [
+        "ABB",
+        "Bank of Baku",
+        "installment",
+        "FitNest Coin",
+        "payment",
+        "subscription",
+      ],
+    },
+    ru: {
+      title: "Особые способы оплаты",
+      description:
+        "Карты ABB и Bank of Baku с 0% комиссией и рассрочкой до 12 месяцев, а также бонусы FitNest Coin.",
+      keywords: [
+        "ABB",
+        "Bank of Baku",
+        "рассрочка",
+        "FitNest Coin",
+        "оплата",
+        "подписка",
+      ],
+    },
+  },
+  paymentOptionsAbb: {
+    az: {
+      title: "ABB kartı ilə taksit",
+      description:
+        "ABB kartı ilə FitNest abunəliyini 0% komissiya və 12 ayadək taksitlə əldə et.",
+      keywords: ["ABB", "taksit", "0% komissiya", "FitNest abunəlik"],
+    },
+    en: {
+      title: "ABB card installments",
+      description:
+        "Get a FitNest subscription with an ABB card at 0% commission and up to 12 months installment.",
+      keywords: ["ABB", "installment", "0% commission", "FitNest subscription"],
+    },
+    ru: {
+      title: "Рассрочка картой ABB",
+      description:
+        "Оформите подписку FitNest картой ABB с 0% комиссией и рассрочкой до 12 месяцев.",
+      keywords: ["ABB", "рассрочка", "0% комиссия", "подписка FitNest"],
+    },
+  },
+  paymentOptionsCoin: {
+    az: {
+      title: "FitNest Coin",
+      description:
+        "FitNest Coin qazan, abunəlikdə istifadə et: 20 Coin = 1 AZN, 12 ay etibarlılıq müddəti.",
+      keywords: ["FitNest Coin", "coin", "endirim", "abunəlik", "bonus"],
+    },
+    en: {
+      title: "FitNest Coin",
+      description:
+        "Earn FitNest Coin and use it on a subscription: 20 Coin = 1 AZN, valid for 12 months.",
+      keywords: ["FitNest Coin", "coin", "discount", "subscription", "bonus"],
+    },
+    ru: {
+      title: "FitNest Coin",
+      description:
+        "Копите FitNest Coin и используйте их для подписки: 20 Coin = 1 AZN, срок действия 12 месяцев.",
+      keywords: ["FitNest Coin", "coin", "скидка", "подписка", "бонус"],
+    },
+  },
+  paymentOptionsBob: {
+    az: {
+      title: "Bank of Baku kartı ilə taksit",
+      description:
+        "Bank of Baku kartı ilə FitNest abunəliyini 0% komissiya və 12 ayadək taksitlə əldə et.",
+      keywords: ["Bank of Baku", "BOB", "taksit", "0% komissiya", "FitNest abunəlik"],
+    },
+    en: {
+      title: "Bank of Baku card installments",
+      description:
+        "Get a FitNest subscription with a Bank of Baku card at 0% commission and up to 12 months installment.",
+      keywords: [
+        "Bank of Baku",
+        "BOB",
+        "installment",
+        "0% commission",
+        "FitNest subscription",
+      ],
+    },
+    ru: {
+      title: "Рассрочка картой Bank of Baku",
+      description:
+        "Оформите подписку FitNest картой Bank of Baku с 0% комиссией и рассрочкой до 12 месяцев.",
+      keywords: ["Bank of Baku", "BOB", "рассрочка", "0% комиссия", "подписка FitNest"],
     },
   },
 };

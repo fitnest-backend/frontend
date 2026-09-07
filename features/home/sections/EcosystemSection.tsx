@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight, Building2, Dumbbell } from "lucide-react";
 import { getMessages } from "@/lib/i18n/server";
 import { addLocaleToPathname } from "@/lib/i18n/config";
 import Container from "@/components/common/Container";
@@ -17,7 +16,12 @@ const EcosystemSection = async () => {
         <div className="grid grid-cols-1 gap-[22px] md:grid-cols-2">
           <article className="flex min-h-[300px] flex-col rounded-3xl bg-brand-navy-800 p-8">
             <IconBox tone="navy">
-              <Building2 className="size-[22px]" />
+              <img
+                src="/icons/home/briefcase.svg"
+                alt=""
+                width={22}
+                height={22}
+              />
             </IconBox>
             <h3 className="pt-[22px] font-sora text-2xl font-extrabold leading-9 text-white">
               {t.corporateTitle}
@@ -30,12 +34,12 @@ const EcosystemSection = async () => {
               className="mt-auto inline-flex items-center gap-2 pt-6 text-base font-bold text-cyan"
             >
               {t.corporateCta}
-              <ArrowRight className="size-5" />
+              <img src="/icons/home/arrow-right.svg" alt="" width={20} height={20} />
             </Link>
           </article>
-          <article className="flex min-h-[300px] flex-col rounded-3xl border border-border-muted bg-surface p-8 shadow-[0px_4px_4px_rgba(0,0,0,0.08)]">
+          <article className="flex min-h-[300px] flex-col rounded-3xl border border-border-muted bg-surface p-8 transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)]">
             <IconBox>
-              <Dumbbell className="size-[22px]" />
+              <img src="/icons/home/house.svg" alt="" width={22} height={22} />
             </IconBox>
             <h3 className="pt-[22px] font-sora text-2xl font-extrabold leading-9 text-ink">
               {t.partnerTitle}
@@ -46,7 +50,13 @@ const EcosystemSection = async () => {
               className="mt-auto inline-flex items-center gap-2 pt-6 text-base font-bold text-turquoise"
             >
               {t.partnerCta}
-              <ArrowRight className="size-5" />
+              <img
+                src="/icons/home/arrow-right.svg"
+                alt=""
+                width={20}
+                height={20}
+                className="[filter:brightness(0)_saturate(100%)_invert(48%)_sepia(73%)_saturate(497%)_hue-rotate(131deg)_brightness(95%)_contrast(101%)]"
+              />
             </Link>
           </article>
         </div>
