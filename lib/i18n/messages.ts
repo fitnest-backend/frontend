@@ -250,13 +250,25 @@ export type Messages = {
     emptySearch: string;
   };
   contact: {
+    eyebrow: string;
     title: string;
-    subtitle: string;
+    description: string;
+    emailLabel: string;
+    addressLabel: string;
+    address: string;
+    hoursLabel: string;
+    hours: string;
+    formTitle: string;
+    formSubtitle: string;
     name: string;
     email: string;
-    phone: string;
+    topic: string;
+    topics: { value: string; label: string }[];
     message: string;
     send: string;
+    sending: string;
+    success: string;
+    error: string;
   };
   about: {
     eyebrow: string;
@@ -798,13 +810,31 @@ const az: Messages = {
     emptySearch: "Axtarışa uyğun sual tapılmadı.",
   },
   contact: {
-    title: "Bizimlə əlaqə saxla",
-    subtitle: "Komandamız səninlə əlaqə saxlayacaq",
+    eyebrow: "Əlaqə",
+    title: "Sualın var? Buradayıq.",
+    description:
+      "Dəstək komandamız hər gün 09:00-21:00 arası cavab verir. Adətən 1 iş günü ərzində geri dönürük.",
+    emailLabel: "E-poçt",
+    addressLabel: "Ünvan",
+    address: "Bakı, Azərbaycan",
+    hoursLabel: "İş saatları",
+    hours: "Hər gün, 09:00-21:00",
+    formTitle: "Sualın var? Buradayıq.",
+    formSubtitle: "Formanı doldur — ən qısa zamanda cavablandıraq",
     name: "Ad",
-    email: "Email",
-    phone: "Telefon",
-    message: "Mesajınızı daxil edin",
+    email: "E-poçt",
+    topic: "Mövzu seçin",
+    topics: [
+      { value: "question", label: "Sual" },
+      { value: "support", label: "Dəstək" },
+      { value: "partnership", label: "Tərəfdaşlıq" },
+      { value: "other", label: "Digər" },
+    ],
+    message: "“Mesajını bura yaz...”",
     send: "Göndər",
+    sending: "Göndərilir...",
+    success: "Mesajın göndərildi. Tezliklə cavab verəcəyik.",
+    error: "Mesaj göndərilmədi. Bir az sonra yenidən cəhd et.",
   },
   about: {
     eyebrow: "Haqqımızda",
@@ -1407,13 +1437,31 @@ const en: Messages = {
     emptySearch: "No questions match your search.",
   },
   contact: {
-    title: "Contact us",
-    subtitle: "Our team will get back to you",
+    eyebrow: "Contact",
+    title: "Have a question? We're here.",
+    description:
+      "Our support team replies every day from 09:00 to 21:00. We usually get back within 1 business day.",
+    emailLabel: "Email",
+    addressLabel: "Address",
+    address: "Baku, Azerbaijan",
+    hoursLabel: "Working hours",
+    hours: "Every day, 09:00–21:00",
+    formTitle: "Have a question? We're here.",
+    formSubtitle: "Fill in the form — we'll reply as soon as we can",
     name: "Name",
     email: "Email",
-    phone: "Phone",
-    message: "Enter your message",
+    topic: "Choose a topic",
+    topics: [
+      { value: "question", label: "Question" },
+      { value: "support", label: "Support" },
+      { value: "partnership", label: "Partnership" },
+      { value: "other", label: "Other" },
+    ],
+    message: "“Write your message here...”",
     send: "Send",
+    sending: "Sending...",
+    success: "Your message was sent. We'll get back to you soon.",
+    error: "Couldn't send the message. Please try again shortly.",
   },
   about: {
     eyebrow: "About us",
@@ -2006,13 +2054,31 @@ const ru: Messages = {
     emptySearch: "Подходящих вопросов не найдено.",
   },
   contact: {
-    title: "Связаться с нами",
-    subtitle: "Наша команда свяжется с вами",
+    eyebrow: "Контакты",
+    title: "Есть вопрос? Мы на связи.",
+    description:
+      "Команда поддержки отвечает каждый день с 09:00 до 21:00. Обычно отвечаем в течение 1 рабочего дня.",
+    emailLabel: "Эл. почта",
+    addressLabel: "Адрес",
+    address: "Баку, Азербайджан",
+    hoursLabel: "Часы работы",
+    hours: "Ежедневно, 09:00–21:00",
+    formTitle: "Есть вопрос? Мы на связи.",
+    formSubtitle: "Заполните форму — ответим как можно скорее",
     name: "Имя",
-    email: "Email",
-    phone: "Телефон",
-    message: "Введите сообщение",
+    email: "Эл. почта",
+    topic: "Выберите тему",
+    topics: [
+      { value: "question", label: "Вопрос" },
+      { value: "support", label: "Поддержка" },
+      { value: "partnership", label: "Партнёрство" },
+      { value: "other", label: "Другое" },
+    ],
+    message: "“Напишите сообщение здесь...”",
     send: "Отправить",
+    sending: "Отправка...",
+    success: "Сообщение отправлено. Мы скоро ответим.",
+    error: "Не удалось отправить сообщение. Попробуйте ещё раз чуть позже.",
   },
   about: {
     eyebrow: "О нас",

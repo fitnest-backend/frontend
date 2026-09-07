@@ -1,4 +1,4 @@
-import { localeHeaders, serverApiClient } from "@/lib/api";
+import { localeHeaders, serverApiClient, apiClient } from "@/lib/api";
 
 export type MembershipTier = "bronze" | "silver" | "gold" | "platinum";
 
@@ -327,6 +327,25 @@ export async function getLandingContactServer(): Promise<LandingContact> {
     };
   } catch {
     return { email: null, phone: null };
+  }
+}
+
+export async function submitLandingContactMessage(input: {
+  name: string;
+  email: string;
+  topic: string;
+  message: string;
+}): Promise<boolean> {
+  try {
+    await apiClient.post(`${LANDING}/contact-messages`, {
+      name: input.name.trim(),
+      email: input.email.trim(),
+      topic: input.topic.trim(),
+      message: input.message.trim(),
+    });
+    return true;
+  } catch {
+    return false;
   }
 }
 

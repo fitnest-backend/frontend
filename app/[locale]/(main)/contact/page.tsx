@@ -22,6 +22,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   });
 }
 
-export default function LocaleContactPage() {
-  return <ContactPage />;
+export default async function LocaleContactPage({ params }: PageProps) {
+  const { locale: localeParam } = await params;
+  const locale = parseRouteLocale(localeParam);
+  return <ContactPage locale={locale} />;
 }
