@@ -30,8 +30,7 @@ const FitnessGallery = ({
 }: FitnessGalleryProps) => {
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const slides =
-    images.length >= 2 ? images : [...images, ...FALLBACK_GALLERY].slice(0, 4);
+  const slides = images.length > 0 ? images : FALLBACK_GALLERY;
   const showNav = slides.length > 1;
 
   return (

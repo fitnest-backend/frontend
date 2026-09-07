@@ -64,14 +64,13 @@ function withLocale(locale: string) {
   return { headers: localeHeaders(locale) };
 }
 
-function rewriteLandingMediaPath(pathname: string): string {
-  const match = pathname.match(
-    /\/api\/v1\/(?:media\/stream|public\/landing\/media)\/([1-9][0-9]{0,31})(?:\?.*)?$/,
+function landingMediaFileId(value: string): string | null {
+  const match = value.match(
+    /(?:\/api\/v1)?\/(?:media\/stream|public\/landing\/media)\/([1-9][0-9]{0,31})(?:[/?].*)?$/,
   );
-  if (match) {
-    return `/api/v1/public/landing/media/${match[1]}`;
-  }
-  return pathname;
+  if (match) return match[1];
+  if (/^[1-9][0-9]{0,31}$/.test(value)) return value;
+  return null;
 }
 
 function resolveMediaUrl(
@@ -80,29 +79,23 @@ function resolveMediaUrl(
 ): string {
   const trimmed = url?.trim();
   if (!trimmed) return fallback;
+  if (trimmed.startsWith("/images/") || trimmed.startsWith("/icons/")) {
+    return trimmed;
+  }
+
+  let candidate = trimmed;
   if (/^https?:\/\//i.test(trimmed)) {
     try {
       const parsed = new URL(trimmed);
-      const publicPath = rewriteLandingMediaPath(parsed.pathname);
-      if (publicPath !== parsed.pathname) {
-        return `${parsed.origin}${publicPath}`;
-      }
+      candidate = `${parsed.pathname}${parsed.search}`;
     } catch {
       return fallback;
     }
-    return fallback;
   }
-  if (trimmed.startsWith("/api/v1/public/landing/media/")) {
-    return `${API_ORIGIN}${trimmed}`;
-  }
-  if (trimmed.startsWith("/")) {
-    const publicPath = rewriteLandingMediaPath(trimmed);
-    if (publicPath.startsWith("/api/v1/public/landing/media/")) {
-      return `${API_ORIGIN}${publicPath}`;
-    }
-    return trimmed.startsWith("/images/") || trimmed.startsWith("/icons/")
-      ? trimmed
-      : fallback;
+
+  const fileId = landingMediaFileId(candidate.split("?")[0] ?? candidate);
+  if (fileId) {
+    return `${API_ORIGIN}/api/v1/public/landing/media/${fileId}`;
   }
   return fallback;
 }
