@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import FitnessCenterDetails from "@/features/fitness-centers/components/FitnessCenterDetails";
-import { fitnessCenters } from "@/features/fitness-centers/lib/fitness-centers-data";
+import { getLandingGymServer } from "@/lib/api/landing";
 import { parseRouteLocale } from "@/lib/i18n/route-locale";
 import { createPageMetadata } from "@/lib/seo";
 
@@ -12,9 +12,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale: localeParam, slug } = await params;
   const locale = parseRouteLocale(localeParam);
 
-  const matchedCenter = fitnessCenters.find(
-    (center) => center.href === `/fitness-centers/${slug}`,
-  );
+  const matchedCenter = await getLandingGymServer(locale, slug);
   const readableName =
     matchedCenter?.name ??
     slug

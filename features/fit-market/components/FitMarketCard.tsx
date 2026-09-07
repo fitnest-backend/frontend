@@ -5,13 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Store } from "../api/types";
 import { useI18n } from "@/lib/i18n/provider";
+import { addLocaleToPathname } from "@/lib/i18n/config";
 
 interface FitMarketCardProps {
   store: Store;
 }
 
 const FitMarketCard = ({ store }: FitMarketCardProps) => {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
 
   return (
     <article className="rounded-4xl bg-[#111729] px-7 py-6">
@@ -66,7 +67,7 @@ const FitMarketCard = ({ store }: FitMarketCardProps) => {
         </div>
 
         <Link
-          href={`/fit-market/${store.storeId}`}
+          href={addLocaleToPathname(`/fit-market/${store.storeId}`, locale)}
           className="flex size-[62px] shrink-0 items-center justify-center rounded-full bg-[rgba(14,41,61,0.3)] transition hover:bg-[rgba(14,41,61,0.45)]"
           aria-label={`${store.name} ${t.fitMarket.cardDetailsAria}`}
         >

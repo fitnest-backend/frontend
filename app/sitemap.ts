@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getStoresServerCached } from "@/features/fit-market/api/stores";
-import { fitnessCenters } from "@/features/fitness-centers/lib/fitness-centers-data";
+import { getLandingGymsServer, getLandingStoresServer } from "@/lib/api/landing";
 import { locales } from "@/lib/i18n/config";
 import { createAbsoluteUrl } from "@/lib/seo";
 
@@ -24,13 +23,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
   const routeSet = new Set<string>(staticRoutes);
 
-  for (const center of fitnessCenters) {
-    routeSet.add(center.href);
+  try {
+    const gyms = await getLandingGymsServer("az", 1, 100);
+    for (const gym of gyms) {
+      routeSet.add(`/fitness-centers/${gym.gymId}`);
+    }
+  } catch {
+    // Ignore upstream errors and return static sitemap routes.
   }
 
   try {
-    const stores = await getStoresServerCached({ page_size: 500 });
-    for (const store of stores.items) {
+    const stores = await getLandingStoresServer("az", 1, 100);
+    for (const store of stores) {
       routeSet.add(`/fit-market/${store.storeId}`);
     }
   } catch {

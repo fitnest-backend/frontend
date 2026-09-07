@@ -16,7 +16,7 @@ export default function LocaleMainLayout({
 }>) {
   return (
     <>
-      <div className="flex flex-col w-full min-h-screen bg-softblue-1000">
+      <div className="flex min-h-screen w-full flex-col bg-page">
         <Navbar />
         <main className="grow flex flex-col w-full mx-auto">{children}</main>
       </div>

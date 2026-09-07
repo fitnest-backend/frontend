@@ -10,9 +10,9 @@ const Logo = () => {
     const { locale } = useI18n();
 
     return (
-        <div className="min-w-11 h-10 md:w-20 md:h-18 relative">
+        <div className="relative h-8 w-[84px] md:h-[38px] md:w-[110px]">
             <Link href={addLocaleToPathname("/", locale)}>
-                <Image src={LogoImg} alt="Logo" fill priority sizes="(max-width: 768px) 44px, 80px" className='object-contain' />
+                <Image src={LogoImg} alt="Logo" fill priority sizes="(max-width: 768px) 84px, 110px" className='object-contain' />
             </Link>
         </div>
     )

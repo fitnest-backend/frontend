@@ -28,3 +28,8 @@ export const apiClient = createClient(
 export const serverApiClient = createClient(
   process.env.API_BASE_URL ?? "https://api.fitnest.az/api/v1",
 );
+
+export function localeHeaders(locale?: string): Record<string, string> {
+  if (!locale) return {};
+  return { "Accept-Language": locale.toUpperCase() };
+}

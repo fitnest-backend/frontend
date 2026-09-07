@@ -1,6 +1,6 @@
-import { apiClient, serverApiClient } from "@/lib/api";
+import { apiClient, localeHeaders, serverApiClient } from "@/lib/api";
+import { getLocale } from "@/lib/i18n/server";
 import type { SubscriptionPackagesResponse } from "./types";
-import { unstable_cache } from "next/cache";
 
 const ENDPOINT = "/subscription-packages";
 
@@ -9,18 +9,19 @@ export async function getSubscriptionPackages(): Promise<SubscriptionPackagesRes
   return data;
 }
 
-export async function getSubscriptionPackagesServer(): Promise<SubscriptionPackagesResponse> {
-  const { data } =
-    await serverApiClient.get<SubscriptionPackagesResponse>(ENDPOINT);
+export async function getSubscriptionPackagesServer(
+  locale?: string,
+): Promise<SubscriptionPackagesResponse> {
+  const language = locale ?? (await getLocale());
+  const { data } = await serverApiClient.get<SubscriptionPackagesResponse>(
+    ENDPOINT,
+    { headers: localeHeaders(language) },
+  );
   return data;
 }
 
-const getSubscriptionPackagesServerCachedInternal = unstable_cache(
-  async () => getSubscriptionPackagesServer(),
-  ["subscription-packages"],
-  { revalidate: 900, tags: ["subscription-packages"] },
-);
-
-export async function getSubscriptionPackagesServerCached(): Promise<SubscriptionPackagesResponse> {
-  return getSubscriptionPackagesServerCachedInternal();
+export async function getSubscriptionPackagesServerCached(
+  locale?: string,
+): Promise<SubscriptionPackagesResponse> {
+  return getSubscriptionPackagesServer(locale);
 }

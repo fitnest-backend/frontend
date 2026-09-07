@@ -1,48 +1,101 @@
-import Container from "@/components/common/Container";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { getMessages } from "@/lib/i18n/server";
-// import ButtonLink from "@/components/ui/button-link";
+import { addLocaleToPathname } from "@/lib/i18n/config";
+import StoreBadges from "../components/StoreBadges";
 
 const HeroSection = async () => {
-  const { messages } = await getMessages();
+  const { messages, locale } = await getMessages();
+  const t = messages.home;
 
   return (
-    <section className="relative flex lg:items-center pt-[153px] sm:items-center text-gray-50 w-full aspect-video overflow-hidden">
-      {/* <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="lg:hidden aspect-video absolute inset-0 w-full h-full object-cover brightness-50"
-      >
-        <source src="/videos/HeroSectionVideo.mp4" type="video/mp4" />
-      </video> */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        // poster="/images/main-page.webp"
-        className=" aspect-video lg:block absolute inset-0 w-full h-full object-cover brightness-80"
-      >
-        <source src="/videos/FitNest.mp4" type="video/mp4" />
-      </video>
-      {/* <div className="absolute top-0 left-0 w-full h-full bg-[#00000033]"></div> */}
+    <section className="relative overflow-hidden bg-page">
+      <Image
+        src="/images/home/hero-bg.png"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-right"
+        style={{ objectFit: "cover", objectPosition: "right center" }}
+      />
+      <div className="relative z-10 mx-auto grid w-full max-w-[1600px] px-5 py-10 md:px-10 md:py-12 lg:h-[calc(100dvh-6rem)] lg:grid-cols-[minmax(17rem,36%)_minmax(0,1fr)] lg:items-center lg:gap-8 lg:py-8 xl:px-20">
+        <div className="flex w-full max-w-[28rem] flex-col gap-5 xl:max-w-[32rem] xl:gap-6">
+          <div className="flex flex-col gap-4 xl:gap-5">
+            <h1 className="font-sora text-[clamp(1.75rem,3.6vw,2.875rem)] font-extrabold leading-[1.12] text-brand">
+              <span className="relative inline-block">
+                {t.heroLine1Before}{" "}
+                <span className="relative text-turquoise">
+                  {t.heroLine1Accent}
+                  <span className="absolute -bottom-1 left-0 h-1.5 w-full rounded-[3px] bg-energy md:h-2" />
+                </span>
+              </span>
+              <span className="mt-1 block">{t.heroLine2}</span>
+              <span className="mt-1 block">{t.heroLine3}</span>
+            </h1>
+            <p className="max-w-[28rem] text-[clamp(0.875rem,1.05vw,1rem)] leading-6 text-title">
+              {t.heroDescription}
+            </p>
+          </div>
 
-      <Container className="mb-5 xs:mb-0 z-10">
-        <div className="sm:bg-transparent sm:block flex flex-col items-center lg:w-1/2 w-full sm:mt-0 mt-[179px] lg:pr-0 sm:pr-[84px]  sm:pt-0 pt-4">
-          <h1 className="sm:mb-8 mb-4 font-semibold lg:text-h5 lg:leading-h5 sm:text-h6 sm:leading-h6 text-s2 leading-s2">
-            {messages.home.heroTitle} —{" "}
-            <span className="text-primary-700">FitNest</span>
-          </h1>
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+              <StoreBadges />
+              <Link
+                href={addLocaleToPathname("/offers", locale)}
+                className="inline-flex h-10 w-fit items-center justify-center gap-2 rounded-lg bg-brand px-4 text-sm font-bold text-white md:h-11 md:text-base"
+              >
+                {t.viewPackages}
+                <ArrowRight className="size-4 md:size-5" />
+              </Link>
+            </div>
 
-          <p className="lg:mb-16 sm:mb-9 mb-[30px] lg:text-t2 lg:leading-t2 sm:text-s2 sm:leading-s2 text-b3 leading-b3">
-            {messages.home.heroDescription}
-          </p>
-
-          {/* <ButtonLink>İndi başla</ButtonLink> */}
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+              <div className="flex items-center gap-3">
+                <div className="size-12 overflow-hidden rounded-sm border border-border-muted bg-surface p-1">
+                  <Image
+                    src="/images/home/app-qr.png"
+                    alt=""
+                    width={48}
+                    height={48}
+                    className="size-full object-contain"
+                  />
+                </div>
+                <div>
+                  <p className="text-sm font-bold leading-5 text-brand-navy">
+                    {t.qrDownloadTitle}
+                  </p>
+                  <p className="text-sm font-medium leading-5 text-title">
+                    {t.qrDownloadSubtitle}
+                  </p>
+                </div>
+              </div>
+              <div className="hidden h-8 w-px bg-border-muted sm:block" />
+              <div>
+                <p className="text-sm font-medium leading-5 text-title">
+                  {t.packageTiers}
+                </p>
+                <p className="text-sm font-bold leading-5 text-brand-navy">
+                  {t.packageLevelsLabel}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-      </Container>
+
+        <div className="relative mt-8 h-[min(52vh,28rem)] min-h-[16rem] min-w-0 w-full lg:mt-0 lg:h-full lg:min-h-0">
+          <Image
+            src="/images/home/phone-mockup.png"
+            alt="FitNest app"
+            fill
+            priority
+            sizes="(max-width: 1023px) 90vw, 55vw"
+            className="object-contain object-right"
+            style={{ objectFit: "contain", objectPosition: "right center" }}
+          />
+        </div>
+      </div>
     </section>
   );
 };

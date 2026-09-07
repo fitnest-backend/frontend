@@ -7,185 +7,183 @@ import instagramIcon from "@/public/icons/instagram.svg";
 import linkedinIcon from "@/public/icons/linkedin.svg";
 import tiktokIcon from "@/public/icons/tiktok.svg";
 import yticon from "@/public/icons/youtube.svg";
-import { AnimatedLink } from "./AnimatedLink";
 import Link from "next/link";
-// import headers from middleware
-import roundedPhone from "@/public/icons/phone-rounded.svg";
-import roundedMail from "@/public/icons/mail-rounded.svg";
+import { Mail, Phone } from "lucide-react";
 import ToTopBtn from "./ToTopBtn";
 import { useI18n } from "@/lib/i18n/provider";
 import { addLocaleToPathname } from "@/lib/i18n/config";
+import StoreBadges from "@/features/home/components/StoreBadges";
+import {
+  CONTACT_EMAIL,
+  CONTACT_EMAIL_HREF,
+  CONTACT_PHONE,
+  CONTACT_PHONE_HREF,
+} from "@/lib/constants/app-links";
 
 const Footer = () => {
   const { t, locale } = useI18n();
+  const homePath = addLocaleToPathname("/", locale);
+
+  const platformLinks = [
+    { label: t.footer.howItWorks, href: `${homePath}#how-it-works` },
+    { label: t.footer.halls, href: addLocaleToPathname("/fitness-centers", locale) },
+    { label: t.footer.plans, href: `${homePath}#plans` },
+    { label: t.footer.fitStore, href: addLocaleToPathname("/fit-market", locale) },
+    { label: t.footer.bmi, href: addLocaleToPathname("/bmi", locale) },
+  ];
+
+  const companyLinks = [
+    { label: t.footer.about, href: addLocaleToPathname("/contact", locale) },
+    { label: t.footer.privacy, href: addLocaleToPathname("/privacy", locale) },
+    { label: t.footer.terms, href: addLocaleToPathname("/terms", locale) },
+    { label: t.footer.news, href: addLocaleToPathname("/faq", locale) },
+    { label: t.footer.contact, href: addLocaleToPathname("/contact", locale) },
+  ];
+
+  const partnershipLinks = [
+    { label: t.footer.corporate, href: `${homePath}#business` },
+    { label: t.footer.becomePartner, href: `${homePath}#business` },
+    { label: t.footer.specialOffers, href: addLocaleToPathname("/offers", locale) },
+    { label: t.footer.faq, href: addLocaleToPathname("/faq", locale) },
+  ];
+
+  const socials = [
+    {
+      href: "https://www.instagram.com/fitnest_azerbaijan?igsh=MWFvaG9yM3l3cHlhbQ%3D%3D&utm_source=qr",
+      icon: instagramIcon,
+      label: "Instagram",
+    },
+    {
+      href: "https://www.facebook.com/profile.php?id=61584857837005",
+      icon: facebookIcon,
+      label: "Facebook",
+    },
+    {
+      href: "https://www.linkedin.com/company/fitnest-school/?viewAsMember=true",
+      icon: linkedinIcon,
+      label: "LinkedIn",
+    },
+    {
+      href: "https://www.youtube.com/@FitNestAzerbaijan",
+      icon: yticon,
+      label: "YouTube",
+    },
+    {
+      href: "https://www.tiktok.com/@fitnest.azerbaijan?_r=1&_t=ZS-950g0A0nvjJ",
+      icon: tiktokIcon,
+      label: "TikTok",
+    },
+  ];
 
   return (
-    <footer className="text-white  bg-softblue-950 font-display! relative z-50">
+    <footer className="relative z-50 bg-brand-navy text-white">
       <ToTopBtn />
-      <div className="footer_inside max-w-7xl mx-auto py-[30px] sm:py-[60px] px-5 ">
-        <div className="footer_top flex flex-col sm:flex-row justify-between gap-14 sm:gap-0 ">
-          <Link className=" block sm:hidden mx-auto" href={addLocaleToPathname("/", locale)}>
-            <Image
-              src={logo}
-              className="w-20 h-12"
-              alt="logo"
-              width={80}
-              height={50}
-            />
-          </Link>
-          <div className="left-side flex w-full sm:w-3/4 justify-between mx-auto">
-            <Link className=" hidden sm:block" href={addLocaleToPathname("/", locale)}>
-              <Image
-                src={logo}
-                className="w-20 h-12"
-                alt="logo"
-                width={80}
-                height={50}
-              />
-            </Link>
-
-            <ul className="flex flex-col gap-4 text-b1 leading-b1 text-neutral-50 font-medium ">
-              <AnimatedLink href="/faq">FAQ</AnimatedLink>
-              <AnimatedLink href="/privacy">{t.footer.privacy}</AnimatedLink>
-              <AnimatedLink href="/terms">{t.footer.terms}</AnimatedLink>
-              <AnimatedLink href="/feedback">{t.footer.feedback}</AnimatedLink>
-              <AnimatedLink href="/contact">{t.footer.contact}</AnimatedLink>
-            </ul>
-
-            <ul className="flex flex-col gap-4 text-b1 leading-b1 text-neutral-50 font-medium ">
-              <li>
-                <Link
-                  className="flex gap-3 items-center"
-                  href="https://www.instagram.com/fitnest_azerbaijan?igsh=MWFvaG9yM3l3cHlhbQ%3D%3D&utm_source=qr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Image
-                    src={instagramIcon}
-                    width={24}
-                    height={24}
-                    className="w-6 h-6"
-                    alt=""
-                    aria-hidden="true"
-                  />
-                  Instagram
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="flex gap-3 items-center"
-                  href="https://www.facebook.com/profile.php?id=61584857837005"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Image
-                    src={facebookIcon}
-                    width={24}
-                    height={24}
-                    className="w-6 h-6"
-                    alt=""
-                    aria-hidden="true"
-                  />
-                  Facebook
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className="flex gap-3 items-center"
-                  href="https://www.linkedin.com/company/fitnest-school/?viewAsMember=true"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Image
-                    src={linkedinIcon}
-                    width={24}
-                    height={24}
-                    className="w-6 h-6"
-                    alt=""
-                    aria-hidden="true"
-                  />
-                  Linkedin
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className="flex gap-3 items-center"
-                  href="https://www.tiktok.com/@fitnest.azerbaijan?_r=1&_t=ZS-950g0A0nvjJ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Image
-                    src={tiktokIcon}
-                    width={24}
-                    height={24}
-                    className="w-6 h-6"
-                    alt=""
-                    aria-hidden="true"
-                  />
-                  Tiktok
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className="flex gap-3 items-center"
-                  href="https://www.youtube.com/@FitNestAzerbaijan"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Image
-                    src={yticon}
-                    width={24}
-                    height={24}
-                    className="w-6 h-6"
-                    alt=""
-                    aria-hidden="true"
-                  />
-                  Youtube
-                </Link>
-              </li>
-            </ul>
+      <div className="mx-auto flex max-w-[1280px] flex-col gap-[18px] px-5 py-8 md:px-20 md:pt-20 md:pb-5">
+        <div className="flex flex-col gap-10 lg:flex-row lg:justify-between">
+          <div className="flex min-h-[220px] flex-col justify-between gap-8">
+            <div className="flex flex-col gap-[18px]">
+              <Link href={homePath}>
+                <Image src={logo} className="h-[38px] w-auto" alt="FitNest" width={110} height={38} />
+              </Link>
+              <p className="max-w-[300px] text-sm leading-5 text-desc">
+                {t.footer.tagline}
+              </p>
+            </div>
+            <StoreBadges dark />
           </div>
 
-          <div className="right-side sm:w-1/2 flex justify-end">
-            <div className="contact flex flex-col sm:items-end gap-14 w-full">
-              {/* <div className="lang flex gap-9 justify-between sm:justify-start">
-                <LangBtn isActive={locale === "az"} txt="AZ" onClick={() => setLocale("az")} />
-                <LangBtn isActive={locale === "en"} txt="EN" onClick={() => setLocale("en")} />
-                <LangBtn isActive={locale === "ru"} txt="RU" onClick={() => setLocale("ru")} />
-              </div> */}
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:flex lg:gap-16">
+            <div className="flex w-[118px] flex-col gap-4">
+              <p className="text-xs font-bold leading-[18px] text-title">
+                {t.footer.platform}
+              </p>
+              <ul className="flex flex-col gap-3 text-sm font-medium leading-5">
+                {platformLinks.map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className="hover:text-cyan">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex w-[118px] flex-col gap-4">
+              <p className="text-xs font-bold leading-[18px] text-title">
+                {t.footer.company}
+              </p>
+              <ul className="flex flex-col gap-3 text-sm font-medium leading-5">
+                {companyLinks.map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className="hover:text-cyan">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex w-[118px] flex-col gap-4">
+              <p className="text-xs font-bold leading-[18px] text-title">
+                {t.footer.partnership}
+              </p>
+              <ul className="flex flex-col gap-3 text-sm font-medium leading-5">
+                {partnershipLinks.map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className="hover:text-cyan">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
 
-              <div className="contact_details text-b1 leading-b1 text-neutral-50 font-medium space-y-5">
-                <div className="flex gap-2 items-center">
-                  <Image
-                    src={roundedPhone}
-                    className="w-8 h-8"
-                    width={32}
-                    height={32}
-                    alt="phone"
-                  />
-                  <p>+994 77 272 15 85</p>
-                </div>
-                <div className="flex gap-2 items-center">
-                  <Image
-                    src={roundedMail}
-                    className="w-8 h-8"
-                    width={32}
-                    height={32}
-                    alt="mail"
-                  />
-                  <p>support@fitnest.az</p>
-                </div>
+          <div className="flex w-full max-w-[227px] flex-col gap-4">
+            <p className="text-xs font-bold leading-[18px] text-title">
+              {t.footer.contact}
+            </p>
+            <div className="flex flex-col gap-3">
+              <a
+                href={CONTACT_PHONE_HREF}
+                className="inline-flex items-center gap-2 text-sm font-medium leading-5"
+              >
+                <Phone className="size-4 text-cyan" />
+                {CONTACT_PHONE}
+              </a>
+              <a
+                href={CONTACT_EMAIL_HREF}
+                className="inline-flex items-center gap-2 text-sm font-medium leading-5"
+              >
+                <Mail className="size-4 text-cyan" />
+                {CONTACT_EMAIL}
+              </a>
+              <div className="flex items-center gap-2 pt-2">
+                {socials.map((social) => (
+                  <Link
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex size-[38px] items-center justify-center rounded-[11px] border border-desc-2"
+                    aria-label={social.label}
+                  >
+                    <Image
+                      src={social.icon}
+                      width={16}
+                      height={16}
+                      className="size-4"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
         </div>
-        <div className="border-b border-neutral-800 pt-5 sm:pt-[37px]"></div>
-        <div className="footer_bottom h-full flex justify-center items-center">
-          <p className=" p-3 sm:pt-14 text-b3 leading-b3 font-medium">© 2025 FitNest</p>
-        </div>
+        <div className="mt-4 h-px w-full bg-brand" />
+        <p className="py-3 text-center text-xs leading-[18px] text-white">
+          {t.footer.copyright}
+        </p>
       </div>
     </footer>
   );

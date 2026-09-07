@@ -25,9 +25,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   });
 }
 
-export default async function LocaleFitMarketPage() {
+export default async function LocaleFitMarketPage({ params }: PageProps) {
+  const { locale: localeParam } = await params;
+  const locale = parseRouteLocale(localeParam);
   try {
-    const data = await getStoresServerCached();
+    const data = await getStoresServerCached({ page_size: 24 }, locale);
     return <FitMarketPage stores={data.items} />;
   } catch {
     return <FitMarketPage stores={[]} />;

@@ -9,25 +9,113 @@ export type Messages = {
     bmi: string;
     login: string;
     signup: string;
+    howItWorks: string;
+    business: string;
+    downloadApp: string;
+    corporate: string;
+    becomePartner: string;
+    toggleTheme: string;
   };
   footer: {
     privacy: string;
     terms: string;
     feedback: string;
     contact: string;
+    tagline: string;
+    platform: string;
+    company: string;
+    partnership: string;
+    howItWorks: string;
+    halls: string;
+    plans: string;
+    fitStore: string;
+    bmi: string;
+    about: string;
+    news: string;
+    corporate: string;
+    becomePartner: string;
+    specialOffers: string;
+    faq: string;
+    copyright: string;
   };
   home: {
     heroTitle: string;
     heroDescription: string;
+    heroLine1Before: string;
+    heroLine1Accent: string;
+    heroLine2: string;
+    heroLine3: string;
+    viewPackages: string;
+    qrDownloadTitle: string;
+    qrDownloadSubtitle: string;
+    packageTiers: string;
+    packageLevelsLabel: string;
+    qrSuccessTitle: string;
+    qrSuccessMeta: string;
+    activePackage: string;
+    goldLabel: string;
+    visitsPerMonth: string;
+    visitsUsed: string;
+    stats: { value: string; label: string }[];
     howTitle: string;
+    howEyebrow: string;
+    howHeading: string;
     howItems: { title: string; desc: string }[];
+    whyEyebrow: string;
+    whyHeading: string;
+    whyLeftTitle: string;
+    whyLeftItems: string[];
+    whyRightTitle: string;
+    whyRightItems: string[];
+    gymsEyebrow: string;
+    gymsHeading: string;
+    allGyms: string;
     subscriptionTitle: string;
     subscriptionHeading: string;
     subscriptionDescription: string;
     viewPlans: string;
+    plansEyebrow: string;
+    plansHeading: string;
+    plansDescription: string;
+    monthShort: string;
+    mostPopular: string;
+    bestValue: string;
+    selectPackage: string;
+    planFeatures: Record<string, string[]>;
+    paymentEyebrow: string;
+    paymentHeading: string;
+    paymentSubtitle: string;
+    details: string;
     mobileTitle: string;
     mobileHeading: string;
     mobileDescription: string;
+    appEyebrow: string;
+    appHeading: string;
+    appDescription: string;
+    appFeatures: { title: string; desc: string }[];
+    ecoEyebrow: string;
+    ecoHeading: string;
+    corporateTitle: string;
+    corporateDesc: string;
+    corporateCta: string;
+    partnerTitle: string;
+    partnerDesc: string;
+    partnerCta: string;
+    storeEyebrow: string;
+    storeHeading: string;
+    storeDescription: string;
+    storeCta: string;
+    storeItems: { title: string; subtitle: string }[];
+    bmiEyebrow: string;
+    bmiHeading: string;
+    bmiDescription: string;
+    bmiCta: string;
+    heightLabel: string;
+    weightLabel: string;
+    bmiLow: string;
+    bmiNormal: string;
+    bmiOver: string;
+    bmiObese: string;
     monthlyPlan: string;
     trialPlan: string;
     entry: string;
@@ -286,51 +374,208 @@ const ruPrivacyItems: Messages["privacy"]["items"] = [
 
 const az: Messages = {
   nav: {
-    halls: "Zallar",
+    halls: "Fitness mərkəzləri",
     plans: "Abunəlik",
     market: "Fit market",
     faq: "FAQ",
     bmi: "BMI",
     login: "Daxil ol",
     signup: "Qeydiyyatdan keç",
+    howItWorks: "Necə işləyir",
+    business: "Biznes",
+    downloadApp: "Tətbiqi yüklə",
+    corporate: "Korporativ",
+    becomePartner: "Tərəfdaş olun",
+    toggleTheme: "İşıqlı / qaranlıq rejim",
   },
   footer: {
     privacy: "Məxfilik siyasəti",
     terms: "İstifadə şərtləri",
     feedback: "Bizə təklifiniz",
     contact: "Əlaqə",
+    tagline:
+      "Bir abunə ilə yüzlərlə fitness mərkəzinə çıxış. Azərbaycanın fitness və sağlam həyat ekosistemi.",
+    platform: "Platforma",
+    company: "Şirkət",
+    partnership: "Əməkdaşlıq",
+    howItWorks: "Necə işləyir",
+    halls: "Fitness mərkəzləri",
+    plans: "Abunəlik",
+    fitStore: "FitStore",
+    bmi: "BMİ",
+    about: "Haqqımızda",
+    news: "Xəbərlər",
+    corporate: "Korporativ",
+    becomePartner: "Tərəfdaş olun",
+    specialOffers: "Xüsusi təkliflər",
+    faq: "FAQ",
+    copyright: "© 2026 FitNest",
   },
   home: {
-    heroTitle: "Sağlamlığa gedən yol",
+    heroTitle: "Bir abunə — aktiv həyatın bütün imkanları",
     heroDescription:
-      "FitNest istifadəçilərə yaxınlıqdakı fitness mərkəzlərini tapmaq, uyğun abunə seçmək və QR sistemi ilə məşqə başlamaq imkanı yaradır.",
-    howTitle: "<span class='text-primary-700'>FitNest</span> Necə İşləyir?",
+      "FitNest tətbiqini endir, sənə uyğun paketi seç və 139 fitness mərkəzinə QR kodla daxil ol. Zallar, hovuzlar, yoqa studiyaları — hamısı bir tətbiqdə.",
+    heroLine1Before: "Bir",
+    heroLine1Accent: "abunə",
+    heroLine2: "Aktiv həyatın",
+    heroLine3: "bütün imkanları.",
+    viewPackages: "Paketlərə bax",
+    qrDownloadTitle: "QR ilə endir",
+    qrDownloadSubtitle: "Kameranı tut, tətbiqə keç",
+    packageTiers: "Bronze · Silver · Gold · Platinum",
+    packageLevelsLabel: "4 paket səviyyəsi",
+    qrSuccessTitle: "QR giriş uğurlu",
+    qrSuccessMeta: "Dream Body Pilates · 18:04",
+    activePackage: "AKTİV PAKET",
+    goldLabel: "Gold",
+    visitsPerMonth: "12 giriş / ay",
+    visitsUsed: "7 giriş istifadə olunub",
+    stats: [
+      { value: "139", label: "Fitness mərkəzi\nbir şəbəkədə" },
+      { value: "45", label: "Platinum səviyyəli\npremium məkan" },
+      { value: "12", label: "Giriş hər ay,\nistənilən mərkəzə" },
+      { value: "4", label: "Paket səviyyəsi\nBronze     Platinum" },
+    ],
+    howTitle: "Dörd sadə addım — məşqə hazırsan.",
+    howEyebrow: "NECƏ İŞLƏYİR?",
+    howHeading: "Dörd sadə addım — məşqə hazırsan.",
     howItems: [
       {
-        title: "QR kodu oxudun və məşqə başlayın.",
-        desc: "Zallarımızda yerləşdirilmiş xüsusi QR kodları FitNest mobil tətbiqində oxudaraq gedişinizi təsdiqləyin və məşqə başlayın.",
+        title: "Tətbiqi endir",
+        desc: "App Store və ya Google Play-dən FitNest-i endir və qeydiyyatdan keç.",
       },
       {
-        title: "FitNest necə işləyir?",
-        desc: "FitNest tətbiqi ilə fitness məqsədinizə başlamaq asandır. Üzvlüyünüzü aktivləşdirdikdən sonra dərhal məşqə başlaya bilərsiniz.",
+        title: "Abunəliyini seç",
+        desc: "Bronze, Silver, Gold və ya Platinum — büdcənə və hədəfinə uyğun olanı seç.",
       },
       {
-        title: "Sizə ən rahat qeydiyyat üsulunu seçin.",
-        desc: "FitNest tətbiqini yükləyin və hədəfinizə doğru ilk addımı atın.",
+        title: "Uyğun məkanı tap",
+        desc: "Olduğun yerə ən yaxın mərkəzləri, xidmət və üstünlükləri araşdır.",
       },
       {
-        title:
-          "Məşq etmək və sağlamlığınızı qorumaq üçün istədiyiniz zalı tapın",
-        desc: "Bütün zallarımızda məşq edə bilərsiniz. Sizi maraqlandıran zalları görmək üçün tətbiqdəki filtrdən istifadə edin.",
+        title: "QR ilə daxil ol",
+        desc: "Girişdə QR kodu oxut və məşqə başla. Kart, müqavilə, növbə — heç biri lazım deyil.",
       },
     ],
+    whyEyebrow: "Niyə  bir abunə?",
+    whyHeading: "Bir zala bağlı qalma. Öz ritmini seç.",
+    whyLeftTitle: "1 zala üzvlük",
+    whyLeftItems: [
+      "Yalnız bir məkan",
+      "Məhdud aktivlik seçimi",
+      "Uzunmüddətli müqavilə",
+      "Fiziki üzvlük kartı",
+      "Məşqlərini bir zalın qrafikinə uyğunlaşdırırsan",
+    ],
+    whyRightTitle: "FitNest ilə abunəlik",
+    whyRightItems: [
+      "139 fitness mərkəzi",
+      "Zal, hovuz, yoqa, pilates və daha çox",
+      "1, 3, 6 və 12 aylıq çevik seçim",
+      "Tətbiqdə sürətli QR giriş",
+      "Harada olsan, yaxınlıqdakı mərkəzi seçirsən",
+    ],
+    gymsEyebrow: "Zallar",
+    gymsHeading: "Şəhərin ən yaxşı məkanları.",
+    allGyms: "Bütün zallar",
     subscriptionTitle: "Abunəlik",
     subscriptionHeading: "Hədəflərinə uyğun planı seç",
     subscriptionDescription: "ilə daha balanslı, sağlam və aktiv həyata addım at.",
     viewPlans: "Planlara bax",
-    mobileTitle: "Mobil <span class='text-primary-700'>FitNest</span>",
+    plansEyebrow: "Abunəlik",
+    plansHeading: "Hər abunəlikdə 12 giriş. Fərq - zallarda.",
+    plansDescription:
+      "Bronze, Silver, Gold və Platinum abunəlikləri daxil olan məkanların sayı və xidmət çeşidinin genişliyinə görə fərqlənir. Hər növbəti abunəlik əvvəlki abunəliklərə daxil olan bütün məkan və xidmətləri də əhatə edir.",
+    monthShort: "ay",
+    mostPopular: "Ən çox seçilən",
+    bestValue: "ƏN SƏRFƏLİ",
+    selectPackage: "Paketi seç",
+    planFeatures: {
+      bronze: [
+        "12 giriş / ay",
+        "19 Bronze səviyyəli zal",
+        "Qrup məşqləri",
+        "Tətbiqdə fəaliyyət izləmə",
+      ],
+      silver: [
+        "12 giriş / ay",
+        "Silver və Bronze zallar",
+        "Qrup məşqləri",
+        "Tətbiqdə fəaliyyət izləmə",
+      ],
+      gold: [
+        "12 giriş / ay",
+        "Gold və aşağı səviyyəli zallar",
+        "Qrup məşqləri",
+        "Tətbiqdə fəaliyyət izləmə",
+      ],
+      platinum: [
+        "12 giriş / ay",
+        "Bütün səviyyəli zallar",
+        "Qrup məşqləri",
+        "Tətbiqdə fəaliyyət izləmə",
+      ],
+    },
+    paymentEyebrow: "Xüsusi ödəniş imkanları",
+    paymentHeading: "ABB kartı ilə ödə",
+    paymentSubtitle: "Debet və taksit kartlarından istifadə et",
+    details: "Ətraflı",
+    mobileTitle: "Mobil FitNest",
     mobileHeading: "Sağlam həyat tərzinə bir addım da yaxınlaş",
     mobileDescription: "ilə bədənini, zehnini və motivasiyanı balansda saxla.",
+    appEyebrow: "FitNest tətbiqi",
+    appHeading: "Bütün fitness həyatın - cibində",
+    appDescription:
+      "Mərkəz kəşfiyyatından QR girişə, paket idarəçiliyindən FitMarket alış-verişinə qədər hər şey bir tətbiqdə.",
+    appFeatures: [
+      {
+        title: "Kəşf et",
+        desc: "139 mərkəzi səviyyə, aktivlik və məsafəyə görə filtrlə.",
+      },
+      {
+        title: "QR ilə giriş",
+        desc: "Resepşnda gözləmə yox — kodu oxut, birbaşa məşqə keç.",
+      },
+      {
+        title: "FitMarket",
+        desc: "Tərəfdaş mağazalardan endirimlə protein, geyim və aksesuar.",
+      },
+      {
+        title: "İzlə və inkişaf et",
+        desc: "Giriş tarixçən və qalan limitlərin həmişə göz önündə.",
+      },
+    ],
+    ecoEyebrow: "Birlikdə böyüyək",
+    ecoHeading: "FitNest ekosistemində yerini tap.",
+    corporateTitle: "Korporativ müştərilər",
+    corporateDesc:
+      "Komandanıza fitness və wellness imtiyazı verin. Çevik həllər, sadə idarəetmə, xoşbəxt əməkdaşlar.",
+    corporateCta: "Korporativ təklif al",
+    partnerTitle: "Fitness mərkəzləri",
+    partnerDesc:
+      "Mərkəzinizi FitNest şəbəkəsinə qoşun — yeni üzvlər qazanın, doluluq artırın, gəlirinizi böyüdün.",
+    partnerCta: "Tərəfdaş ol",
+    storeEyebrow: "FitStore",
+    storeHeading: "Məşqdən sonrasıda bizdə.",
+    storeDescription:
+      "FitStore— FitNest tətbiqinin daxilində idman və sağlamlıq məhsulları bölməsi. Tərəfdaş mağazaların təkliflərini kəşf et, endirimlə sifariş ver.",
+    storeCta: "FitStore tanı",
+    storeItems: [
+      { title: "Protein və qida əlavələri", subtitle: "5%-dək endirim" },
+      { title: "İdman geyimləri", subtitle: "Tərəfdaş mağazalar" },
+      { title: "Aksesuar və avadanlıq", subtitle: "Seçilmiş təkliflər" },
+    ],
+    bmiEyebrow: "BMİ",
+    bmiHeading: "Bədən kütlə indeksini öyrən.",
+    bmiDescription:
+      "Boy və çəki məlumatlarını daxil et, BMI-ni hesabla və nəticən haqqında məlumat al.",
+    bmiCta: "BMİ-ni hesabla",
+    heightLabel: "Boy",
+    weightLabel: "Çəki",
+    bmiLow: "Aşağı",
+    bmiNormal: "Normal",
+    bmiOver: "Artıq çəki",
+    bmiObese: "Obez",
     monthlyPlan: "aylıq plan",
     trialPlan: "Sınaq planı",
     entry: "giriş",
@@ -521,35 +766,211 @@ const az: Messages = {
 const en: Messages = {
   ...az,
   nav: {
-    halls: "Gyms",
+    halls: "Fitness centers",
     plans: "Plans",
     market: "Fit Market",
     faq: "FAQ",
     bmi: "BMI",
     login: "Sign in",
     signup: "Sign up",
+    howItWorks: "How it works",
+    business: "Business",
+    downloadApp: "Download app",
+    corporate: "Corporate",
+    becomePartner: "Become a partner",
+    toggleTheme: "Toggle light/dark mode",
   },
   footer: {
     privacy: "Privacy policy",
     terms: "Terms of use",
     feedback: "Feedback",
     contact: "Contact",
+    tagline:
+      "One subscription. Access to hundreds of fitness centers. Azerbaijan's fitness and healthy living ecosystem.",
+    platform: "Platform",
+    company: "Company",
+    partnership: "Partnership",
+    howItWorks: "How it works",
+    halls: "Fitness centers",
+    plans: "Plans",
+    fitStore: "FitStore",
+    bmi: "BMI",
+    about: "About us",
+    news: "News",
+    corporate: "Corporate",
+    becomePartner: "Become a partner",
+    specialOffers: "Special offers",
+    faq: "FAQ",
+    copyright: "© 2026 FitNest",
   },
   home: {
     ...az.home,
-    heroTitle: "Your path to better health",
+    heroTitle: "One subscription — every way to live active",
     heroDescription:
-      "FitNest helps users find nearby fitness centers, choose a plan, and start workouts via QR access.",
-    howTitle: "How <span class='text-primary-700'>FitNest</span> Works",
+      "Download FitNest, pick a plan, and enter 139 fitness centers with a QR code. Gyms, pools, yoga studios — all in one app.",
+    heroLine1Before: "One",
+    heroLine1Accent: "plan",
+    heroLine2: "Every way to live",
+    heroLine3: "an active life.",
+    viewPackages: "View plans",
+    qrDownloadTitle: "Download via QR",
+    qrDownloadSubtitle: "Point your camera, open the app",
+    packageTiers: "Bronze · Silver · Gold · Platinum",
+    packageLevelsLabel: "4 plan levels",
+    qrSuccessTitle: "QR check-in successful",
+    qrSuccessMeta: "Dream Body Pilates · 18:04",
+    activePackage: "ACTIVE PLAN",
+    goldLabel: "Gold",
+    visitsPerMonth: "12 visits / month",
+    visitsUsed: "7 visits used",
+    stats: [
+      { value: "139", label: "Fitness centers\nin one network" },
+      { value: "45", label: "Platinum-level\npremium venues" },
+      { value: "12", label: "Visits each month,\nany center" },
+      { value: "4", label: "Plan levels\nBronze     Platinum" },
+    ],
+    howTitle: "Four simple steps — you're ready to train.",
+    howEyebrow: "HOW IT WORKS",
+    howHeading: "Four simple steps — you're ready to train.",
+    howItems: [
+      {
+        title: "Download the app",
+        desc: "Get FitNest from the App Store or Google Play and create an account.",
+      },
+      {
+        title: "Choose a plan",
+        desc: "Bronze, Silver, Gold or Platinum — pick the one that fits your budget and goals.",
+      },
+      {
+        title: "Find a venue",
+        desc: "Explore nearby centers, services and perks wherever you are.",
+      },
+      {
+        title: "Check in with QR",
+        desc: "Scan at the door and start training. No card, contract or queue.",
+      },
+    ],
+    whyEyebrow: "Why one subscription?",
+    whyHeading: "Don't stay tied to one gym. Choose your own rhythm.",
+    whyLeftTitle: "Single-gym membership",
+    whyLeftItems: [
+      "Only one venue",
+      "Limited activity options",
+      "Long-term contract",
+      "Physical membership card",
+      "You adapt workouts to one gym's schedule",
+    ],
+    whyRightTitle: "FitNest subscription",
+    whyRightItems: [
+      "139 fitness centers",
+      "Gym, pool, yoga, pilates and more",
+      "Flexible 1, 3, 6 and 12 month options",
+      "Fast QR check-in in the app",
+      "Pick the nearest center wherever you are",
+    ],
+    gymsEyebrow: "Gyms",
+    gymsHeading: "The city's best venues.",
+    allGyms: "All gyms",
     subscriptionTitle: "Subscription",
     subscriptionHeading: "Choose the plan that matches your goals",
     subscriptionDescription:
       "for a healthier, balanced and more active lifestyle.",
     viewPlans: "View plans",
-    mobileTitle: "Mobile <span class='text-primary-700'>FitNest</span>",
+    plansEyebrow: "Plans",
+    plansHeading: "12 visits on every plan. The difference is the gyms.",
+    plansDescription:
+      "Bronze, Silver, Gold and Platinum differ by the number of venues and the range of services. Each higher plan also includes everything from the levels below.",
+    monthShort: "mo",
+    mostPopular: "Most popular",
+    bestValue: "BEST VALUE",
+    selectPackage: "Choose plan",
+    planFeatures: {
+      bronze: [
+        "12 visits / month",
+        "19 Bronze-level gyms",
+        "Group classes",
+        "Activity tracking in the app",
+      ],
+      silver: [
+        "12 visits / month",
+        "Silver and Bronze gyms",
+        "Group classes",
+        "Activity tracking in the app",
+      ],
+      gold: [
+        "12 visits / month",
+        "Gold and lower-level gyms",
+        "Group classes",
+        "Activity tracking in the app",
+      ],
+      platinum: [
+        "12 visits / month",
+        "Gyms at every level",
+        "Group classes",
+        "Activity tracking in the app",
+      ],
+    },
+    paymentEyebrow: "Flexible payment options",
+    paymentHeading: "Pay with an ABB card",
+    paymentSubtitle: "Use debit and installment cards",
+    details: "Learn more",
+    mobileTitle: "Mobile FitNest",
     mobileHeading: "Get one step closer to a healthier lifestyle",
     mobileDescription:
       "to keep your body, mindset and motivation in balance.",
+    appEyebrow: "FitNest app",
+    appHeading: "Your whole fitness life — in your pocket",
+    appDescription:
+      "From discovering centers to QR check-in, plan management and FitMarket shopping — all in one app.",
+    appFeatures: [
+      {
+        title: "Discover",
+        desc: "Filter 139 centers by level, activity and distance.",
+      },
+      {
+        title: "QR check-in",
+        desc: "No waiting at reception — scan and go straight to training.",
+      },
+      {
+        title: "FitMarket",
+        desc: "Protein, apparel and accessories from partner stores, with discounts.",
+      },
+      {
+        title: "Track and grow",
+        desc: "Your visit history and remaining limits stay in view.",
+      },
+    ],
+    ecoEyebrow: "Grow with us",
+    ecoHeading: "Find your place in the FitNest ecosystem.",
+    corporateTitle: "Corporate clients",
+    corporateDesc:
+      "Give your team a fitness and wellness benefit. Flexible solutions, simple management, happier people.",
+    corporateCta: "Get a corporate offer",
+    partnerTitle: "Fitness centers",
+    partnerDesc:
+      "Join the FitNest network — gain new members, fill more slots, grow revenue.",
+    partnerCta: "Become a partner",
+    storeEyebrow: "FitStore",
+    storeHeading: "We're here after the workout too.",
+    storeDescription:
+      "FitStore is the sports and wellness shop inside the FitNest app. Browse partner offers and order at a discount.",
+    storeCta: "Explore FitStore",
+    storeItems: [
+      { title: "Protein and supplements", subtitle: "Up to 5% off" },
+      { title: "Sportswear", subtitle: "Partner stores" },
+      { title: "Accessories and gear", subtitle: "Selected offers" },
+    ],
+    bmiEyebrow: "BMI",
+    bmiHeading: "Learn your body mass index.",
+    bmiDescription:
+      "Enter your height and weight, calculate BMI, and get context on your result.",
+    bmiCta: "Calculate BMI",
+    heightLabel: "Height",
+    weightLabel: "Weight",
+    bmiLow: "Underweight",
+    bmiNormal: "Normal",
+    bmiOver: "Overweight",
+    bmiObese: "Obese",
     monthlyPlan: "month plan",
     trialPlan: "Trial plan",
     entry: "entries",
@@ -560,24 +981,6 @@ const en: Messages = {
     freezeDays: "days freeze",
     carouselAria: "Subscription plans carousel",
     planAria: "subscription plan",
-    howItems: [
-      {
-        title: "Scan the QR and start training.",
-        desc: "Scan the QR codes in partner gyms using the FitNest app and confirm your entry instantly.",
-      },
-      {
-        title: "How does FitNest work?",
-        desc: "Starting your fitness journey is simple: activate your plan and begin right away.",
-      },
-      {
-        title: "Pick the easiest registration method.",
-        desc: "Download the FitNest app and take your first step toward your goal.",
-      },
-      {
-        title: "Find the gym that fits your routine.",
-        desc: "Browse all centers and use filters in the app to pick the right location.",
-      },
-    ],
   },
   offers: {
     ...az.offers,
@@ -791,31 +1194,210 @@ const en: Messages = {
 const ru: Messages = {
   ...en,
   nav: {
-    halls: "Залы",
+    halls: "Фитнес-центры",
     plans: "Подписка",
     market: "Fit market",
     faq: "FAQ",
     bmi: "BMI",
     login: "Войти",
     signup: "Регистрация",
+    howItWorks: "Как это работает",
+    business: "Бизнес",
+    downloadApp: "Скачать приложение",
+    corporate: "Корпоративным",
+    becomePartner: "Стать партнёром",
+    toggleTheme: "Светлая / тёмная тема",
   },
   footer: {
     privacy: "Политика конфиденциальности",
     terms: "Условия использования",
     feedback: "Обратная связь",
     contact: "Контакты",
+    tagline:
+      "Одна подписка — доступ к сотням фитнес-центров. Экосистема фитнеса и здоровой жизни в Азербайджане.",
+    platform: "Платформа",
+    company: "Компания",
+    partnership: "Сотрудничество",
+    howItWorks: "Как это работает",
+    halls: "Фитнес-центры",
+    plans: "Подписка",
+    fitStore: "FitStore",
+    bmi: "ИМТ",
+    about: "О нас",
+    news: "Новости",
+    corporate: "Корпоративным",
+    becomePartner: "Стать партнёром",
+    specialOffers: "Спецпредложения",
+    faq: "FAQ",
+    copyright: "© 2026 FitNest",
   },
   home: {
     ...en.home,
-    heroTitle: "Путь к здоровью",
+    heroTitle: "Одна подписка — все возможности активной жизни",
     heroDescription:
-      "FitNest помогает находить ближайшие фитнес-центры, выбирать подписку и начинать тренировки по QR.",
-    howTitle: "Как работает <span class='text-primary-700'>FitNest</span>",
+      "Скачайте FitNest, выберите пакет и входите в 139 фитнес-центров по QR-коду. Залы, бассейны, студии йоги — всё в одном приложении.",
+    heroLine1Before: "Одна",
+    heroLine1Accent: "подписка",
+    heroLine2: "Все возможности",
+    heroLine3: "активной жизни.",
+    viewPackages: "Смотреть пакеты",
+    qrDownloadTitle: "Скачать по QR",
+    qrDownloadSubtitle: "Наведите камеру и откройте приложение",
+    packageTiers: "Bronze · Silver · Gold · Platinum",
+    packageLevelsLabel: "4 уровня пакетов",
+    qrSuccessTitle: "QR-вход успешен",
+    qrSuccessMeta: "Dream Body Pilates · 18:04",
+    activePackage: "АКТИВНЫЙ ПАКЕТ",
+    goldLabel: "Gold",
+    visitsPerMonth: "12 визитов / мес",
+    visitsUsed: "Использовано 7 визитов",
+    stats: [
+      { value: "139", label: "Фитнес-центров\nв одной сети" },
+      { value: "45", label: "Премиум-площадок\nуровня Platinum" },
+      { value: "12", label: "Визитов каждый месяц\nв любой центр" },
+      { value: "4", label: "Уровня пакетов\nBronze     Platinum" },
+    ],
+    howTitle: "Четыре простых шага — и вы готовы к тренировке.",
+    howEyebrow: "КАК ЭТО РАБОТАЕТ?",
+    howHeading: "Четыре простых шага — и вы готовы к тренировке.",
+    howItems: [
+      {
+        title: "Скачайте приложение",
+        desc: "Установите FitNest из App Store или Google Play и зарегистрируйтесь.",
+      },
+      {
+        title: "Выберите подписку",
+        desc: "Bronze, Silver, Gold или Platinum — подберите вариант под бюджет и цели.",
+      },
+      {
+        title: "Найдите площадку",
+        desc: "Смотрите ближайшие центры, сервисы и преимущества.",
+      },
+      {
+        title: "Входите по QR",
+        desc: "Отсканируйте код на входе и начинайте. Без карты, договора и очереди.",
+      },
+    ],
+    whyEyebrow: "Зачем одна подписка?",
+    whyHeading: "Не привязывайтесь к одному залу. Выбирайте свой ритм.",
+    whyLeftTitle: "Членство в одном зале",
+    whyLeftItems: [
+      "Только одна площадка",
+      "Ограниченный выбор активностей",
+      "Долгосрочный договор",
+      "Физическая карта члена клуба",
+      "Тренировки подстраиваются под график одного зала",
+    ],
+    whyRightTitle: "Подписка FitNest",
+    whyRightItems: [
+      "139 фитнес-центров",
+      "Зал, бассейн, йога, пилатес и больше",
+      "Гибкий выбор на 1, 3, 6 и 12 месяцев",
+      "Быстрый QR-вход в приложении",
+      "Выбираете ближайший центр, где бы ни были",
+    ],
+    gymsEyebrow: "Залы",
+    gymsHeading: "Лучшие площадки города.",
+    allGyms: "Все залы",
     subscriptionTitle: "Подписка",
     subscriptionHeading: "Выберите план под свои цели",
     subscriptionDescription:
       "для более сбалансированной и активной жизни.",
     viewPlans: "Смотреть планы",
+    plansEyebrow: "Подписка",
+    plansHeading: "12 визитов в каждом тарифе. Разница — в залах.",
+    plansDescription:
+      "Bronze, Silver, Gold и Platinum отличаются числом площадок и набором услуг. Каждый следующий тариф включает всё из предыдущих.",
+    monthShort: "мес",
+    mostPopular: "Самый популярный",
+    bestValue: "ВЫГОДНЕЕ ВСЕГО",
+    selectPackage: "Выбрать пакет",
+    planFeatures: {
+      bronze: [
+        "12 визитов / мес",
+        "19 залов уровня Bronze",
+        "Групповые тренировки",
+        "Трекинг активности в приложении",
+      ],
+      silver: [
+        "12 визитов / мес",
+        "Залы Silver и Bronze",
+        "Групповые тренировки",
+        "Трекинг активности в приложении",
+      ],
+      gold: [
+        "12 визитов / мес",
+        "Залы Gold и уровней ниже",
+        "Групповые тренировки",
+        "Трекинг активности в приложении",
+      ],
+      platinum: [
+        "12 визитов / мес",
+        "Залы всех уровней",
+        "Групповые тренировки",
+        "Трекинг активности в приложении",
+      ],
+    },
+    paymentEyebrow: "Гибкие способы оплаты",
+    paymentHeading: "Оплачивайте картой ABB",
+    paymentSubtitle: "Используйте дебетовые и рассрочные карты",
+    details: "Подробнее",
+    mobileTitle: "Мобильный FitNest",
+    mobileHeading: "Станьте ближе к здоровому образу жизни",
+    mobileDescription: "чтобы держать в балансе тело, мысли и мотивацию.",
+    appEyebrow: "Приложение FitNest",
+    appHeading: "Вся фитнес-жизнь — в кармане",
+    appDescription:
+      "От поиска центров до QR-входа, управления пакетом и покупок в FitMarket — всё в одном приложении.",
+    appFeatures: [
+      {
+        title: "Открывайте",
+        desc: "Фильтруйте 139 центров по уровню, активности и расстоянию.",
+      },
+      {
+        title: "Вход по QR",
+        desc: "Без очереди на ресепшене — сканируйте код и сразу к тренировке.",
+      },
+      {
+        title: "FitMarket",
+        desc: "Протеин, одежда и аксессуары у партнёров со скидкой.",
+      },
+      {
+        title: "Следите и растите",
+        desc: "История визитов и оставшиеся лимиты всегда под рукой.",
+      },
+    ],
+    ecoEyebrow: "Растём вместе",
+    ecoHeading: "Найдите своё место в экосистеме FitNest.",
+    corporateTitle: "Корпоративным клиентам",
+    corporateDesc:
+      "Дайте команде фитнес и wellness. Гибкие решения, простое управление, довольные сотрудники.",
+    corporateCta: "Получить корпоративное предложение",
+    partnerTitle: "Фитнес-центрам",
+    partnerDesc:
+      "Подключите центр к сети FitNest — новые гости, выше загрузка, больше доход.",
+    partnerCta: "Стать партнёром",
+    storeEyebrow: "FitStore",
+    storeHeading: "Мы рядом и после тренировки.",
+    storeDescription:
+      "FitStore — раздел спорта и здоровья внутри приложения FitNest. Смотрите предложения партнёров и заказывайте со скидкой.",
+    storeCta: "Узнать FitStore",
+    storeItems: [
+      { title: "Протеин и добавки", subtitle: "Скидка до 5%" },
+      { title: "Спортивная одежда", subtitle: "Магазины-партнёры" },
+      { title: "Аксессуары и инвентарь", subtitle: "Избранные предложения" },
+    ],
+    bmiEyebrow: "ИМТ",
+    bmiHeading: "Узнайте индекс массы тела.",
+    bmiDescription:
+      "Введите рост и вес, рассчитайте ИМТ и получите пояснение к результату.",
+    bmiCta: "Рассчитать ИМТ",
+    heightLabel: "Рост",
+    weightLabel: "Вес",
+    bmiLow: "Недостаток",
+    bmiNormal: "Норма",
+    bmiOver: "Избыточный вес",
+    bmiObese: "Ожирение",
     monthlyPlan: "мес. план",
     trialPlan: "Пробный план",
     entry: "посещений",
@@ -826,27 +1408,6 @@ const ru: Messages = {
     freezeDays: "дней заморозки",
     carouselAria: "Карусель тарифов",
     planAria: "тариф",
-    howItems: [
-      {
-        title: "Сканируйте QR и начинайте тренировку.",
-        desc: "Сканируйте QR-коды в залах через приложение FitNest и подтверждайте вход за секунды.",
-      },
-      {
-        title: "Как работает FitNest?",
-        desc: "Начать легко: активируйте подписку и сразу переходите к тренировкам.",
-      },
-      {
-        title: "Выберите удобный способ регистрации.",
-        desc: "Скачайте приложение FitNest и сделайте первый шаг к цели.",
-      },
-      {
-        title: "Найдите зал под ваш формат тренировок.",
-        desc: "Используйте фильтры в приложении, чтобы выбрать подходящий центр.",
-      },
-    ],
-    mobileTitle: "Мобильный <span class='text-primary-700'>FitNest</span>",
-    mobileHeading: "Станьте ближе к здоровому образу жизни",
-    mobileDescription: "чтобы держать в балансе тело, мысли и мотивацию.",
   },
   offers: {
     ...en.offers,

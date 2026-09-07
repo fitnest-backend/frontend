@@ -1,10 +1,25 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import { Inter, Sora } from "next/font/google";
 import icon from "@/public/Logo.png";
 import { QueryProvider } from "@/lib/providers/query-provider";
+import { ThemeProvider } from "@/lib/providers/theme-provider";
 import { createAbsoluteUrl, SITE_NAME, SITE_URL } from "@/lib/seo";
 import { defaultLocale } from "@/lib/i18n/config";
+
+const inter = Inter({
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  variable: "--font-inter-family",
+  display: "swap",
+});
+
+const sora = Sora({
+  subsets: ["latin", "latin-ext"],
+  weight: ["600", "700", "800"],
+  variable: "--font-sora-family",
+  display: "swap",
+});
 
 const sfPro = localFont({
   src: [
@@ -65,8 +80,8 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang={defaultLocale}>
-      <body className={` ${sfPro.className} antialiased`}>
+    <html lang={defaultLocale} suppressHydrationWarning>
+      <body className={`${inter.variable} ${sora.variable} ${sfPro.variable} ${inter.className} antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -79,9 +94,11 @@ export default async function RootLayout({
             __html: JSON.stringify(websiteSchema),
           }}
         />
-        <QueryProvider>
-          {children}
-        </QueryProvider>
+        <ThemeProvider>
+          <QueryProvider>
+            {children}
+          </QueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

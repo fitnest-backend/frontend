@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const content = fitMarketDetailContent[locale];
 
   try {
-    const store = await getStoreByIdServer(slug);
+    const store = await getStoreByIdServer(slug, locale);
     const storeTitle = store?.name ?? `${content.fallbackTitle} #${slug}`;
 
     return createPageMetadata({

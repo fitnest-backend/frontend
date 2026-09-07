@@ -1,8 +1,28 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-/* @custom-variant dark (&:is(.dark *)); */
+@custom-variant dark (&:is(.dark *));
 
 @theme {
+  --color-brand: #14234b;
+  --color-brand-navy: #011729;
+  --color-brand-navy-800: #031e36;
+  --color-turquoise: #00a4a4;
+  --color-cyan: #00dbdb;
+  --color-energy: #ff6a42;
+  --color-title: var(--fn-title);
+  --color-desc: #90a1b9;
+  --color-desc-2: var(--fn-desc-2);
+  --color-page: var(--fn-page);
+  --color-surface: var(--fn-surface);
+  --color-ink: var(--fn-ink);
+  --color-heading: var(--fn-heading);
+  --color-border-muted: var(--fn-border);
+  --color-bronze: #d8a673;
+  --color-silver: #c1cadb;
+  --color-gold: #e8ce9d;
+  --color-gold-text: #724e09;
+  --color-platinum: #69696d;
+
   --color-primary-50: #ccf9ff;
   --color-primary-100: #b2f6ff;
   --color-primary-200: #99f3ff;
@@ -111,6 +131,8 @@
     "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
   --font-display: var(--default-font-family);
+  --font-sora: var(--font-sora-family), "Sora", sans-serif;
+  --font-inter: var(--font-inter-family), "Inter", sans-serif;
   /* header sizes  */
   --text-h1: 52px;
   --text-h2: 48px;
@@ -206,6 +228,14 @@
 }
 
 :root {
+  --fn-page: #f4f8fa;
+  --fn-surface: #ffffff;
+  --fn-ink: #011729;
+  --fn-heading: #14234b;
+  --fn-title: #557c9f;
+  --fn-desc-2: #214a6e;
+  --fn-border: #eaeaea;
+  color-scheme: light;
   --radius: 0.625rem;
   --background: var(--color-softblue-1000);
   --foreground: var(--color-gray-50);
@@ -238,6 +268,17 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --fn-page: #011729;
+  --fn-surface: #031e36;
+  --fn-ink: #f4f8fa;
+  --fn-heading: #e8eef5;
+  --fn-title: #90a1b9;
+  --fn-desc-2: #90a1b9;
+  --fn-border: #214a6e;
+  color-scheme: dark;
 }
 
 @layer base {

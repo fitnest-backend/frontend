@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import SearchIcon from "@/public/icons/search-gradient.svg";
 import {
   Select,
   SelectContent,
@@ -10,15 +9,18 @@ import {
   SelectTrigger,
 } from "@/components/ui/select";
 import { useI18n } from "@/lib/i18n/provider";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import Image from "next/image";
+import { ChevronDown, Download } from "lucide-react";
 import AzerbaijanFlag from "@/public/images/AzerbaijanFlag.svg";
 import EnglishFlag from "@/public/images/EnglishFlag.svg";
 import RussianFlag from "@/public/images/RussianFlag.svg";
+import { addLocaleToPathname } from "@/lib/i18n/config";
+import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 
 const NavbarRight = () => {
-  const { locale, setLocale } = useI18n();
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const { locale, setLocale, t } = useI18n();
 
   const locales = useMemo(
     () => ({
@@ -26,107 +28,88 @@ const NavbarRight = () => {
       en: { label: "English", flag: EnglishFlag },
       ru: { label: "Русский", flag: RussianFlag },
     }),
-    []
+    [],
   );
 
   const currentLocale = locales[locale as "az" | "en" | "ru"] ?? locales.az;
-  const languageOptions = (["az", "en", "ru"] as const).filter((lang) => lang !== locale);
+  const languageOptions = (["az", "en", "ru"] as const).filter(
+    (lang) => lang !== locale,
+  );
 
   return (
-    <div className="relative flex items-center gap-1.5 md:gap-4 md:ml-2">
-      <div className="relative md:hidden flex items-center">
-        <div
-          className={`overflow-hidden ${isSearchOpen
-            ? "w-[clamp(10.5rem,56vw,16rem)] h-10 rounded-full border border-[#2E5A74] bg-[#082038D9]"
-            : "w-10 h-10 rounded-full border border-transparent bg-transparent"
-            }`}
-          style={{ transition: "width 300ms ease-out" }}
-        >
-          <div className="h-full flex items-center">
-            <Button
-              onClick={() => setIsSearchOpen((prev) => !prev)}
-              className="size-10 min-w-10 rounded-full bg-transparent border-0 shadow-none hover:bg-transparent"
-            >
-              <Image src={SearchIcon} alt="Search" width={26} height={26} className="min-w-[26px] min-h-[26px]" />
-            </Button>
-            <input
-              className="w-full pr-4 bg-transparent text-white placeholder:text-white/80 text-sm leading-none outline-none"
-              style={{ opacity: isSearchOpen ? 1 : 0, transition: "opacity 200ms ease-out" }}
-              placeholder="Axtar....."
-              aria-label="Axtar"
-            />
-          </div>
+    <div className="flex items-center gap-3 md:gap-5">
+      <div className="flex items-center">
+        <div className="flex items-center border-r border-border-muted pr-2">
+          <ThemeToggle />
         </div>
-
+        <Select
+          value={locale}
+          onValueChange={(value) => setLocale(value as "az" | "en" | "ru")}
+        >
+          <SelectTrigger
+            aria-label={`Select language. Current language: ${currentLocale.label}`}
+            className="h-12 w-auto border-0 bg-transparent px-1 shadow-none md:border-y-0 md:border-r md:border-l-0 md:border-border-muted md:px-2 [&>svg]:hidden"
+          >
+            <div className="flex items-center gap-1">
+              <span className="relative size-7 overflow-hidden rounded-full">
+                <Image
+                  src={currentLocale.flag}
+                  alt={currentLocale.label}
+                  fill
+                  sizes="28px"
+                  className="object-cover"
+                />
+              </span>
+              <span className="hidden text-base font-medium text-ink md:inline">
+                {locale.toUpperCase()}
+              </span>
+              <ChevronDown className="size-4 text-ink" />
+            </div>
+          </SelectTrigger>
+          <SelectContent
+            align="end"
+            side="bottom"
+            sideOffset={8}
+            className="min-w-[160px] rounded-xl border border-border-muted bg-surface text-ink shadow-lg"
+          >
+            <SelectGroup>
+              {languageOptions.map((lang) => {
+                const meta = locales[lang];
+                return (
+                  <SelectItem
+                    key={lang}
+                    value={lang}
+                    className="rounded-lg py-2 text-ink focus:bg-page focus:text-ink"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="relative size-6 overflow-hidden rounded-full">
+                        <Image
+                          src={meta.flag}
+                          alt={meta.label}
+                          fill
+                          sizes="24px"
+                          className="object-cover"
+                        />
+                      </span>
+                      <span className="text-sm">{meta.label}</span>
+                    </div>
+                  </SelectItem>
+                );
+              })}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
 
-      <div className="relative hidden md:flex items-center">
-        <div
-          className={`overflow-hidden ${isSearchOpen
-            ? "w-[clamp(12rem,18vw,16rem)] h-12 rounded-full border border-[#4D6880] bg-[#123B554D]"
-            : "w-12 h-12 rounded-full border border-[#4D6880] bg-[#123B554D]"
-            }`}
-          style={{ transition: "width 300ms ease-out" }}
-        >
-          <div className="h-full flex items-center">
-            <Button
-              onClick={() => setIsSearchOpen((prev) => !prev)}
-              className="size-12 min-w-12 rounded-full bg-transparent border-0 shadow-none hover:bg-transparent"
-              aria-label="Search"
-            >
-              <Image src={SearchIcon} alt="Search" width={26} height={26} className="min-w-[26px] min-h-[26px]" />
-            </Button>
-            <input
-              className="w-full pr-4 bg-transparent text-white placeholder:text-white/80 text-sm leading-none outline-none"
-              style={{ opacity: isSearchOpen ? 1 : 0, transition: "opacity 220ms ease-out" }}
-              placeholder="Axtar....."
-              aria-label="Axtar"
-            />
-          </div>
-        </div>
-      </div>
-
-      <Select value={locale} onValueChange={(value) => setLocale(value as "az" | "en" | "ru")}>
-        <SelectTrigger
-          aria-label={`Select language. Current language: ${currentLocale.label}`}
-          className="w-auto md:w-[85px] mr-1.5 md:mr-0 bg-transparent md:bg-[#123B554D] text-white rounded-full md:rounded-4xl py-0 md:py-3 px-0 md:px-4 h-auto md:h-12! border-0 md:border md:border-[#4D6880] shadow-none md:shadow-xs gap-0 [&>svg]:hidden md:[&>svg]:inline-flex md:[&>svg]:text-white md:[&>svg]:opacity-90"
-        >
-          <div className="flex items-center gap-2 md:w-full md:justify-between">
-            <span className="relative size-5 rounded-full overflow-hidden ring-1 ring-[#E7EEF433] md:hidden">
-              <Image src={currentLocale.flag} alt={currentLocale.label} fill sizes="20px" className="object-cover" />
-            </span>
-            <span className="hidden md:inline text-b1 leading-none">{locale.toUpperCase()}</span>
-          </div>
-        </SelectTrigger>
-        <SelectContent
-          align="end"
-          side="bottom"
-          sideOffset={8}
-          className="glass-fitnest mt-3 md:mt-1 min-w-[180px] md:min-w-20 md:w-[150px] text-gray-50 rounded-3xl md:rounded-2xl border border-transparent bg-[#0A1632] md:bg-[#0E293D4D] md:backdrop-blur-md shadow-lg md:shadow-[0_10px_24px_rgba(1,8,20,0.45),inset_0_1px_0_rgba(255,255,255,0.22)] p-4 md:px-7 md:py-4 data-[state=open]:duration-220 data-[state=open]:ease-out data-[state=open]:slide-in-from-top-1 data-[state=closed]:duration-150 data-[state=closed]:ease-in data-[state=closed]:slide-out-to-top-1"
-        >
-          <SelectGroup className="md:flex md:flex-col md:gap-3">
-            {languageOptions.map((lang) => {
-              const meta = locales[lang];
-              return (
-                <SelectItem
-                  key={lang}
-                  value={lang}
-                  className="[&>span:first-child]:hidden rounded-2xl py-3 md:py-0 md:px-0 md:pr-0 md:pl-0 text-base data-[state=checked]:text-primary-700 data-[state=checked]:bg-transparent focus:bg-transparent hover:bg-transparent focus:text-primary-700"
-                >
-                  <div className="flex items-center gap-4 md:justify-center md:gap-0 w-full">
-                    <span className="relative size-6 rounded-full overflow-hidden ring-1 ring-[#E7EEF433] md:hidden">
-                      <Image src={meta.flag} alt={meta.label} fill sizes="24px" className="object-cover" />
-                    </span>
-                    <span className="text-b1 leading-none md:hidden">{meta.label}</span>
-                    <span className="hidden md:inline text-b1 leading-none uppercase">{lang}</span>
-                  </div>
-                </SelectItem>
-              );
-            })}
-          </SelectGroup>
-        </SelectContent>
-      </Select>
-
+      <Button
+        asChild
+        className="hidden h-11 rounded-lg bg-cyan px-4 text-base font-semibold text-white hover:bg-turquoise md:inline-flex"
+      >
+        <Link href={`${addLocaleToPathname("/", locale)}#how-it-works`}>
+          <Download className="size-6" />
+          {t.nav.downloadApp}
+        </Link>
+      </Button>
     </div>
   );
 };
