@@ -12,6 +12,7 @@ export type PaymentStat = {
 
 type PaymentHeroPanelProps = {
   imageSrc: string;
+  imageSrcDark?: string;
   imageAlt: string;
   eyebrow: string;
   title: string;
@@ -31,6 +32,7 @@ const STAT_ICONS: Record<Exclude<PaymentStat["icon"], "percent">, string> = {
 
 const PaymentHeroPanel = ({
   imageSrc,
+  imageSrcDark,
   imageAlt,
   eyebrow,
   title,
@@ -57,8 +59,21 @@ const PaymentHeroPanel = ({
         fill
         priority={priority}
         sizes="100vw"
-        className="object-cover object-center md:object-right"
+        className={cn(
+          "object-cover object-center md:object-right",
+          imageSrcDark && "dark:hidden",
+        )}
       />
+      {imageSrcDark ? (
+        <Image
+          src={imageSrcDark}
+          alt={imageAlt}
+          fill
+          priority={priority}
+          sizes="100vw"
+          className="hidden object-cover object-center dark:block md:object-right"
+        />
+      ) : null}
       {isDark ? (
         <>
           <div

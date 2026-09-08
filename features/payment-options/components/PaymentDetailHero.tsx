@@ -4,6 +4,7 @@ import Container from "@/components/common/Container";
 
 type PaymentDetailHeroProps = {
   imageSrc: string;
+  imageSrcDark?: string;
   title: string;
   backLabel: string;
   backHref: string;
@@ -12,6 +13,7 @@ type PaymentDetailHeroProps = {
 
 const PaymentDetailHero = ({
   imageSrc,
+  imageSrcDark,
   title,
   backLabel,
   backHref,
@@ -26,8 +28,18 @@ const PaymentDetailHero = ({
           fill
           priority
           sizes="(max-width: 768px) 0px, 56vw"
-          className="object-cover object-left"
+          className={`object-cover object-left ${imageSrcDark ? "dark:hidden" : ""}`}
         />
+        {imageSrcDark ? (
+          <Image
+            src={imageSrcDark}
+            alt=""
+            fill
+            priority
+            sizes="(max-width: 768px) 0px, 56vw"
+            className="hidden object-cover object-left dark:block"
+          />
+        ) : null}
       </div>
       <Container className="relative z-10 flex min-h-[280px] flex-col justify-between gap-10 py-10 md:min-h-[460px] md:py-10">
         <Link
@@ -47,8 +59,17 @@ const PaymentDetailHero = ({
           alt=""
           fill
           sizes="420px"
-          className="object-contain"
+          className={`object-contain ${imageSrcDark ? "dark:hidden" : ""}`}
         />
+        {imageSrcDark ? (
+          <Image
+            src={imageSrcDark}
+            alt=""
+            fill
+            sizes="420px"
+            className="hidden object-contain dark:block"
+          />
+        ) : null}
       </div>
     </section>
   );

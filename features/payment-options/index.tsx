@@ -21,6 +21,7 @@ const PaymentOptionsPage = async () => {
     <div className="flex flex-col gap-10 bg-page pt-10 text-ink">
       <PaymentHeroPanel
         imageSrc="/images/payment-options/abb.png"
+        imageSrcDark="/images/payment-options/abb-dark.png"
         imageAlt={t.abbTitle}
         eyebrow={t.eyebrow}
         title={t.abbTitle}
@@ -34,6 +35,7 @@ const PaymentOptionsPage = async () => {
       />
       <PaymentHeroPanel
         imageSrc="/images/payment-options/coin.png"
+        imageSrcDark="/images/payment-options/coin-dark.png"
         imageAlt={t.coinTitle}
         eyebrow={t.coinEyebrow}
         title={t.coinTitle}
@@ -44,6 +46,7 @@ const PaymentOptionsPage = async () => {
       />
       <PaymentHeroPanel
         imageSrc="/images/payment-options/bob.png"
+        imageSrcDark="/images/payment-options/bob-dark.png"
         imageAlt={t.bobTitle}
         eyebrow={t.eyebrow}
         title={t.bobTitle}

@@ -12,6 +12,7 @@ const CoinDetailPage = async () => {
     <div className="bg-page text-ink">
       <PaymentDetailHero
         imageSrc="/images/payment-options/coin-hero.png"
+        imageSrcDark="/images/payment-options/coin-dark.png"
         title={t.heroTitle}
         backLabel={t.back}
         backHref={backHref}
