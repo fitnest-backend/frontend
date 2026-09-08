@@ -44,7 +44,7 @@ const HeroSection = async () => {
               <StoreBadges />
               <Link
                 href={addLocaleToPathname("/offers", locale)}
-                className="inline-flex h-11 w-fit items-center justify-center gap-2 rounded-lg bg-button px-4 text-base font-bold text-white"
+                className="inline-flex h-11 w-fit items-center justify-center gap-2 rounded-lg bg-button px-4 text-base font-bold text-white transition-colors hover:bg-[#FF6A42]"
               >
                 {t.viewPackages}
                 <img
