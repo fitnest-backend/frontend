@@ -1,6 +1,7 @@
 import Container from "@/components/common/Container"
 import Image from "next/image"
 import Link from "next/link"
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/lib/constants/app-links"
 
 const DownloadAppSection = () => {
   return (
@@ -25,7 +26,9 @@ const DownloadAppSection = () => {
           </p>
           <div className="flex xl:mt-18 xl:gap-4">
             <Link
-              href="#"
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex min-w-[170px] h-[47px] rounded-4xl gradient-border bg-softblue-950 items-center gap-3 px-3 py-1 md:w-[175px] md:h-11 md:gap-3 md:px-3 md:py-1 xl:w-[193px] xl:h-[50px] xl:gap-3 xl:px-3 xl:py-1"
             >
               <Image
@@ -40,7 +43,9 @@ const DownloadAppSection = () => {
               </div>
             </Link>
             <Link
-              href="#"
+              href={GOOGLE_PLAY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex min-w-[170px] h-[50px] rounded-4xl border gap-2 items-center bg-softblue-950 text-neutral-500 md:w-[175px] md:h-11 md:gap-1 xl:w-[193px] xl:h-[50px] xl:gap-3 py-1 px-3"
             >
               <Image

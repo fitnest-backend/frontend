@@ -123,16 +123,15 @@
   --color-success-500: #2d5a27;
   --color-success-600: #1b3617;
 
-  --default-font-family: "SF Pro", "SF Pro Display", "SF Pro Icons",
-    "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  --font-geist-sans: "SF Pro", "SF Pro Display", "SF Pro Icons",
-    "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --default-font-family: var(--font-inter-family), "Inter", sans-serif;
+  --font-geist-sans: var(--font-inter-family), "Inter", sans-serif;
   --font-geist-mono: "SF Mono", "SF Mono", "SF Pro Display", "SF Pro Icons",
     "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
-  --font-display: var(--default-font-family);
-  --font-sora: var(--font-sora-family), "Sora", sans-serif;
+  --font-display: var(--font-inter-family), "Inter", sans-serif;
+  --font-sora: var(--font-inter-family), "Inter", sans-serif;
   --font-inter: var(--font-inter-family), "Inter", sans-serif;
+  --font-sans: var(--font-inter-family), "Inter", sans-serif;
   /* header sizes  */
   --text-h1: 52px;
   --text-h2: 48px;
@@ -189,7 +188,7 @@
 @theme inline {
   --color-background: var(--color-softblue-1000);
   --color-foreground: var(--color-gray-50);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter-family), "Inter", sans-serif;
   --font-mono: var(--font-geist-mono);
 
   --color-sidebar-ring: var(--sidebar-ring);

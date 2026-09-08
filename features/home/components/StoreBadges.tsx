@@ -1,7 +1,5 @@
 import Image from "next/image";
-
-const GOOGLE_PLAY_URL = "https://play.google.com/store/apps";
-const APP_STORE_URL = "https://apps.apple.com";
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/lib/constants/app-links";
 
 type StoreBadgesProps = {
   className?: string;

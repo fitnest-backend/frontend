@@ -8,6 +8,7 @@ import MembershipBadge, {
   type MembershipTier,
 } from "@/features/home/components/MembershipBadge";
 import type { SubscriptionPackage } from "@/features/offers/api/types";
+import { formatManat, monthlyPrice } from "@/features/offers/lib/price";
 import { cn } from "@/lib/utils";
 
 export const PLAN_DURATIONS = [1, 3, 6, 12] as const;
@@ -62,15 +63,21 @@ const PlanPicker = ({
   const plans = useMemo(() => {
     return TIER_ORDER.map((tier) => {
       const match = packages.find((pkg) => normalizeTier(pkg.name) === tier);
-      const option =
-        match?.options.find((item) => item.duration_months === duration) ??
-        match?.options[0];
+      const option = match?.options.find(
+        (item) => item.duration_months === duration,
+      );
       const defaultFeatures =
         t.home.planFeatures[tier] ?? t.home.planFeatures.bronze;
+      const months = option?.duration_months ?? duration;
+      const total = option?.price.effective;
+      const pricePerMonth =
+        total != null
+          ? monthlyPrice(total, months)
+          : fallbackPlans[tier].price;
 
       return {
         tier,
-        price: option?.price.effective ?? fallbackPlans[tier].price,
+        price: pricePerMonth,
         features: featuresFromOption(option, defaultFeatures),
         mostPopular: tier === "platinum",
         bestValue: tier === "gold",
@@ -126,7 +133,7 @@ const PlanPicker = ({
               <MembershipBadge tier={plan.tier} />
               <div className="flex items-center gap-2">
                 <span className="text-[36px] font-bold leading-[52px] text-heading">
-                  {plan.price}
+                  {formatManat(plan.price)}
                 </span>
                 <span className="flex items-center gap-1.5 text-sm font-bold leading-5 text-title">
                   <span>₼</span>
