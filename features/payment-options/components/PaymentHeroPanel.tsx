@@ -58,7 +58,7 @@ const PaymentHeroPanel = ({
         alt={imageAlt}
         fill
         priority={priority}
-        sizes="100vw"
+        sizes="(max-width: 768px) 100vw, 56vw"
         className={cn(
           "object-cover object-center md:object-right",
           imageSrcDark && "dark:hidden",
@@ -70,7 +70,7 @@ const PaymentHeroPanel = ({
           alt={imageAlt}
           fill
           priority={priority}
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, 56vw"
           className="hidden object-cover object-center dark:block md:object-right"
         />
       ) : null}

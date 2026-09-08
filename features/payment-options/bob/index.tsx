@@ -15,8 +15,8 @@ const BobDetailPage = async () => {
   return (
     <div className="bg-page text-ink">
       <PaymentDetailHero
-        imageSrc="/images/payment-options/bob-hero.png"
-        imageSrcDark="/images/payment-options/bob-dark.png"
+        imageSrc="/images/payment-options/bob-hero.webp"
+        imageSrcDark="/images/payment-options/bob-dark.webp"
         title={t.heroTitle}
         backLabel={t.back}
         backHref={backHref}

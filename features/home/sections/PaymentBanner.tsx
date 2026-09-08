@@ -12,19 +12,19 @@ const SLIDES = [
   {
     id: "abb",
     image: "/images/payment-options/abb.png",
-    darkImage: "/images/payment-options/abb-dark.png",
+    darkImage: "/images/payment-options/abb-dark.webp",
     dark: false,
   },
   {
     id: "coin",
     image: "/images/payment-options/coin.png",
-    darkImage: "/images/payment-options/coin-dark.png",
+    darkImage: "/images/payment-options/coin-dark.webp",
     dark: true,
   },
   {
     id: "bob",
     image: "/images/payment-options/bob.png",
-    darkImage: "/images/payment-options/bob-dark.png",
+    darkImage: "/images/payment-options/bob-dark.webp",
     dark: false,
   },
 ] as const;
@@ -78,14 +78,14 @@ const PaymentBanner = () => {
               alt=""
               fill
               className="object-cover object-right dark:hidden"
-              sizes="100vw"
+              sizes="(max-width: 768px) 100vw, 56vw"
             />
             <Image
               src={item.darkImage}
               alt=""
               fill
               className="hidden object-cover object-right dark:block"
-              sizes="100vw"
+              sizes="(max-width: 768px) 100vw, 56vw"
             />
             <div
               className={cn(
