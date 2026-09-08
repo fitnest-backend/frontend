@@ -10,23 +10,44 @@ import AppSection from "./sections/AppSection";
 import EcosystemSection from "./sections/EcosystemSection";
 import FitStoreSection from "./sections/FitStoreSection";
 import BmiPreviewSection from "./sections/BmiPreviewSection";
+import Reveal from "./components/Reveal";
 
 export default function HomePage() {
   return (
-    <div className="bg-page text-ink">
+    <div className="flex flex-col gap-12 bg-white pb-12 text-ink md:gap-16 md:pb-20">
       <HeroSection />
-      <StatsBar />
-      <HowItWorks />
-      <WhySubscribe />
-      <GymsSection />
-      <Suspense fallback={null}>
-        <SubscriptionSectionServer />
-      </Suspense>
-      <PaymentBanner />
-      <AppSection />
-      <EcosystemSection />
-      <FitStoreSection />
-      <BmiPreviewSection />
+      <Reveal>
+        <StatsBar />
+      </Reveal>
+      <Reveal>
+        <HowItWorks />
+      </Reveal>
+      <Reveal>
+        <WhySubscribe />
+      </Reveal>
+      <Reveal>
+        <GymsSection />
+      </Reveal>
+      <Reveal>
+        <Suspense fallback={null}>
+          <SubscriptionSectionServer />
+        </Suspense>
+      </Reveal>
+      <Reveal>
+        <PaymentBanner />
+      </Reveal>
+      <Reveal>
+        <AppSection />
+      </Reveal>
+      <Reveal>
+        <EcosystemSection />
+      </Reveal>
+      <Reveal>
+        <FitStoreSection />
+      </Reveal>
+      <Reveal>
+        <BmiPreviewSection />
+      </Reveal>
     </div>
   );
 }
