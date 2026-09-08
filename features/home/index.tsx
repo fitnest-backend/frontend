@@ -15,13 +15,11 @@ import Reveal from "./components/Reveal";
 export default function HomePage() {
   return (
     <div className="flex flex-col gap-12 bg-white pb-12 text-ink md:gap-16 md:pb-20">
-      <HeroSection />
-      <Reveal>
+      <div>
+        <HeroSection />
         <StatsBar />
-      </Reveal>
-      <Reveal>
         <HowItWorks />
-      </Reveal>
+      </div>
       <Reveal>
         <WhySubscribe />
       </Reveal>
