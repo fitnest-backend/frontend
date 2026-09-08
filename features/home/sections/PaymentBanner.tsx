@@ -12,19 +12,16 @@ const SLIDES = [
   {
     id: "abb",
     image: "/images/payment-options/abb.png",
-    darkImage: "/images/payment-options/abb-dark.webp",
     dark: false,
   },
   {
     id: "coin",
     image: "/images/payment-options/coin.png",
-    darkImage: "/images/payment-options/coin-dark.webp",
     dark: true,
   },
   {
     id: "bob",
     image: "/images/payment-options/bob.png",
-    darkImage: "/images/payment-options/bob-dark.webp",
     dark: false,
   },
 ] as const;
@@ -60,7 +57,7 @@ const PaymentBanner = () => {
     <section
       className={cn(
         "relative overflow-hidden",
-        current.dark ? "bg-brand-navy" : "bg-surface",
+        current.dark ? "bg-brand-navy" : "bg-white",
       )}
     >
       <div className="relative min-h-[360px] md:min-h-[460px]">
@@ -77,14 +74,7 @@ const PaymentBanner = () => {
               src={item.image}
               alt=""
               fill
-              className="object-cover object-right dark:hidden"
-              sizes="(max-width: 768px) 100vw, 56vw"
-            />
-            <Image
-              src={item.darkImage}
-              alt=""
-              fill
-              className="hidden object-cover object-right dark:block"
+              className="object-cover object-right"
               sizes="(max-width: 768px) 100vw, 56vw"
             />
             <div
@@ -92,7 +82,7 @@ const PaymentBanner = () => {
                 "absolute inset-y-0 left-0 w-full md:w-[52%]",
                 item.dark
                   ? "bg-gradient-to-r from-brand-navy via-brand-navy/85 to-transparent"
-                  : "bg-gradient-to-r from-surface via-surface/90 to-transparent",
+                  : "bg-gradient-to-r from-white via-white/90 to-transparent",
               )}
             />
           </div>
@@ -113,7 +103,7 @@ const PaymentBanner = () => {
             <h2
               className={cn(
                 "mt-4 whitespace-pre-line font-sora text-[32px] font-extrabold leading-[1.3] md:mt-8 md:text-[40px] md:leading-[60px]",
-                current.dark ? "text-white" : "text-heading",
+                current.dark ? "text-white" : "text-brand",
               )}
             >
               {currentCopy.title}
@@ -121,7 +111,7 @@ const PaymentBanner = () => {
             <p
               className={cn(
                 "mt-2 whitespace-pre-line text-base leading-6",
-                current.dark ? "text-desc" : "text-title",
+                current.dark ? "text-desc" : "text-[#557c9f]",
               )}
             >
               {currentCopy.subtitle}
@@ -133,14 +123,7 @@ const PaymentBanner = () => {
               src={current.image}
               alt=""
               fill
-              className="object-contain object-right dark:hidden"
-              sizes="420px"
-            />
-            <Image
-              src={current.darkImage}
-              alt=""
-              fill
-              className="hidden object-contain object-right dark:block"
+              className="object-contain object-right"
               sizes="420px"
             />
           </div>

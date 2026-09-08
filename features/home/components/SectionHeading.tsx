@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+
 type SectionHeadingProps = {
   eyebrow: string;
   title: string;
@@ -5,6 +7,9 @@ type SectionHeadingProps = {
   light?: boolean;
   action?: React.ReactNode;
   titleAs?: "h1" | "h2";
+  eyebrowClassName?: string;
+  titleClassName?: string;
+  descriptionClassName?: string;
 };
 
 const SectionHeading = ({
@@ -14,21 +19,26 @@ const SectionHeading = ({
   light = false,
   action,
   titleAs: TitleTag = "h2",
+  eyebrowClassName,
+  titleClassName,
+  descriptionClassName,
 }: SectionHeadingProps) => {
   return (
     <div className="flex w-full flex-col gap-4">
       <p
-        className={`text-lg font-bold leading-7 ${
-          light ? "text-cyan" : "text-turquoise"
-        }`}
+        className={cn(
+          "text-lg font-bold leading-7",
+          eyebrowClassName ?? (light ? "text-cyan" : "text-turquoise"),
+        )}
       >
         {eyebrow}
       </p>
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <TitleTag
-          className={`max-w-3xl whitespace-pre-line font-sora text-[32px] font-extrabold leading-[1.3] md:text-[40px] md:leading-[60px] ${
-            light ? "text-white" : "text-heading"
-          }`}
+          className={cn(
+            "max-w-3xl whitespace-pre-line font-sora text-[32px] font-extrabold leading-[1.3] md:text-[40px] md:leading-[60px]",
+            titleClassName ?? (light ? "text-white" : "text-heading"),
+          )}
         >
           {title}
         </TitleTag>
@@ -36,9 +46,10 @@ const SectionHeading = ({
       </div>
       {description ? (
         <p
-          className={`max-w-[832px] whitespace-pre-line text-base leading-6 ${
-            light ? "text-desc" : "text-title"
-          }`}
+          className={cn(
+            "max-w-[832px] whitespace-pre-line text-base leading-6",
+            descriptionClassName ?? (light ? "text-desc" : "text-title"),
+          )}
         >
           {description}
         </p>

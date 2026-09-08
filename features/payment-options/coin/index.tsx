@@ -11,12 +11,12 @@ const CoinDetailPage = async () => {
   return (
     <div className="bg-page text-ink">
       <PaymentDetailHero
-        imageSrc="/images/payment-options/coin-hero.webp"
-        imageSrcDark="/images/payment-options/coin-dark.webp"
+        imageSrc="/images/payment-options/coin.png"
         title={t.heroTitle}
         backLabel={t.back}
         backHref={backHref}
         arrowSrc="/icons/coin-details/arrow-left.svg"
+        imageAlign="right"
       />
       <section className="pb-20 pt-10 md:pb-[80px] md:pt-10">
         <Container>

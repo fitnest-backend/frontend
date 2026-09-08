@@ -12,7 +12,6 @@ export type PaymentStat = {
 
 type PaymentHeroPanelProps = {
   imageSrc: string;
-  imageSrcDark?: string;
   imageAlt: string;
   eyebrow: string;
   title: string;
@@ -32,7 +31,6 @@ const STAT_ICONS: Record<Exclude<PaymentStat["icon"], "percent">, string> = {
 
 const PaymentHeroPanel = ({
   imageSrc,
-  imageSrcDark,
   imageAlt,
   eyebrow,
   title,
@@ -59,21 +57,8 @@ const PaymentHeroPanel = ({
         fill
         priority={priority}
         sizes="(max-width: 768px) 100vw, 56vw"
-        className={cn(
-          "object-cover object-center md:object-right",
-          imageSrcDark && "dark:hidden",
-        )}
+        className="object-cover object-center md:object-right"
       />
-      {imageSrcDark ? (
-        <Image
-          src={imageSrcDark}
-          alt={imageAlt}
-          fill
-          priority={priority}
-          sizes="(max-width: 768px) 100vw, 56vw"
-          className="hidden object-cover object-center dark:block md:object-right"
-        />
-      ) : null}
       {isDark ? (
         <>
           <div
@@ -88,7 +73,7 @@ const PaymentHeroPanel = ({
       ) : (
         <div
           aria-hidden
-          className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-page via-page/80 to-transparent md:w-[48%] md:from-page/55 md:via-page/20"
+          className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#f4f8fa] via-[#f4f8fa]/80 to-transparent md:w-[48%] md:from-[#f4f8fa]/55 md:via-[#f4f8fa]/20"
         />
       )}
 
@@ -101,6 +86,8 @@ const PaymentHeroPanel = ({
               description={description}
               light={isDark}
               titleAs={titleAs}
+              titleClassName={isDark ? undefined : "text-brand"}
+              descriptionClassName={isDark ? undefined : "text-[#557c9f]"}
             />
             {stats && stats.length > 0 ? (
               <div className="flex flex-wrap items-center gap-x-[41px] gap-y-6">
@@ -124,10 +111,10 @@ const PaymentHeroPanel = ({
                       )}
                     </div>
                     <div className="flex flex-col items-start gap-1">
-                      <p className="text-lg font-bold leading-7 text-ink">
+                      <p className="text-lg font-bold leading-7 text-brand-navy">
                         {stat.value}
                       </p>
-                      <p className="text-sm leading-5 text-title">{stat.label}</p>
+                      <p className="text-sm leading-5 text-[#557c9f]">{stat.label}</p>
                     </div>
                   </div>
                 ))}

@@ -4,23 +4,25 @@ import Container from "@/components/common/Container";
 
 type PaymentDetailHeroProps = {
   imageSrc: string;
-  imageSrcDark?: string;
   title: string;
   backLabel: string;
   backHref: string;
   arrowSrc?: string;
+  imageAlign?: "left" | "right";
 };
 
 const PaymentDetailHero = ({
   imageSrc,
-  imageSrcDark,
   title,
   backLabel,
   backHref,
   arrowSrc = "/icons/abb-detail/arrow-left.svg",
+  imageAlign = "left",
 }: PaymentDetailHeroProps) => {
+  const align = imageAlign === "right" ? "object-right" : "object-left";
+
   return (
-    <section className="relative overflow-hidden bg-surface">
+    <section className="relative overflow-hidden bg-[#f4f8fa]">
       <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[min(56vw,808px)] md:block">
         <Image
           src={imageSrc}
@@ -28,18 +30,8 @@ const PaymentDetailHero = ({
           fill
           priority
           sizes="(max-width: 768px) 0px, 56vw"
-          className={`object-cover object-left ${imageSrcDark ? "dark:hidden" : ""}`}
+          className={`object-cover ${align}`}
         />
-        {imageSrcDark ? (
-          <Image
-            src={imageSrcDark}
-            alt=""
-            fill
-            priority
-            sizes="(max-width: 768px) 0px, 56vw"
-            className="hidden object-cover object-left dark:block"
-          />
-        ) : null}
       </div>
       <Container className="relative z-10 flex min-h-[280px] flex-col justify-between gap-10 py-10 md:min-h-[460px] md:py-10">
         <Link
@@ -49,7 +41,7 @@ const PaymentDetailHero = ({
           <img src={arrowSrc} alt="" width={24} height={24} />
           {backLabel}
         </Link>
-        <h1 className="max-w-[608px] whitespace-pre-line font-sora text-[32px] font-extrabold leading-[1.3] text-heading md:text-[40px] md:leading-[60px]">
+        <h1 className="max-w-[608px] whitespace-pre-line font-sora text-[32px] font-extrabold leading-[1.3] text-[#14234b] md:text-[40px] md:leading-[60px]">
           {title}
         </h1>
       </Container>
@@ -59,17 +51,8 @@ const PaymentDetailHero = ({
           alt=""
           fill
           sizes="420px"
-          className={`object-contain ${imageSrcDark ? "dark:hidden" : ""}`}
+          className="object-contain"
         />
-        {imageSrcDark ? (
-          <Image
-            src={imageSrcDark}
-            alt=""
-            fill
-            sizes="420px"
-            className="hidden object-contain dark:block"
-          />
-        ) : null}
       </div>
     </section>
   );
