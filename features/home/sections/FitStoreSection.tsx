@@ -44,7 +44,7 @@ const FitStoreSection = async () => {
 
   return (
     <section className="bg-page py-16 md:py-20">
-      <Container className="flex flex-col items-start gap-10 lg:flex-row lg:items-center">
+      <Container className="flex flex-col items-start gap-10 xl:flex-row xl:items-center">
         <div className="flex w-full max-w-[411px] flex-col gap-10">
           <div className="flex flex-col gap-4">
             <p className="text-lg font-bold leading-7 text-turquoise">
@@ -69,7 +69,7 @@ const FitStoreSection = async () => {
             />
           </Link>
         </div>
-        <div className="grid w-full flex-1 grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="grid w-full min-w-0 flex-1 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
             <Link
               key={item.key}

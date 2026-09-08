@@ -42,7 +42,7 @@ const AppSection = async () => {
           </ul>
           <StoreBadges dark className="mt-2" />
         </div>
-        <div className="relative flex h-[538px] w-full max-w-[608px] shrink items-center justify-center lg:max-w-[46%]">
+        <div className="relative flex h-[320px] w-full max-w-[608px] shrink items-center justify-center sm:h-[420px] lg:h-[538px] lg:max-w-[46%]">
           <img
             src="/images/home/iphones.png"
             alt="FitNest mobile app"

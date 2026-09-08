@@ -29,8 +29,8 @@ const BmiPreviewSection = async () => {
         />
         <div className="absolute inset-0 hidden bg-gradient-to-r from-surface from-0% via-surface/20 via-45% to-transparent md:block" />
 
-        <Container className="relative z-10 grid min-h-[520px] grid-cols-1 items-center gap-10 py-16 md:min-h-[630px] md:py-20 lg:grid-cols-[411px_minmax(194px,1fr)_auto]">
-          <div className="flex max-w-[411px] flex-col gap-10">
+        <Container className="relative z-10 grid min-h-0 grid-cols-1 items-center gap-10 py-16 md:min-h-[630px] md:py-20 lg:grid-cols-[minmax(0,411px)_minmax(140px,1fr)_auto]">
+          <div className="flex w-full max-w-[411px] flex-col gap-10">
             <div className="flex flex-col gap-4">
               <p className="text-lg font-bold leading-7 text-turquoise">
                 {t.bmiEyebrow}

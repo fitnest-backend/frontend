@@ -30,7 +30,7 @@ const PaymentStatsBar = async ({
   return (
     <section className="border-y border-border-muted bg-surface py-10">
       <Container>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 xl:gap-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3">
           {stats.map((stat) => (
             <div key={`${stat.value}-${stat.label}`} className="flex items-center gap-3">
               <div className="flex size-[46px] shrink-0 items-center justify-center rounded-[13px] bg-cyan/15">

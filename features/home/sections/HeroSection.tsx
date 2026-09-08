@@ -23,7 +23,7 @@ const HeroSection = async () => {
       <div className="relative z-10 mx-auto grid w-full max-w-[1600px] px-5 py-10 md:px-10 md:py-16 lg:grid-cols-[minmax(20rem,519px)_minmax(0,1fr)] lg:items-center lg:gap-[80px] xl:gap-[206px] xl:px-20">
         <div className="flex w-full max-w-[519px] flex-col gap-8">
           <div className="flex flex-col gap-8">
-            <h1 className="relative font-manrope text-[32px] font-extrabold leading-[1.06] text-heading md:text-[58px] md:leading-[61.48px]">
+            <h1 className="relative font-manrope text-[28px] font-extrabold leading-[1.15] text-heading sm:text-[32px] md:text-[40px] md:leading-[1.2] lg:text-[58px] lg:leading-[61.48px]">
               <span className="block">
                 {t.heroLine1Before}{" "}
                 <span className="text-turquoise">{t.heroLine1Accent}</span>

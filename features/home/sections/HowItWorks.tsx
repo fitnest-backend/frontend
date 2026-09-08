@@ -22,14 +22,14 @@ const HowItWorks = async () => {
           title={t.howHeading}
           titleClassName="font-manrope text-heading"
         />
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {t.howItems.map((item, index) => {
             const isLast = index === t.howItems.length - 1;
 
             return (
               <article
                 key={item.title}
-                className={`flex min-h-[216px] flex-col gap-1 rounded-[20px] px-[26px] py-7 ${
+                className={`flex min-h-0 flex-col gap-1 rounded-[20px] px-5 py-6 sm:min-h-[216px] sm:px-[26px] sm:py-7 ${
                   isLast
                     ? "bg-energy text-white"
                     : "border border-border-muted bg-surface transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"

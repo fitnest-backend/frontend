@@ -20,10 +20,10 @@ const PaymentOptionsPage = async () => {
   return (
     <div className="flex flex-col bg-page text-ink">
       <PaymentHeroPanel
-        imageSrc="/images/payment-options/abb.png"
+        imageSrc="/images/payment-options/abb-panel.svg"
         imageAlt={t.abbTitle}
-        imageWidth={1672}
-        imageHeight={941}
+        imageWidth={1440}
+        imageHeight={708}
         eyebrow={t.eyebrow}
         title={t.abbTitle}
         description={t.abbDescription}
@@ -35,10 +35,10 @@ const PaymentOptionsPage = async () => {
         priority
       />
       <PaymentHeroPanel
-        imageSrc="/images/payment-options/coin.png"
+        imageSrc="/images/payment-options/coin-panel.svg"
         imageAlt={t.coinTitle}
-        imageWidth={1978}
-        imageHeight={795}
+        imageWidth={1440}
+        imageHeight={708}
         eyebrow={t.coinEyebrow}
         title={t.coinTitle}
         description={t.coinDescription}
@@ -47,10 +47,10 @@ const PaymentOptionsPage = async () => {
         ctaLabel={t.learnMore}
       />
       <PaymentHeroPanel
-        imageSrc="/images/payment-options/bob.png"
+        imageSrc="/images/payment-options/bob-panel.svg"
         imageAlt={t.bobTitle}
-        imageWidth={1672}
-        imageHeight={941}
+        imageWidth={1440}
+        imageHeight={708}
         eyebrow={t.eyebrow}
         title={t.bobTitle}
         description={t.bobDescription}

@@ -28,7 +28,7 @@ const StatsBar = async () => {
 
   return (
     <section className="border-y border-border-muted bg-surface">
-      <Container className="flex flex-col gap-8 py-10 md:flex-row md:items-center md:justify-between md:py-10">
+      <Container className="grid grid-cols-1 gap-8 py-10 sm:grid-cols-2 lg:grid-cols-4 lg:items-center lg:justify-between">
         {items.map((stat, index) => {
           const isLast = index === items.length - 1;
           const [title, range] = (stat.label ?? "").split("\n");

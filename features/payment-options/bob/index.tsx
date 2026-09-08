@@ -15,13 +15,11 @@ const BobDetailPage = async () => {
   return (
     <div className="bg-page text-ink">
       <PaymentDetailHero
-        imageSrc="/images/payment-options/bob.png"
+        ellipseSrc="/images/payment-options/bob-hero-ellipse.svg"
         title={t.heroTitle}
         backLabel={t.back}
         backHref={backHref}
         arrowSrc={`${ICON_BASE}/arrow-left.svg`}
-        imageWidth={1672}
-        imageHeight={941}
       />
       <PaymentStatsBar
         cardsValue={t.cardsValue}

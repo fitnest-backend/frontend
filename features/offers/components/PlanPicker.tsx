@@ -91,12 +91,12 @@ const PlanPicker = ({
 
   return (
     <div className="flex flex-col items-center">
-      <div className="flex items-end justify-center gap-7 pt-8">
+      <div className="grid w-full max-w-[640px] grid-cols-2 gap-2 pt-8 sm:grid-cols-4 sm:gap-4">
         {PLAN_DURATIONS.map((month) => {
           const active = duration === month;
           const isYear = month === 12;
           return (
-            <div key={month} className="relative shrink-0">
+            <div key={month} className="relative min-w-0">
               {isYear ? (
                 <span className="absolute top-0 right-0 z-10 translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-energy px-2.5 py-[3px] text-[10px] font-semibold leading-[14px] text-white">
                   {t.home.bestValue}
@@ -106,7 +106,7 @@ const PlanPicker = ({
                 type="button"
                 onClick={() => setDuration(month)}
                 className={cn(
-                  "h-11 w-[140px] rounded-t-[14px] border-x-[1.5px] border-t-[1.5px] px-7 text-base font-bold leading-6",
+                  "h-11 w-full rounded-t-[14px] border-x-[1.5px] border-t-[1.5px] px-2 text-sm font-bold leading-6 sm:px-4 sm:text-base",
                   active
                     ? "border-brand-navy bg-brand-navy-800 text-white"
                     : "border-border-muted bg-surface text-ink",
@@ -119,11 +119,11 @@ const PlanPicker = ({
         })}
       </div>
 
-      <div className="relative flex w-full flex-col gap-4 rounded-2xl border border-border-muted p-3 pt-10 md:flex-row md:flex-wrap xl:flex-nowrap xl:justify-between">
+      <div className="relative grid w-full grid-cols-1 gap-4 rounded-2xl border border-border-muted p-3 pt-10 sm:grid-cols-2 xl:grid-cols-4">
         {plans.map((plan) => (
           <article
             key={plan.tier}
-            className="group relative flex w-full flex-col gap-7 rounded-2xl border border-border-muted bg-page p-7 transition-all hover:border-cyan hover:bg-surface md:w-[calc(50%-8px)] xl:w-[302px] xl:shrink-0"
+            className="group relative flex min-w-0 flex-col gap-7 rounded-2xl border border-border-muted bg-page p-5 transition-all hover:border-cyan hover:bg-surface sm:p-7"
           >
             {plan.mostPopular ? (
               <span className="absolute -top-3 right-4 whitespace-nowrap rounded-full bg-turquoise px-[18px] py-[5px] text-xs font-semibold leading-[18px] text-white">
@@ -146,7 +146,7 @@ const PlanPicker = ({
               {plan.features.map((feature) => (
                 <li
                   key={feature}
-                  className="flex items-center gap-2.5 text-sm font-medium leading-5 text-title"
+                  className="flex min-w-0 items-start gap-2.5 text-sm font-medium leading-5 text-title"
                 >
                   <img
                     src="/icons/subscription/check.svg"

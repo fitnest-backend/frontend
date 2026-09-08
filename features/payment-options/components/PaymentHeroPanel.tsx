@@ -49,84 +49,105 @@ const PaymentHeroPanel = ({
   const isDark = variant === "dark";
 
   return (
-    <section className="relative">
-      <div
-        className="relative w-full overflow-hidden"
-        style={{ aspectRatio: `${imageWidth} / ${imageHeight}` }}
-      >
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        fill
-        priority={priority}
-        sizes="100vw"
-        className="object-cover object-center"
-      />
+    <section className="relative w-full">
+      <div className="relative w-full min-h-[560px] overflow-hidden md:min-h-[600px]">
+        {imageSrc.endsWith(".svg") ? (
+          <img
+            src={imageSrc}
+            alt={imageAlt}
+            width={imageWidth}
+            height={imageHeight}
+            className="block h-auto w-full min-h-[560px] object-cover object-right md:min-h-[600px]"
+          />
+        ) : (
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            width={imageWidth}
+            height={imageHeight}
+            priority={priority}
+            sizes="100vw"
+            className="block h-auto w-full min-h-[560px] object-cover object-right md:min-h-[600px]"
+          />
+        )}
 
-      <Container className="relative z-10 flex h-full flex-col justify-center py-16 md:py-20">
-        <div className="flex max-w-[507px] flex-col gap-[45px]">
-          <div className="flex flex-col gap-[71px]">
-            <SectionHeading
-              eyebrow={eyebrow}
-              title={title}
-              description={description}
-              light={isDark}
-              titleAs={titleAs}
-              titleClassName={isDark ? undefined : "text-brand"}
-              descriptionClassName={isDark ? undefined : "text-[#557c9f]"}
-            />
-            {stats && stats.length > 0 ? (
-              <div className="flex flex-wrap items-center gap-x-[41px] gap-y-6">
-                {stats.map((stat) => (
-                  <div
-                    key={`${stat.value}-${stat.label}`}
-                    className="flex items-center gap-1.5"
-                  >
-                    <div className="flex size-[46px] items-center justify-center rounded-[13px] bg-cyan/15">
-                      {stat.icon === "percent" ? (
-                        <span className="text-lg font-bold leading-7 text-turquoise">
-                          %
-                        </span>
-                      ) : (
-                        <img
-                          src={STAT_ICONS[stat.icon]}
-                          alt=""
-                          width={24}
-                          height={24}
-                        />
-                      )}
-                    </div>
-                    <div className="flex flex-col items-start gap-1">
-                      <p className="text-lg font-bold leading-7 text-brand-navy">
-                        {stat.value}
-                      </p>
-                      <p className="text-sm leading-5 text-[#557c9f]">{stat.label}</p>
-                    </div>
-                  </div>
-                ))}
+        <Container className="absolute inset-0 z-10 flex flex-col justify-center py-10 md:py-16 xl:py-20">
+          <div className="flex flex-col gap-8 md:gap-[45px]">
+            <div className="flex flex-col gap-8 md:gap-[71px]">
+              <div className="max-w-[507px]">
+                <SectionHeading
+                  eyebrow={eyebrow}
+                  title={title}
+                  description={description}
+                  light={isDark}
+                  titleAs={titleAs}
+                  titleClassName={isDark ? undefined : "text-brand"}
+                  descriptionClassName={isDark ? undefined : "text-[#557c9f]"}
+                />
               </div>
-            ) : null}
-          </div>
+              {stats && stats.length > 0 ? (
+                <div className="flex w-full max-w-[720px] flex-nowrap items-start gap-2 sm:gap-4 md:gap-x-[41px]">
+                  {stats.map((stat) => (
+                    <div
+                      key={`${stat.value}-${stat.label}`}
+                      className="flex min-w-0 flex-1 items-center gap-1.5 md:flex-none"
+                    >
+                      <div className="flex size-9 shrink-0 items-center justify-center rounded-[10px] bg-cyan/15 sm:size-[46px] sm:rounded-[13px]">
+                        {stat.icon === "percent" ? (
+                          <span className="text-sm font-bold leading-5 text-turquoise sm:text-lg sm:leading-7">
+                            %
+                          </span>
+                        ) : (
+                          <img
+                            src={STAT_ICONS[stat.icon]}
+                            alt=""
+                            width={24}
+                            height={24}
+                            className="size-4 sm:size-6"
+                          />
+                        )}
+                      </div>
+                      <div className="flex min-w-0 flex-col items-start gap-0.5 sm:gap-1">
+                        <p
+                          className={cn(
+                            "text-sm font-bold leading-5 sm:text-lg sm:leading-7",
+                            isDark ? "text-white" : "text-brand-navy",
+                          )}
+                        >
+                          {stat.value}
+                        </p>
+                        <p
+                          className={cn(
+                            "text-[11px] leading-4 sm:text-sm sm:leading-5",
+                            isDark ? "text-desc" : "text-[#557c9f]",
+                          )}
+                        >
+                          {stat.label}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : null}
+            </div>
 
-          <Link
-            href={ctaHref}
-            className={cn(
-              "inline-flex w-fit items-center gap-2 overflow-hidden rounded-lg px-4 py-3 text-base font-semibold leading-6",
-              isDark
-                ? "bg-cyan text-white"
-                : "bg-brand text-white",
-            )}
-          >
-            {ctaLabel}
-            <img
-              src="/icons/payment-options/arrow-right.svg"
-              alt=""
-              width={24}
-              height={24}
-            />
-          </Link>
-        </div>
-      </Container>
+            <Link
+              href={ctaHref}
+              className={cn(
+                "inline-flex w-fit items-center gap-2 overflow-hidden rounded-lg px-4 py-3 text-base font-semibold leading-6",
+                isDark ? "bg-cyan text-white" : "bg-brand text-white",
+              )}
+            >
+              {ctaLabel}
+              <img
+                src="/icons/payment-options/arrow-right.svg"
+                alt=""
+                width={24}
+                height={24}
+              />
+            </Link>
+          </div>
+        </Container>
       </div>
     </section>
   );

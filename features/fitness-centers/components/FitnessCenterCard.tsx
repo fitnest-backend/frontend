@@ -29,9 +29,9 @@ const FitnessCenterCard = ({
   return (
     <Link
       href={href}
-      className="group flex flex-col gap-6 rounded-[32px] border border-border-muted bg-surface p-5 transition-all hover:border-cyan hover:bg-page hover:shadow-[0px_2px_2px_rgba(0,0,0,0.25)]"
+      className="group flex min-w-0 flex-col gap-6 rounded-[32px] border border-border-muted bg-surface p-4 transition-all hover:border-cyan hover:bg-page hover:shadow-[0px_2px_2px_rgba(0,0,0,0.25)] sm:p-5"
     >
-      <div className="relative h-[250px] overflow-hidden rounded-2xl">
+      <div className="relative h-[200px] overflow-hidden rounded-2xl sm:h-[250px]">
         <Image
           src={gymImageSrc(image)}
           alt={name}
@@ -41,8 +41,8 @@ const FitnessCenterCard = ({
         />
       </div>
       <div>
-        <div className="flex items-center justify-between gap-3">
-          <h3 className="text-xl font-semibold leading-[30px] text-turquoise group-hover:text-ink">
+        <div className="flex min-w-0 items-center justify-between gap-3">
+          <h3 className="min-w-0 truncate text-lg font-semibold leading-7 text-turquoise group-hover:text-ink sm:text-xl sm:leading-[30px]">
             {name}
           </h3>
           <MembershipBadge tier={membership} />

@@ -31,11 +31,11 @@ const PaymentHowToSection = ({
             {howDescription}
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 md:gap-6">
           {steps.map((step, index) => (
             <article
               key={step.title}
-              className="flex min-h-[216px] flex-col gap-1 rounded-[20px] border border-border-muted bg-surface px-[26px] py-7 transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
+              className="flex min-h-0 flex-col gap-1 rounded-[20px] border border-border-muted bg-surface px-5 py-6 transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)] sm:min-h-[216px] sm:px-[26px] sm:py-7"
             >
               <div className="flex items-center justify-between">
                 <div className="flex size-12 items-center justify-center rounded-xl bg-cyan/15">
