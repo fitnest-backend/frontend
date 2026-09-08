@@ -41,7 +41,7 @@ const PaymentDetailHero = ({
           <img src={arrowSrc} alt="" width={24} height={24} />
           {backLabel}
         </Link>
-        <h1 className="max-w-[608px] whitespace-pre-line font-sora text-[32px] font-extrabold leading-[1.3] text-[#14234b] md:text-[40px] md:leading-[60px]">
+        <h1 className="max-w-[608px] whitespace-pre-line font-manrope text-[32px] font-extrabold leading-[1.3] text-[#14234b] md:text-[40px] md:leading-[60px]">
           {title}
         </h1>
       </Container>

@@ -20,9 +20,9 @@ type LegalDocumentViewProps = {
 
 const contentClassName = [
   "legal-html max-w-none text-lg font-medium leading-7 text-ink",
-  "[&_h1]:mt-10 [&_h1]:font-sora [&_h1]:text-[22px] [&_h1]:font-extrabold [&_h1]:leading-8 [&_h1]:md:text-[26px] [&_h1]:md:leading-10",
-  "[&_h2]:mt-10 [&_h2]:font-sora [&_h2]:text-[22px] [&_h2]:font-extrabold [&_h2]:leading-8 [&_h2]:md:text-[26px] [&_h2]:md:leading-10",
-  "[&_h3]:mt-8 [&_h3]:font-sora [&_h3]:text-xl [&_h3]:font-extrabold [&_h3]:leading-8",
+  "[&_h1]:mt-10 [&_h1]:font-manrope [&_h1]:text-[22px] [&_h1]:font-extrabold [&_h1]:leading-8 [&_h1]:md:text-[26px] [&_h1]:md:leading-10",
+  "[&_h2]:mt-10 [&_h2]:font-manrope [&_h2]:text-[22px] [&_h2]:font-extrabold [&_h2]:leading-8 [&_h2]:md:text-[26px] [&_h2]:md:leading-10",
+  "[&_h3]:mt-8 [&_h3]:font-manrope [&_h3]:text-xl [&_h3]:font-extrabold [&_h3]:leading-8",
   "[&_p]:mt-4 [&_p]:first:mt-0",
   "[&_ul]:mt-4 [&_ul]:list-disc [&_ul]:pl-6",
   "[&_ol]:mt-4 [&_ol]:list-decimal [&_ol]:pl-6",
@@ -56,7 +56,7 @@ const LegalDocumentView = ({
         <Container className="relative py-16 md:py-20">
           <div className="flex flex-col gap-4">
             <p className="text-lg font-bold leading-7 text-turquoise">{eyebrow}</p>
-            <h1 className="font-sora text-[32px] font-extrabold leading-[1.3] text-heading md:text-[40px] md:leading-[60px]">
+            <h1 className="font-manrope text-[32px] font-extrabold leading-[1.3] text-heading md:text-[40px] md:leading-[60px]">
               {title}
             </h1>
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">

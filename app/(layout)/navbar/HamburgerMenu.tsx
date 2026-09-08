@@ -86,7 +86,7 @@ const HamburgerMenu = () => {
               <Link
                 href="#download-app"
                 onClick={() => setOpen(false)}
-                className="mt-6 inline-flex h-11 items-center justify-center rounded-lg bg-cyan px-4 text-base font-semibold text-white"
+                className="mt-6 inline-flex h-11 items-center justify-center rounded-lg bg-cyan px-4 text-base font-semibold text-white transition-colors hover:bg-[#FF6A42]"
               >
                 {t.nav.downloadApp}
               </Link>

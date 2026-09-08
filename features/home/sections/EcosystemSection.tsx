@@ -4,6 +4,7 @@ import { addLocaleToPathname } from "@/lib/i18n/config";
 import Container from "@/components/common/Container";
 import SectionHeading from "../components/SectionHeading";
 import IconBox from "../components/IconBox";
+import HomeArrow from "../components/HomeArrow";
 
 const EcosystemSection = async () => {
   const { messages, locale } = await getMessages();
@@ -23,7 +24,7 @@ const EcosystemSection = async () => {
                 height={22}
               />
             </IconBox>
-            <h3 className="pt-[22px] font-sora text-2xl font-extrabold leading-9 text-white">
+            <h3 className="pt-[22px] font-manrope text-2xl font-extrabold leading-9 text-white">
               {t.corporateTitle}
             </h3>
             <p className="pt-2.5 text-sm leading-5 text-desc">
@@ -34,14 +35,14 @@ const EcosystemSection = async () => {
               className="mt-auto inline-flex items-center gap-2 pt-6 text-base font-bold text-cyan"
             >
               {t.corporateCta}
-              <img src="/icons/home/arrow-right.svg" alt="" width={20} height={20} />
+              <HomeArrow className="size-5" />
             </Link>
           </article>
           <article className="flex min-h-[300px] flex-col rounded-3xl border border-border-muted bg-surface p-8 transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)]">
             <IconBox>
               <img src="/icons/home/house.svg" alt="" width={22} height={22} />
             </IconBox>
-            <h3 className="pt-[22px] font-sora text-2xl font-extrabold leading-9 text-ink">
+            <h3 className="pt-[22px] font-manrope text-2xl font-extrabold leading-9 text-ink">
               {t.partnerTitle}
             </h3>
             <p className="pt-2.5 text-sm leading-5 text-title">{t.partnerDesc}</p>
@@ -50,13 +51,7 @@ const EcosystemSection = async () => {
               className="mt-auto inline-flex items-center gap-2 pt-6 text-base font-bold text-turquoise"
             >
               {t.partnerCta}
-              <img
-                src="/icons/home/arrow-right.svg"
-                alt=""
-                width={20}
-                height={20}
-                className="[filter:brightness(0)_saturate(100%)_invert(48%)_sepia(73%)_saturate(497%)_hue-rotate(131deg)_brightness(95%)_contrast(101%)]"
-              />
+              <HomeArrow className="size-5" />
             </Link>
           </article>
         </div>

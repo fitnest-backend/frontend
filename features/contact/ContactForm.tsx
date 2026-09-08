@@ -60,7 +60,7 @@ const ContactForm = () => {
       className="flex w-full max-w-[684px] flex-col gap-7 rounded-2xl border border-border-muted bg-page p-7"
     >
       <div className="flex flex-col gap-1">
-        <h2 className="font-sora text-xl font-extrabold leading-[30px] text-ink">
+        <h2 className="font-manrope text-xl font-extrabold leading-[30px] text-ink">
           {t.contact.formTitle}
         </h2>
         <p className="text-sm leading-5 text-title">{t.contact.formSubtitle}</p>

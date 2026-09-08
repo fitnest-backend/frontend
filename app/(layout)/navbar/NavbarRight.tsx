@@ -37,7 +37,7 @@ const NavbarRight = () => {
   return (
     <div className="flex items-center gap-3 md:gap-5">
       <div className="flex items-center">
-        <div className="flex items-center border-r border-border-muted pr-2">
+        <div className="flex items-center pr-2">
           <ThemeToggle />
         </div>
         <Select
@@ -46,7 +46,7 @@ const NavbarRight = () => {
         >
           <SelectTrigger
             aria-label={`Select language. Current language: ${currentLocale.label}`}
-            className="h-12 w-auto border-0 bg-transparent px-1 shadow-none md:border-y-0 md:border-r md:border-l-0 md:border-border-muted md:px-2 [&>svg]:hidden"
+            className="h-12 w-auto rounded-none border-y-0 border-x border-border-muted bg-transparent px-2 shadow-none [&>svg]:hidden"
           >
             <div className="flex items-center gap-1">
               <span className="relative size-7 overflow-hidden rounded-full">

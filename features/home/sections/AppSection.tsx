@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { getMessages } from "@/lib/i18n/server";
 import Container from "@/components/common/Container";
 import SectionHeading from "../components/SectionHeading";
@@ -43,13 +42,11 @@ const AppSection = async () => {
           </ul>
           <StoreBadges dark className="mt-2" />
         </div>
-        <div className="relative w-full max-w-[520px] shrink lg:max-w-[46%]">
-          <Image
+        <div className="relative flex h-[538px] w-full max-w-[608px] shrink items-center justify-center lg:max-w-[46%]">
+          <img
             src="/images/home/iphones.png"
             alt="FitNest mobile app"
-            width={608}
-            height={538}
-            className="h-auto max-h-[538px] w-full object-contain object-right"
+            className="h-full w-full object-contain"
           />
         </div>
       </Container>

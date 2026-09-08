@@ -48,7 +48,7 @@ const ContactPage = async ({ locale }: ContactPageProps) => {
             <div className="flex max-w-[488px] flex-col gap-10">
               <div className="flex flex-col gap-4">
                 <p className="text-lg font-bold leading-7 text-turquoise">{t.eyebrow}</p>
-                <h1 className="font-sora text-[32px] font-extrabold leading-[1.3] text-heading md:text-[40px] md:leading-[60px]">
+                <h1 className="font-manrope text-[32px] font-extrabold leading-[1.3] text-heading md:text-[40px] md:leading-[60px]">
                   {t.title}
                 </h1>
                 <p className="text-base leading-6 text-title">{t.description}</p>

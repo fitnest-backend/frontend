@@ -417,7 +417,7 @@ const az: Messages = {
     ],
     howTitle: "Dörd sadə addım — məşqə hazırsan.",
     howEyebrow: "NECƏ İŞLƏYİR?",
-    howHeading: "Dörd sadə addım —\nmeşqə hazırsan.",
+    howHeading: "Dörd sadə addım —\nməşqə hazırsan.",
     howItems: [
       {
         title: "Tətbiqi endir",

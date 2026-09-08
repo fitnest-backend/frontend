@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { getMessages } from "@/lib/i18n/server";
 import { addLocaleToPathname } from "@/lib/i18n/config";
@@ -9,15 +8,15 @@ import {
 } from "@/lib/api/landing";
 
 const FALLBACK_IMAGES = [
-  "/images/home/store-protein.png",
-  "/images/home/store-clothes.png",
-  "/images/home/store-gear.png",
+  "/images/home/store-protein.svg",
+  "/images/home/store-clothes.svg",
+  "/images/home/store-gear.svg",
 ];
 
 const DARK_FALLBACK_IMAGES = [
-  "/images/home/store-protein-dark.png",
-  "/images/home/store-clothes-dark.png",
-  "/images/home/store-gear-dark.png",
+  "/images/home/store-protein-dark.svg",
+  "/images/home/store-clothes-dark.svg",
+  "/images/home/store-gear-dark.svg",
 ];
 
 const FitStoreSection = async () => {
@@ -51,14 +50,14 @@ const FitStoreSection = async () => {
             <p className="text-lg font-bold leading-7 text-turquoise">
               {t.storeEyebrow}
             </p>
-            <h2 className="whitespace-pre-line font-sora text-[32px] font-extrabold leading-[1.3] text-heading md:text-[40px] md:leading-[60px]">
+            <h2 className="whitespace-pre-line font-manrope text-[32px] font-extrabold leading-[1.3] text-heading md:text-[40px] md:leading-[60px]">
               {t.storeHeading}
             </h2>
             <p className="text-base leading-6 text-title">{t.storeDescription}</p>
           </div>
           <Link
             href={addLocaleToPathname("/fit-market", locale)}
-            className="inline-flex h-12 w-fit items-center gap-2 rounded-lg bg-brand px-4 text-base font-semibold text-white"
+            className="inline-flex h-12 w-fit items-center gap-2 rounded-lg bg-button px-4 text-base font-semibold text-white transition-colors hover:bg-[#FF6A42]"
           >
             {t.storeCta}
             <img
@@ -75,23 +74,23 @@ const FitStoreSection = async () => {
             <Link
               key={item.key}
               href={item.href}
-              className="flex h-full flex-col gap-5 rounded-2xl border border-border-muted bg-surface p-5 transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
+              className="flex h-full flex-col gap-5 rounded-2xl border border-border-muted bg-surface p-5 transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)] dark:bg-[#012438]"
             >
               <div className="relative h-[156px] overflow-hidden rounded-xl">
-                <Image
+                <img
                   src={item.image}
                   alt={item.name}
-                  fill
-                  className={item.darkImage ? "object-cover dark:hidden" : "object-cover"}
-                  sizes="265px"
+                  className={
+                    item.darkImage
+                      ? "absolute inset-0 h-full w-full object-cover dark:hidden"
+                      : "absolute inset-0 h-full w-full object-cover"
+                  }
                 />
                 {item.darkImage ? (
-                  <Image
+                  <img
                     src={item.darkImage}
                     alt={item.name}
-                    fill
-                    className="hidden object-cover dark:block"
-                    sizes="265px"
+                    className="absolute inset-0 hidden h-full w-full object-cover dark:block"
                   />
                 ) : null}
               </div>

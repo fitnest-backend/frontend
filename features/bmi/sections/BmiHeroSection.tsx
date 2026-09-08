@@ -17,7 +17,7 @@ const BmiHeroSection = () => {
           <p className="text-lg font-bold leading-7 text-turquoise">
             {t.home.bmiEyebrow}
           </p>
-          <h1 className="font-sora text-[32px] font-extrabold leading-[1.3] text-heading md:text-[40px] md:leading-[60px]">
+          <h1 className="font-manrope text-[32px] font-extrabold leading-[1.3] text-heading md:text-[40px] md:leading-[60px]">
             {t.bmi.heroTitle}
           </h1>
           <p className="max-w-[800px] text-base leading-6 text-title">

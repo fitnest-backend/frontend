@@ -6,8 +6,8 @@ type StoreBadgesProps = {
 };
 
 const StoreBadges = ({ className = "", dark = false }: StoreBadgesProps) => {
-  const playLight = "/images/home/google-play.png";
-  const appleLight = "/images/home/app-store.png";
+  const playLight = "/images/home/google-play.svg";
+  const appleLight = "/images/home/app-store.svg";
   const playDark = "/icons/home/google-play.svg";
   const appleDark = "/icons/home/app-store.svg";
 

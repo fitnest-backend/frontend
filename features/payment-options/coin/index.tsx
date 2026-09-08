@@ -23,7 +23,7 @@ const CoinDetailPage = async () => {
           <div className="mx-auto flex w-full max-w-[846px] flex-col gap-10">
             {t.sections.map((section) => (
               <article key={section.title} className="flex flex-col gap-4">
-                <h2 className="font-sora text-[26px] font-extrabold leading-10 text-ink">
+                <h2 className="font-manrope text-[26px] font-extrabold leading-10 text-ink">
                   {section.title}
                 </h2>
                 <p className="text-lg font-medium leading-7 text-ink">

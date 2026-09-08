@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import icon from "@/public/Logo.png";
 import { QueryProvider } from "@/lib/providers/query-provider";
 import { ThemeProvider } from "@/lib/providers/theme-provider";
@@ -10,6 +11,13 @@ import { defaultLocale } from "@/lib/i18n/config";
 const inter = Inter({
   subsets: ["latin", "latin-ext", "cyrillic"],
   variable: "--font-inter-family",
+  display: "swap",
+});
+
+const manrope = localFont({
+  src: "./fonts/Manrope-Variable.ttf",
+  variable: "--font-manrope-family",
+  weight: "200 800",
   display: "swap",
 });
 
@@ -63,8 +71,14 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang={defaultLocale} suppressHydrationWarning>
-      <body className={`${inter.variable} ${inter.className} antialiased`}>
+    <html
+      lang={defaultLocale}
+      suppressHydrationWarning
+      className={manrope.variable}
+    >
+      <body
+        className={`${inter.variable} ${manrope.variable} ${inter.className} antialiased`}
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

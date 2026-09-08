@@ -2,13 +2,18 @@
 @import "tw-animate-css";
 @custom-variant dark (&:is(.dark *));
 
+@utility font-manrope {
+  font-family: var(--font-manrope-family), "Manrope", sans-serif;
+}
+
 @theme {
   --color-brand: #14234b;
   --color-brand-navy: #011729;
   --color-brand-navy-800: #031e36;
-  --color-turquoise: #00a4a4;
+  --color-turquoise: var(--fn-turquoise);
   --color-cyan: #00dbdb;
-  --color-energy: #ff6a42;
+  --color-energy: var(--fn-energy);
+  --color-button: var(--fn-button);
   --color-title: var(--fn-title);
   --color-desc: #90a1b9;
   --color-desc-2: var(--fn-desc-2);
@@ -129,9 +134,11 @@
     "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
   --font-display: var(--font-inter-family), "Inter", sans-serif;
-  --font-sora: var(--font-inter-family), "Inter", sans-serif;
+  --font-sora: var(--font-manrope-family), "Manrope", sans-serif;
   --font-inter: var(--font-inter-family), "Inter", sans-serif;
+  --font-manrope: var(--font-manrope-family), "Manrope", sans-serif;
   --font-sans: var(--font-inter-family), "Inter", sans-serif;
+  --animate-breathe: breathe 3.2s ease-in-out infinite;
   /* header sizes  */
   --text-h1: 52px;
   --text-h2: 48px;
@@ -185,10 +192,27 @@
   --font-body-3 : var(--font-sf-pro, var(--text-b3-size, var(--leading-b3))); */
 }
 
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-breathe {
+    animation: none;
+  }
+}
+
 @theme inline {
   --color-background: var(--color-softblue-1000);
   --color-foreground: var(--color-gray-50);
   --font-sans: var(--font-inter-family), "Inter", sans-serif;
+  --font-manrope: var(--font-manrope-family), "Manrope", sans-serif;
   --font-mono: var(--font-geist-mono);
 
   --color-sidebar-ring: var(--sidebar-ring);
@@ -234,6 +258,9 @@
   --fn-title: #557c9f;
   --fn-desc-2: #214a6e;
   --fn-border: #eaeaea;
+  --fn-turquoise: #00a4a4;
+  --fn-energy: #ff6a42;
+  --fn-button: #14234b;
   color-scheme: light;
   --radius: 0.625rem;
   --background: var(--color-softblue-1000);
@@ -270,13 +297,16 @@
 }
 
 .dark {
-  --fn-page: #011729;
-  --fn-surface: #031e36;
-  --fn-ink: #f4f8fa;
-  --fn-heading: #e8eef5;
-  --fn-title: #90a1b9;
-  --fn-desc-2: #90a1b9;
-  --fn-border: #214a6e;
+  --fn-page: #081d2e;
+  --fn-surface: #011729;
+  --fn-ink: #ffffff;
+  --fn-heading: #ffffff;
+  --fn-title: #8fb1c6;
+  --fn-desc-2: #205b7d;
+  --fn-border: #22262f;
+  --fn-turquoise: #00dbdb;
+  --fn-energy: #ff7957;
+  --fn-button: #00dbdb;
   color-scheme: dark;
 }
 

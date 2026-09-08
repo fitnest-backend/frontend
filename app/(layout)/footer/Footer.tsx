@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import logo from "@/public/icons/footer.svg";
 import facebookIcon from "@/public/icons/facebook.svg";
 import instagramIcon from "@/public/icons/instagram.svg";
 import linkedinIcon from "@/public/icons/linkedin.svg";
@@ -96,8 +95,14 @@ const Footer = ({ email, phone }: FooterProps) => {
         <div className="flex flex-col gap-10 lg:flex-row lg:justify-between">
           <div className="flex min-h-[220px] flex-col justify-between gap-8">
             <div className="flex flex-col gap-[18px]">
-              <Link href={homePath}>
-                <Image src={logo} className="h-[38px] w-auto" alt="FitNest" width={110} height={38} />
+              <Link href={homePath} className="inline-flex h-[38px] w-[110px]">
+                <img
+                  src="/icons/home/logo-white.svg"
+                  alt="FitNest"
+                  width={110}
+                  height={38}
+                  className="h-[38px] w-[110px] object-contain"
+                />
               </Link>
               <p className="max-w-[300px] text-sm leading-5 text-desc">
                 {t.footer.tagline}

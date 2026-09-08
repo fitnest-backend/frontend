@@ -31,7 +31,7 @@ const StatsBar = async () => {
       <Container className="flex flex-col gap-8 py-10 md:flex-row md:items-center md:justify-between md:py-10">
         {items.map((stat, index) => (
           <div key={`${stat.label}-${index}`} className="flex items-center gap-4">
-            <p className="font-sora text-[36px] font-extrabold leading-[52px] text-ink">
+            <p className="font-manrope text-[36px] font-extrabold leading-[52px] text-ink">
               {stat.value}
             </p>
             <p className="whitespace-pre-line text-sm font-semibold leading-5 text-title">

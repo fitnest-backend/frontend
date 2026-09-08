@@ -41,7 +41,7 @@ const AboutHeroSection = async ({
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           {items.map((stat) => (
             <div key={stat.label} className="flex items-center gap-4">
-              <p className="font-sora text-[36px] font-extrabold leading-[52px] text-ink">
+              <p className="font-manrope text-[36px] font-extrabold leading-[52px] text-ink">
                 {stat.value}
               </p>
               <p className="text-sm font-semibold leading-5 text-title">

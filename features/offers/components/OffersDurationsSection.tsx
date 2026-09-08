@@ -10,7 +10,7 @@ const OffersDurationsSection = async () => {
         <p className="text-lg font-bold leading-7 text-turquoise">
           {messages.offers.durationsEyebrow}
         </p>
-        <h2 className="font-sora text-[32px] font-extrabold leading-[1.3] text-heading md:text-[36px] md:leading-[52px]">
+        <h2 className="font-manrope text-[32px] font-extrabold leading-[1.3] text-heading md:text-[36px] md:leading-[52px]">
           {messages.offers.durationsHeading}
         </h2>
       </div>

@@ -20,7 +20,7 @@ const IconBox = ({
         size === "md" ? "size-12" : "size-10",
         tone === "cyan" && "bg-cyan/15 text-turquoise",
         tone === "navy" && "bg-cyan/15 text-cyan",
-        tone === "light" && "bg-page text-turquoise",
+        tone === "light" && "bg-[#F4F8FA] text-turquoise",
         className,
       )}
     >

@@ -7,6 +7,7 @@ import { useI18n } from "@/lib/i18n/provider";
 import { addLocaleToPathname } from "@/lib/i18n/config";
 import Container from "@/components/common/Container";
 import { cn } from "@/lib/utils";
+import HomeArrow from "../components/HomeArrow";
 
 const SLIDES = [
   {
@@ -102,7 +103,7 @@ const PaymentBanner = () => {
             </p>
             <h2
               className={cn(
-                "mt-4 whitespace-pre-line font-sora text-[32px] font-extrabold leading-[1.3] md:mt-8 md:text-[40px] md:leading-[60px]",
+                "mt-4 whitespace-pre-line font-manrope text-[32px] font-extrabold leading-[1.3] md:mt-8 md:text-[40px] md:leading-[60px]",
                 current.dark ? "text-white" : "text-brand",
               )}
             >
@@ -137,7 +138,7 @@ const PaymentBanner = () => {
               )}
             >
               {t.home.details}
-              <img src="/icons/home/arrow-right.svg" alt="" width={24} height={24} />
+              <HomeArrow className="size-6" />
             </Link>
             <div className="flex items-center gap-3">
               {SLIDES.map((item, index) => (

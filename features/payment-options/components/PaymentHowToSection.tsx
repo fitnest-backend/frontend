@@ -24,7 +24,7 @@ const PaymentHowToSection = ({
     <section className="py-16 md:py-20">
       <Container className="flex flex-col gap-10">
         <div className="flex max-w-[640px] flex-col gap-4">
-          <h2 className="font-sora text-[30px] font-extrabold leading-[46px] text-heading">
+          <h2 className="font-manrope text-[30px] font-extrabold leading-[46px] text-heading">
             {howTitle}
           </h2>
           <p className="max-w-[489px] text-base leading-6 text-title">
@@ -50,7 +50,7 @@ const PaymentHowToSection = ({
                   {index + 1}
                 </span>
               </div>
-              <h3 className="pt-3 font-sora text-xl font-extrabold leading-[30px] text-ink">
+              <h3 className="pt-3 font-manrope text-xl font-extrabold leading-[30px] text-ink">
                 {step.title}
               </h3>
               <p className="whitespace-pre-line text-sm leading-5 text-title">

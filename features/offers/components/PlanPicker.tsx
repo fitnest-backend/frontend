@@ -80,7 +80,6 @@ const PlanPicker = ({
         price: pricePerMonth,
         features: featuresFromOption(option, defaultFeatures),
         mostPopular: tier === "platinum",
-        bestValue: tier === "gold",
       };
     });
   }, [packages, duration, t.home.planFeatures]);
@@ -92,46 +91,48 @@ const PlanPicker = ({
 
   return (
     <div className="flex flex-col items-center">
-      <div className="flex w-full max-w-[628px] items-center justify-between gap-2 overflow-x-auto">
+      <div className="flex items-end justify-center gap-7 pt-8">
         {PLAN_DURATIONS.map((month) => {
           const active = duration === month;
+          const isYear = month === 12;
           return (
-            <button
-              key={month}
-              type="button"
-              onClick={() => setDuration(month)}
-              className={cn(
-                "h-11 min-w-[88px] shrink-0 rounded-t-[14px] border-x-[1.5px] border-t-[1.5px] px-7 text-base font-bold leading-6",
-                active
-                  ? "border-brand-navy bg-brand-navy-800 text-white"
-                  : "border-border-muted bg-surface text-ink",
-              )}
-            >
-              {month} {t.home.monthShort}
-            </button>
+            <div key={month} className="relative shrink-0">
+              {isYear ? (
+                <span className="absolute left-[calc(50%+16px)] top-0 z-10 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-energy px-[18px] py-[5px] text-xs font-semibold leading-[18px] text-white">
+                  {t.home.bestValue}
+                </span>
+              ) : null}
+              <button
+                type="button"
+                onClick={() => setDuration(month)}
+                className={cn(
+                  "h-11 w-[140px] rounded-t-[14px] border-x-[1.5px] border-t-[1.5px] px-7 text-base font-bold leading-6",
+                  active
+                    ? "border-brand-navy bg-brand-navy-800 text-white"
+                    : "border-border-muted bg-surface text-ink",
+                )}
+              >
+                {month} {t.home.monthShort}
+              </button>
+            </div>
           );
         })}
       </div>
 
-      <div className="relative grid w-full grid-cols-1 gap-4 rounded-2xl border border-border-muted p-3 pt-10 md:grid-cols-2 xl:grid-cols-4">
+      <div className="relative flex w-full flex-col gap-4 rounded-2xl border border-border-muted p-3 pt-10 md:flex-row md:flex-wrap xl:flex-nowrap xl:justify-between">
         {plans.map((plan) => (
           <article
             key={plan.tier}
-            className="group relative flex flex-col gap-7 rounded-2xl border border-border-muted bg-page p-7 transition-all hover:border-cyan hover:bg-surface"
+            className="group relative flex w-full flex-col gap-7 rounded-2xl border border-border-muted bg-page p-7 transition-all hover:border-cyan hover:bg-surface md:w-[calc(50%-8px)] xl:w-[302px] xl:shrink-0"
           >
             {plan.mostPopular ? (
               <span className="absolute -top-3 right-4 whitespace-nowrap rounded-full bg-turquoise px-[18px] py-[5px] text-xs font-semibold leading-[18px] text-white">
                 {t.home.mostPopular}
               </span>
             ) : null}
-            {plan.bestValue ? (
-              <span className="absolute -top-3 right-4 whitespace-nowrap rounded-full bg-energy px-[18px] py-[5px] text-xs font-semibold leading-[18px] text-white">
-                {t.home.bestValue}
-              </span>
-            ) : null}
             <div className="flex flex-col gap-3">
               <MembershipBadge tier={plan.tier} />
-              <div className="flex items-center gap-2">
+              <div className="flex items-baseline gap-2 whitespace-nowrap">
                 <span className="text-[36px] font-bold leading-[52px] text-heading">
                   {formatManat(plan.price)}
                 </span>
@@ -160,7 +161,7 @@ const PlanPicker = ({
             </ul>
             <Link
               href={hrefFor(plan.tier)}
-              className="mt-auto inline-flex h-12 items-center justify-center rounded-lg border border-border-muted bg-surface text-base font-semibold text-ink transition-colors group-hover:border-transparent group-hover:bg-brand group-hover:text-white"
+              className="mt-auto inline-flex h-12 items-center justify-center rounded-lg border border-border-muted bg-surface text-base font-semibold text-ink transition-colors group-hover:border-transparent group-hover:bg-button group-hover:text-white"
             >
               {t.home.selectPackage}
             </Link>

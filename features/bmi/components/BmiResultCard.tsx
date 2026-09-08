@@ -38,7 +38,7 @@ const BmiResultCard = ({ bmiResult }: BmiResultCardProps) => {
             <p className="w-full text-lg font-normal leading-7 text-title">
               {t.bmi.resultLabel}
             </p>
-            <p className="w-full text-center font-sora text-[52px] font-extrabold leading-[80px] text-ink">
+            <p className="w-full text-center font-manrope text-[52px] font-extrabold leading-[80px] text-ink">
               {bmiResult}
             </p>
             <div

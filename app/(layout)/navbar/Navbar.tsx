@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <div
       className={cn(
-        "sticky inset-x-0 top-0 z-50 border-b border-border-muted bg-surface transition-shadow duration-300 dark:bg-page",
+        "sticky inset-x-0 top-0 z-50 border-b border-border-muted bg-surface transition-shadow duration-300",
         isScrolled && "shadow-sm",
       )}
     >

@@ -36,7 +36,7 @@ const SectionHeading = ({
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <TitleTag
           className={cn(
-            "max-w-3xl whitespace-pre-line font-sora text-[32px] font-extrabold leading-[1.3] md:text-[40px] md:leading-[60px]",
+            "max-w-3xl whitespace-pre-line font-manrope text-[32px] font-extrabold leading-[1.3] md:text-[40px] md:leading-[60px]",
             titleClassName ?? (light ? "text-white" : "text-heading"),
           )}
         >

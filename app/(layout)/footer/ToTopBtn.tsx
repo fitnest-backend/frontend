@@ -1,16 +1,28 @@
 "use client";
-import Image from "next/image";
-import ArrowUp from "@/public/icons/arrow-up.svg";
 
 const ToTopBtn = () => {
   return (
     <button
-      onClick={() => window.scrollTo({ top: 0 })}
-      className="bg-linear-to-r from-[#C6A7F5] to-[#01A2BC] text-white  p-px absolute rounded-full -top-[30px] right-10 sm:right-20 cursor-pointer"
+      type="button"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      aria-label="Scroll to top"
+      className="absolute -top-[30px] right-10 flex size-[60px] cursor-pointer items-center justify-center rounded-full border border-cyan bg-brand-navy text-cyan sm:right-20"
     >
-      <span className="flex w-full bg-softblue-950 text-white rounded-full p-3.5 ">
-        <Image src={ArrowUp} alt="arrow" />
-      </span>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M12 20V4M18 10L12 4L6 10"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
     </button>
   );
 };

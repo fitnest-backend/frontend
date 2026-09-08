@@ -13,7 +13,7 @@ const AboutMissionSection = async () => {
           <IconBox>
             <img src="/icons/about/mission.svg" alt="" width={22} height={22} />
           </IconBox>
-          <h2 className="pt-[22px] font-sora text-2xl font-extrabold leading-9 text-ink">
+          <h2 className="pt-[22px] font-manrope text-2xl font-extrabold leading-9 text-ink">
             {t.missionTitle}
           </h2>
           <p className="pt-2.5 text-sm leading-5 text-desc-2">{t.missionText}</p>
@@ -22,7 +22,7 @@ const AboutMissionSection = async () => {
           <IconBox tone="navy">
             <img src="/icons/about/target.svg" alt="" width={24} height={24} />
           </IconBox>
-          <h2 className="pt-[22px] font-sora text-2xl font-extrabold leading-9 text-white">
+          <h2 className="pt-[22px] font-manrope text-2xl font-extrabold leading-9 text-white">
             {t.goalsTitle}
           </h2>
           <p className="pt-2.5 text-sm leading-5 text-desc">{t.goalsText}</p>

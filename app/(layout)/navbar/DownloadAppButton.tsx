@@ -10,7 +10,7 @@ const DownloadAppButton = () => {
   return (
     <Button
       asChild
-      className="hidden h-11 rounded-lg bg-cyan px-4 text-base font-semibold text-white hover:bg-turquoise md:inline-flex"
+      className="hidden h-11 rounded-lg bg-cyan px-4 text-base font-semibold text-white hover:bg-[#FF6A42] md:inline-flex"
     >
       <a href="#download-app">
         <Download className="size-6" />

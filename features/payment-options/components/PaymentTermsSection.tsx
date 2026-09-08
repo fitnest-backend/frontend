@@ -24,7 +24,7 @@ const PaymentTermsSection = ({
     <section className="bg-surface py-16 md:py-20">
       <Container className="flex flex-col gap-10">
         <div className="flex max-w-[640px] flex-col gap-4">
-          <h2 className="font-sora text-[30px] font-extrabold leading-[46px] text-heading">
+          <h2 className="font-manrope text-[30px] font-extrabold leading-[46px] text-heading">
             {termsTitle}
           </h2>
           <p className="max-w-[489px] text-base leading-6 text-title">

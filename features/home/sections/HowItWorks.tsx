@@ -17,7 +17,11 @@ const HowItWorks = async () => {
   return (
     <section id="how-it-works" className="scroll-mt-28 py-16 md:py-20">
       <Container className="flex flex-col gap-10">
-        <SectionHeading eyebrow={t.howEyebrow} title={t.howHeading} />
+        <SectionHeading
+          eyebrow={t.howEyebrow}
+          title={t.howHeading}
+          titleClassName="font-manrope text-heading"
+        />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {t.howItems.map((item, index) => {
             const isLast = index === t.howItems.length - 1;
@@ -37,14 +41,14 @@ const HowItWorks = async () => {
                   </IconBox>
                   <span
                     className={`text-[15px] font-extrabold ${
-                      isLast ? "text-white" : "text-gray-600 dark:text-title"
+                      isLast ? "text-white" : "text-[#85888E] dark:text-title"
                     }`}
                   >
                     {index + 1}
                   </span>
                 </div>
                 <h3
-                  className={`pt-3 font-sora text-xl font-extrabold leading-[30px] ${
+                  className={`pt-3 font-manrope text-xl font-extrabold leading-[30px] ${
                     isLast ? "text-white" : "text-ink"
                   }`}
                 >
