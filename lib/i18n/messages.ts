@@ -920,7 +920,7 @@ const az: Messages = {
     calculate: "Hesabla",
     resultLabel: "Sizin BKİ göstəriciniz:",
     underweight: "Az Çəki",
-    normal: "Normal",
+    normal: "Normal Çəki",
     overweight: "Artıq Çəki",
     obesity: "Piylənmə",
     noResult:
@@ -928,7 +928,7 @@ const az: Messages = {
     facts: "Faktlar & tövsiyyələr",
     metaMessages: {
       underweight: "Tövsiyə: qidalanma və məşq planını balanslaşdırın.",
-      normal: "Təbriklər! Çəkiniz idealdır. Bu formanı qoruyun.",
+      normal: "Təbriklər! Çəkiniz idealdır. Bu formanı qoruyub saxlayın.",
       overweight: "Tövsiyə: gündəlik hərəkəti artırın və qidalanmanı izləyin.",
       obesity: "Mütəxəssis məsləhəti ilə fərdi plan qurmağınız tövsiyə edilir.",
     },
@@ -1557,14 +1557,14 @@ const en: Messages = {
     calculate: "Calculate",
     resultLabel: "Your BMI result:",
     underweight: "Underweight",
-    normal: "Normal",
+    normal: "Normal weight",
     overweight: "Overweight",
     obesity: "Obesity",
     noResult: 'Enter your parameters and press "Calculate" to see the result.',
     facts: "Facts & tips",
     metaMessages: {
       underweight: "Tip: balance your nutrition and workout routine.",
-      normal: "Great job! Your weight is in a healthy range.",
+      normal: "Great job! Your weight is ideal. Keep this form.",
       overweight: "Tip: increase daily movement and track your nutrition.",
       obesity:
         "Consider creating a personal plan with specialist guidance.",
@@ -2178,7 +2178,7 @@ const ru: Messages = {
     calculate: "Рассчитать",
     resultLabel: "Ваш результат ИМТ:",
     underweight: "Недостаточный вес",
-    normal: "Норма",
+    normal: "Нормальный вес",
     overweight: "Избыточный вес",
     obesity: "Ожирение",
     noResult:
@@ -2186,7 +2186,7 @@ const ru: Messages = {
     facts: "Факты и рекомендации",
     metaMessages: {
       underweight: "Совет: сбалансируйте питание и тренировки.",
-      normal: "Отлично! Ваш вес в здоровом диапазоне.",
+      normal: "Отлично! Ваш вес идеален. Сохраняйте эту форму.",
       overweight: "Совет: увеличьте активность и следите за рационом.",
       obesity: "Рекомендуется персональный план со специалистом.",
     },

@@ -1,6 +1,6 @@
 export type Gender = "male" | "female";
 
-export const BMI_MIN = 10;
+export const BMI_MIN = 15;
 export const BMI_MAX = 40;
 
 export const normalizeDecimalInput = (value: string) =>
@@ -29,7 +29,7 @@ export const getBmiMeta = (bmi: number) => {
   if (bmi <= 24.9) {
     return {
       key: "normal" as const,
-      chipClass: "bg-[#4F933E]",
+      chipClass: "bg-[#0B7B10] dark:bg-[#35C83D]",
     };
   }
 
