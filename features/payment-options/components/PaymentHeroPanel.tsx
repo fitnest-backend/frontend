@@ -13,6 +13,8 @@ export type PaymentStat = {
 type PaymentHeroPanelProps = {
   imageSrc: string;
   imageAlt: string;
+  imageWidth?: number;
+  imageHeight?: number;
   eyebrow: string;
   title: string;
   description: string;
@@ -32,6 +34,8 @@ const STAT_ICONS: Record<Exclude<PaymentStat["icon"], "percent">, string> = {
 const PaymentHeroPanel = ({
   imageSrc,
   imageAlt,
+  imageWidth = 1672,
+  imageHeight = 941,
   eyebrow,
   title,
   description,
@@ -45,39 +49,21 @@ const PaymentHeroPanel = ({
   const isDark = variant === "dark";
 
   return (
-    <section
-      className={cn(
-        "relative overflow-hidden",
-        isDark ? "bg-brand-navy" : "bg-page",
-      )}
-    >
+    <section className="relative">
+      <div
+        className="relative w-full overflow-hidden"
+        style={{ aspectRatio: `${imageWidth} / ${imageHeight}` }}
+      >
       <Image
         src={imageSrc}
         alt={imageAlt}
         fill
         priority={priority}
-        sizes="(max-width: 768px) 100vw, 56vw"
-        className="object-cover object-center md:object-right"
+        sizes="100vw"
+        className="object-cover object-center"
       />
-      {isDark ? (
-        <>
-          <div
-            aria-hidden
-            className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-brand-navy/85 via-brand-navy/50 to-transparent md:w-[58%]"
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -left-[214px] -top-[308px] h-[523px] w-[668px] rounded-full bg-[linear-gradient(180deg,rgba(0,219,219,0.61)_0%,rgba(0,106,133,0.38)_55%,rgba(0,163,179,0.01)_100%)] blur-[150px]"
-          />
-        </>
-      ) : (
-        <div
-          aria-hidden
-          className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#f4f8fa] via-[#f4f8fa]/80 to-transparent md:w-[48%] md:from-[#f4f8fa]/55 md:via-[#f4f8fa]/20"
-        />
-      )}
 
-      <Container className="relative z-10 flex min-h-[520px] flex-col justify-center py-16 md:min-h-[708px] md:py-20">
+      <Container className="relative z-10 flex h-full flex-col justify-center py-16 md:py-20">
         <div className="flex max-w-[507px] flex-col gap-[45px]">
           <div className="flex flex-col gap-[71px]">
             <SectionHeading
@@ -141,6 +127,7 @@ const PaymentHeroPanel = ({
           </Link>
         </div>
       </Container>
+      </div>
     </section>
   );
 };

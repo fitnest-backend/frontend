@@ -14,16 +14,22 @@ const SLIDES = [
     id: "abb",
     image: "/images/payment-options/abb.png",
     dark: false,
+    width: 1672,
+    height: 941,
   },
   {
     id: "coin",
     image: "/images/payment-options/coin.png",
     dark: true,
+    width: 1978,
+    height: 795,
   },
   {
     id: "bob",
     image: "/images/payment-options/bob.png",
     dark: false,
+    width: 1672,
+    height: 941,
   },
 ] as const;
 
@@ -55,19 +61,17 @@ const PaymentBanner = () => {
   }, [slide]);
 
   return (
-    <section
-      className={cn(
-        "relative overflow-hidden",
-        current.dark ? "bg-brand-navy" : "bg-white",
-      )}
-    >
-      <div className="relative min-h-[360px] md:min-h-[460px]">
+    <section className="relative">
+      <div
+        className="relative w-full overflow-hidden"
+        style={{ aspectRatio: `${current.width} / ${current.height}` }}
+      >
         {SLIDES.map((item, index) => (
           <div
             key={item.id}
             className={cn(
-              "pointer-events-none absolute inset-0 hidden transition-opacity duration-500 md:block",
-              slide === index ? "opacity-100" : "opacity-0",
+              "absolute inset-0 transition-opacity duration-500",
+              slide === index ? "opacity-100" : "pointer-events-none opacity-0",
             )}
             aria-hidden={slide !== index}
           >
@@ -75,21 +79,14 @@ const PaymentBanner = () => {
               src={item.image}
               alt=""
               fill
-              className="object-cover object-right"
-              sizes="(max-width: 768px) 100vw, 56vw"
-            />
-            <div
-              className={cn(
-                "absolute inset-y-0 left-0 w-full md:w-[52%]",
-                item.dark
-                  ? "bg-gradient-to-r from-brand-navy via-brand-navy/85 to-transparent"
-                  : "bg-gradient-to-r from-white via-white/90 to-transparent",
-              )}
+              className="object-cover object-center"
+              sizes="100vw"
+              priority={index === 0}
             />
           </div>
         ))}
 
-        <Container className="relative z-10 flex min-h-[360px] flex-col justify-between gap-10 py-16 md:min-h-[460px] md:py-20">
+        <Container className="relative z-10 flex h-full flex-col justify-between gap-8 py-12 md:py-16">
           <div className="max-w-[507px]">
             <p
               className={cn(
@@ -117,16 +114,6 @@ const PaymentBanner = () => {
             >
               {currentCopy.subtitle}
             </p>
-          </div>
-
-          <div className="relative mx-auto h-[200px] w-full max-w-[420px] md:hidden">
-            <Image
-              src={current.image}
-              alt=""
-              fill
-              className="object-contain object-right"
-              sizes="420px"
-            />
           </div>
 
           <div className="flex max-w-[507px] items-center justify-between gap-6">

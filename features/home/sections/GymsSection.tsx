@@ -25,7 +25,7 @@ const GymsSection = async () => {
   const gyms = await getHomeGymsServer(locale);
 
   return (
-    <section id="gyms" className="scroll-mt-28 py-16 md:py-20">
+    <section id="gyms" className="scroll-mt-28 bg-page py-16 md:py-20">
       <Container className="flex flex-col gap-10">
         <SectionHeading
           eyebrow={t.gymsEyebrow}

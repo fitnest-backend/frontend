@@ -43,7 +43,7 @@ const FitStoreSection = async () => {
         }));
 
   return (
-    <section className="py-16 md:py-20">
+    <section className="bg-page py-16 md:py-20">
       <Container className="flex flex-col items-start gap-10 lg:flex-row lg:items-center">
         <div className="flex w-full max-w-[411px] flex-col gap-10">
           <div className="flex flex-col gap-4">

@@ -22,6 +22,8 @@ const PaymentOptionsPage = async () => {
       <PaymentHeroPanel
         imageSrc="/images/payment-options/abb.png"
         imageAlt={t.abbTitle}
+        imageWidth={1672}
+        imageHeight={941}
         eyebrow={t.eyebrow}
         title={t.abbTitle}
         description={t.abbDescription}
@@ -35,6 +37,8 @@ const PaymentOptionsPage = async () => {
       <PaymentHeroPanel
         imageSrc="/images/payment-options/coin.png"
         imageAlt={t.coinTitle}
+        imageWidth={1978}
+        imageHeight={795}
         eyebrow={t.coinEyebrow}
         title={t.coinTitle}
         description={t.coinDescription}
@@ -45,6 +49,8 @@ const PaymentOptionsPage = async () => {
       <PaymentHeroPanel
         imageSrc="/images/payment-options/bob.png"
         imageAlt={t.bobTitle}
+        imageWidth={1672}
+        imageHeight={941}
         eyebrow={t.eyebrow}
         title={t.bobTitle}
         description={t.bobDescription}

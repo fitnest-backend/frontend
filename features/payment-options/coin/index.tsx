@@ -16,7 +16,9 @@ const CoinDetailPage = async () => {
         backLabel={t.back}
         backHref={backHref}
         arrowSrc="/icons/coin-details/arrow-left.svg"
-        imageAlign="right"
+        imageWidth={1978}
+        imageHeight={795}
+        lightText
       />
       <section className="pb-20 pt-10 md:pb-[80px] md:pt-10">
         <Container>

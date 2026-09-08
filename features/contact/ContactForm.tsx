@@ -7,11 +7,12 @@ import * as z from "zod";
 import { contactFormSchema } from "@/schemas/schemas";
 import { submitLandingContactMessage } from "@/lib/api/landing";
 import { useI18n } from "@/lib/i18n/provider";
+import ContactThemeIcon from "./ContactThemeIcon";
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 const fieldClass =
-  "w-full rounded-xl border border-border-muted bg-surface px-4 py-4 text-base leading-6 text-ink outline-none placeholder:text-[#94979C]";
+  "w-full rounded-xl border border-border-muted bg-surface px-4 py-4 text-base leading-6 text-ink outline-none placeholder:text-[#94979C] dark:placeholder:text-[#A6A6A6]";
 
 const ContactForm = () => {
   const { t } = useI18n();
@@ -102,12 +103,11 @@ const ContactForm = () => {
             onClick={() => setTopicOpen((open) => !open)}
             className={`${fieldClass} flex items-center justify-between gap-3 text-left`}
           >
-            <span className={selectedTopic ? "text-ink" : "text-[#94979C]"}>
+            <span className={selectedTopic ? "text-ink" : "text-[#94979C] dark:text-[#A6A6A6]"}>
               {selectedTopic?.label ?? t.contact.topic}
             </span>
-            <img
-              src="/icons/contact/arrow-down.svg"
-              alt=""
+            <ContactThemeIcon
+              name="arrow-down"
               width={20}
               height={20}
               className={`size-5 shrink-0 transition-transform ${topicOpen ? "rotate-180" : ""}`}
@@ -174,7 +174,7 @@ const ContactForm = () => {
       <button
         type="submit"
         disabled={form.formState.isSubmitting}
-        className="inline-flex h-11 w-full items-center justify-center rounded-lg bg-heading px-4 text-base font-semibold leading-6 text-white transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)] disabled:opacity-60"
+        className="inline-flex h-11 w-full items-center justify-center rounded-lg bg-button px-4 text-base font-semibold leading-6 text-white transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)] disabled:opacity-60"
       >
         {form.formState.isSubmitting ? t.contact.sending : t.contact.send}
       </button>

@@ -11,7 +11,7 @@ const EcosystemSection = async () => {
   const t = messages.home;
 
   return (
-    <section id="business" className="scroll-mt-28 bg-surface py-16 md:py-20">
+    <section id="business" className="scroll-mt-28 bg-surface py-16 md:py-20 dark:bg-[#012438]">
       <Container className="flex flex-col gap-10">
         <SectionHeading eyebrow={t.ecoEyebrow} title={t.ecoHeading} />
         <div className="grid grid-cols-1 gap-[22px] md:grid-cols-2">

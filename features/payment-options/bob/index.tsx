@@ -20,7 +20,8 @@ const BobDetailPage = async () => {
         backLabel={t.back}
         backHref={backHref}
         arrowSrc={`${ICON_BASE}/arrow-left.svg`}
-        imageAlign="right"
+        imageWidth={1672}
+        imageHeight={941}
       />
       <PaymentStatsBar
         cardsValue={t.cardsValue}

@@ -4,6 +4,7 @@ import type { Locale } from "@/lib/i18n/config";
 import { CONTACT_EMAIL, toMailtoHref } from "@/lib/constants/app-links";
 import { getMessages } from "@/lib/i18n/server";
 import ContactForm from "./ContactForm";
+import ContactThemeIcon from "./ContactThemeIcon";
 
 type ContactPageProps = {
   locale: Locale;
@@ -19,18 +20,18 @@ const ContactPage = async ({ locale }: ContactPageProps) => {
 
   const details = [
     {
-      icon: "/icons/contact/sms.svg",
+      icon: "sms",
       label: t.emailLabel,
       value: email,
       href: toMailtoHref(email),
     },
     {
-      icon: "/icons/contact/location.svg",
+      icon: "location",
       label: t.addressLabel,
       value: t.address,
     },
     {
-      icon: "/icons/contact/clock.svg",
+      icon: "clock",
       label: t.hoursLabel,
       value: t.hours,
     },
@@ -56,8 +57,8 @@ const ContactPage = async ({ locale }: ContactPageProps) => {
               <ul className="flex max-w-[251px] flex-col gap-5">
                 {details.map((item) => (
                   <li key={item.label} className="flex items-center gap-3">
-                    <span className="flex size-12 shrink-0 items-center justify-center rounded-[13px] bg-[rgba(0,219,219,0.15)]">
-                      <img src={item.icon} alt="" width={24} height={24} className="size-6" />
+                    <span className="flex size-12 shrink-0 items-center justify-center rounded-[13px] bg-turquoise/15">
+                      <ContactThemeIcon name={item.icon} className="size-6" />
                     </span>
                     <div className="flex min-w-0 flex-col">
                       <span className="text-base font-medium leading-6 text-title">{item.label}</span>

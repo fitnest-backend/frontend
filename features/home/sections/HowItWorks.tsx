@@ -15,7 +15,7 @@ const HowItWorks = async () => {
   const t = messages.home;
 
   return (
-    <section id="how-it-works" className="scroll-mt-28 py-16 md:py-20">
+    <section id="how-it-works" className="scroll-mt-28 bg-page py-16 md:py-20">
       <Container className="flex flex-col gap-10">
         <SectionHeading
           eyebrow={t.howEyebrow}
