@@ -27,7 +27,7 @@ const HowItWorks = async () => {
                 key={item.title}
                 className={`flex min-h-[216px] flex-col gap-1 rounded-[20px] px-[26px] py-7 ${
                   isLast
-                    ? "bg-energy text-white"
+                    ? "bg-energy text-white dark:bg-white dark:text-ink"
                     : "border border-border-muted bg-surface transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
                 }`}
               >
@@ -37,7 +37,9 @@ const HowItWorks = async () => {
                   </IconBox>
                   <span
                     className={`text-[15px] font-extrabold ${
-                      isLast ? "text-white" : "text-gray-600"
+                      isLast
+                        ? "text-white dark:text-title"
+                        : "text-gray-600 dark:text-title"
                     }`}
                   >
                     {index + 1}
@@ -45,14 +47,14 @@ const HowItWorks = async () => {
                 </div>
                 <h3
                   className={`pt-3 font-sora text-xl font-extrabold leading-[30px] ${
-                    isLast ? "text-white" : "text-ink"
+                    isLast ? "text-white dark:text-ink" : "text-ink"
                   }`}
                 >
                   {item.title}
                 </h3>
                 <p
                   className={`whitespace-pre-line text-sm leading-5 ${
-                    isLast ? "text-white" : "text-title"
+                    isLast ? "text-white dark:text-title" : "text-title"
                   }`}
                 >
                   {item.desc}

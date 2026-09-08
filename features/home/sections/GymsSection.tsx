@@ -82,7 +82,7 @@ const GymsSection = async () => {
                       alt=""
                       width={20}
                       height={20}
-                      className="size-5 shrink-0"
+                      className="size-5 shrink-0 dark:brightness-0 dark:invert"
                     />
                     {gym.location || gym.city || "—"}
                   </span>
@@ -93,7 +93,7 @@ const GymsSection = async () => {
                         alt=""
                         width={20}
                         height={20}
-                        className="size-5 shrink-0"
+                        className="size-5 shrink-0 dark:brightness-0 dark:invert"
                       />
                       {gym.phone}
                     </span>

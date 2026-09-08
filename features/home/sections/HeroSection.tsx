@@ -16,8 +16,9 @@ const HeroSection = async () => {
         fill
         priority
         sizes="100vw"
-        className="object-cover object-right"
+        className="object-cover object-right dark:opacity-20"
       />
+      <div className="pointer-events-none absolute inset-0 hidden bg-page/75 dark:block" />
       <div className="relative z-10 mx-auto grid w-full max-w-[1600px] px-5 py-10 md:px-10 md:py-16 lg:grid-cols-[minmax(20rem,519px)_minmax(0,1fr)] lg:items-center lg:gap-[80px] xl:gap-[206px] xl:px-20">
         <div className="flex w-full max-w-[519px] flex-col gap-8">
           <div className="flex flex-col gap-8">
@@ -42,7 +43,7 @@ const HeroSection = async () => {
               <StoreBadges />
               <Link
                 href={addLocaleToPathname("/offers", locale)}
-                className="inline-flex h-11 w-fit items-center justify-center gap-2 rounded-lg bg-brand px-4 text-base font-bold text-white"
+                className="inline-flex h-11 w-fit items-center justify-center gap-2 rounded-lg bg-brand px-4 text-base font-bold text-white dark:bg-cyan dark:text-brand-navy"
               >
                 {t.viewPackages}
                 <img
@@ -50,20 +51,27 @@ const HeroSection = async () => {
                   alt=""
                   width={24}
                   height={24}
-                  className="brightness-0 invert"
+                  className="brightness-0 invert dark:invert-0"
                 />
               </Link>
             </div>
 
             <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-3">
-                <div className="size-[55px] overflow-hidden rounded-sm border border-border-muted bg-surface p-1">
+                <div className="size-[55px] overflow-hidden rounded-sm border border-border-muted bg-surface p-1 dark:bg-page">
                   <img
                     src="/icons/home/app-qr.svg"
                     alt=""
                     width={47}
                     height={47}
-                    className="size-full object-contain"
+                    className="size-full object-contain dark:hidden"
+                  />
+                  <img
+                    src="/icons/home/app-qr-dark.svg"
+                    alt=""
+                    width={47}
+                    height={47}
+                    className="hidden size-full object-contain dark:block"
                   />
                 </div>
                 <div className="flex w-[169px] flex-col gap-0.5">

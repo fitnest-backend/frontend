@@ -103,7 +103,7 @@ const PlanPicker = ({
               className={cn(
                 "h-11 min-w-[88px] shrink-0 rounded-t-[14px] border-x-[1.5px] border-t-[1.5px] px-7 text-base font-bold leading-6",
                 active
-                  ? "border-brand-navy bg-brand-navy-800 text-white"
+                  ? "border-brand-navy bg-brand-navy-800 text-white dark:border-cyan dark:bg-cyan dark:text-brand-navy"
                   : "border-border-muted bg-surface text-ink",
               )}
             >

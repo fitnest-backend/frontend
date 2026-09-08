@@ -40,7 +40,7 @@ const BmiPreviewSection = async () => {
             </div>
             <Link
               href={addLocaleToPathname("/bmi", locale)}
-              className="inline-flex h-12 w-fit items-center gap-2 rounded-lg bg-brand px-4 text-base font-semibold text-white"
+              className="inline-flex h-12 w-fit items-center gap-2 rounded-lg bg-brand px-4 text-base font-semibold text-white dark:bg-cyan dark:text-brand-navy"
             >
               {t.bmiCta}
               <img
@@ -48,7 +48,7 @@ const BmiPreviewSection = async () => {
                 alt=""
                 width={24}
                 height={24}
-                className="brightness-0 invert"
+                className="brightness-0 invert dark:invert-0"
               />
             </Link>
           </div>
