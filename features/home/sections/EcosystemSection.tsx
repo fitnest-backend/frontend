@@ -14,7 +14,7 @@ const EcosystemSection = async () => {
       <Container className="flex flex-col gap-10">
         <SectionHeading eyebrow={t.ecoEyebrow} title={t.ecoHeading} />
         <div className="grid grid-cols-1 gap-[22px] md:grid-cols-2">
-          <article className="flex min-h-[300px] flex-col rounded-3xl bg-brand-navy-800 p-8 dark:bg-white">
+          <article className="flex min-h-[300px] flex-col rounded-3xl bg-brand-navy-800 p-8">
             <IconBox tone="navy">
               <img
                 src="/icons/home/briefcase.svg"
@@ -23,10 +23,10 @@ const EcosystemSection = async () => {
                 height={22}
               />
             </IconBox>
-            <h3 className="pt-[22px] font-sora text-2xl font-extrabold leading-9 text-white dark:text-ink">
+            <h3 className="pt-[22px] font-sora text-2xl font-extrabold leading-9 text-white">
               {t.corporateTitle}
             </h3>
-            <p className="pt-2.5 text-sm leading-5 text-desc dark:text-title">
+            <p className="pt-2.5 text-sm leading-5 text-desc">
               {t.corporateDesc}
             </p>
             <Link

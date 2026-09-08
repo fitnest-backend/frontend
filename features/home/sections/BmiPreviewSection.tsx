@@ -22,7 +22,14 @@ const BmiPreviewSection = async () => {
           src="/images/home/bmi-visual.png"
           alt=""
           fill
-          className="hidden object-cover object-center md:block"
+          className="hidden object-cover object-center md:block dark:!hidden"
+          sizes="100vw"
+        />
+        <Image
+          src="/images/home/bmi-visual-dark.png"
+          alt=""
+          fill
+          className="hidden object-cover object-center dark:md:block"
           sizes="100vw"
         />
         <div className="absolute inset-0 hidden bg-gradient-to-r from-surface from-0% via-surface/20 via-45% to-transparent md:block" />
@@ -40,7 +47,7 @@ const BmiPreviewSection = async () => {
             </div>
             <Link
               href={addLocaleToPathname("/bmi", locale)}
-              className="inline-flex h-12 w-fit items-center gap-2 rounded-lg bg-brand px-4 text-base font-semibold text-white dark:bg-cyan dark:text-brand-navy"
+              className="inline-flex h-12 w-fit items-center gap-2 rounded-lg bg-brand px-4 text-base font-semibold text-white"
             >
               {t.bmiCta}
               <img
@@ -48,7 +55,7 @@ const BmiPreviewSection = async () => {
                 alt=""
                 width={24}
                 height={24}
-                className="brightness-0 invert dark:invert-0"
+                className="brightness-0 invert"
               />
             </Link>
           </div>
@@ -126,7 +133,14 @@ const BmiPreviewSection = async () => {
             src="/images/home/bmi-visual.png"
             alt=""
             fill
-            className="object-contain object-right"
+            className="object-contain object-right dark:hidden"
+            sizes="640px"
+          />
+          <Image
+            src="/images/home/bmi-visual-dark.png"
+            alt=""
+            fill
+            className="hidden object-contain object-right dark:block"
             sizes="640px"
           />
         </div>

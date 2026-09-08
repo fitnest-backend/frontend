@@ -16,9 +16,16 @@ const HeroSection = async () => {
         fill
         priority
         sizes="100vw"
-        className="object-cover object-right dark:opacity-20"
+        className="object-cover object-right dark:hidden"
       />
-      <div className="pointer-events-none absolute inset-0 hidden bg-page/75 dark:block" />
+      <Image
+        src="/images/home/hero-bg-dark.png"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="hidden object-cover object-right dark:block"
+      />
       <div className="relative z-10 mx-auto grid w-full max-w-[1600px] px-5 py-10 md:px-10 md:py-16 lg:grid-cols-[minmax(20rem,519px)_minmax(0,1fr)] lg:items-center lg:gap-[80px] xl:gap-[206px] xl:px-20">
         <div className="flex w-full max-w-[519px] flex-col gap-8">
           <div className="flex flex-col gap-8">
@@ -43,7 +50,7 @@ const HeroSection = async () => {
               <StoreBadges />
               <Link
                 href={addLocaleToPathname("/offers", locale)}
-                className="inline-flex h-11 w-fit items-center justify-center gap-2 rounded-lg bg-brand px-4 text-base font-bold text-white dark:bg-cyan dark:text-brand-navy"
+                className="inline-flex h-11 w-fit items-center justify-center gap-2 rounded-lg bg-brand px-4 text-base font-bold text-white"
               >
                 {t.viewPackages}
                 <img
@@ -51,7 +58,7 @@ const HeroSection = async () => {
                   alt=""
                   width={24}
                   height={24}
-                  className="brightness-0 invert dark:invert-0"
+                  className="brightness-0 invert"
                 />
               </Link>
             </div>

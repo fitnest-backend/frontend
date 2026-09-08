@@ -14,17 +14,24 @@ const FALLBACK_IMAGES = [
   "/images/home/store-gear.png",
 ];
 
+const DARK_FALLBACK_IMAGES = [
+  "/images/home/store-protein-dark.png",
+  "/images/home/store-clothes-dark.png",
+  "/images/home/store-gear-dark.png",
+];
+
 const FitStoreSection = async () => {
   const { messages, locale } = await getMessages();
   const t = messages.home;
   const apiItems = await getHomeStoresServer(locale);
   const items =
     apiItems.length > 0
-      ? apiItems.map((item, index) => ({
+      ? apiItems.map((item) => ({
           key: String(item.storeId),
           name: item.name,
           subtitle: item.discounts[0] ?? item.city ?? item.addressText ?? "",
           image: storeImageSrc(item.coverImageUrl),
+          darkImage: undefined as string | undefined,
           href: addLocaleToPathname(`/fit-market/${item.storeId}`, locale),
         }))
       : t.storeItems.map((item, index) => ({
@@ -32,6 +39,7 @@ const FitStoreSection = async () => {
           name: item.title,
           subtitle: item.subtitle,
           image: FALLBACK_IMAGES[index] ?? FALLBACK_IMAGES[0],
+          darkImage: DARK_FALLBACK_IMAGES[index] ?? DARK_FALLBACK_IMAGES[0],
           href: addLocaleToPathname("/fit-market", locale),
         }));
 
@@ -50,7 +58,7 @@ const FitStoreSection = async () => {
           </div>
           <Link
             href={addLocaleToPathname("/fit-market", locale)}
-            className="inline-flex h-12 w-fit items-center gap-2 rounded-lg bg-brand px-4 text-base font-semibold text-white dark:bg-cyan dark:text-brand-navy"
+            className="inline-flex h-12 w-fit items-center gap-2 rounded-lg bg-brand px-4 text-base font-semibold text-white"
           >
             {t.storeCta}
             <img
@@ -58,7 +66,7 @@ const FitStoreSection = async () => {
               alt=""
               width={24}
               height={24}
-                className="brightness-0 invert dark:invert-0"
+                className="brightness-0 invert"
             />
           </Link>
         </div>
@@ -74,9 +82,18 @@ const FitStoreSection = async () => {
                   src={item.image}
                   alt={item.name}
                   fill
-                  className="object-cover"
+                  className={item.darkImage ? "object-cover dark:hidden" : "object-cover"}
                   sizes="265px"
                 />
+                {item.darkImage ? (
+                  <Image
+                    src={item.darkImage}
+                    alt={item.name}
+                    fill
+                    className="hidden object-cover dark:block"
+                    sizes="265px"
+                  />
+                ) : null}
               </div>
               <div className="flex flex-col gap-1">
                 <h3 className="text-base font-bold leading-6 text-ink">

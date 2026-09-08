@@ -12,19 +12,16 @@ const SLIDES = [
   {
     id: "abb",
     image: "/images/payment-options/abb.png",
-    href: "/payment-options/abb",
     dark: false,
   },
   {
     id: "coin",
     image: "/images/payment-options/coin.png",
-    href: "/payment-options/coin",
     dark: true,
   },
   {
     id: "bob",
     image: "/images/payment-options/bob.png",
-    href: "/payment-options/bob",
     dark: false,
   },
 ] as const;
@@ -77,9 +74,21 @@ const PaymentBanner = () => {
               src={item.image}
               alt=""
               fill
-              className="object-cover object-right"
+              className={cn(
+                "object-cover object-right",
+                item.id === "abb" && "dark:hidden",
+              )}
               sizes="100vw"
             />
+            {item.id === "abb" ? (
+              <Image
+                src="/images/home/abb-cards.png"
+                alt=""
+                fill
+                className="hidden object-cover object-right dark:block"
+                sizes="100vw"
+              />
+            ) : null}
             <div
               className={cn(
                 "absolute inset-y-0 left-0 w-full md:w-[52%]",
@@ -126,14 +135,26 @@ const PaymentBanner = () => {
               src={current.image}
               alt=""
               fill
-              className="object-contain object-right"
+              className={cn(
+                "object-contain object-right",
+                current.id === "abb" && "dark:hidden",
+              )}
               sizes="420px"
             />
+            {current.id === "abb" ? (
+              <Image
+                src="/images/home/abb-cards.png"
+                alt=""
+                fill
+                className="hidden object-contain object-right dark:block"
+                sizes="420px"
+              />
+            ) : null}
           </div>
 
           <div className="flex max-w-[507px] items-center justify-between gap-6">
             <Link
-              href={addLocaleToPathname(current.href, locale)}
+              href={addLocaleToPathname("/payment-options", locale)}
               className={cn(
                 "inline-flex items-center gap-2 text-base font-semibold",
                 current.dark ? "text-cyan" : "text-turquoise",
