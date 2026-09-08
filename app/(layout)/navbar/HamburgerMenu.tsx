@@ -84,7 +84,7 @@ const HamburgerMenu = () => {
                 ))}
               </ul>
               <Link
-                href={`${homePath}#how-it-works`}
+                href="#download-app"
                 onClick={() => setOpen(false)}
                 className="mt-6 inline-flex h-11 items-center justify-center rounded-lg bg-cyan px-4 text-base font-semibold text-white"
               >

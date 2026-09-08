@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -11,16 +10,15 @@ import {
 import { useI18n } from "@/lib/i18n/provider";
 import { useMemo } from "react";
 import Image from "next/image";
-import { ChevronDown, Download } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import AzerbaijanFlag from "@/public/images/AzerbaijanFlag.svg";
 import EnglishFlag from "@/public/images/EnglishFlag.svg";
 import RussianFlag from "@/public/images/RussianFlag.svg";
-import { addLocaleToPathname } from "@/lib/i18n/config";
-import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
+import DownloadAppButton from "./DownloadAppButton";
 
 const NavbarRight = () => {
-  const { locale, setLocale, t } = useI18n();
+  const { locale, setLocale } = useI18n();
 
   const locales = useMemo(
     () => ({
@@ -101,15 +99,7 @@ const NavbarRight = () => {
         </Select>
       </div>
 
-      <Button
-        asChild
-        className="hidden h-11 rounded-lg bg-cyan px-4 text-base font-semibold text-white hover:bg-turquoise md:inline-flex"
-      >
-        <Link href={`${addLocaleToPathname("/", locale)}#how-it-works`}>
-          <Download className="size-6" />
-          {t.nav.downloadApp}
-        </Link>
-      </Button>
+      <DownloadAppButton />
     </div>
   );
 };
