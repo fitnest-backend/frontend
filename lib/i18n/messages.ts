@@ -318,7 +318,10 @@ export type Messages = {
     params: string;
     weight: string;
     height: string;
-    birthDate: string;
+    age: string;
+    weightPlaceholder: string;
+    heightPlaceholder: string;
+    agePlaceholder: string;
     gender: string;
     male: string;
     female: string;
@@ -901,13 +904,16 @@ const az: Messages = {
     empty: "İstifadə şərtləri hazırda əlçatan deyil.",
   },
   bmi: {
-    heroTitle: "Bədən Kütlə İndeksi",
+    heroTitle: "Bədən kütlə indeksi",
     heroDescription:
-      "Sağlamlığınız üçün ideal çəkinizi öyrənin. Boy və çəkinizə əsasən bədən kütlə indeksinizi hesablayın.",
+      "Boy və çəkinizə əsasən bədən kütlə indeksinizi hesablayın və sağlam həyat tərzinə ilk addımı atın.",
     params: "Parametrlər",
-    weight: "Çəki",
-    height: "Boy",
-    birthDate: "Doğum tarixi",
+    weight: "Çəki (kq)",
+    height: "Boy (sm)",
+    age: "Yaş",
+    weightPlaceholder: "Məs: 64",
+    heightPlaceholder: "Məs: 175",
+    agePlaceholder: "36",
     gender: "Cinsiyyət",
     male: "Kişi",
     female: "Qadın",
@@ -917,8 +923,9 @@ const az: Messages = {
     normal: "Normal",
     overweight: "Artıq Çəki",
     obesity: "Piylənmə",
-    noResult: "Nəticəni görmək üçün parametrləri daxil edib \"Hesabla\" düyməsini sıxın.",
-    facts: "Faktlar və tövsiyələr",
+    noResult:
+      'Nəticəni görmək üçün parametrləri daxil edib "Hesabla" düyməsini sıxın.',
+    facts: "Faktlar & tövsiyyələr",
     metaMessages: {
       underweight: "Tövsiyə: qidalanma və məşq planını balanslaşdırın.",
       normal: "Təbriklər! Çəkiniz idealdır. Bu formanı qoruyun.",
@@ -927,26 +934,31 @@ const az: Messages = {
     },
     infoItems: [
       {
-        title: "BKİ nədir?",
-        description: "Boyunuza görə çəkinizin uyğunluğunu qiymətləndirən sadə ölçüdür.",
+        title: "BKİ Nədir?",
+        description:
+          "(BKİ) boyunuza görə çəkinizin uyğun olub-olmadığını qiymətləndirən sadə bir ölçüdür.",
       },
       {
         title: "Risklər",
-        description: "Yüksək BKİ ürək xəstəlikləri və diabet riskini artıra bilər.",
+        description:
+          "Yüksək BKİ ürək xəstəlikləri, diabet və digər sağlamlıq problemləri riskini artıra bilər.",
       },
       {
-        title: "Sağlam aralıq",
-        description: "18.5 - 24.9 arası BKİ normal hesab olunur.",
+        title: "Sağlam Aralıq",
+        description:
+          "18.5 - 24.9 arası BKİ normal hesab olunur. Bu aralıqda qalmaq uzunömürlülüyü artırır.",
       },
     ],
     tips: [
       {
         title: "Fiziki aktivlik",
-        description: "Həftədə ən azı 150 dəqiqə orta intensivlikli fəaliyyət tövsiyə olunur.",
+        description:
+          "Həftədə ən azı 150 dəqiqə orta intensivlikli fiziki fəaliyyət ürək sağlamlığını qorumağa kömək edir.",
       },
       {
-        title: "Balanslı qidalanma",
-        description: "Zülal, karbohidrat və yağ balansı çəkinin idarəsində vacibdir.",
+        title: "Balanslı Qidalanma",
+        description:
+          "Gündəlik rasionunuzda zülal, karbohidrat və yağların balansını qorumaq çəkinizi nəzarətdə saxlamaq üçün vacibdir.",
       },
     ],
   },
@@ -1529,13 +1541,16 @@ const en: Messages = {
   },
   bmi: {
     ...az.bmi,
-    heroTitle: "Body Mass Index",
+    heroTitle: "Body mass index",
     heroDescription:
-      "Learn your ideal weight. Calculate your BMI based on your height and weight.",
+      "Calculate your body mass index from your height and weight, and take the first step toward a healthier lifestyle.",
     params: "Parameters",
-    weight: "Weight",
-    height: "Height",
-    birthDate: "Birth date",
+    weight: "Weight (kg)",
+    height: "Height (cm)",
+    age: "Age",
+    weightPlaceholder: "E.g. 64",
+    heightPlaceholder: "E.g. 175",
+    agePlaceholder: "36",
     gender: "Gender",
     male: "Male",
     female: "Female",
@@ -1546,7 +1561,7 @@ const en: Messages = {
     overweight: "Overweight",
     obesity: "Obesity",
     noResult: 'Enter your parameters and press "Calculate" to see the result.',
-    facts: "Facts and tips",
+    facts: "Facts & tips",
     metaMessages: {
       underweight: "Tip: balance your nutrition and workout routine.",
       normal: "Great job! Your weight is in a healthy range.",
@@ -1557,29 +1572,30 @@ const en: Messages = {
     infoItems: [
       {
         title: "What is BMI?",
-        description: "A simple indicator that compares weight to height.",
+        description:
+          "BMI is a simple measure of whether your weight is appropriate for your height.",
       },
       {
         title: "Risks",
         description:
-          "Higher BMI can increase the risk of heart disease and diabetes.",
+          "A high BMI can increase the risk of heart disease, diabetes, and other health problems.",
       },
       {
         title: "Healthy range",
         description:
-          "A BMI between 18.5 and 24.9 is generally considered healthy.",
+          "A BMI between 18.5 and 24.9 is considered normal. Staying in this range supports longevity.",
       },
     ],
     tips: [
       {
         title: "Physical activity",
         description:
-          "At least 150 minutes of moderate activity per week is recommended.",
+          "At least 150 minutes of moderate-intensity activity per week helps protect heart health.",
       },
       {
         title: "Balanced nutrition",
         description:
-          "Balancing proteins, carbs, and fats helps weight control.",
+          "Keeping protein, carbs, and fats in balance in your daily diet is key to managing your weight.",
       },
     ],
   },
@@ -2147,11 +2163,15 @@ const ru: Messages = {
   bmi: {
     ...en.bmi,
     heroTitle: "Индекс массы тела",
-    heroDescription: "Узнайте идеальный вес. Рассчитайте ИМТ по росту и весу.",
+    heroDescription:
+      "Рассчитайте индекс массы тела по росту и весу и сделайте первый шаг к здоровому образу жизни.",
     params: "Параметры",
-    weight: "Вес",
-    height: "Рост",
-    birthDate: "Дата рождения",
+    weight: "Вес (кг)",
+    height: "Рост (см)",
+    age: "Возраст",
+    weightPlaceholder: "Напр. 64",
+    heightPlaceholder: "Напр. 175",
+    agePlaceholder: "36",
     gender: "Пол",
     male: "Мужской",
     female: "Женский",
@@ -2161,8 +2181,9 @@ const ru: Messages = {
     normal: "Норма",
     overweight: "Избыточный вес",
     obesity: "Ожирение",
-    noResult: 'Введите параметры и нажмите "Рассчитать", чтобы увидеть результат.',
-    facts: "Факты и советы",
+    noResult:
+      'Введите параметры и нажмите "Рассчитать", чтобы увидеть результат.',
+    facts: "Факты и рекомендации",
     metaMessages: {
       underweight: "Совет: сбалансируйте питание и тренировки.",
       normal: "Отлично! Ваш вес в здоровом диапазоне.",
@@ -2170,13 +2191,33 @@ const ru: Messages = {
       obesity: "Рекомендуется персональный план со специалистом.",
     },
     infoItems: [
-      { title: "Что такое ИМТ?", description: "Простой показатель соотношения роста и веса." },
-      { title: "Риски", description: "Высокий ИМТ может повысить риск болезней сердца и диабета." },
-      { title: "Здоровый диапазон", description: "ИМТ 18.5 - 24.9 обычно считается нормальным." },
+      {
+        title: "Что такое ИМТ?",
+        description:
+          "ИМТ — простой показатель того, соответствует ли вес вашему росту.",
+      },
+      {
+        title: "Риски",
+        description:
+          "Высокий ИМТ может повысить риск болезней сердца, диабета и других проблем со здоровьем.",
+      },
+      {
+        title: "Здоровый диапазон",
+        description:
+          "ИМТ 18.5–24.9 считается нормой. Этот диапазон связан с большей продолжительностью жизни.",
+      },
     ],
     tips: [
-      { title: "Физическая активность", description: "Рекомендуется минимум 150 минут умеренной активности в неделю." },
-      { title: "Сбалансированное питание", description: "Баланс белков, жиров и углеводов помогает контролю веса." },
+      {
+        title: "Физическая активность",
+        description:
+          "Не менее 150 минут умеренной активности в неделю помогает защитить сердце.",
+      },
+      {
+        title: "Сбалансированное питание",
+        description:
+          "Баланс белков, углеводов и жиров в ежедневном рационе важен для контроля веса.",
+      },
     ],
   },
   payment: {

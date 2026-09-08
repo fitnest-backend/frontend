@@ -6,12 +6,16 @@ export const BMI_MAX = 40;
 export const normalizeDecimalInput = (value: string) =>
   value.replace(/[^\d.,]/g, "").replace(",", ".");
 
-export const formatDateDisplay = (date?: Date) => {
-  if (!date) return "";
-  const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const year = String(date.getFullYear());
-  return `${day}.${month}.${year}`;
+export const normalizeAgeInput = (value: string) =>
+  value.replace(/\D/g, "").slice(0, 3);
+
+export const birthDateFromAge = (age: number) => {
+  const date = new Date();
+  date.setFullYear(date.getFullYear() - age);
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
 };
 
 export const getBmiMeta = (bmi: number) => {

@@ -1,37 +1,27 @@
 "use client";
 
-import { Dumbbell, Utensils } from "lucide-react";
 import { useI18n } from "@/lib/i18n/provider";
+import BmiThemeIcon from "../components/BmiThemeIcon";
+
+const TIP_ICONS = ["tip-activity", "tip-food"] as const;
 
 const BmiTipsSection = () => {
   const { t } = useI18n();
-  const tips = [
-    {
-      ...t.bmi.tips[0],
-      icon: <Dumbbell className="size-[18px] text-[#00B4CC]" />,
-    },
-    {
-      ...t.bmi.tips[1],
-      icon: <Utensils className="size-[18px] text-[#FACC15]" />,
-    },
-  ];
 
   return (
-    <div className="mt-[67px] grid grid-cols-1 gap-7 xl:grid-cols-2 xl:gap-7">
-      {tips.map((tip) => (
+    <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+      {t.bmi.tips.map((tip, index) => (
         <div
           key={tip.title}
-          className="rounded-3xl border border-[#C6A7F5] p-4 xl:h-[122px]"
+          className="flex flex-col gap-4 rounded-xl border border-border-muted bg-surface p-4"
         >
-          <p className="flex items-center gap-3 text-lg leading-7 font-semibold text-white">
-            <span className="flex size-[38px] items-center justify-center rounded-[20.5px] bg-[rgba(14,41,61,0.3)]">
-              {tip.icon}
+          <p className="flex items-center gap-3 text-lg font-semibold leading-7 text-ink">
+            <span className="flex size-[38px] items-center justify-center rounded-full">
+              <BmiThemeIcon name={TIP_ICONS[index]} className="size-[18px]" />
             </span>
             {tip.title}
           </p>
-          <p className="mt-4 text-base leading-6 text-white">
-            {tip.description}
-          </p>
+          <p className="text-base leading-6 text-desc-2">{tip.description}</p>
         </div>
       ))}
     </div>
