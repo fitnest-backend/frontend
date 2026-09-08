@@ -98,7 +98,7 @@ const PlanPicker = ({
           return (
             <div key={month} className="relative shrink-0">
               {isYear ? (
-                <span className="absolute left-[calc(50%+16px)] top-0 z-10 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-energy px-[18px] py-[5px] text-xs font-semibold leading-[18px] text-white">
+                <span className="absolute top-0 right-0 z-10 translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-energy px-2.5 py-[3px] text-[10px] font-semibold leading-[14px] text-white">
                   {t.home.bestValue}
                 </span>
               ) : null}
