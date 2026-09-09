@@ -12,6 +12,7 @@ type SeoPageKey =
   | "bmi"
   | "contact"
   | "corporate"
+  | "partner"
   | "about"
   | "faq"
   | "feedback"
@@ -122,6 +123,26 @@ const seoContent: Record<SeoPageKey, Record<Locale, LocalizedSeoContent>> = {
       description:
         "Корпоративный wellness-benefit с доступом в фитнес-центры для сотрудников. Мотивация, здоровье и командный дух в одном пакете.",
       keywords: ["корпоративный", "FitNest бизнес", "фитнес для команды", "wellness"],
+    },
+  },
+  partner: {
+    az: {
+      title: "Tərəfdaş olun",
+      description:
+        "Zalınızı FitNest-ə qoşun, boş saatları yeni müştərilərlə doldurun və yalnız gələn ziyarətlərə görə qazanın.",
+      keywords: ["tərəfdaş", "fitness zalı", "FitNest partner", "zal qoşulması"],
+    },
+    en: {
+      title: "Become a partner",
+      description:
+        "Connect your gym to FitNest, fill empty hours with new customers, and earn only from visits that actually happen.",
+      keywords: ["partner", "gym partnership", "FitNest partner", "connect gym"],
+    },
+    ru: {
+      title: "Стать партнёром",
+      description:
+        "Подключите зал к FitNest, заполните пустые часы новыми клиентами и зарабатывайте только с реальных визитов.",
+      keywords: ["партнёр", "фитнес-зал", "партнёр FitNest", "подключить зал"],
     },
   },
   about: {

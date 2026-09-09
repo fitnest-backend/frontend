@@ -13,7 +13,10 @@ const Navication = () => {
   const [open, setOpen] = useState(false);
   const homePath = addLocaleToPathname("/", locale);
   const corporatePath = addLocaleToPathname("/corporate", locale);
+  const partnerPath = addLocaleToPathname("/partner", locale);
   const isCorporate = normalizedPathname === "/corporate";
+  const isPartner = normalizedPathname === "/partner";
+  const isBusiness = isCorporate || isPartner;
 
   const navLinks = [
     { name: t.nav.howItWorks, href: `${homePath}#how-it-works` },
@@ -39,7 +42,7 @@ const Navication = () => {
           type="button"
           onClick={() => setOpen((prev) => !prev)}
           className={`inline-flex items-center gap-2 text-lg font-medium leading-7 hover:text-turquoise ${
-            isCorporate ? "text-turquoise" : "text-ink"
+            isBusiness ? "text-turquoise" : "text-ink"
           }`}
         >
           {t.nav.business}
@@ -57,9 +60,11 @@ const Navication = () => {
               {t.nav.corporate}
             </Link>
             <Link
-              href={`${homePath}#business`}
+              href={partnerPath}
               onClick={() => setOpen(false)}
-              className="block rounded-lg px-3 py-2 text-sm font-medium text-ink hover:bg-page"
+              className={`block rounded-lg px-3 py-2 text-sm font-medium hover:bg-page ${
+                isPartner ? "text-turquoise" : "text-ink"
+              }`}
             >
               {t.nav.becomePartner}
             </Link>

@@ -302,6 +302,35 @@ export type Messages = {
     ctaEmail: string;
     ctaButton: string;
   };
+  partner: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    heroCta: string;
+    calculatorTitle: string;
+    visitsLabel: string;
+    levelLabel: string;
+    ratePerVisit: string;
+    bronze: string;
+    silver: string;
+    gold: string;
+    platinum: string;
+    revenueLabel: string;
+    whyTitle: string;
+    reasons: { title: string; text: string }[];
+    formTitle: string;
+    formSubtitle: string;
+    gymName: string;
+    contactName: string;
+    phone: string;
+    email: string;
+    activity: string;
+    activityOptions: { value: string; label: string }[];
+    submit: string;
+    sending: string;
+    success: string;
+    error: string;
+  };
   about: {
     eyebrow: string;
     title: string;
@@ -938,6 +967,55 @@ const az: Messages = {
     ctaBefore: "Suallarınız üçün: ",
     ctaEmail: "support@fitnest.az",
     ctaButton: "Təklif alın",
+  },
+  partner: {
+    eyebrow: "Zallar üçün",
+    title: "Zalınızı FitNest-ə qoşun, gəlirinizi artırın",
+    description:
+      "Boş saatlarınızı yeni müştərilərlə doldurun. FitNest istifadəçiləri zalınızı kəşf etsin — siz yalnız gələn ziyarətlərə görə qazanın.",
+    heroCta: "Tərəfdaş olun",
+    calculatorTitle: "Qazancınızı hesablayın",
+    visitsLabel: "Aylıq FitNest ziyarəti",
+    levelLabel: "Zalın səviyyəsi",
+    ratePerVisit: "{rate} ₼ / ziyarət",
+    bronze: "Bronze",
+    silver: "Silver",
+    gold: "Gold",
+    platinum: "Platinum",
+    revenueLabel: "Təxmini aylıq əlavə gəlir",
+    whyTitle: "Niyə FitNest tərəfdaşı?",
+    reasons: [
+      {
+        title: "Yeni müştəri axını",
+        text: "Minlərlə aktiv istifadəçi zalınızı tətbiqdə görür və kəşf edir — reklam xərci olmadan.",
+      },
+      {
+        title: "Risk yoxdur",
+        text: "Abunə haqqı, gizli ödəniş yoxdur. Yalnız real gələn ziyarətlərə görə gəlir əldə edirsiniz.",
+      },
+      {
+        title: "Şəffaf hesabat",
+        text: "Tərəfdaş panelində hər ziyarət, hər ödəniş real vaxtda görünür.",
+      },
+    ],
+    formTitle: "Zalınızı qoşmaq üçün müraciət edin",
+    formSubtitle: "Komandamız 1 iş günü ərzində əlaqə saxlayacaq.",
+    gymName: "Zalın adı",
+    contactName: "Əlaqədar şəxs",
+    phone: "+994-xx xxx xx xx",
+    email: "E-poçt",
+    activity: "Fəaliyyət növü",
+    activityOptions: [
+      { value: "fitness", label: "Fitness" },
+      { value: "yoga", label: "Yoga / pilates" },
+      { value: "pool", label: "Hovuz" },
+      { value: "martial", label: "Döyüş sənətləri" },
+      { value: "other", label: "Digər" },
+    ],
+    submit: "Müraciət göndər",
+    sending: "Göndərilir...",
+    success: "Müraciətiniz göndərildi. Tezliklə əlaqə saxlayacağıq.",
+    error: "Müraciət göndərilmədi. Bir az sonra yenidən cəhd et.",
   },
   about: {
     eyebrow: "Haqqımızda",
@@ -1643,6 +1721,55 @@ const en: Messages = {
     ctaEmail: "support@fitnest.az",
     ctaButton: "Get an offer",
   },
+  partner: {
+    eyebrow: "For gyms",
+    title: "Connect your gym to FitNest and grow your revenue",
+    description:
+      "Fill empty hours with new customers. FitNest users discover your gym — you earn only from visits that actually happen.",
+    heroCta: "Become a partner",
+    calculatorTitle: "Calculate your earnings",
+    visitsLabel: "Monthly FitNest visits",
+    levelLabel: "Gym level",
+    ratePerVisit: "{rate} ₼ / visit",
+    bronze: "Bronze",
+    silver: "Silver",
+    gold: "Gold",
+    platinum: "Platinum",
+    revenueLabel: "Estimated extra monthly revenue",
+    whyTitle: "Why partner with FitNest?",
+    reasons: [
+      {
+        title: "New customer flow",
+        text: "Thousands of active users see and discover your gym in the app — with no ad spend.",
+      },
+      {
+        title: "No risk",
+        text: "No membership fee, no hidden charges. You earn only from real visits.",
+      },
+      {
+        title: "Transparent reporting",
+        text: "Every visit and every payment is visible in real time on the partner panel.",
+      },
+    ],
+    formTitle: "Apply to connect your gym",
+    formSubtitle: "Our team will get in touch within 1 business day.",
+    gymName: "Gym name",
+    contactName: "Contact person",
+    phone: "+994-xx xxx xx xx",
+    email: "Email",
+    activity: "Activity type",
+    activityOptions: [
+      { value: "fitness", label: "Fitness" },
+      { value: "yoga", label: "Yoga / pilates" },
+      { value: "pool", label: "Pool" },
+      { value: "martial", label: "Martial arts" },
+      { value: "other", label: "Other" },
+    ],
+    submit: "Send application",
+    sending: "Sending...",
+    success: "Your request was sent. We'll be in touch soon.",
+    error: "Couldn't send the request. Please try again shortly.",
+  },
   about: {
     eyebrow: "About us",
     title: "We're building Azerbaijan's fitness\nand healthy living ecosystem.",
@@ -2331,6 +2458,55 @@ const ru: Messages = {
     ctaBefore: "По вопросам: ",
     ctaEmail: "support@fitnest.az",
     ctaButton: "Получить предложение",
+  },
+  partner: {
+    eyebrow: "Для залов",
+    title: "Подключите зал к FitNest и увеличьте доход",
+    description:
+      "Заполните пустые часы новыми клиентами. Пользователи FitNest найдут ваш зал — вы зарабатываете только с реальных визитов.",
+    heroCta: "Стать партнёром",
+    calculatorTitle: "Рассчитайте доход",
+    visitsLabel: "Визиты FitNest в месяц",
+    levelLabel: "Уровень зала",
+    ratePerVisit: "{rate} ₼ / визит",
+    bronze: "Bronze",
+    silver: "Silver",
+    gold: "Gold",
+    platinum: "Platinum",
+    revenueLabel: "Ориентировочный доп. доход в месяц",
+    whyTitle: "Почему партнёр FitNest?",
+    reasons: [
+      {
+        title: "Новый поток клиентов",
+        text: "Тысячи активных пользователей видят и находят ваш зал в приложении — без затрат на рекламу.",
+      },
+      {
+        title: "Без риска",
+        text: "Нет абонентской платы и скрытых платежей. Доход только с реальных визитов.",
+      },
+      {
+        title: "Прозрачная отчётность",
+        text: "Каждый визит и каждый платёж видны в реальном времени в партнёрской панели.",
+      },
+    ],
+    formTitle: "Оставьте заявку, чтобы подключить зал",
+    formSubtitle: "Команда свяжется с вами в течение 1 рабочего дня.",
+    gymName: "Название зала",
+    contactName: "Контактное лицо",
+    phone: "+994-xx xxx xx xx",
+    email: "Эл. почта",
+    activity: "Тип активности",
+    activityOptions: [
+      { value: "fitness", label: "Фитнес" },
+      { value: "yoga", label: "Йога / пилатес" },
+      { value: "pool", label: "Бассейн" },
+      { value: "martial", label: "Единоборства" },
+      { value: "other", label: "Другое" },
+    ],
+    submit: "Отправить заявку",
+    sending: "Отправка...",
+    success: "Заявка отправлена. Мы скоро свяжемся.",
+    error: "Не удалось отправить заявку. Попробуйте ещё раз чуть позже.",
   },
   about: {
     eyebrow: "О нас",

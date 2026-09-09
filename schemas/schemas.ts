@@ -25,6 +25,26 @@ export const corporateFormSchema = z.object({
     .or(z.literal("")),
 });
 
+export const partnerFormSchema = z.object({
+  gymName: z
+    .string()
+    .min(2, { message: "Zalın adı ən azı 2 simvol olmalıdır" })
+    .max(120, { message: "Zalın adı ən çox 120 simvol olmalıdır" }),
+  contactName: z
+    .string()
+    .min(2, { message: "Ad ən azı 2 simvol olmalıdır" })
+    .max(80, { message: "Ad ən çox 80 simvol olmalıdır" }),
+  phone: z
+    .string()
+    .min(7, { message: "Telefon nömrəsi tələb olunur" })
+    .max(40, { message: "Telefon nömrəsi çox uzundur" }),
+  email: z
+    .string()
+    .min(1, { message: "Email ünvanı tələb olunur" })
+    .email({ message: "Düzgün email ünvanı daxil edin" }),
+  activity: z.string().min(1, { message: "Fəaliyyət növü seçin" }),
+});
+
 export const contactFormSchema = z.object({
   name: z
     .string()
