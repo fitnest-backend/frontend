@@ -6,7 +6,7 @@ const ToTopBtn = () => {
       type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Scroll to top"
-      className="absolute -top-[30px] right-10 flex size-[60px] cursor-pointer items-center justify-center rounded-full border border-cyan bg-brand-navy text-cyan sm:right-20"
+      className="absolute -top-[30px] right-10 flex size-[60px] cursor-pointer items-center justify-center rounded-full border border-cyan bg-[#011729] text-cyan sm:right-20 dark:bg-[#012438]"
     >
       <svg
         width="24"

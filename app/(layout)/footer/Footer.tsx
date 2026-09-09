@@ -89,7 +89,7 @@ const Footer = ({ email, phone }: FooterProps) => {
   ];
 
   return (
-    <footer id="download-app" className="relative z-50 scroll-mt-28 bg-brand-navy text-white">
+    <footer id="download-app" className="relative z-50 scroll-mt-28 bg-[#011729] text-white dark:bg-[#012438]">
       <ToTopBtn />
       <div className="mx-auto flex max-w-[1280px] flex-col gap-[18px] px-5 py-8 md:px-20 md:pt-20 md:pb-5">
         <div className="flex flex-col gap-10 lg:flex-row lg:justify-between">
