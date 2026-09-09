@@ -12,6 +12,8 @@ const Navication = () => {
   const { t, locale } = useI18n();
   const [open, setOpen] = useState(false);
   const homePath = addLocaleToPathname("/", locale);
+  const corporatePath = addLocaleToPathname("/corporate", locale);
+  const isCorporate = normalizedPathname === "/corporate";
 
   const navLinks = [
     { name: t.nav.howItWorks, href: `${homePath}#how-it-works` },
@@ -36,7 +38,9 @@ const Navication = () => {
         <button
           type="button"
           onClick={() => setOpen((prev) => !prev)}
-          className="inline-flex items-center gap-2 text-lg font-medium leading-7 text-ink hover:text-turquoise"
+          className={`inline-flex items-center gap-2 text-lg font-medium leading-7 hover:text-turquoise ${
+            isCorporate ? "text-turquoise" : "text-ink"
+          }`}
         >
           {t.nav.business}
           <ChevronDown className="size-4" />
@@ -44,9 +48,11 @@ const Navication = () => {
         {open ? (
           <div className="absolute top-full right-0 z-20 mt-3 min-w-[200px] rounded-xl border border-border-muted bg-surface p-2 shadow-lg">
             <Link
-              href={`${homePath}#business`}
+              href={corporatePath}
               onClick={() => setOpen(false)}
-              className="block rounded-lg px-3 py-2 text-sm font-medium text-ink hover:bg-page"
+              className={`block rounded-lg px-3 py-2 text-sm font-medium hover:bg-page ${
+                isCorporate ? "text-turquoise" : "text-ink"
+              }`}
             >
               {t.nav.corporate}
             </Link>

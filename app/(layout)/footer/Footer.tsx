@@ -54,7 +54,7 @@ const Footer = ({ email, phone }: FooterProps) => {
   ];
 
   const partnershipLinks = [
-    { label: t.footer.corporate, href: `${homePath}#business` },
+    { label: t.footer.corporate, href: addLocaleToPathname("/corporate", locale) },
     { label: t.footer.becomePartner, href: `${homePath}#business` },
     { label: t.footer.specialOffers, href: addLocaleToPathname("/payment-options", locale) },
     { label: t.footer.faq, href: addLocaleToPathname("/faq", locale) },

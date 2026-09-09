@@ -15,6 +15,7 @@ const staticRoutes = [
   "/fitness-centers",
   "/faq",
   "/contact",
+  "/corporate",
   "/about",
   "/feedback",
   "/privacy",

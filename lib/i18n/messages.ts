@@ -270,6 +270,38 @@ export type Messages = {
     success: string;
     error: string;
   };
+  corporate: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    gymsLabel: string;
+    contractValue: string;
+    contractLabel: string;
+    supportValue: string;
+    supportLabel: string;
+    formTitle: string;
+    formSubtitle: string;
+    name: string;
+    company: string;
+    phone: string;
+    email: string;
+    employees: string;
+    employeeOptions: { value: string; label: string }[];
+    notes: string;
+    submit: string;
+    sending: string;
+    success: string;
+    error: string;
+    benefitsTitle: string;
+    benefitsSubtitle: string;
+    benefits: { title: string; text: string }[];
+    howTitle: string;
+    steps: { title: string; text: string }[];
+    ctaTitle: string;
+    ctaBefore: string;
+    ctaEmail: string;
+    ctaButton: string;
+  };
   about: {
     eyebrow: string;
     title: string;
@@ -838,6 +870,74 @@ const az: Messages = {
     sending: "Göndərilir...",
     success: "Mesajın göndərildi. Tezliklə cavab verəcəyik.",
     error: "Mesaj göndərilmədi. Bir az sonra yenidən cəhd et.",
+  },
+  corporate: {
+    eyebrow: "Korporativ",
+    title: "Sağlam komanda\n— güclü şirkət",
+    description:
+      "Əməkdaşlarınıza {count} fitness mərkəzinə girişi olan wellness benefiti təqdim edin. Motivasiya, sağlamlıq və komanda ruhu — bir paketdə.",
+    gymsLabel: "fitness mərkəzi",
+    contractValue: "1",
+    contractLabel: "abunə, bir müqavilə",
+    supportValue: "24/7",
+    supportLabel: "dəstək komandası",
+    formTitle: "Korporativ təklif alın",
+    formSubtitle: "1 iş günü ərzində sizinlə əlaqə saxlayacağıq.",
+    name: "Ad",
+    company: "Şirkətin adı",
+    phone: "+994-xx xxx xx xx",
+    email: "E-poçt",
+    employees: "Əməkdaş sayı",
+    employeeOptions: [
+      { value: "1-10", label: "1–10" },
+      { value: "11-50", label: "11–50" },
+      { value: "51-200", label: "51–200" },
+      { value: "200+", label: "200+" },
+    ],
+    notes: "Sualınız və ya əlavə qeydləriniz....",
+    submit: "Təklif alın",
+    sending: "Göndərilir...",
+    success: "Müraciətiniz göndərildi. Tezliklə əlaqə saxlayacağıq.",
+    error: "Müraciət göndərilmədi. Bir az sonra yenidən cəhd et.",
+    benefitsTitle: "Şirkətinizə nə qazandırır?",
+    benefitsSubtitle: "Auditoriyası olan hər kəs - platformadan asılı olmayaraq",
+    benefits: [
+      {
+        title: "Enerjili komanda",
+        text: "Müntəzəm idman edən əməkdaşlar daha məhsuldar və daha az stresli olur.",
+      },
+      {
+        title: "Cəlbedici benefit",
+        text: "İstedadları cəlb edin və saxlayın — fitness benefiti ən çox istənilən bonuslardandır.",
+      },
+      {
+        title: "Sadə idarəetmə",
+        text: "Admin paneldən istifadəni izləyin, lisenziyaları bir kliklə əlavə edin və ya dayandırın.",
+      },
+    ],
+    howTitle: "Necə işləyir?",
+    steps: [
+      {
+        title: "Müraciət edin",
+        text: "Formanı doldurun, komandamız təklif hazırlasın.",
+      },
+      {
+        title: "Abunəliyi seçin",
+        text: "Əməkdaş sayına və büdcəyə uyğun paket.",
+      },
+      {
+        title: "Aktivləşdirin",
+        text: "Əməkdaşlar tətbiqi endirib koda qoşulur.",
+      },
+      {
+        title: "İzləyin",
+        text: "Admin paneldən istifadəni izləyin, lisenziyaları əlavə edin və ya dayandırın.",
+      },
+    ],
+    ctaTitle: "Komandanız üçün ilk addımı atın",
+    ctaBefore: "Suallarınız üçün: ",
+    ctaEmail: "support@fitnest.az",
+    ctaButton: "Təklif alın",
   },
   about: {
     eyebrow: "Haqqımızda",
@@ -1475,6 +1575,74 @@ const en: Messages = {
     success: "Your message was sent. We'll get back to you soon.",
     error: "Couldn't send the message. Please try again shortly.",
   },
+  corporate: {
+    eyebrow: "Corporate",
+    title: "A healthy team\n— a stronger company",
+    description:
+      "Give your employees a wellness benefit with access to {count} fitness centers. Motivation, health, and team spirit — in one package.",
+    gymsLabel: "fitness centers",
+    contractValue: "1",
+    contractLabel: "subscription, one contract",
+    supportValue: "24/7",
+    supportLabel: "support team",
+    formTitle: "Get a corporate offer",
+    formSubtitle: "We'll get in touch within 1 business day.",
+    name: "Name",
+    company: "Company name",
+    phone: "+994-xx xxx xx xx",
+    email: "Email",
+    employees: "Number of employees",
+    employeeOptions: [
+      { value: "1-10", label: "1–10" },
+      { value: "11-50", label: "11–50" },
+      { value: "51-200", label: "51–200" },
+      { value: "200+", label: "200+" },
+    ],
+    notes: "Your question or additional notes....",
+    submit: "Get an offer",
+    sending: "Sending...",
+    success: "Your request was sent. We'll be in touch soon.",
+    error: "Couldn't send the request. Please try again shortly.",
+    benefitsTitle: "What does your company gain?",
+    benefitsSubtitle: "Anyone with an audience — regardless of platform",
+    benefits: [
+      {
+        title: "An energized team",
+        text: "Employees who train regularly are more productive and less stressed.",
+      },
+      {
+        title: "A compelling benefit",
+        text: "Attract and keep talent — a fitness benefit is one of the most wanted perks.",
+      },
+      {
+        title: "Simple management",
+        text: "Track usage from the admin panel and add or pause licenses in one click.",
+      },
+    ],
+    howTitle: "How it works",
+    steps: [
+      {
+        title: "Apply",
+        text: "Fill in the form and our team will prepare an offer.",
+      },
+      {
+        title: "Choose a plan",
+        text: "A package that fits your headcount and budget.",
+      },
+      {
+        title: "Activate",
+        text: "Employees download the app and join with a code.",
+      },
+      {
+        title: "Track",
+        text: "Track usage from the admin panel and add or pause licenses.",
+      },
+    ],
+    ctaTitle: "Take the first step for your team",
+    ctaBefore: "For questions: ",
+    ctaEmail: "support@fitnest.az",
+    ctaButton: "Get an offer",
+  },
   about: {
     eyebrow: "About us",
     title: "We're building Azerbaijan's fitness\nand healthy living ecosystem.",
@@ -2095,6 +2263,74 @@ const ru: Messages = {
     sending: "Отправка...",
     success: "Сообщение отправлено. Мы скоро ответим.",
     error: "Не удалось отправить сообщение. Попробуйте ещё раз чуть позже.",
+  },
+  corporate: {
+    eyebrow: "Корпоративным",
+    title: "Здоровая команда\n— сильная компания",
+    description:
+      "Дайте сотрудникам wellness-benefit с доступом к {count} фитнес-центрам. Мотивация, здоровье и командный дух — в одном пакете.",
+    gymsLabel: "фитнес-центров",
+    contractValue: "1",
+    contractLabel: "подписка, один договор",
+    supportValue: "24/7",
+    supportLabel: "команда поддержки",
+    formTitle: "Получить корпоративное предложение",
+    formSubtitle: "Свяжемся с вами в течение 1 рабочего дня.",
+    name: "Имя",
+    company: "Название компании",
+    phone: "+994-xx xxx xx xx",
+    email: "Эл. почта",
+    employees: "Число сотрудников",
+    employeeOptions: [
+      { value: "1-10", label: "1–10" },
+      { value: "11-50", label: "11–50" },
+      { value: "51-200", label: "51–200" },
+      { value: "200+", label: "200+" },
+    ],
+    notes: "Ваш вопрос или дополнительные заметки....",
+    submit: "Получить предложение",
+    sending: "Отправка...",
+    success: "Заявка отправлена. Мы скоро свяжемся.",
+    error: "Не удалось отправить заявку. Попробуйте ещё раз чуть позже.",
+    benefitsTitle: "Что это даёт вашей компании?",
+    benefitsSubtitle: "Для любой аудитории — независимо от платформы",
+    benefits: [
+      {
+        title: "Энергичная команда",
+        text: "Сотрудники, которые регулярно занимаются спортом, продуктивнее и меньше подвержены стрессу.",
+      },
+      {
+        title: "Привлекательный benefit",
+        text: "Привлекайте и удерживайте таланты — фитнес-benefit один из самых желанных бонусов.",
+      },
+      {
+        title: "Простое управление",
+        text: "Следите за использованием в админ-панели и добавляйте или приостанавливайте лицензии в один клик.",
+      },
+    ],
+    howTitle: "Как это работает?",
+    steps: [
+      {
+        title: "Оставьте заявку",
+        text: "Заполните форму, и команда подготовит предложение.",
+      },
+      {
+        title: "Выберите подписку",
+        text: "Пакет под число сотрудников и бюджет.",
+      },
+      {
+        title: "Активируйте",
+        text: "Сотрудники скачивают приложение и подключаются по коду.",
+      },
+      {
+        title: "Следите",
+        text: "Следите за использованием в админ-панели и добавляйте или приостанавливайте лицензии.",
+      },
+    ],
+    ctaTitle: "Сделайте первый шаг для команды",
+    ctaBefore: "По вопросам: ",
+    ctaEmail: "support@fitnest.az",
+    ctaButton: "Получить предложение",
   },
   about: {
     eyebrow: "О нас",

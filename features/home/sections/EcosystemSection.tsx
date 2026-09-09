@@ -31,7 +31,7 @@ const EcosystemSection = async () => {
               {t.corporateDesc}
             </p>
             <Link
-              href={addLocaleToPathname("/contact", locale)}
+              href={addLocaleToPathname("/corporate", locale)}
               className="mt-auto inline-flex items-center gap-2 pt-6 text-base font-bold text-cyan"
             >
               {t.corporateCta}

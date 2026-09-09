@@ -1,5 +1,30 @@
 import { z } from "zod";
 
+export const corporateFormSchema = z.object({
+  name: z
+    .string()
+    .min(2, { message: "Ad ən azı 2 simvol olmalıdır" })
+    .max(80, { message: "Ad ən çox 80 simvol olmalıdır" }),
+  company: z
+    .string()
+    .min(2, { message: "Şirkət adı ən azı 2 simvol olmalıdır" })
+    .max(120, { message: "Şirkət adı ən çox 120 simvol olmalıdır" }),
+  phone: z
+    .string()
+    .min(7, { message: "Telefon nömrəsi tələb olunur" })
+    .max(40, { message: "Telefon nömrəsi çox uzundur" }),
+  email: z
+    .string()
+    .min(1, { message: "Email ünvanı tələb olunur" })
+    .email({ message: "Düzgün email ünvanı daxil edin" }),
+  employees: z.string().min(1, { message: "Əməkdaş sayı seçin" }),
+  notes: z
+    .string()
+    .max(2000, { message: "Qeyd ən çox 2000 simvol olmalıdır" })
+    .optional()
+    .or(z.literal("")),
+});
+
 export const contactFormSchema = z.object({
   name: z
     .string()

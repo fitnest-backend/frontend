@@ -17,7 +17,7 @@ const HamburgerMenu = () => {
     { name: t.nav.howItWorks, href: `${homePath}#how-it-works` },
     { name: t.nav.halls, href: addLocaleToPathname("/fitness-centers", locale) },
     { name: t.nav.plans, href: addLocaleToPathname("/offers", locale) },
-    { name: t.nav.corporate, href: `${homePath}#business` },
+    { name: t.nav.corporate, href: addLocaleToPathname("/corporate", locale) },
     { name: t.nav.becomePartner, href: `${homePath}#business` },
     { name: t.nav.bmi, href: addLocaleToPathname("/bmi", locale) },
   ];
