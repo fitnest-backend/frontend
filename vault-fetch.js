@@ -8,6 +8,7 @@ const roleId = process.env.VAULT_ROLE_ID;
 const secretId = process.env.VAULT_SECRET_ID;
 const vaultToken = process.env.VAULT_TOKEN;
 const secretPath = process.env.VAULT_SECRET_PATH || "landing-frontend/development";
+const envFile = process.env.VAULT_ENV_FILE || "/tmp/vault.env";
 
 function request(url, options, data) {
   return new Promise((resolve, reject) => {
@@ -82,8 +83,9 @@ async function fetchSecrets() {
   for (const [key, value] of Object.entries(secrets)) {
     envContent += `${key}="${value}"\n`;
   }
-  fs.writeFileSync(".env.local", envContent);
-  console.log(`Secrets written to ${path.resolve(".env.local")}`);
+  fs.mkdirSync(path.dirname(envFile), { recursive: true });
+  fs.writeFileSync(envFile, envContent, { mode: 0o600 });
+  console.log(`Secrets written to ${path.resolve(envFile)}`);
 }
 
 fetchSecrets().catch((err) => {

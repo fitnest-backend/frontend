@@ -1,6 +1,7 @@
 import { getMessages } from "@/lib/i18n/server";
 import Container from "@/components/common/Container";
 import SectionHeading from "../components/SectionHeading";
+import Reveal from "../components/Reveal";
 
 const WhySubscribe = async () => {
   const { messages } = await getMessages();
@@ -16,7 +17,8 @@ const WhySubscribe = async () => {
         />
         <div className="relative mx-auto w-full max-w-[1036px]">
           <div className="flex flex-col gap-8 lg:block lg:min-h-[430px] lg:gap-0">
-            <article className="min-h-0 w-full rounded-[30px] border border-energy bg-surface p-6 shadow-[0px_28px_76px_rgba(0,157,166,0.24)] sm:min-h-[360px] sm:p-8 md:p-10 lg:absolute lg:top-6 lg:left-0 lg:w-[53.86%] lg:-rotate-2 dark:bg-page dark:shadow-none">
+            <Reveal variant="left" className="w-full lg:absolute lg:top-6 lg:left-0 lg:w-[53.86%]">
+            <article className="min-h-0 w-full rounded-[30px] border border-energy bg-surface p-6 shadow-[0px_28px_76px_rgba(0,157,166,0.24)] sm:min-h-[360px] sm:p-8 md:p-10 lg:-rotate-2 dark:bg-page dark:shadow-none">
               <h3 className="mb-5 font-manrope text-[28px] font-extrabold leading-[1.3] text-ink sm:text-[32px] md:text-[40px] md:leading-[60px]">
                 {t.whyLeftTitle}
               </h3>
@@ -37,8 +39,10 @@ const WhySubscribe = async () => {
                 ))}
               </ul>
             </article>
+            </Reveal>
 
-            <article className="min-h-0 w-full rounded-[30px] border border-cyan bg-[linear-gradient(315deg,#00DBDB_0%,#14234B_100%)] p-6 shadow-[0px_28px_76px_rgba(0,157,166,0.24)] sm:min-h-[360px] sm:p-8 md:p-10 lg:absolute lg:top-6 lg:left-[45.85%] lg:z-10 lg:w-[54.25%] lg:rotate-2">
+            <Reveal variant="right" delay={0.12} className="w-full lg:absolute lg:top-6 lg:left-[45.85%] lg:z-10 lg:w-[54.25%]">
+            <article className="min-h-0 w-full rounded-[30px] border border-cyan bg-[linear-gradient(315deg,#00DBDB_0%,#14234B_100%)] p-6 shadow-[0px_28px_76px_rgba(0,157,166,0.24)] sm:min-h-[360px] sm:p-8 md:p-10 lg:rotate-2">
               <h3 className="mb-5 font-manrope text-[28px] font-extrabold leading-[1.3] text-white sm:text-[32px] md:text-[40px] md:leading-[60px]">
                 {t.whyRightTitle}
               </h3>
@@ -60,6 +64,7 @@ const WhySubscribe = async () => {
                 ))}
               </ul>
             </article>
+            </Reveal>
           </div>
         </div>
       </Container>

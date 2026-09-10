@@ -2,6 +2,7 @@ import { getMessages } from "@/lib/i18n/server";
 import Container from "@/components/common/Container";
 import SectionHeading from "../components/SectionHeading";
 import IconBox from "../components/IconBox";
+import { Stagger } from "../components/Reveal";
 
 const STEP_ICONS = [
   "/icons/home/user.svg",
@@ -22,7 +23,7 @@ const HowItWorks = async () => {
           title={t.howHeading}
           titleClassName="font-manrope text-heading"
         />
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <Stagger className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" variant="scale" delay={0.1}>
           {t.howItems.map((item, index) => {
             const isLast = index === t.howItems.length - 1;
 
@@ -64,7 +65,7 @@ const HowItWorks = async () => {
               </article>
             );
           })}
-        </div>
+        </Stagger>
       </Container>
     </section>
   );

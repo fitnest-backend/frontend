@@ -1,4 +1,5 @@
 import { getMessages } from "@/lib/i18n/server";
+import { Stagger } from "@/features/home/components/Reveal";
 
 const OffersDurationsSection = async () => {
   const { messages } = await getMessages();
@@ -14,7 +15,7 @@ const OffersDurationsSection = async () => {
           {messages.offers.durationsHeading}
         </h2>
       </div>
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      <Stagger className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4" variant="scale" delay={0.08}>
         {items.map((item) => (
           <article
             key={item.months}
@@ -33,7 +34,7 @@ const OffersDurationsSection = async () => {
             </p>
           </article>
         ))}
-      </div>
+      </Stagger>
     </section>
   );
 };

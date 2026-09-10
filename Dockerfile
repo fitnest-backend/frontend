@@ -43,7 +43,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --chown=nextjs:nodejs vault-fetch.js ./
 COPY --chown=nextjs:nodejs docker-entrypoint.sh ./
-RUN chmod +x docker-entrypoint.sh && chown nextjs:nodejs vault-fetch.js docker-entrypoint.sh
+RUN chmod +x docker-entrypoint.sh && chown -R nextjs:nodejs /app
 
 USER nextjs
 

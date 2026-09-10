@@ -3,6 +3,7 @@ import Container from "@/components/common/Container";
 import SectionHeading from "../components/SectionHeading";
 import IconBox from "../components/IconBox";
 import StoreBadges from "../components/StoreBadges";
+import Reveal, { Stagger } from "../components/Reveal";
 
 const FEATURE_ICONS = [
   "/icons/home/search.svg",
@@ -25,9 +26,9 @@ const AppSection = async () => {
             title={t.appHeading}
             description={t.appDescription}
           />
-          <ul className="mt-2 flex flex-col gap-[18px]">
+          <Stagger className="mt-2 flex flex-col gap-[18px]" variant="left" delay={0.08}>
             {t.appFeatures.map((feature, index) => (
-              <li key={feature.title} className="flex items-center gap-4">
+              <div key={feature.title} className="flex items-center gap-4">
                 <IconBox size="sm" tone="navy">
                   <img src={FEATURE_ICONS[index]} alt="" width={18} height={18} />
                 </IconBox>
@@ -37,18 +38,20 @@ const AppSection = async () => {
                   </p>
                   <p className="text-sm leading-5 text-desc">{feature.desc}</p>
                 </div>
-              </li>
+              </div>
             ))}
-          </ul>
+          </Stagger>
           <StoreBadges dark className="mt-2" />
         </div>
-        <div className="relative flex h-[320px] w-full max-w-[608px] shrink items-center justify-center sm:h-[420px] lg:h-[538px] lg:max-w-[46%]">
+        <Reveal variant="scale" delay={0.15} className="relative flex h-[320px] w-full max-w-[608px] shrink items-center justify-center sm:h-[420px] lg:h-[538px] lg:max-w-[46%]">
+        <div className="relative flex h-full w-full items-center justify-center">
           <img
             src="/images/home/iphones.png"
             alt="FitNest mobile app"
             className="h-full w-full object-contain"
           />
         </div>
+        </Reveal>
       </Container>
     </section>
   );

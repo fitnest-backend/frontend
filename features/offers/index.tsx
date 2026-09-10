@@ -7,6 +7,7 @@ import OffersActivateBanner from "@/features/offers/components/OffersActivateBan
 import PlanPicker, {
   type PlanDuration,
 } from "@/features/offers/components/PlanPicker";
+import Reveal from "@/features/home/components/Reveal";
 
 type OffersPageProps = {
   searchParams: Promise<{
@@ -40,6 +41,7 @@ const OffersPage = async ({ searchParams }: OffersPageProps) => {
   return (
     <div className="bg-page text-ink">
       <OffersHero />
+      <Reveal variant="scale">
       <section className="bg-surface pb-16 pt-10 md:pb-20">
         <Container>
           <PlanPicker
@@ -49,10 +51,13 @@ const OffersPage = async ({ searchParams }: OffersPageProps) => {
           />
         </Container>
       </section>
+      </Reveal>
+      <Reveal variant="blur">
       <Container className="flex flex-col gap-[68px] py-16 md:py-20">
         <OffersDurationsSection />
         <OffersActivateBanner />
       </Container>
+      </Reveal>
     </div>
   );
 };

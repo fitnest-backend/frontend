@@ -1,6 +1,7 @@
 import { getMessages } from "@/lib/i18n/server";
 import Container from "@/components/common/Container";
 import { getLandingStatsServer } from "@/lib/api/landing";
+import { Stagger } from "../components/Reveal";
 
 const formatStat = (value: number | null | undefined) => {
   if (value === null || value === undefined) return "—";
@@ -28,7 +29,8 @@ const StatsBar = async () => {
 
   return (
     <section className="border-y border-border-muted bg-surface">
-      <Container className="grid grid-cols-1 gap-8 py-10 sm:grid-cols-2 lg:grid-cols-4 lg:items-center lg:justify-between">
+      <Container className="py-10">
+        <Stagger className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:items-center lg:justify-between" variant="blur" delay={0.07}>
         {items.map((stat, index) => {
           const isLast = index === items.length - 1;
           const [title, range] = (stat.label ?? "").split("\n");
@@ -65,6 +67,7 @@ const StatsBar = async () => {
             </div>
           );
         })}
+        </Stagger>
       </Container>
     </section>
   );

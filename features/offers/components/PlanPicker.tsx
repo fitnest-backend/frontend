@@ -10,6 +10,7 @@ import MembershipBadge, {
 import type { SubscriptionPackage } from "@/features/offers/api/types";
 import { formatManat, monthlyPrice } from "@/features/offers/lib/price";
 import { cn } from "@/lib/utils";
+import { Stagger } from "@/features/home/components/Reveal";
 
 export const PLAN_DURATIONS = [1, 3, 6, 12] as const;
 export type PlanDuration = (typeof PLAN_DURATIONS)[number];
@@ -91,7 +92,7 @@ const PlanPicker = ({
 
   return (
     <div className="flex flex-col items-center">
-      <div className="grid w-full max-w-[640px] grid-cols-2 gap-2 pt-8 sm:grid-cols-4 sm:gap-4">
+      <Stagger className="grid w-full max-w-[640px] grid-cols-2 gap-2 pt-8 sm:grid-cols-4 sm:gap-4" variant="scale" delay={0.06}>
         {PLAN_DURATIONS.map((month) => {
           const active = duration === month;
           const isYear = month === 12;
@@ -117,13 +118,13 @@ const PlanPicker = ({
             </div>
           );
         })}
-      </div>
+      </Stagger>
 
-      <div className="relative grid w-full grid-cols-1 gap-4 rounded-2xl border border-border-muted p-3 pt-10 sm:grid-cols-2 xl:grid-cols-4">
+      <Stagger className="relative grid w-full grid-cols-1 gap-4 rounded-2xl border border-border-muted p-3 pt-10 sm:grid-cols-2 xl:grid-cols-4" variant="rise" delay={0.1}>
         {plans.map((plan) => (
           <article
             key={plan.tier}
-            className="group relative flex min-w-0 flex-col gap-7 rounded-2xl border border-border-muted bg-page p-5 transition-all hover:border-cyan hover:bg-surface sm:p-7"
+            className="group relative flex min-w-0 flex-col gap-7 rounded-2xl border border-border-muted bg-page p-5 transition-all hover:-translate-y-1 hover:border-cyan hover:bg-surface hover:shadow-[0_24px_60px_rgba(0,157,166,0.16)] sm:p-7"
           >
             {plan.mostPopular ? (
               <span className="absolute -top-3 right-4 whitespace-nowrap rounded-full bg-turquoise px-[18px] py-[5px] text-xs font-semibold leading-[18px] text-white">
@@ -167,7 +168,7 @@ const PlanPicker = ({
             </Link>
           </article>
         ))}
-      </div>
+      </Stagger>
     </div>
   );
 };

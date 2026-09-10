@@ -1,11 +1,13 @@
 #!/bin/sh
 set -e
 
+VAULT_ENV_FILE="${VAULT_ENV_FILE:-/tmp/vault.env}"
+
 if [ -n "$VAULT_TOKEN" ] || { [ -n "$VAULT_ROLE_ID" ] && [ -n "$VAULT_SECRET_ID" ]; }; then
   echo "Fetching secrets from Vault..."
-  node vault-fetch.js
-  if [ -f .env.local ]; then
-    echo "Loading .env.local into environment..."
+  VAULT_ENV_FILE="$VAULT_ENV_FILE" node vault-fetch.js
+  if [ -f "$VAULT_ENV_FILE" ]; then
+    echo "Loading Vault secrets into environment..."
     set -a
     while IFS= read -r line || [ -n "$line" ]; do
       case "$line" in
@@ -15,7 +17,7 @@ if [ -n "$VAULT_TOKEN" ] || { [ -n "$VAULT_ROLE_ID" ] && [ -n "$VAULT_SECRET_ID"
       raw=${line#*=}
       val=$(printf '%s' "$raw" | sed -e 's/^"//' -e 's/"$//')
       export "$key=$val"
-    done < .env.local
+    done < "$VAULT_ENV_FILE"
     set +a
   fi
 fi

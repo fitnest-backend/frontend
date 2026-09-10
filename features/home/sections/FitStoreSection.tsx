@@ -6,6 +6,7 @@ import {
   getHomeStoresServer,
   storeImageSrc,
 } from "@/lib/api/landing";
+import { Stagger } from "../components/Reveal";
 
 const FALLBACK_IMAGES = [
   "/images/home/store-protein.svg",
@@ -69,7 +70,7 @@ const FitStoreSection = async () => {
             />
           </Link>
         </div>
-        <div className="grid w-full min-w-0 flex-1 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <Stagger className="grid w-full min-w-0 flex-1 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" variant="rise" delay={0.09}>
           {items.map((item) => (
             <Link
               key={item.key}
@@ -102,7 +103,7 @@ const FitStoreSection = async () => {
               </div>
             </Link>
           ))}
-        </div>
+        </Stagger>
       </Container>
     </section>
   );

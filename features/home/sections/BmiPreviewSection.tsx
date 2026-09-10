@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getMessages } from "@/lib/i18n/server";
 import { addLocaleToPathname } from "@/lib/i18n/config";
 import Container from "@/components/common/Container";
+import Reveal from "../components/Reveal";
 
 const BmiPreviewSection = async () => {
   const { messages, locale } = await getMessages();
@@ -30,6 +31,7 @@ const BmiPreviewSection = async () => {
         <div className="absolute inset-0 hidden bg-gradient-to-r from-surface from-0% via-surface/20 via-45% to-transparent md:block" />
 
         <Container className="relative z-10 grid min-h-0 grid-cols-1 items-center gap-10 py-16 md:min-h-[630px] md:py-20 lg:grid-cols-[minmax(0,411px)_minmax(140px,1fr)_auto]">
+          <Reveal variant="left" className="flex w-full max-w-[411px] flex-col">
           <div className="flex w-full max-w-[411px] flex-col gap-10">
             <div className="flex flex-col gap-4">
               <p className="text-lg font-bold leading-7 text-turquoise">
@@ -54,6 +56,7 @@ const BmiPreviewSection = async () => {
               />
             </Link>
           </div>
+          </Reveal>
 
           <div className="flex flex-col items-start gap-[35px] lg:items-center">
             <div className="flex h-[116px] w-full max-w-[194px] items-center justify-center gap-3 rounded-2xl border border-border-muted bg-cyan/15 px-4 dark:bg-[#205B7D]">

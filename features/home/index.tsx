@@ -17,33 +17,37 @@ export default function HomePage() {
     <div className="flex flex-col gap-12 bg-page pb-12 text-ink md:gap-16 md:pb-20">
       <div>
         <HeroSection />
-        <StatsBar />
-        <HowItWorks />
+        <Reveal variant="blur" amount={0.2}>
+          <StatsBar />
+        </Reveal>
+        <Reveal variant="rise">
+          <HowItWorks />
+        </Reveal>
       </div>
-      <Reveal>
+      <Reveal variant="left">
         <WhySubscribe />
       </Reveal>
-      <Reveal>
+      <Reveal variant="rise">
         <GymsSection />
       </Reveal>
-      <Reveal>
+      <Reveal variant="scale">
         <Suspense fallback={null}>
           <SubscriptionSectionServer />
         </Suspense>
       </Reveal>
-      <Reveal>
+      <Reveal variant="blur">
         <PaymentBanner />
       </Reveal>
-      <Reveal>
+      <Reveal variant="right">
         <AppSection />
       </Reveal>
-      <Reveal>
+      <Reveal variant="left">
         <EcosystemSection />
       </Reveal>
-      <Reveal>
+      <Reveal variant="scale">
         <FitStoreSection />
       </Reveal>
-      <Reveal>
+      <Reveal variant="blur">
         <BmiPreviewSection />
       </Reveal>
     </div>

@@ -6,6 +6,7 @@ import FitnessCenterCard from "@/features/fitness-centers/components/FitnessCent
 import type { MembershipTier } from "../components/MembershipBadge";
 import SectionHeading from "../components/SectionHeading";
 import HomeArrow from "../components/HomeArrow";
+import { Stagger } from "../components/Reveal";
 import { getHomeGymsServer, type LandingGym } from "@/lib/api/landing";
 
 const toTier = (membership: LandingGym["membership"]): MembershipTier => {
@@ -41,7 +42,7 @@ const GymsSection = async () => {
           }
         />
         {gyms.length === 0 ? null : (
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <Stagger className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" variant="scale" delay={0.09}>
             {gyms.map((gym) => (
               <FitnessCenterCard
                 key={gym.gymId}
@@ -54,7 +55,7 @@ const GymsSection = async () => {
                 href={addLocaleToPathname(`/fitness-centers/${gym.gymId}`, locale)}
               />
             ))}
-          </div>
+          </Stagger>
         )}
       </Container>
     </section>
