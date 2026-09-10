@@ -96,7 +96,7 @@ const PlanPicker = ({
           const active = duration === month;
           const isYear = month === 12;
           return (
-            <div key={month} className="relative min-w-0">
+            <div key={month} className="relative min-w-0 cursor-pointer">
               {isYear ? (
                 <span className="absolute top-0 right-0 z-10 translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-energy px-2.5 py-[3px] text-[10px] font-semibold leading-[14px] text-white">
                   {t.home.bestValue}
@@ -106,7 +106,7 @@ const PlanPicker = ({
                 type="button"
                 onClick={() => setDuration(month)}
                 className={cn(
-                  "h-11 w-full rounded-t-[14px] border-x-[1.5px] border-t-[1.5px] px-2 text-sm font-bold leading-6 sm:px-4 sm:text-base",
+                  "h-11 w-full cursor-pointer rounded-t-[14px] border-x-[1.5px] border-t-[1.5px] px-2 text-sm font-bold leading-6 sm:px-4 sm:text-base",
                   active
                     ? "border-brand-navy bg-brand-navy-800 text-white"
                     : "border-border-muted bg-surface text-ink",
