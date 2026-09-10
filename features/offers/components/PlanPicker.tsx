@@ -11,6 +11,7 @@ import type { SubscriptionPackage } from "@/features/offers/api/types";
 import { formatManat, monthlyPrice } from "@/features/offers/lib/price";
 import { cn } from "@/lib/utils";
 import { Stagger } from "@/features/home/components/Reveal";
+import TiltCard from "@/features/home/components/TiltCard";
 
 export const PLAN_DURATIONS = [1, 3, 6, 12] as const;
 export type PlanDuration = (typeof PLAN_DURATIONS)[number];
@@ -122,8 +123,8 @@ const PlanPicker = ({
 
       <Stagger className="relative grid w-full grid-cols-1 gap-4 rounded-2xl border border-border-muted p-3 pt-10 sm:grid-cols-2 xl:grid-cols-4" variant="rise" delay={0.1}>
         {plans.map((plan) => (
+          <TiltCard key={plan.tier} intensity={8}>
           <article
-            key={plan.tier}
             className="group relative flex min-w-0 flex-col gap-7 rounded-2xl border border-border-muted bg-page p-5 transition-all hover:-translate-y-1 hover:border-cyan hover:bg-surface hover:shadow-[0_24px_60px_rgba(0,157,166,0.16)] sm:p-7"
           >
             {plan.mostPopular ? (
@@ -167,6 +168,7 @@ const PlanPicker = ({
               {t.home.selectPackage}
             </Link>
           </article>
+          </TiltCard>
         ))}
       </Stagger>
     </div>

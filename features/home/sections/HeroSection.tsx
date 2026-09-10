@@ -4,6 +4,8 @@ import { getMessages } from "@/lib/i18n/server";
 import { addLocaleToPathname } from "@/lib/i18n/config";
 import StoreBadges from "../components/StoreBadges";
 import Reveal from "../components/Reveal";
+import AmbientScene from "../components/AmbientScene";
+import TiltCard from "../components/TiltCard";
 
 const HeroSection = async () => {
   const { messages, locale } = await getMessages();
@@ -21,6 +23,7 @@ const HeroSection = async () => {
         alt=""
         className="absolute inset-0 hidden h-full w-full object-cover object-right dark:block"
       />
+      <AmbientScene />
       <div className="relative z-10 mx-auto grid w-full max-w-[1600px] px-5 py-10 md:px-10 md:py-16 lg:grid-cols-[minmax(20rem,519px)_minmax(0,1fr)] lg:items-center lg:gap-[80px] xl:gap-[206px] xl:px-20">
         <Reveal variant="blur" amount={0.05} className="flex w-full max-w-[519px] flex-col">
         <div className="flex w-full max-w-[519px] flex-col gap-8">
@@ -101,6 +104,7 @@ const HeroSection = async () => {
         </Reveal>
 
         <Reveal variant="right" delay={0.12} amount={0.05} className="relative mx-auto mt-8 w-full max-w-[555px] lg:mx-0 lg:ml-auto lg:mt-0">
+        <TiltCard intensity={14}>
         <div className="relative mx-auto w-full max-w-[555px]">
           <div className="relative aspect-[555/625] w-full">
             <div className="absolute top-0 left-[22.78%] h-full w-[54.43%]">
@@ -154,6 +158,7 @@ const HeroSection = async () => {
             </div>
           </div>
         </div>
+        </TiltCard>
         </Reveal>
       </div>
     </section>

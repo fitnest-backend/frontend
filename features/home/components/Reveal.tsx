@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 /** Apple-like ease-out (slow settle, no bounce). */
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-export type RevealVariant = "rise" | "blur" | "scale" | "left" | "right" | "fade";
+export type RevealVariant = "rise" | "blur" | "scale" | "left" | "right" | "fade" | "tilt";
 
 const hiddenFor: Record<RevealVariant, Record<string, number | string>> = {
   rise: { opacity: 0, y: 40 },
@@ -16,6 +16,7 @@ const hiddenFor: Record<RevealVariant, Record<string, number | string>> = {
   left: { opacity: 0, x: -56, filter: "blur(8px)" },
   right: { opacity: 0, x: 56, filter: "blur(8px)" },
   fade: { opacity: 0 },
+  tilt: { opacity: 0, y: 48, rotateX: 16, filter: "blur(10px)" },
 };
 
 const shown = {
@@ -23,6 +24,7 @@ const shown = {
   x: 0,
   y: 0,
   scale: 1,
+  rotateX: 0,
   filter: "blur(0px)",
 };
 
@@ -45,11 +47,12 @@ const Reveal = ({
 
   return (
     <motion.div
-      className={cn("will-change-transform", className)}
+      className={cn("will-change-transform [transform-style:preserve-3d]", className)}
       initial={reduceMotion ? false : hiddenFor[variant]}
       whileInView={shown}
       viewport={{ once: true, amount }}
-      transition={{ duration: 0.8, delay, ease: EASE }}
+      transition={{ duration: 0.85, delay, ease: EASE }}
+      style={{ transformPerspective: 1200 }}
     >
       {children}
     </motion.div>

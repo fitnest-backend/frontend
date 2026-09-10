@@ -76,11 +76,7 @@ export type LandingPage<T> = {
 const LANDING = "/public/landing";
 const FALLBACK_GYM_IMAGE = "/images/main-page.webp";
 const FALLBACK_STORE_IMAGE = "/images/first.png";
-const API_ORIGIN = (
-  process.env.API_BASE_URL ??
-  process.env.NEXT_PUBLIC_API_BASE_URL ??
-  "https://api-dev.fitnest.az/api/v1"
-).replace(/\/api\/v1\/?$/, "");
+const MEDIA_PATH = "/api/media/";
 
 function withLocale(locale: string) {
   return { headers: localeHeaders(locale) };
@@ -88,10 +84,10 @@ function withLocale(locale: string) {
 
 function landingMediaFileId(value: string): string | null {
   const match = value.match(
-    /(?:\/api\/v1)?\/(?:media\/stream|public\/landing\/media)\/([1-9][0-9]{0,31})(?:[/?].*)?$/,
+    /(?:\/api\/(?:media|v1\/public\/landing\/media)|\/(?:media\/stream|public\/landing\/media))\/([1-9][0-9]{0,18})(?:[/?].*)?$/,
   );
   if (match) return match[1];
-  if (/^[1-9][0-9]{0,31}$/.test(value)) return value;
+  if (/^[1-9][0-9]{0,18}$/.test(value)) return value;
   return null;
 }
 
@@ -117,7 +113,7 @@ function resolveMediaUrl(
 
   const fileId = landingMediaFileId(candidate.split("?")[0] ?? candidate);
   if (fileId) {
-    return `${API_ORIGIN}/api/v1/public/landing/media/${fileId}`;
+    return `${MEDIA_PATH}${fileId}`;
   }
   return fallback;
 }

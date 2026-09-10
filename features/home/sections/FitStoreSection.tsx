@@ -7,6 +7,8 @@ import {
   storeImageSrc,
 } from "@/lib/api/landing";
 import { Stagger } from "../components/Reveal";
+import TiltCard from "../components/TiltCard";
+import RemoteImage from "@/components/common/RemoteImage";
 
 const FALLBACK_IMAGES = [
   "/images/home/store-protein.svg",
@@ -72,28 +74,20 @@ const FitStoreSection = async () => {
         </div>
         <Stagger className="grid w-full min-w-0 flex-1 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" variant="rise" delay={0.09}>
           {items.map((item) => (
+            <TiltCard key={item.key} intensity={8}>
             <Link
-              key={item.key}
               href={item.href}
-              className="flex h-full flex-col gap-5 rounded-2xl border border-border-muted bg-surface p-5 transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)] dark:bg-[#012438]"
+              className="flex h-full flex-col gap-5 rounded-2xl border border-border-muted bg-surface p-5 transition-shadow hover:shadow-[0px_18px_40px_rgba(0,157,166,0.16)] dark:bg-[#012438]"
             >
               <div className="relative h-[156px] overflow-hidden rounded-xl">
-                <img
+                <RemoteImage
                   src={item.image}
+                  fallback="/images/first.png"
                   alt={item.name}
-                  className={
-                    item.darkImage
-                      ? "absolute inset-0 h-full w-full object-cover dark:hidden"
-                      : "absolute inset-0 h-full w-full object-cover"
-                  }
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 280px"
                 />
-                {item.darkImage ? (
-                  <img
-                    src={item.darkImage}
-                    alt={item.name}
-                    className="absolute inset-0 hidden h-full w-full object-cover dark:block"
-                  />
-                ) : null}
               </div>
               <div className="flex flex-col gap-1">
                 <h3 className="text-base font-bold leading-6 text-ink">
@@ -102,6 +96,7 @@ const FitStoreSection = async () => {
                 <p className="text-xs leading-[18px] text-title">{item.subtitle}</p>
               </div>
             </Link>
+            </TiltCard>
           ))}
         </Stagger>
       </Container>

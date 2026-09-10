@@ -1,11 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { addLocaleToPathname } from "@/lib/i18n/config";
 import { useI18n } from "@/lib/i18n/provider";
+import RemoteImage from "@/components/common/RemoteImage";
 import { storeImageSrc, type LandingStore } from "@/lib/api/landing";
 import DiscountBadges from "./DiscountBadges";
+import TiltCard from "@/features/home/components/TiltCard";
 
 type FitMarketCardProps = {
   store: LandingStore;
@@ -20,13 +21,15 @@ const FitMarketCard = ({ store }: FitMarketCardProps) => {
     : null;
 
   return (
+    <TiltCard intensity={8}>
     <Link
       href={addLocaleToPathname(`/fit-market/${store.storeId}`, locale)}
-      className="group flex flex-col gap-6 rounded-[32px] border border-border-muted bg-surface p-5 transition-all hover:border-cyan hover:bg-page hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
+      className="group flex flex-col gap-6 rounded-[32px] border border-border-muted bg-surface p-5 transition-all hover:border-cyan hover:bg-page hover:shadow-[0px_24px_50px_rgba(0,157,166,0.16)]"
     >
       <div className="relative h-[250px] overflow-hidden rounded-3xl">
-        <Image
+        <RemoteImage
           src={storeImageSrc(store.coverImageUrl)}
+          fallback="/images/first.png"
           alt={store.name}
           fill
           className="object-cover"
@@ -88,6 +91,7 @@ const FitMarketCard = ({ store }: FitMarketCardProps) => {
         </div>
       </div>
     </Link>
+    </TiltCard>
   );
 };
 

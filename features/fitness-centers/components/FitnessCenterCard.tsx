@@ -1,11 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import MembershipBadge, {
   type MembershipTier,
 } from "@/features/home/components/MembershipBadge";
+import RemoteImage from "@/components/common/RemoteImage";
 import { gymImageSrc } from "@/lib/api/landing";
+import TiltCard from "@/features/home/components/TiltCard";
 
 export type FitnessCenterCardProps = {
   name: string;
@@ -27,12 +28,13 @@ const FitnessCenterCard = ({
   href,
 }: FitnessCenterCardProps) => {
   return (
+    <TiltCard intensity={9}>
     <Link
       href={href}
-      className="group flex min-w-0 flex-col gap-6 rounded-[32px] border border-border-muted bg-surface p-4 transition-all hover:border-cyan hover:bg-page hover:shadow-[0px_2px_2px_rgba(0,0,0,0.25)] sm:p-5"
+      className="group flex min-w-0 flex-col gap-6 rounded-[32px] border border-border-muted bg-surface p-4 transition-all hover:border-cyan hover:bg-page hover:shadow-[0px_24px_50px_rgba(0,157,166,0.16)] sm:p-5"
     >
       <div className="relative h-[200px] overflow-hidden rounded-2xl sm:h-[250px]">
-        <Image
+        <RemoteImage
           src={gymImageSrc(image)}
           alt={name}
           fill
@@ -76,6 +78,7 @@ const FitnessCenterCard = ({
         ) : null}
       </div>
     </Link>
+    </TiltCard>
   );
 };
 

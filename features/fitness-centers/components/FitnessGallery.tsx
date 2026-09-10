@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import RemoteImage from "@/components/common/RemoteImage";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { Navigation } from "swiper/modules";
@@ -45,7 +45,7 @@ const FitnessGallery = ({
           {slides.map((img, index) => (
             <SwiperSlide key={`${img}-${index}`}>
               <div className="relative h-full w-full">
-                <Image
+                <RemoteImage
                   src={img}
                   alt={`${name} ${index + 1}`}
                   fill
@@ -99,7 +99,7 @@ const FitnessGallery = ({
               activeIndex === index ? "ring-2 ring-turquoise" : "opacity-80 hover:opacity-100"
             }`}
           >
-            <Image
+            <RemoteImage
               src={image}
               alt={`${name} thumbnail ${index + 1}`}
               fill

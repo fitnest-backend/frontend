@@ -3,6 +3,7 @@ import Container from "@/components/common/Container";
 import SectionHeading from "../components/SectionHeading";
 import IconBox from "../components/IconBox";
 import { Stagger } from "../components/Reveal";
+import TiltCard from "../components/TiltCard";
 
 const STEP_ICONS = [
   "/icons/home/user.svg",
@@ -28,12 +29,12 @@ const HowItWorks = async () => {
             const isLast = index === t.howItems.length - 1;
 
             return (
+              <TiltCard key={item.title} intensity={8}>
               <article
-                key={item.title}
                 className={`flex min-h-0 flex-col gap-1 rounded-[20px] px-5 py-6 sm:min-h-[216px] sm:px-[26px] sm:py-7 ${
                   isLast
                     ? "bg-energy text-white"
-                    : "border border-border-muted bg-surface transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
+                    : "border border-border-muted bg-surface transition-shadow hover:shadow-[0px_18px_40px_rgba(0,157,166,0.16)]"
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -63,6 +64,7 @@ const HowItWorks = async () => {
                   {item.desc}
                 </p>
               </article>
+              </TiltCard>
             );
           })}
         </Stagger>

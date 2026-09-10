@@ -20,17 +20,17 @@ export default function HomePage() {
         <Reveal variant="blur" amount={0.2}>
           <StatsBar />
         </Reveal>
-        <Reveal variant="rise">
+        <Reveal variant="tilt">
           <HowItWorks />
         </Reveal>
       </div>
       <Reveal variant="left">
         <WhySubscribe />
       </Reveal>
-      <Reveal variant="rise">
+      <Reveal variant="tilt">
         <GymsSection />
       </Reveal>
-      <Reveal variant="scale">
+      <Reveal variant="tilt">
         <Suspense fallback={null}>
           <SubscriptionSectionServer />
         </Suspense>

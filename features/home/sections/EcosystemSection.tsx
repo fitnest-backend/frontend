@@ -6,6 +6,7 @@ import SectionHeading from "../components/SectionHeading";
 import IconBox from "../components/IconBox";
 import HomeArrow from "../components/HomeArrow";
 import { Stagger } from "../components/Reveal";
+import TiltCard from "../components/TiltCard";
 
 const EcosystemSection = async () => {
   const { messages, locale } = await getMessages();
@@ -16,6 +17,7 @@ const EcosystemSection = async () => {
       <Container className="flex flex-col gap-10">
         <SectionHeading eyebrow={t.ecoEyebrow} title={t.ecoHeading} />
         <Stagger className="grid grid-cols-1 gap-[22px] md:grid-cols-2" variant="scale" delay={0.12}>
+          <TiltCard intensity={7}>
           <Link
             href={addLocaleToPathname("/corporate", locale)}
             className="flex h-full min-h-0 flex-col rounded-3xl bg-brand-navy-800 p-6 sm:min-h-[300px] sm:p-8"
@@ -39,6 +41,8 @@ const EcosystemSection = async () => {
               <HomeArrow className="size-5" />
             </span>
           </Link>
+          </TiltCard>
+          <TiltCard intensity={7}>
           <Link
             href={addLocaleToPathname("/partner", locale)}
             className="flex h-full min-h-0 flex-col rounded-3xl border border-border-muted bg-surface p-6 transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)] sm:min-h-[300px] sm:p-8"
@@ -55,6 +59,7 @@ const EcosystemSection = async () => {
               <HomeArrow className="size-5" />
             </span>
           </Link>
+          </TiltCard>
         </Stagger>
       </Container>
     </section>
