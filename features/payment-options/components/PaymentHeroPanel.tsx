@@ -49,15 +49,15 @@ const PaymentHeroPanel = ({
   const isDark = variant === "dark";
 
   return (
-    <section className="relative w-full">
-      <div className="relative w-full min-h-[560px] overflow-hidden md:min-h-[600px]">
+    <section className={cn("relative w-full", isDark ? "bg-[#011729]" : "bg-page")}>
+      <div className="relative w-full overflow-hidden lg:min-h-[600px]">
         {imageSrc.endsWith(".svg") ? (
           <img
             src={imageSrc}
             alt={imageAlt}
             width={imageWidth}
             height={imageHeight}
-            className="block h-auto w-full min-h-[560px] object-cover object-right md:min-h-[600px]"
+            className="block h-[220px] w-full object-cover object-[72%_center] sm:h-[300px] lg:absolute lg:inset-0 lg:h-full lg:min-h-[600px] lg:object-right"
           />
         ) : (
           <Image
@@ -67,13 +67,13 @@ const PaymentHeroPanel = ({
             height={imageHeight}
             priority={priority}
             sizes="100vw"
-            className="block h-auto w-full min-h-[560px] object-cover object-right md:min-h-[600px]"
+            className="block h-[220px] w-full object-cover object-[72%_center] sm:h-[300px] lg:absolute lg:inset-0 lg:h-full lg:min-h-[600px] lg:object-right"
           />
         )}
 
-        <Container className="absolute inset-0 z-10 flex flex-col justify-center py-10 md:py-16 xl:py-20">
-          <div className="flex flex-col gap-8 md:gap-[45px]">
-            <div className="flex flex-col gap-8 md:gap-[71px]">
+        <Container className="relative z-10 py-8 sm:py-10 lg:absolute lg:inset-0 lg:flex lg:flex-col lg:justify-center lg:py-16 xl:py-20">
+          <div className="flex flex-col gap-6 md:gap-8 lg:gap-[45px]">
+            <div className="flex flex-col gap-6 md:gap-8 lg:gap-[71px]">
               <div className="max-w-[507px]">
                 <SectionHeading
                   eyebrow={eyebrow}
@@ -86,15 +86,15 @@ const PaymentHeroPanel = ({
                 />
               </div>
               {stats && stats.length > 0 ? (
-                <div className="flex w-full max-w-[720px] flex-nowrap items-start gap-2 sm:gap-4 md:gap-x-[41px]">
+                <div className="grid w-full max-w-[720px] grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-4 lg:flex lg:flex-nowrap lg:items-start lg:gap-x-[41px]">
                   {stats.map((stat) => (
                     <div
                       key={`${stat.value}-${stat.label}`}
-                      className="flex min-w-0 flex-1 items-center gap-1.5 md:flex-none"
+                      className="flex min-w-0 items-center gap-3 lg:flex-1 lg:gap-1.5"
                     >
-                      <div className="flex size-9 shrink-0 items-center justify-center rounded-[10px] bg-cyan/15 sm:size-[46px] sm:rounded-[13px]">
+                      <div className="flex size-11 shrink-0 items-center justify-center rounded-[13px] bg-cyan/15 sm:size-[46px]">
                         {stat.icon === "percent" ? (
-                          <span className="text-sm font-bold leading-5 text-turquoise sm:text-lg sm:leading-7">
+                          <span className="text-base font-bold leading-6 text-turquoise sm:text-lg sm:leading-7">
                             %
                           </span>
                         ) : (
@@ -103,14 +103,14 @@ const PaymentHeroPanel = ({
                             alt=""
                             width={24}
                             height={24}
-                            className="size-4 sm:size-6"
+                            className="size-5 sm:size-6"
                           />
                         )}
                       </div>
                       <div className="flex min-w-0 flex-col items-start gap-0.5 sm:gap-1">
                         <p
                           className={cn(
-                            "text-sm font-bold leading-5 sm:text-lg sm:leading-7",
+                            "text-base font-bold leading-6 sm:text-lg sm:leading-7",
                             isDark ? "text-white" : "text-brand-navy",
                           )}
                         >
@@ -118,7 +118,7 @@ const PaymentHeroPanel = ({
                         </p>
                         <p
                           className={cn(
-                            "text-[11px] leading-4 sm:text-sm sm:leading-5",
+                            "text-sm leading-5",
                             isDark ? "text-desc" : "text-[#557c9f]",
                           )}
                         >
@@ -134,7 +134,7 @@ const PaymentHeroPanel = ({
             <Link
               href={ctaHref}
               className={cn(
-                "inline-flex w-fit cursor-pointer items-center gap-2 overflow-hidden rounded-lg px-4 py-3 text-base font-semibold leading-6 text-white transition-colors hover:bg-[#FF6A42]",
+                "inline-flex h-12 w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg px-4 text-base font-semibold leading-6 text-white transition-colors hover:bg-[#FF6A42] sm:h-auto sm:w-fit sm:py-3",
                 isDark ? "bg-cyan" : "bg-brand",
               )}
             >
