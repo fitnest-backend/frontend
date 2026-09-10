@@ -221,7 +221,7 @@ const CorporateForm = () => {
       <button
         type="submit"
         disabled={form.formState.isSubmitting}
-        className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-button px-4 text-base font-semibold leading-6 text-white transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)] disabled:opacity-60"
+        className="inline-flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-button px-4 text-base font-semibold leading-6 text-white transition-colors hover:bg-[#FF6A42] disabled:opacity-60"
       >
         {form.formState.isSubmitting ? copy.sending : copy.submit}
         <HomeArrow className="size-6" />

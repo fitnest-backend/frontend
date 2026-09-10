@@ -13,7 +13,7 @@ type CorporatePageProps = {
 
 const BENEFIT_ICONS = [
   "/icons/about/flash.svg",
-  "/icons/about/user.svg",
+  "/icons/corporate/attract.svg",
   "/icons/home/layers.svg",
 ] as const;
 
@@ -138,7 +138,7 @@ const CorporatePage = async ({ locale }: CorporatePageProps) => {
             </div>
             <a
               href="#corporate-offer"
-              className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-lg bg-cyan px-4 text-base font-semibold leading-6 text-white transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)] dark:text-[#011729]"
+              className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-lg bg-cyan px-4 text-base font-semibold leading-6 text-white transition-colors hover:bg-[#FF6A42] dark:text-[#011729]"
             >
               {t.ctaButton}
               <HomeArrow className="size-6" />

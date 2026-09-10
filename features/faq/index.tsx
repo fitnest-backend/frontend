@@ -25,7 +25,7 @@ const FaqPage = async ({ locale, faqs, email }: FaqPageProps) => {
         />
         <Container className="relative py-16 md:py-20">
           <div className="flex max-w-[1280px] flex-col gap-4">
-            <p className="text-lg font-bold leading-7 text-[#009DA6]">{t.eyebrow}</p>
+            <p className="text-lg font-bold leading-7 text-[#009DA6] dark:text-cyan">{t.eyebrow}</p>
             <h1 className="font-manrope text-[32px] font-extrabold leading-[1.3] text-heading md:text-[40px] md:leading-[60px]">
               {t.title}
             </h1>

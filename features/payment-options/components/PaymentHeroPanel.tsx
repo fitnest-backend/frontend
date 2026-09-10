@@ -134,8 +134,8 @@ const PaymentHeroPanel = ({
             <Link
               href={ctaHref}
               className={cn(
-                "inline-flex w-fit items-center gap-2 overflow-hidden rounded-lg px-4 py-3 text-base font-semibold leading-6",
-                isDark ? "bg-cyan text-white" : "bg-brand text-white",
+                "inline-flex w-fit cursor-pointer items-center gap-2 overflow-hidden rounded-lg px-4 py-3 text-base font-semibold leading-6 text-white transition-colors hover:bg-[#FF6A42]",
+                isDark ? "bg-cyan" : "bg-brand",
               )}
             >
               {ctaLabel}

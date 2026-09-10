@@ -15,6 +15,7 @@ type SeoPageKey =
   | "partner"
   | "about"
   | "faq"
+  | "news"
   | "feedback"
   | "fitMarket"
   | "fitnessCenters"
@@ -180,6 +181,24 @@ const seoContent: Record<SeoPageKey, Record<Locale, LocalizedSeoContent>> = {
       title: "FAQ",
       description: "Ответы на часто задаваемые вопросы о FitNest, подписках и сервисах.",
       keywords: ["FAQ", "частые вопросы", "FitNest"],
+    },
+  },
+  news: {
+    az: {
+      title: "Xəbərlər",
+      description:
+        "FitNest-dən yeni zallar, tətbiq yenilikləri və kommunity tədbirləri.",
+      keywords: ["xəbərlər", "FitNest", "yeniliklər", "tədbirlər"],
+    },
+    en: {
+      title: "News",
+      description: "New gyms, app updates and community events from FitNest.",
+      keywords: ["news", "FitNest", "updates", "events"],
+    },
+    ru: {
+      title: "Новости",
+      description: "Новые залы, обновления приложения и события FitNest.",
+      keywords: ["новости", "FitNest", "обновления", "события"],
     },
   },
   feedback: {

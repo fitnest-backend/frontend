@@ -83,13 +83,21 @@ const FitnessCenterDetails = async ({ slug }: FitnessCenterDetailsProps) => {
       />
       <Link
         href={addLocaleToPathname("/fitness-centers", locale)}
-        className="mb-4 inline-flex w-fit items-center gap-2 rounded-lg py-3 text-base font-semibold leading-6 text-turquoise"
+        className="mb-4 inline-flex w-fit items-center gap-2 rounded-lg py-3 text-base font-semibold leading-6 text-turquoise dark:text-cyan"
       >
         <img
           src="/icons/gym-details/arrow-left.svg"
           alt=""
           width={24}
           height={24}
+          className="size-6 dark:hidden"
+        />
+        <img
+          src="/icons/news/arrow-left-dark.svg"
+          alt=""
+          width={24}
+          height={24}
+          className="hidden size-6 dark:block"
         />
         {t.eyebrow}
       </Link>

@@ -32,10 +32,13 @@ const Footer = ({ email, phone }: FooterProps) => {
   const homePath = addLocaleToPathname("/", locale);
   const contactEmail = email?.trim() || CONTACT_EMAIL;
   const contactPhone = phone?.trim() || CONTACT_PHONE;
-  const footerLinkClass = (href: string) =>
-    stripLocaleFromPathname(href) === currentPath
-      ? "text-cyan"
-      : "hover:text-cyan";
+  const footerLinkClass = (href: string) => {
+    const path = stripLocaleFromPathname(href);
+    const active =
+      currentPath === path ||
+      (path !== "/" && currentPath.startsWith(`${path}/`));
+    return active ? "text-cyan" : "hover:text-cyan";
+  };
 
   const platformLinks = [
     { label: t.footer.howItWorks, href: `${homePath}#how-it-works` },
@@ -49,7 +52,7 @@ const Footer = ({ email, phone }: FooterProps) => {
     { label: t.footer.about, href: addLocaleToPathname("/about", locale) },
     { label: t.footer.privacy, href: addLocaleToPathname("/privacy", locale) },
     { label: t.footer.terms, href: addLocaleToPathname("/terms", locale) },
-    { label: t.footer.news, href: addLocaleToPathname("/faq", locale) },
+    { label: t.footer.news, href: addLocaleToPathname("/news", locale) },
     { label: t.footer.contact, href: addLocaleToPathname("/contact", locale) },
   ];
 
@@ -58,6 +61,7 @@ const Footer = ({ email, phone }: FooterProps) => {
     { label: t.footer.becomePartner, href: addLocaleToPathname("/partner", locale) },
     { label: t.footer.specialOffers, href: addLocaleToPathname("/payment-options", locale) },
     { label: t.footer.faq, href: addLocaleToPathname("/faq", locale) },
+    { label: t.footer.news, href: addLocaleToPathname("/news", locale) },
   ];
 
   const socials = [

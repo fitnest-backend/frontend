@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getLandingGymsServer, getLandingStoresServer } from "@/lib/api/landing";
+import { newsArticles } from "@/features/news/data";
 import { locales } from "@/lib/i18n/config";
 import { createAbsoluteUrl } from "@/lib/seo";
 
@@ -14,6 +15,7 @@ const staticRoutes = [
   "/fit-market",
   "/fitness-centers",
   "/faq",
+  "/news",
   "/contact",
   "/corporate",
   "/partner",
@@ -29,6 +31,9 @@ const toLocalizedPath = (path: string, locale: (typeof locales)[number]) =>
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
   const routeSet = new Set<string>(staticRoutes);
+  for (const article of newsArticles) {
+    routeSet.add(`/news/${article.slug}`);
+  }
 
   try {
     const gyms = await getLandingGymsServer("az", 1, 50);

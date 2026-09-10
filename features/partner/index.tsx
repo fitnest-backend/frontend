@@ -33,7 +33,7 @@ const PartnerPage = async ({ locale }: PartnerPageProps) => {
               </div>
               <a
                 href="#partner-apply"
-                className="inline-flex h-11 w-fit items-center justify-center rounded-lg bg-cyan px-4 text-base font-semibold leading-6 text-white transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)] dark:text-[#011729]"
+                className="inline-flex h-11 w-fit items-center justify-center rounded-lg bg-cyan px-4 text-base font-semibold leading-6 text-white transition-colors hover:bg-[#FF6A42] dark:text-[#011729]"
               >
                 {t.heroCta}
               </a>

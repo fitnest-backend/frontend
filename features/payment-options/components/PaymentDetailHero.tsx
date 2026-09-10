@@ -25,7 +25,7 @@ const PaymentDetailHero = ({
       <Container className="relative z-10 flex min-h-[220px] flex-col gap-8 py-10 md:min-h-[320px] md:gap-16 lg:h-[clamp(400px,32vw,720px)] lg:gap-20">
         <Link
           href={backHref}
-          className="inline-flex w-fit items-center gap-2 rounded-lg py-3 text-base font-semibold leading-6 text-[#00A4A4]"
+          className="inline-flex w-fit items-center gap-2 rounded-lg py-3 text-base font-semibold leading-6 text-turquoise dark:text-cyan"
         >
           <img
             src={arrowSrc}

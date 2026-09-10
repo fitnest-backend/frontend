@@ -249,6 +249,15 @@ export type Messages = {
     empty: string;
     emptySearch: string;
   };
+  news: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    backToList: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    ctaButton: string;
+  };
   contact: {
     eyebrow: string;
     title: string;
@@ -872,6 +881,16 @@ const az: Messages = {
     all: "Hamısı",
     empty: "Hələ sual əlavə olunmayıb.",
     emptySearch: "Axtarışa uyğun sual tapılmadı.",
+  },
+  news: {
+    eyebrow: "Xəbərlər",
+    title: "FitNest-dən yeniliklər",
+    description:
+      "Yeni zallar, tətbiq yenilikləri və kommunity tədbirləri — hamısı burada.",
+    backToList: "Bütün xəbərlər",
+    ctaTitle: "FitNest ilə məşqə başla",
+    ctaDescription: "Bir abunə — 139 fitness mərkəzi.",
+    ctaButton: "Tətbiqi endir",
   },
   contact: {
     eyebrow: "Əlaqə",
@@ -1626,6 +1645,16 @@ const en: Messages = {
     empty: "No questions have been added yet.",
     emptySearch: "No questions match your search.",
   },
+  news: {
+    eyebrow: "News",
+    title: "What's new at FitNest",
+    description:
+      "New gyms, app updates and community events — all in one place.",
+    backToList: "All news",
+    ctaTitle: "Start training with FitNest",
+    ctaDescription: "One subscription — 139 fitness centers.",
+    ctaButton: "Download the app",
+  },
   contact: {
     eyebrow: "Contact",
     title: "Have a question? We're here.",
@@ -2363,6 +2392,16 @@ const ru: Messages = {
     all: "Все",
     empty: "Пока нет добавленных вопросов.",
     emptySearch: "Подходящих вопросов не найдено.",
+  },
+  news: {
+    eyebrow: "Новости",
+    title: "Новости FitNest",
+    description:
+      "Новые залы, обновления приложения и события сообщества — всё здесь.",
+    backToList: "Все новости",
+    ctaTitle: "Начни тренироваться с FitNest",
+    ctaDescription: "Одна подписка — 139 фитнес-центров.",
+    ctaButton: "Скачать приложение",
   },
   contact: {
     eyebrow: "Контакты",

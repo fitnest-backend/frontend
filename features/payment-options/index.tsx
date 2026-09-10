@@ -18,7 +18,7 @@ const PaymentOptionsPage = async () => {
   ];
 
   return (
-    <div className="flex flex-col bg-page text-ink">
+    <div className="flex flex-col gap-10 bg-page text-ink">
       <PaymentHeroPanel
         imageSrc="/images/payment-options/abb-panel.svg"
         imageAlt={t.abbTitle}
