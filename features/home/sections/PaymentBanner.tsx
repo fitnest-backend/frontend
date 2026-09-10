@@ -84,7 +84,7 @@ const PaymentBanner = () => {
         <div className="flex max-w-[507px] items-center justify-between gap-6">
           <Link
             href={addLocaleToPathname("/payment-options", locale)}
-            className="inline-flex items-center gap-2 text-base font-semibold text-turquoise"
+            className="inline-flex items-center gap-2 text-base font-semibold text-turquoise transition-colors hover:text-cyan"
           >
             {t.home.details}
             <HomeArrow className="size-6" />
@@ -98,8 +98,10 @@ const PaymentBanner = () => {
                 aria-current={slide === index}
                 onClick={() => setSlide(index)}
                 className={cn(
-                  "rounded-full transition-all",
-                  slide === index ? "size-4 bg-cyan" : "size-3 bg-heading/40",
+                  "cursor-pointer rounded-full transition-all",
+                  slide === index
+                    ? "size-4 bg-cyan"
+                    : "size-3 bg-heading/40 hover:bg-heading/70",
                 )}
               />
             ))}

@@ -1,14 +1,16 @@
 "use client";
 import { ChevronRight, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useI18n } from "@/lib/i18n/provider";
 import { addLocaleToPathname, stripLocaleFromPathname } from "@/lib/i18n/config";
+import { cn } from "@/lib/utils";
 
 const HamburgerMenu = () => {
   const [open, setOpen] = useState(false);
+  const [hash, setHash] = useState("");
   const pathname = usePathname();
   const normalizedPathname = stripLocaleFromPathname(pathname || "/");
   const { t, locale } = useI18n();
@@ -22,12 +24,49 @@ const HamburgerMenu = () => {
     { name: t.nav.bmi, href: addLocaleToPathname("/bmi", locale) },
   ];
 
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const syncHash = () => setHash(window.location.hash);
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    return () => window.removeEventListener("hashchange", syncHash);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previous;
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  const isActive = (href: string) => {
+    const path = stripLocaleFromPathname(href).split("#")[0] || "/";
+    if (href.includes("#how-it-works")) {
+      return normalizedPathname === "/" && hash === "#how-it-works";
+    }
+    return (
+      normalizedPathname === path || normalizedPathname.startsWith(`${path}/`)
+    );
+  };
+
   return (
     <div className="relative z-20 w-auto xl:hidden">
       <button
+        type="button"
         onClick={() => setOpen(!open)}
-        className="relative z-20 flex w-auto justify-end"
-        aria-label="Menu"
+        className="relative z-20 flex w-auto cursor-pointer justify-end"
+        aria-label={open ? "Close menu" : "Menu"}
+        aria-expanded={open}
       >
         <AnimatePresence mode="wait" initial={false}>
           {!open ? (
@@ -55,6 +94,21 @@ const HamburgerMenu = () => {
       </button>
 
       <AnimatePresence>
+        {open ? (
+          <motion.button
+            key="menu-backdrop"
+            type="button"
+            aria-label="Close menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[1] bg-brand-navy/30"
+            onClick={() => setOpen(false)}
+          />
+        ) : null}
+      </AnimatePresence>
+
+      <AnimatePresence>
         {open && (
           <motion.div
             key="mobile-menu"
@@ -71,11 +125,10 @@ const HamburgerMenu = () => {
                     <Link
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className={`flex items-center justify-between border-b border-border-muted px-2 py-4 text-base font-medium leading-6 ${
-                        normalizedPathname === item.href
-                          ? "text-turquoise"
-                          : "text-ink"
-                      }`}
+                      className={cn(
+                        "flex items-center justify-between border-b border-border-muted px-2 py-4 text-base font-medium leading-6 transition-colors",
+                        isActive(item.href) ? "text-turquoise" : "text-ink",
+                      )}
                     >
                       {item.name}
                       <ChevronRight />

@@ -93,7 +93,7 @@ const PlanPicker = ({
 
   return (
     <div className="flex flex-col items-center">
-      <Stagger className="grid w-full max-w-[640px] grid-cols-2 gap-2 pt-8 sm:grid-cols-4 sm:gap-4" variant="scale" delay={0.06}>
+      <Stagger className="grid w-full max-w-[640px] grid-cols-4 gap-1 pt-8 sm:gap-4" variant="scale" delay={0.06}>
         {PLAN_DURATIONS.map((month) => {
           const active = duration === month;
           const isYear = month === 12;
@@ -108,10 +108,10 @@ const PlanPicker = ({
                 type="button"
                 onClick={() => setDuration(month)}
                 className={cn(
-                  "h-11 w-full cursor-pointer rounded-t-[14px] border-x-[1.5px] border-t-[1.5px] px-2 text-sm font-bold leading-6 sm:px-4 sm:text-base",
+                  "h-11 w-full cursor-pointer rounded-t-[14px] border-x-[1.5px] border-t-[1.5px] px-1 text-[11px] font-bold leading-6 transition-colors sm:px-4 sm:text-base",
                   active
                     ? "border-brand-navy bg-brand-navy-800 text-white"
-                    : "border-border-muted bg-surface text-ink",
+                    : "border-border-muted bg-surface text-ink hover:border-cyan hover:text-turquoise",
                 )}
               >
                 {month} {t.home.monthShort}

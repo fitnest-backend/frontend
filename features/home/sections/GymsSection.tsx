@@ -34,7 +34,7 @@ const GymsSection = async () => {
           action={
             <Link
               href={addLocaleToPathname("/fitness-centers", locale)}
-              className="inline-flex items-center gap-2 text-base font-semibold text-turquoise"
+              className="inline-flex items-center gap-2 text-base font-semibold text-turquoise transition-colors hover:text-cyan"
             >
               {t.allGyms}
               <HomeArrow className="size-6" />

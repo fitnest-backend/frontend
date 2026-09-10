@@ -46,7 +46,7 @@ const NavbarRight = () => {
         >
           <SelectTrigger
             aria-label={`Select language. Current language: ${currentLocale.label}`}
-            className="h-12 w-auto rounded-none border-y-0 border-x border-border-muted bg-transparent px-2 shadow-none [&>svg]:hidden"
+            className="h-12 w-auto cursor-pointer rounded-none border-y-0 border-x border-border-muted bg-transparent px-2 shadow-none [&>svg]:hidden"
           >
             <div className="flex items-center gap-1">
               <span className="relative size-7 overflow-hidden rounded-full">

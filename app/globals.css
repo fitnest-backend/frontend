@@ -2,6 +2,10 @@
 @import "tw-animate-css";
 @custom-variant dark (&:is(.dark *));
 
+html {
+  scroll-behavior: smooth;
+}
+
 @utility font-manrope {
   font-family: var(--font-manrope-family), "Manrope", sans-serif;
 }
@@ -203,6 +207,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .animate-breathe {
     animation: none;
   }

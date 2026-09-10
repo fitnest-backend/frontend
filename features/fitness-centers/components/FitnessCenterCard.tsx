@@ -38,7 +38,7 @@ const FitnessCenterCard = ({
           src={gymImageSrc(image)}
           alt={name}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 411px"
         />
       </div>

@@ -32,7 +32,7 @@ const FitMarketCard = ({ store }: FitMarketCardProps) => {
           fallback="/images/first.png"
           alt={store.name}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 410px"
         />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[168px] rounded-b-3xl bg-[linear-gradient(180deg,rgba(24,23,26,0)_0%,black_100%)]" />

@@ -9,7 +9,10 @@ const Logo = () => {
 
   return (
     <div className="relative h-8 w-[84px] md:h-[38px] md:w-[110px]">
-      <Link href={addLocaleToPathname("/", locale)} className="block h-full w-full">
+      <Link
+        href={addLocaleToPathname("/", locale)}
+        className="block h-full w-full transition-opacity duration-200 hover:opacity-80"
+      >
         <img
           src="/icons/home/logo.svg"
           alt="FitNest"

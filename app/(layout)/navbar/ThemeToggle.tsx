@@ -20,7 +20,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
       aria-label={t.nav.toggleTheme}
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
       className={cn(
-        "inline-flex size-12 items-center justify-center rounded-xl border border-border-muted text-turquoise transition-colors hover:bg-page",
+        "inline-flex size-12 cursor-pointer items-center justify-center rounded-xl border border-border-muted text-turquoise transition-colors hover:bg-page",
         className,
       )}
     >

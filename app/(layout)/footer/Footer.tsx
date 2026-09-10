@@ -182,7 +182,7 @@ const Footer = ({ email, phone }: FooterProps) => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex size-[38px] items-center justify-center rounded-[11px] border border-desc-2"
+                    className="flex size-[38px] items-center justify-center rounded-[11px] border border-desc-2 transition-all duration-200 hover:scale-105 hover:border-cyan hover:bg-cyan/10"
                     aria-label={social.label}
                   >
                     <Image

@@ -45,7 +45,7 @@ const EcosystemSection = async () => {
           <TiltCard intensity={7}>
           <Link
             href={addLocaleToPathname("/partner", locale)}
-            className="flex h-full min-h-0 flex-col rounded-3xl border border-border-muted bg-surface p-6 transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)] sm:min-h-[300px] sm:p-8"
+            className="flex h-full min-h-0 flex-col rounded-3xl border border-border-muted bg-surface p-6 transition-all hover:border-cyan hover:shadow-[0px_18px_40px_rgba(0,157,166,0.16)] sm:min-h-[300px] sm:p-8"
           >
             <IconBox>
               <img src="/icons/home/house.svg" alt="" width={22} height={22} />

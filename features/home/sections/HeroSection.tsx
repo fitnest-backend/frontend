@@ -102,7 +102,7 @@ const HeroSection = async () => {
         </Reveal>
 
         <Reveal variant="right" delay={0.12} amount={0.05} className="relative mx-auto mt-8 w-full max-w-[555px] lg:mx-0 lg:ml-auto lg:mt-0">
-        <TiltCard intensity={14}>
+        <TiltCard intensity={8}>
         <div className="relative mx-auto w-full max-w-[555px]">
           <div className="relative aspect-[555/625] w-full">
             <div className="absolute top-0 left-[22.78%] h-full w-[54.43%]">
