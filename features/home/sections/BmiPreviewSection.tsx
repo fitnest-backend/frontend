@@ -17,93 +17,93 @@ const BmiPreviewSection = async () => {
 
   return (
     <section className="relative overflow-hidden bg-surface">
-      <div className="relative min-h-[520px] md:min-h-[630px]">
+      <div className="relative lg:min-h-[630px]">
         <img
           src="/images/home/bmi-visual.svg"
           alt=""
-          className="absolute inset-0 hidden h-full w-full object-cover object-center md:block dark:!hidden"
+          className="absolute inset-0 hidden h-full w-full object-cover object-center lg:block dark:!hidden"
         />
         <img
           src="/images/home/bmi-visual-dark.svg"
           alt=""
-          className="absolute inset-0 hidden h-full w-full object-cover object-center dark:md:block"
+          className="absolute inset-0 hidden h-full w-full object-cover object-center dark:lg:block"
         />
-        <div className="absolute inset-0 hidden bg-gradient-to-r from-surface from-0% via-surface/20 via-45% to-transparent md:block" />
+        <div className="absolute inset-0 hidden bg-gradient-to-r from-surface from-0% via-surface/20 via-45% to-transparent lg:block" />
 
-        <Container className="relative z-10 grid min-h-0 grid-cols-1 items-center gap-10 py-16 md:min-h-[630px] md:py-20 lg:grid-cols-[minmax(0,411px)_minmax(140px,1fr)_auto]">
+        <Container className="relative z-10 grid grid-cols-1 items-start gap-8 py-12 sm:gap-10 sm:py-16 lg:min-h-[630px] lg:grid-cols-[minmax(0,411px)_minmax(140px,1fr)_auto] lg:items-center lg:py-20">
           <Reveal variant="left" className="flex w-full max-w-[411px] flex-col">
-          <div className="flex w-full max-w-[411px] flex-col gap-10">
-            <div className="flex flex-col gap-4">
-              <p className="text-lg font-bold leading-7 text-turquoise">
-                {t.bmiEyebrow}
-              </p>
-              <h2 className="whitespace-pre-line font-manrope text-[32px] font-extrabold leading-[1.3] text-heading md:text-[40px] md:leading-[60px]">
-                {t.bmiHeading}
-              </h2>
-              <p className="text-base leading-6 text-title">{t.bmiDescription}</p>
+            <div className="flex w-full max-w-[411px] flex-col gap-8 lg:gap-10">
+              <div className="flex flex-col gap-4">
+                <p className="text-lg font-bold leading-7 text-turquoise">
+                  {t.bmiEyebrow}
+                </p>
+                <h2 className="whitespace-pre-line font-manrope text-[32px] font-extrabold leading-[1.3] text-heading md:text-[40px] md:leading-[60px]">
+                  {t.bmiHeading}
+                </h2>
+                <p className="text-base leading-6 text-title">{t.bmiDescription}</p>
+              </div>
+              <Link
+                href={addLocaleToPathname("/bmi", locale)}
+                className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-button px-4 text-base font-semibold text-white transition-colors hover:bg-[#FF6A42] sm:w-fit"
+              >
+                {t.bmiCta}
+                <img
+                  src="/icons/home/arrow-right.svg"
+                  alt=""
+                  width={24}
+                  height={24}
+                  className="brightness-0 invert"
+                />
+              </Link>
             </div>
-            <Link
-              href={addLocaleToPathname("/bmi", locale)}
-              className="inline-flex h-12 w-fit items-center gap-2 rounded-lg bg-button px-4 text-base font-semibold text-white transition-colors hover:bg-[#FF6A42]"
-            >
-              {t.bmiCta}
-              <img
-                src="/icons/home/arrow-right.svg"
-                alt=""
-                width={24}
-                height={24}
-                className="brightness-0 invert"
-              />
-            </Link>
-          </div>
           </Reveal>
 
-          <div className="flex flex-col items-start gap-[35px] lg:items-center">
-            <div className="flex h-[116px] w-full max-w-[194px] items-center justify-center gap-3 rounded-2xl border border-border-muted bg-cyan/15 px-4 dark:bg-[#205B7D]">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:flex lg:flex-col lg:items-center lg:gap-[35px]">
+            <div className="flex h-[104px] w-full items-center justify-center gap-2.5 rounded-2xl border border-border-muted bg-cyan/15 px-3 sm:h-[116px] sm:gap-3 sm:px-4 lg:max-w-[194px] dark:bg-[#205B7D]">
               <img
                 src="/icons/home/person.svg"
                 alt=""
                 width={56}
                 height={56}
-                className="size-14 shrink-0"
+                className="size-10 shrink-0 sm:size-14"
               />
               <div>
-                <p className="text-xl font-medium leading-[30px] text-title">
+                <p className="text-base font-medium leading-6 text-title sm:text-xl sm:leading-[30px]">
                   {t.heightLabel}
                 </p>
-                <p className="flex items-center gap-2">
-                  <span className="text-2xl font-bold leading-9 text-ink">
+                <p className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="text-xl font-bold leading-8 text-ink sm:text-2xl sm:leading-9">
                     178
                   </span>
-                  <span className="text-base font-medium text-title">cm</span>
+                  <span className="text-sm font-medium text-title sm:text-base">cm</span>
                 </p>
               </div>
             </div>
-            <div className="flex h-[116px] w-full max-w-[194px] items-center justify-center gap-3 rounded-2xl border border-border-muted bg-cyan/15 px-4 dark:bg-[#205B7D]">
+            <div className="flex h-[104px] w-full items-center justify-center gap-2.5 rounded-2xl border border-border-muted bg-cyan/15 px-3 sm:h-[116px] sm:gap-3 sm:px-4 lg:max-w-[194px] dark:bg-[#205B7D]">
               <img
                 src="/icons/home/scale.svg"
                 alt=""
                 width={40}
                 height={40}
-                className="size-10 shrink-0"
+                className="size-8 shrink-0 sm:size-10"
               />
               <div>
-                <p className="text-xl font-medium leading-[30px] text-title">
+                <p className="text-base font-medium leading-6 text-title sm:text-xl sm:leading-[30px]">
                   {t.weightLabel}
                 </p>
-                <p className="flex items-center gap-2">
-                  <span className="text-2xl font-bold leading-9 text-ink">
+                <p className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="text-xl font-bold leading-8 text-ink sm:text-2xl sm:leading-9">
                     65
                   </span>
-                  <span className="text-base font-medium text-title">kg</span>
+                  <span className="text-sm font-medium text-title sm:text-base">kg</span>
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col justify-center gap-6">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-4 sm:gap-6 lg:flex lg:flex-col lg:justify-center">
             {scale.map((item) => (
-              <div key={item.label} className="flex items-center gap-6">
+              <div key={item.label} className="flex items-center gap-3 lg:gap-6">
                 <span
                   className={`rounded-full dark:hidden ${
                     item.active
@@ -123,8 +123,8 @@ const BmiPreviewSection = async () => {
                 <span
                   className={
                     item.active
-                      ? "text-lg font-bold leading-7 text-ink dark:text-heading"
-                      : "text-base font-medium leading-6 text-title dark:text-heading"
+                      ? "text-base font-bold leading-6 text-ink dark:text-heading lg:text-lg lg:leading-7"
+                      : "text-sm font-medium leading-5 text-title dark:text-heading lg:text-base lg:leading-6"
                   }
                 >
                   {item.label}
@@ -133,19 +133,6 @@ const BmiPreviewSection = async () => {
             ))}
           </div>
         </Container>
-
-        <div className="relative mx-auto h-[240px] w-full max-w-[640px] md:hidden">
-          <img
-            src="/images/home/bmi-visual.svg"
-            alt=""
-            className="absolute inset-0 h-full w-full object-contain object-right dark:hidden"
-          />
-          <img
-            src="/images/home/bmi-visual-dark.svg"
-            alt=""
-            className="absolute inset-0 hidden h-full w-full object-contain object-right dark:block"
-          />
-        </div>
       </div>
     </section>
   );
