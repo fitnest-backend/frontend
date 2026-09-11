@@ -64,6 +64,13 @@ type DiscountBadgesProps = {
   className?: string;
 };
 
+export const DEFAULT_TIER_PERCENT: Record<SubscriptionTierName, string> = {
+  Bronze: "5",
+  Silver: "5",
+  Gold: "10",
+  Platinum: "15",
+};
+
 const DiscountBadges = ({ discounts, className }: DiscountBadgesProps) => {
   if (!discounts || discounts.length === 0) return null;
 
@@ -72,8 +79,9 @@ const DiscountBadges = ({ discounts, className }: DiscountBadgesProps) => {
       {discounts.slice(0, 2).map((discount, index) => {
         const tier = detectTier(discount, index);
         const style = TIER_STYLES[tier];
-        const percent = parsePercent(discount);
-        const label = percent ? `${tier} ${percent} %` : `${tier} ${discount}`;
+        const parsed = parsePercent(discount);
+        const percent = parsed || DEFAULT_TIER_PERCENT[tier];
+        const label = `${tier} ${percent} %`;
 
         return (
           <div
@@ -86,7 +94,7 @@ const DiscountBadges = ({ discounts, className }: DiscountBadgesProps) => {
           >
             <span
               style={{ color: style.textColor }}
-              className="whitespace-nowrap text-xs font-normal leading-4"
+              className="whitespace-nowrap text-xs font-bold leading-4"
             >
               {label}
             </span>

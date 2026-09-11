@@ -29,11 +29,19 @@ export const MEMBERSHIP_LABELS: Record<MembershipTier, string> = {
   platinum: "Platinum",
 };
 
+export const MEMBERSHIP_DISCOUNTS: Record<MembershipTier, string> = {
+  bronze: "5 %",
+  silver: "5 %",
+  gold: "10 %",
+  platinum: "15 %",
+};
+
 type MembershipBadgeProps = {
   tier: MembershipTier;
   size?: "sm" | "lg";
   variant?: "solid" | "gradient";
   className?: string;
+  showDiscount?: boolean;
 };
 
 const MembershipBadge = ({
@@ -41,7 +49,12 @@ const MembershipBadge = ({
   size = "sm",
   variant = "solid",
   className,
+  showDiscount = true,
 }: MembershipBadgeProps) => {
+  const label = showDiscount
+    ? `${MEMBERSHIP_LABELS[tier]} ${MEMBERSHIP_DISCOUNTS[tier]}`
+    : MEMBERSHIP_LABELS[tier];
+
   return (
     <span
       className={cn(
@@ -53,7 +66,7 @@ const MembershipBadge = ({
         className,
       )}
     >
-      {MEMBERSHIP_LABELS[tier]}
+      {label}
     </span>
   );
 };

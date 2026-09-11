@@ -20,7 +20,7 @@ export default async function LocaleMainLayout({
   const contact = await getLandingContactServer();
   return (
     <>
-      <div className="flex min-h-screen w-full flex-col bg-page">
+      <div className="flex min-h-screen w-full flex-col bg-page overflow-x-clip">
         <Navbar />
         <main className="grow flex flex-col w-full mx-auto">{children}</main>
       </div>

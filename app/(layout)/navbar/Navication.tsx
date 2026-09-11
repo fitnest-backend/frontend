@@ -34,7 +34,12 @@ const Navication = () => {
   };
 
   useEffect(() => {
-    const syncHash = () => setHash(window.location.hash);
+    const syncHash = () => {
+      setHash(window.location.hash);
+      if (typeof window !== "undefined" && window.scrollX !== 0) {
+        window.scrollTo({ left: 0 });
+      }
+    };
     syncHash();
     window.addEventListener("hashchange", syncHash);
     return () => window.removeEventListener("hashchange", syncHash);

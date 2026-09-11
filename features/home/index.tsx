@@ -14,13 +14,13 @@ import Reveal from "./components/Reveal";
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col gap-12 bg-page pb-12 text-ink md:gap-16 md:pb-20">
+    <div className="flex flex-col gap-12 bg-page pb-12 text-ink md:gap-16 md:pb-20 overflow-x-clip">
       <div>
         <HeroSection />
         <Reveal variant="blur" amount={0.2}>
           <StatsBar />
         </Reveal>
-        <Reveal variant="tilt">
+        <Reveal variant="blur">
           <HowItWorks />
         </Reveal>
       </div>
