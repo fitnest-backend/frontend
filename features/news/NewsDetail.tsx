@@ -4,6 +4,7 @@ import Container from "@/components/common/Container";
 import { addLocaleToPathname, type Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/server";
 import { getNewsArticle } from "./data";
+import NewsDownloadCta from "./NewsDownloadCta";
 
 type NewsDetailPageProps = {
   locale: Locale;
@@ -75,12 +76,7 @@ const NewsDetailPage = async ({ locale, slug }: NewsDetailPageProps) => {
                 {t.ctaDescription}
               </p>
             </div>
-            <a
-              href="#download-app"
-              className="inline-flex h-12 shrink-0 items-center justify-center rounded-lg bg-cyan px-4 text-base font-semibold leading-6 text-white transition-colors hover:bg-[#FF6A42] dark:text-[#011729]"
-            >
-              {t.ctaButton}
-            </a>
+            <NewsDownloadCta buttonText={t.ctaButton} />
           </div>
         </div>
       </Container>

@@ -7,9 +7,11 @@ import { usePathname } from "next/navigation";
 import { useI18n } from "@/lib/i18n/provider";
 import { addLocaleToPathname, stripLocaleFromPathname } from "@/lib/i18n/config";
 import { cn } from "@/lib/utils";
+import DownloadAppModal from "@/components/common/DownloadAppModal";
 
 const HamburgerMenu = () => {
   const [open, setOpen] = useState(false);
+  const [downloadModalOpen, setDownloadModalOpen] = useState(false);
   const [hash, setHash] = useState("");
   const pathname = usePathname();
   const normalizedPathname = stripLocaleFromPathname(pathname || "/");
@@ -136,17 +138,24 @@ const HamburgerMenu = () => {
                   </li>
                 ))}
               </ul>
-              <Link
-                href="#download-app"
-                onClick={() => setOpen(false)}
-                className="mt-6 inline-flex h-11 items-center justify-center rounded-lg bg-cyan px-4 text-base font-semibold text-white transition-colors hover:bg-[#FF6A42]"
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  setDownloadModalOpen(true);
+                }}
+                className="mt-6 inline-flex h-11 cursor-pointer items-center justify-center rounded-lg bg-cyan px-4 text-base font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:bg-[#FF6A42] hover:shadow-[0_8px_20px_rgba(0,164,164,0.35)] active:scale-[0.98]"
               >
                 {t.nav.downloadApp}
-              </Link>
+              </button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+      <DownloadAppModal
+        isOpen={downloadModalOpen}
+        onClose={() => setDownloadModalOpen(false)}
+      />
     </div>
   );
 };

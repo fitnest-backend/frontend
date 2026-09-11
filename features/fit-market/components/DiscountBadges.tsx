@@ -1,44 +1,98 @@
-const badgeStyles = [
-  "bg-[linear-gradient(128deg,rgba(229,232,236,0)_0%,rgba(191,200,217,0.7)_67%,#9BAAC7_100%)] text-[#14234B]",
-  "bg-[linear-gradient(128deg,rgba(231,183,95,0)_0%,rgba(235,191,103,0.5)_50%,#A88B5B_100%)] text-[#724E09]",
-  "bg-[linear-gradient(180deg,#9F9F9F_0%,#545454_40%,#5B5B5D_55%,#8E8E8E_100%)] text-white",
-];
+import { cn } from "@/lib/utils";
+
+export type SubscriptionTierName = "Bronze" | "Silver" | "Gold" | "Platinum";
+
+interface TierStyle {
+  name: SubscriptionTierName;
+  gradient: string;
+  textColor: string;
+}
+
+const TIER_STYLES: Record<SubscriptionTierName, TierStyle> = {
+  Gold: {
+    name: "Gold",
+    gradient:
+      "linear-gradient(128deg, rgba(231, 183, 95, 0) 0%, rgba(235, 190.50, 103, 0.50) 50%, #A88B5B 100%)",
+    textColor: "#724E09",
+  },
+  Silver: {
+    name: "Silver",
+    gradient:
+      "linear-gradient(128deg, rgba(229, 232, 236, 0) 0%, rgba(191, 200, 217, 0.70) 67%, #9BAAC7 100%)",
+    textColor: "#14234B",
+  },
+  Platinum: {
+    name: "Platinum",
+    gradient:
+      "linear-gradient(180deg, #9F9F9F 0%, #545454 40%, #5B5B5D 55%, #8E8E8E 100%)",
+    textColor: "#FFFFFF",
+  },
+  Bronze: {
+    name: "Bronze",
+    gradient:
+      "linear-gradient(128deg, rgba(216, 166, 115, 0) 0%, rgba(216, 166, 115, 0.70) 67%, #D8A673 100%)",
+    textColor: "#FFFFFF",
+  },
+};
 
 const parsePercent = (value: string) => {
   const match = value.match(/\d+/);
-  return match ? Number(match[0]) : Number.NaN;
+  return match ? match[0] : "";
 };
 
-export const formatDiscountLabel = (value: string) => {
-  const percent = parsePercent(value);
-  return Number.isNaN(percent) ? value : `${percent} %`;
-};
+const detectTier = (value: string, index: number): SubscriptionTierName => {
+  const lower = value.toLowerCase();
+  if (lower.includes("platinum")) return "Platinum";
+  if (lower.includes("gold")) return "Gold";
+  if (lower.includes("silver")) return "Silver";
+  if (lower.includes("bronze")) return "Bronze";
 
-const styleForDiscount = (value: string, index: number) => {
-  const percent = parsePercent(value);
-  if (percent <= 5) return badgeStyles[0];
-  if (percent <= 10) return badgeStyles[1];
-  if (percent >= 15) return badgeStyles[2];
-  return badgeStyles[index % badgeStyles.length];
+  const percent = Number(parsePercent(value));
+  if (!Number.isNaN(percent) && percent > 0) {
+    if (percent >= 15) return "Platinum";
+    if (percent >= 10) return "Gold";
+    if (percent >= 5) return "Silver";
+    return "Bronze";
+  }
+
+  const fallbackTiers: SubscriptionTierName[] = ["Gold", "Silver", "Platinum", "Bronze"];
+  return fallbackTiers[index % fallbackTiers.length];
 };
 
 type DiscountBadgesProps = {
   discounts: string[];
+  className?: string;
 };
 
-const DiscountBadges = ({ discounts }: DiscountBadgesProps) => {
-  if (discounts.length === 0) return null;
+const DiscountBadges = ({ discounts, className }: DiscountBadgesProps) => {
+  if (!discounts || discounts.length === 0) return null;
 
   return (
-    <div className="flex shrink-0 items-center gap-2">
-      {discounts.slice(0, 3).map((discount, index) => (
-        <span
-          key={`${discount}-${index}`}
-          className={`inline-flex size-9 items-center justify-center rounded-full text-xs leading-4 ${styleForDiscount(discount, index)}`}
-        >
-          {formatDiscountLabel(discount)}
-        </span>
-      ))}
+    <div className={cn("flex shrink-0 flex-wrap items-center gap-1.5", className)}>
+      {discounts.slice(0, 2).map((discount, index) => {
+        const tier = detectTier(discount, index);
+        const style = TIER_STYLES[tier];
+        const percent = parsePercent(discount);
+        const label = percent ? `${tier} ${percent} %` : `${tier} ${discount}`;
+
+        return (
+          <div
+            key={`${discount}-${index}`}
+            data-property-1={percent || tier}
+            style={{
+              background: style.gradient,
+            }}
+            className="inline-flex shrink-0 items-center justify-center rounded-[32px] px-3 py-1.5"
+          >
+            <span
+              style={{ color: style.textColor }}
+              className="whitespace-nowrap text-xs font-normal leading-4"
+            >
+              {label}
+            </span>
+          </div>
+        );
+      })}
     </div>
   );
 };

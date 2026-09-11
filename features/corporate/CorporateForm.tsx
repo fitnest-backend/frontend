@@ -221,10 +221,10 @@ const CorporateForm = () => {
       <button
         type="submit"
         disabled={form.formState.isSubmitting}
-        className="inline-flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-button px-4 text-base font-semibold leading-6 text-white transition-colors hover:bg-[#FF6A42] disabled:opacity-60"
+        className="group inline-flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-button px-4 text-base font-semibold leading-6 text-white transition-all duration-300 hover:scale-[1.02] hover:bg-[#FF6A42] hover:shadow-[0_8px_20px_rgba(20,35,75,0.25)] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60 dark:hover:shadow-[0_8px_20px_rgba(0,219,219,0.25)]"
       >
         {form.formState.isSubmitting ? copy.sending : copy.submit}
-        <HomeArrow className="size-6" />
+        <HomeArrow className="size-6 transition-transform duration-300 group-hover:translate-x-1" />
       </button>
     </form>
   );

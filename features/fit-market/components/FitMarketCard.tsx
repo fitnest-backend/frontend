@@ -21,37 +21,38 @@ const FitMarketCard = ({ store }: FitMarketCardProps) => {
     : null;
 
   return (
-    <TiltCard intensity={8}>
-    <Link
-      href={addLocaleToPathname(`/fit-market/${store.storeId}`, locale)}
-      className="group flex flex-col gap-6 rounded-[32px] border border-border-muted bg-surface p-5 transition-all hover:border-cyan hover:bg-page hover:shadow-[0px_24px_50px_rgba(0,157,166,0.16)]"
-    >
-      <div className="relative h-[250px] overflow-hidden rounded-3xl">
-        <RemoteImage
-          src={storeImageSrc(store.coverImageUrl)}
-          fallback="/images/first.png"
-          alt={store.name}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 410px"
-        />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[168px] rounded-b-3xl bg-[linear-gradient(180deg,rgba(24,23,26,0)_0%,black_100%)]" />
-      </div>
-
-      <div className="flex flex-col gap-5">
-        <div className="flex flex-col gap-4">
-          <div className="flex items-start justify-between gap-3">
-            <h3 className="text-xl font-semibold leading-[30px] text-turquoise">
-              {store.name}
-            </h3>
-            <DiscountBadges discounts={store.discounts ?? []} />
+    <TiltCard intensity={8} className="h-full">
+      <Link
+        href={addLocaleToPathname(`/fit-market/${store.storeId}`, locale)}
+        className="group flex h-full min-w-0 flex-col justify-between gap-6 rounded-[32px] border border-border-muted bg-surface p-5 transition-all hover:border-cyan hover:bg-page hover:shadow-[0px_24px_50px_rgba(0,157,166,0.16)]"
+      >
+        <div className="flex flex-col gap-6">
+          <div className="relative h-[250px] overflow-hidden rounded-3xl">
+            <RemoteImage
+              src={storeImageSrc(store.coverImageUrl)}
+              fallback="/images/first.png"
+              alt={store.name}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 410px"
+            />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[168px] rounded-b-3xl bg-[linear-gradient(180deg,rgba(24,23,26,0)_0%,black_100%)]" />
           </div>
-          <p className="text-xs font-medium leading-[18px] text-ink">
-            {description}
-          </p>
+
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-wrap items-start justify-between gap-2">
+              <h3 className="text-xl font-semibold leading-[30px] text-turquoise">
+                {store.name}
+              </h3>
+              <DiscountBadges discounts={store.discounts ?? []} />
+            </div>
+            <p className="line-clamp-2 min-h-[36px] text-xs font-medium leading-[18px] text-ink">
+              {description}
+            </p>
+          </div>
         </div>
 
-        <div className="flex flex-col gap-3 text-sm font-medium leading-5 text-title">
+        <div className="mt-auto flex flex-col gap-3 pt-2 text-sm font-medium leading-5 text-title">
           {address ? (
             <span className="inline-flex min-w-0 items-center gap-2">
               <img
@@ -89,8 +90,7 @@ const FitMarketCard = ({ store }: FitMarketCardProps) => {
             </span>
           ) : null}
         </div>
-      </div>
-    </Link>
+      </Link>
     </TiltCard>
   );
 };

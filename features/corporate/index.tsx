@@ -138,10 +138,10 @@ const CorporatePage = async ({ locale }: CorporatePageProps) => {
             </div>
             <a
               href="#corporate-offer"
-              className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-lg bg-cyan px-4 text-base font-semibold leading-6 text-white transition-colors hover:bg-[#FF6A42] dark:text-[#011729]"
+              className="group inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-lg bg-cyan px-5 text-base font-semibold leading-6 text-white transition-all duration-300 hover:scale-[1.03] hover:bg-[#FF6A42] hover:shadow-[0_8px_20px_rgba(0,164,164,0.35)] active:scale-[0.98] dark:text-[#011729]"
             >
               {t.ctaButton}
-              <HomeArrow className="size-6" />
+              <HomeArrow className="size-6 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
           </div>
         </Container>

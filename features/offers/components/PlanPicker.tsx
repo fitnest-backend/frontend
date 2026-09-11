@@ -123,9 +123,9 @@ const PlanPicker = ({
 
       <Stagger className="relative grid w-full grid-cols-1 gap-4 rounded-2xl border border-border-muted p-3 pt-10 sm:grid-cols-2 xl:grid-cols-4" variant="rise" delay={0.1}>
         {plans.map((plan) => (
-          <TiltCard key={plan.tier} intensity={8}>
+          <TiltCard key={plan.tier} intensity={8} className="h-full">
           <article
-            className="group relative flex min-w-0 flex-col gap-7 rounded-2xl border border-border-muted bg-page p-5 transition-all hover:-translate-y-1 hover:border-cyan hover:bg-surface hover:shadow-[0_24px_60px_rgba(0,157,166,0.16)] sm:p-7"
+            className="group relative flex h-full min-w-0 flex-col justify-between gap-7 rounded-2xl border border-border-muted bg-page p-5 transition-all hover:-translate-y-1 hover:border-cyan hover:bg-surface hover:shadow-[0_24px_60px_rgba(0,157,166,0.16)] sm:p-7"
           >
             {plan.mostPopular ? (
               <span className="absolute -top-3 right-4 whitespace-nowrap rounded-full bg-turquoise px-[18px] py-[5px] text-xs font-semibold leading-[18px] text-white">
@@ -144,7 +144,7 @@ const PlanPicker = ({
                 </span>
               </div>
             </div>
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-1 flex-col gap-2.5">
               {plan.features.map((feature) => (
                 <li
                   key={feature}

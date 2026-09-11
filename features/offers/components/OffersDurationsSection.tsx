@@ -19,7 +19,7 @@ const OffersDurationsSection = async () => {
         {items.map((item) => (
           <article
             key={item.months}
-            className="flex flex-col items-center gap-4 rounded-xl border border-border-muted bg-surface px-4 py-5 transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
+            className="flex h-full flex-col items-center justify-between gap-4 rounded-xl border border-border-muted bg-surface px-4 py-5 transition-shadow hover:shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
           >
             <div className="flex flex-col gap-0.5 text-center">
               <p className="text-[30px] font-bold leading-[46px] text-ink">
@@ -29,7 +29,7 @@ const OffersDurationsSection = async () => {
                 {item.label}
               </p>
             </div>
-            <p className="max-w-[161px] text-center text-sm leading-5 text-title">
+            <p className="mt-auto max-w-[161px] text-center text-sm leading-5 text-title">
               {item.description}
             </p>
           </article>

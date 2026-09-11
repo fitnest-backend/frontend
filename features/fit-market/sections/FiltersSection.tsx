@@ -47,7 +47,7 @@ const FilterSelect = ({
           alt=""
           width={24}
           height={24}
-          className={`size-6 shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
+          className={`size-6 shrink-0 transition-transform dark:brightness-0 dark:invert ${open ? "rotate-180" : ""}`}
         />
       </button>
       {open ? (
