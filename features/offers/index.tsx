@@ -52,12 +52,10 @@ const OffersPage = async ({ searchParams }: OffersPageProps) => {
         </Container>
       </section>
       </Reveal>
-      <Reveal variant="blur">
       <Container className="flex flex-col gap-[68px] py-16 md:py-20">
         <OffersDurationsSection />
         <OffersActivateBanner />
       </Container>
-      </Reveal>
     </div>
   );
 };

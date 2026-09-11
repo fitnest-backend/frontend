@@ -1,11 +1,13 @@
 import { getMessages } from "@/lib/i18n/server";
+import { Reveal } from "@/components/animation";
 
 const OffersActivateBanner = async () => {
   const { messages } = await getMessages();
 
   return (
     <section id="activate" className="scroll-mt-28">
-      <div className="rounded-2xl bg-brand-navy-800 p-7 dark:bg-[#012438]">
+      <Reveal variant="scale" duration={0.8}>
+        <div className="rounded-2xl bg-brand-navy-800 p-7 dark:bg-[#012438]">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex max-w-[539px] flex-col gap-3">
             <h2 className="text-2xl font-bold leading-9 text-white">
@@ -35,7 +37,8 @@ const OffersActivateBanner = async () => {
             </div>
           </div>
         </div>
-      </div>
+        </div>
+      </Reveal>
     </section>
   );
 };

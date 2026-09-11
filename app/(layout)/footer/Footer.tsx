@@ -61,7 +61,6 @@ const Footer = ({ email, phone }: FooterProps) => {
     { label: t.footer.becomePartner, href: addLocaleToPathname("/partner", locale) },
     { label: t.footer.specialOffers, href: addLocaleToPathname("/payment-options", locale) },
     { label: t.footer.faq, href: addLocaleToPathname("/faq", locale) },
-    { label: t.footer.news, href: addLocaleToPathname("/news", locale) },
   ];
 
   const socials = [

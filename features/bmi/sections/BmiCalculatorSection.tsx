@@ -7,6 +7,7 @@ import BmiResultCard from "../components/BmiResultCard";
 import type { Gender } from "../lib/bmi-utils";
 import { birthDateFromAge } from "../lib/bmi-utils";
 import { useCalculateBmi } from "../hooks/use-calculate-bmi";
+import { Reveal } from "@/components/animation";
 
 const BmiCalculatorSection = () => {
   const [weight, setWeight] = useState("");
@@ -45,23 +46,27 @@ const BmiCalculatorSection = () => {
 
   return (
     <div className="flex flex-col items-stretch gap-6 xl:flex-row">
-      <div className="flex flex-col items-center justify-between gap-8 rounded-xl border border-border-muted bg-surface p-6 md:flex-row xl:h-[539px] xl:w-[737px]">
-        <BmiForm
-          weight={weight}
-          height={height}
-          age={age}
-          gender={gender}
-          isFormValid={isFormValid && !isPending}
-          onWeightChange={setWeight}
-          onHeightChange={setHeight}
-          onAgeChange={setAge}
-          onGenderChange={setGender}
-          onCalculate={handleCalculate}
-        />
-        <BmiResultCard bmiResult={bmiResult} />
-      </div>
+      <Reveal variant="blur" duration={0.7} className="w-full xl:w-auto xl:flex-1">
+        <div className="flex flex-col items-center justify-between gap-8 rounded-xl border border-border-muted bg-surface p-6 md:flex-row xl:h-[539px] xl:w-[737px]">
+          <BmiForm
+            weight={weight}
+            height={height}
+            age={age}
+            gender={gender}
+            isFormValid={isFormValid && !isPending}
+            onWeightChange={setWeight}
+            onHeightChange={setHeight}
+            onAgeChange={setAge}
+            onGenderChange={setGender}
+            onCalculate={handleCalculate}
+          />
+          <BmiResultCard bmiResult={bmiResult} />
+        </div>
+      </Reveal>
 
-      <BmiFactsSidebar />
+      <Reveal variant="blur" duration={0.7} delay={0.15} className="w-full xl:w-auto">
+        <BmiFactsSidebar />
+      </Reveal>
     </div>
   );
 };

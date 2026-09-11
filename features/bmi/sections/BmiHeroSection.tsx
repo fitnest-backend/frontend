@@ -2,6 +2,7 @@
 
 import Container from "@/components/common/Container";
 import { useI18n } from "@/lib/i18n/provider";
+import { Reveal } from "@/components/animation";
 
 const BmiHeroSection = () => {
   const { t } = useI18n();
@@ -13,7 +14,7 @@ const BmiHeroSection = () => {
         className="pointer-events-none absolute -left-14 -top-80 h-[523px] w-[668px] rounded-full bg-[linear-gradient(180deg,rgba(4,34,86,0.61)_0%,rgba(0,106,133,0.38)_55%,rgba(0,163,179,0.01)_100%)] blur-[150px]"
       />
       <Container className="relative py-16 md:py-20">
-        <div className="flex max-w-[800px] flex-col gap-4">
+        <Reveal variant="blur" duration={0.8} className="flex max-w-[800px] flex-col gap-4">
           <p className="text-lg font-bold leading-7 text-turquoise">
             {t.home.bmiEyebrow}
           </p>
@@ -23,7 +24,7 @@ const BmiHeroSection = () => {
           <p className="max-w-[800px] text-base leading-6 text-title">
             {t.bmi.heroDescription}
           </p>
-        </div>
+        </Reveal>
       </Container>
     </section>
   );

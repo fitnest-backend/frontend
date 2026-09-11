@@ -9,7 +9,7 @@ const AboutPage = async () => {
   const stats = await getLandingStatsServer(locale);
 
   return (
-    <div className="bg-page text-ink">
+    <div className="overflow-x-clip bg-page text-ink">
       <AboutHeroSection
         gymCount={stats?.gymCount}
         packageCount={stats?.packageCount}

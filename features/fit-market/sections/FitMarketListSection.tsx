@@ -5,6 +5,7 @@ import { useI18n } from "@/lib/i18n/provider";
 import type { LandingStore } from "@/lib/api/landing";
 import FitMarketCard from "../components/FitMarketCard";
 import FiltersSection, { type StoresFiltersValue } from "./FiltersSection";
+import { Stagger } from "@/components/animation";
 
 const PAGE_SIZE = 9;
 
@@ -82,11 +83,16 @@ const FitMarketListSection = ({ stores }: FitMarketListSectionProps) => {
           }}
         />
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <Stagger
+          key={`${filters.city}-${filters.category}-${filters.membership}-${filters.query}`}
+          className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3"
+          variant="rise"
+          delay={0.06}
+        >
           {visible.map((store) => (
             <FitMarketCard key={store.storeId} store={store} />
           ))}
-        </div>
+        </Stagger>
       </div>
 
       {visibleCount < filtered.length ? (

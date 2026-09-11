@@ -9,6 +9,7 @@ import { getMessages } from "@/lib/i18n/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import FitnessGallery from "./FitnessGallery";
+import { Reveal } from "@/components/animation";
 
 interface FitnessCenterDetailsProps {
   slug: string;
@@ -102,7 +103,8 @@ const FitnessCenterDetails = async ({ slug }: FitnessCenterDetailsProps) => {
         {t.eyebrow}
       </Link>
 
-      <section className="flex flex-col gap-10 rounded-2xl border border-border-muted bg-surface p-5 md:p-6">
+      <Reveal variant="blur" duration={0.8}>
+        <section className="flex flex-col gap-10 rounded-2xl border border-border-muted bg-surface p-5 md:p-6">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             <div className="flex flex-wrap items-center justify-between gap-4">
@@ -258,6 +260,7 @@ const FitnessCenterDetails = async ({ slug }: FitnessCenterDetailsProps) => {
           </Link>
         </div>
       </section>
+      </Reveal>
     </Container>
   );
 };

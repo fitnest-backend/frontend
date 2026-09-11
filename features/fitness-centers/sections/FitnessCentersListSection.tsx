@@ -7,6 +7,7 @@ import type { LandingGym } from "@/lib/api/landing";
 import type { MembershipTier } from "@/features/home/components/MembershipBadge";
 import FitnessCenterCard from "../components/FitnessCenterCard";
 import FiltersSection, { type GymsFiltersValue } from "./FiltersSection";
+import { Stagger, TiltCard } from "@/components/animation";
 
 const PAGE_SIZE = 12;
 
@@ -91,20 +92,26 @@ const FitnessCentersListSection = ({ gyms }: FitnessCentersListSectionProps) => 
         }}
       />
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <Stagger
+        key={`${filters.city}-${filters.category}-${filters.membership}-${filters.query}`}
+        className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+        variant="rise"
+        delay={0.06}
+      >
         {visible.map((gym) => (
-          <FitnessCenterCard
-            key={gym.gymId}
-            name={gym.name}
-            location={gym.location || gym.city || "—"}
-            phone={gym.phone || ""}
-            image={gym.coverImageUrl || ""}
-            category={gym.category || ""}
-            membership={toTier(gym.membership)}
-            href={addLocaleToPathname(`/fitness-centers/${gym.gymId}`, locale)}
-          />
+          <TiltCard key={gym.gymId} intensity={7}>
+            <FitnessCenterCard
+              name={gym.name}
+              location={gym.location || gym.city || "—"}
+              phone={gym.phone || ""}
+              image={gym.coverImageUrl || ""}
+              category={gym.category || ""}
+              membership={toTier(gym.membership)}
+              href={addLocaleToPathname(`/fitness-centers/${gym.gymId}`, locale)}
+            />
+          </TiltCard>
         ))}
-      </div>
+      </Stagger>
 
       {visibleCount < filtered.length ? (
         <div className="flex justify-center">

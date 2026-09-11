@@ -7,6 +7,7 @@ import { discountDetailClassNames } from "../lib/fit-market-data";
 import { getMessages } from "@/lib/i18n/server";
 import { addLocaleToPathname } from "@/lib/i18n/config";
 import { getLandingStoreServer } from "@/lib/api/landing";
+import { Reveal } from "@/components/animation";
 
 interface FitMarketDetailsProps {
   slug: string;
@@ -38,7 +39,8 @@ const FitMarketDetails = async ({ slug }: FitMarketDetailsProps) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(storeSchema) }}
       />
-      <section className="rounded-4xl border border-[#373A41] bg-[#111729] p-5 md:p-6">
+      <Reveal variant="blur" duration={0.8}>
+        <section className="rounded-4xl border border-[#373A41] bg-[#111729] p-5 md:p-6">
         <div className="space-y-5 md:space-y-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <h1 className="text-4xl font-bold leading-tight text-[#00B4CC] md:text-h3 md:leading-h3">
@@ -100,6 +102,7 @@ const FitMarketDetails = async ({ slug }: FitMarketDetailsProps) => {
           </Button>
         </div>
       </section>
+      </Reveal>
     </Container>
   );
 };

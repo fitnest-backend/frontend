@@ -5,7 +5,7 @@ import BmiTipsSection from "./sections/BmiTipsSection";
 
 const BmiPage = () => {
   return (
-    <div className="bg-page text-ink">
+    <div className="overflow-x-clip bg-page text-ink">
       <BmiHeroSection />
       <Container className="flex flex-col gap-6 pb-16 pt-8 md:pb-24">
         <BmiCalculatorSection />
