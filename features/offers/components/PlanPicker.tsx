@@ -133,7 +133,7 @@ const PlanPicker = ({
               </span>
             ) : null}
             <div className="flex flex-col gap-3">
-              <MembershipBadge tier={plan.tier} />
+              <MembershipBadge tier={plan.tier} showDiscount={false} />
               <div className="flex items-baseline gap-2 whitespace-nowrap">
                 <span className="text-[36px] font-bold leading-[52px] text-heading">
                   {formatManat(plan.price)}
